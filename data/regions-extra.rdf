@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:region="http://worldbank.270a.info/classification/region/">
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/EAS">
+      <skos:altLabel xml:lang="en">EAST ASIA AND PACIFIC</skos:altLabel>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/ECS">
+      <skos:altLabel xml:lang="en">EUROPE AND CENTRAL ASIA</skos:altLabel>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/LCN">
+      <skos:altLabel xml:lang="en">LATIN AMERICA AND CARIBBEAN</skos:altLabel>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/MEA">
+      <skos:altLabel xml:lang="en">MIDDLE EAST AND NORTH AFRICA</skos:altLabel>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/SAS">
+      <skos:altLabel xml:lang="en">SOUTH ASIA</skos:altLabel>
+   </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/SSF">
+      <skos:altLabel xml:lang="en">AFRICA</skos:altLabel>
+   </rdf:Description>
+</rdf:RDF>

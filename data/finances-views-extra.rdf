@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:concept="http://worldbank.270a.info/classification/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:finance="http://worldbank.270a.info/dataset/world-bank-finances/"
+   xmlns:loan-status="http://worldbank.270a.info/classification/loan-status/"
+   xmlns:loan-type="http://worldbank.270a.info/classification/loan-type/"
+   xmlns:qb="http://purl.org/linked-data/cube#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <skos:CodeList rdf:about="http://worldbank.270a.info/classification/loan-status">
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/approved"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/cancelled"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/disbursed"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/disbursing"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/effective"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/repaid"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/signed"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-status/terminated"/>
+    <skos:prefLabel xml:lang="en">Status of the loan</skos:prefLabel>
+  </skos:CodeList>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/approved">
+    <skos:definition xml:lang="en">Loan has been approved by the Bank.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Approved</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/cancelled">
+    <skos:definition xml:lang="en">Entire loan principal has been cancelled.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Cancelled</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/disbursed">
+    <skos:definition xml:lang="en">Loan has no undisbursed balance.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Disbursed</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/disbursing">
+    <skos:definition xml:lang="en">Loan is disbursing.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Disbursing</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/effective">
+    <skos:definition xml:lang="en">Loan has been made effective in accordance with the terms of the legal agreement.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Effective</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/repaid">
+    <skos:definition xml:lang="en">Loan has been fully repaid.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Repaid</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/signed">
+    <skos:definition xml:lang="en">Loan has been signed by both parties.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Signed</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-status/terminated">
+    <skos:definition xml:lang="en">Unsigned loan that has been cancelled in full.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+    <skos:prefLabel xml:lang="en">Terminated</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-status"/>
+  </skos:Concept>
+  <skos:CodeList rdf:about="http://worldbank.270a.info/classification/loan-type">
+    <skos:definition xml:lang="en">A type of loan/loan instrument for which distinctive accounting and/or other actions need to be performed.</skos:definition>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/b-loan"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/fsl"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/ifc-loan"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/non-pool"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/pool-loan"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/scp-dem"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/scp-jpy"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/scp-usd"/>
+    <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/loan-type/sngl-crncy"/>
+    <skos:prefLabel xml:lang="en">Code list for loan types</skos:prefLabel>
+  </skos:CodeList>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/b-loan">
+    <skos:definition xml:lang="en">Co-financing lending product that includes Contingency and Regular loans and guarantees.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">B LOAN</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/fsl">
+    <skos:definition xml:lang="en">Fixed Spread Loans (includes both fixed spread loans and IBRD flexible loans that have either fixed spread or variable spread terms).</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">FSL</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/ifc-loan">
+    <skos:definition xml:lang="en">Single Currency loans to the IFC.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">IFC LOAN</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/non-pool">
+    <skos:definition xml:lang="en">Original IBRD lending product, prior to currency pooled loans.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">IFC LOAN</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/pool-loan">
+    <skos:definition xml:lang="en">Currency Pooled Loans.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">POOL LOAN</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/scp-dem">
+    <skos:definition xml:lang="en">Single Currency Pooled Loans - EUR.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">SCP DEM</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/scp-jpy">
+    <skos:definition xml:lang="en">Single Currency Pooled Loans - JPY.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">SCP JPY</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/scp-usd">
+    <skos:definition xml:lang="en">Single Currency Pooled Loans - USD.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">SCP USD</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://worldbank.270a.info/classification/loan-type/sngl-crncy">
+    <skos:definition xml:lang="en">Single Currency Loans.</skos:definition>
+    <skos:inScheme rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+    <skos:prefLabel xml:lang="en">SNGL CRNCY</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
+  </skos:Concept>
+</rdf:RDF>

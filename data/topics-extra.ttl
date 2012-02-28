@@ -1,0 +1,39 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wbtopic: <http://data.worldbank.org/topic/> .
+
+<http://worldbank.270a.info/classification/topic/1>
+    foaf:page wbtopic:agriculture-and-rural-development .
+<http://worldbank.270a.info/classification/topic/2>
+    foaf:page wbtopic:aid-effectiveness .
+<http://worldbank.270a.info/classification/topic/3>
+    foaf:page wbtopic:economic-policy-and-external-debt .
+<http://worldbank.270a.info/classification/topic/4>
+    foaf:page wbtopic:education .
+<http://worldbank.270a.info/classification/topic/5>
+    foaf:page wbtopic:energy-and-mining .
+<http://worldbank.270a.info/classification/topic/6>
+    foaf:page wbtopic:environment .
+<http://worldbank.270a.info/classification/topic/7>
+    foaf:page wbtopic:financial-sector .
+<http://worldbank.270a.info/classification/topic/8>
+    foaf:page wbtopic:health .
+<http://worldbank.270a.info/classification/topic/9>
+    foaf:page wbtopic:infrastructure .
+<http://worldbank.270a.info/classification/topic/10>
+    foaf:page wbtopic:labor-and-social-protection .
+<http://worldbank.270a.info/classification/topic/11>
+    foaf:page wbtopic:poverty .
+<http://worldbank.270a.info/classification/topic/12>
+    foaf:page wbtopic:private-sector .
+<http://worldbank.270a.info/classification/topic/13>
+    foaf:page wbtopic:public-sector .
+<http://worldbank.270a.info/classification/topic/14>
+    foaf:page wbtopic:science-and-technology .
+<http://worldbank.270a.info/classification/topic/15>
+    foaf:page wbtopic:social-development .
+<http://worldbank.270a.info/classification/topic/16>
+    foaf:page wbtopic:urban-development .
+<http://worldbank.270a.info/classification/topic/17>
+    foaf:page wbtopic:gender .
+<http://worldbank.270a.info/classification/topic/19>
+    foaf:page wbtopic:climate-change .

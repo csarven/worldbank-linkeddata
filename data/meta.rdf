@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:concept="http://worldbank.270a.info/classification/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:property="http://worldbank.270a.info/property/"
+   xmlns:qb="http://purl.org/linked-data/cube#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#"
+   xmlns:sdmx-code="http://purl.org/linked-data/sdmx/2009/code#"
+   xmlns:sdmx-concept="http://purl.org/linked-data/sdmx/2009/concept#"
+   xmlns:sdmx-dimension="http://purl.org/linked-data/sdmx/2009/dimension#"
+   xmlns:sdmx-metadata="http://purl.org/linked-data/sdmx/2009/metadata#"
+   xmlns:sdmx="http://purl.org/linked-data/sdmx#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:wbld-dataset-projects-and-operations="http://worldbank.270a.info/dataset/world-bank-projects-and-operations/"
+   xmlns:wbld-dataset-world-bank-finances="http://worldbank.270a.info/dataset/world-bank-finances/"
+   xmlns:wbld-dataset-world-development-indicators="http://worldbank.270a.info/dataset/world-development-indicators/"
+   xmlns:wbld-dataset="http://worldbank.270a.info/dataset/"
+   xmlns:wbld="http://worldbank.270a.info/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/indicator">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:source rdf:resource="http://api.worldbank.org/indicators?format=xml"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.3"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.4"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.3"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.4"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.5"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.7"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.9"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.3"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-development-indicators/structure"/>
+    <rdfs:label xml:lang="en">World Development Indicators dataset</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/projects-and-operations">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="http://search.worldbank.org/api/projects/all.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-projects-and-operations/structure"/>
+    <rdfs:label xml:lang="en">World Bank Projects and Operations dataset</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.5"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.7"/>
+    <rdfs:label xml:lang="en">World Bank Finances dataset</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/4i57-byta/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/structure"/>
+    <rdfs:label xml:lang="en">IBRD Balance Sheet</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/536v-dxib/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/structure"/>
+    <rdfs:label xml:lang="en">Contributions to Financial Intermediary Funds</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Cash Flows</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/ax5s-vav5/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5/structure"/>
+    <rdfs:label xml:lang="en">Financial intermediary Funds Funding Decisions</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/csrh-vv7b/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b/structure"/>
+    <rdfs:label xml:lang="en">The World Bank Components Of VPU Budget</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/e8yz-96c6/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6/structure"/>
+    <rdfs:label xml:lang="en">IBRD Balance Sheet</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/ebmi-69yj/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Credits and Grants</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/eycy-ub35/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Income</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/fie8-6fxn/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn/structure"/>
+    <rdfs:label xml:lang="en">Financial Intermediary Funds Commitments</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/g4sx-dwxc">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/g4sx-dwxc/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/g4sx-dwxc/structure"/>
+    <rdfs:label xml:lang="en">Global Open Data Calendar</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/gprm-cvxz/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz/structure"/>
+    <rdfs:label xml:lang="en">World Bank Program Budget</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/h4s8-nwev/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev/structure"/>
+    <rdfs:label xml:lang="en">Financial Intermediary Funds Cash Transfers</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/hcqu-nmwb/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb/structure"/>
+    <rdfs:label xml:lang="en">World Bank Expenditures By Program</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/i7za-uwi5/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Cash Flows</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/iww5-3sst/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst/structure"/>
+    <rdfs:label xml:lang="en">IBRD/IDA/IFC Trust Funds - Annual Cash Contributions and Disbursements</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/jeqz-f7mn/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn/structure"/>
+    <rdfs:label xml:lang="en">IBRD and IDA Operational Summary</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/kmwd-f4rk/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Income</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/p65j-3upu/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu/structure"/>
+    <rdfs:label xml:lang="en">Commercial Credit Exposure by Counterparty Rating</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/pyda-ktbg/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Income</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/rcx4-r7xj/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Subscriptions to Capital Stock and Voting Power as of June 30, 2010</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/ri54-wt6e/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e/structure"/>
+    <rdfs:label xml:lang="en">IDA Balance Sheet</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/s3ey-mkx3/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3/structure"/>
+    <rdfs:label xml:lang="en">IDA Balance Sheet</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/sfv5-tf7p/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Loans</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/tdwh-3krx/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Credits and Grants</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/v84d-dq44/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Voting Power and Subscriptions and Contributions as of June 30, 2010</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/wphw-pasx/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx/structure"/>
+    <rdfs:label xml:lang="en">IDA Statement of Income</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/xs8h-cwh5/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Cash Flows</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/zucq-nrc3/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Loans</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/zyqx-8e4a/rows.xml"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure"/>
+    <rdfs:label xml:lang="en">IBRD Statement of Cash Flows</rdfs:label>
+  </qb:DataSet>
+  <qb:DataStructureDefinition rdf:about="http://worldbank.270a.info/dataset/world-development-indicators/structure">
+    <qb:component>
+      <qb:ComponentSpecification>
+        <qb:dimension rdf:resource="http://worldbank.270a.info/property/indicator"/>
+        <qb:order rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</qb:order>
+      </qb:ComponentSpecification>
+    </qb:component>
+    <qb:component>
+      <qb:ComponentSpecification>
+        <qb:dimension rdf:resource="http://purl.org/linked-data/sdmx/2009/dimension#refArea"/>
+        <qb:order rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</qb:order>
+      </qb:ComponentSpecification>
+    </qb:component>
+    <qb:component>
+      <qb:ComponentSpecification>
+        <qb:dimension rdf:resource="http://purl.org/linked-data/sdmx/2009/dimension#refPeriod"/>
+        <qb:order rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3</qb:order>
+      </qb:ComponentSpecification>
+    </qb:component>
+    <qb:component>
+      <qb:ComponentSpecification>
+        <qb:measure rdf:resource="http://purl.org/linked-data/cube#obsValue"/>
+        <qb:order rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4</qb:order>
+      </qb:ComponentSpecification>
+    </qb:component>
+  </qb:DataStructureDefinition>
+  <rdf:Description rdf:about="http://worldbank.270a.info/meta">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+  </rdf:Description>
+  <qb:DimensionProperty rdf:about="http://worldbank.270a.info/property/finance">
+    <qb:codeList rdf:resource="http://worldbank.270a.info/classification/finance"/>
+    <qb:concept rdf:resource="http://worldbank.270a.info/classification/finance"/>
+    <rdfs:label xml:lang="en">World Bank Finance dataset</rdfs:label>
+  </qb:DimensionProperty>
+  <qb:DimensionProperty rdf:about="http://worldbank.270a.info/property/indicator">
+    <qb:codeList rdf:resource="http://worldbank.270a.info/classification/indicator"/>
+    <qb:concept rdf:resource="http://worldbank.270a.info/classification/indicator"/>
+    <rdfs:label xml:lang="en">World Development Indicator</rdfs:label>
+  </qb:DimensionProperty>
+</rdf:RDF>
