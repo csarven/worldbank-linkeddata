@@ -70,7 +70,7 @@
                 <foaf:page rdf:resource="http://data.worldbank.org/indicator/{@id}"/>
 
                 <xsl:if test="wb:source/@id">
-                <dcterms:isPartOf rdf:resource="{$wbld}source/{wb:source/@id}"/>
+                <dcterms:isPartOf rdf:resource="{$wbld}classification/source/{wb:source/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:sourceNote != ''">
@@ -82,7 +82,7 @@
                 </xsl:if>
 
                 <xsl:for-each select="wb:topics/wb:topic">
-                <property:topic rdf:resource="{$wbld}topic/{@id}"/>
+                <property:topic rdf:resource="{$wbld}classification/topic/{@id}"/>
                 </xsl:for-each>
             </rdf:Description>
         </xsl:for-each>
