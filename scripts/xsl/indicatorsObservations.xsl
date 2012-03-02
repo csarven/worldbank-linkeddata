@@ -14,6 +14,7 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:sdmx-dimension="http://purl.org/linked-data/sdmx/2009/dimension#"
+    xmlns:sdmx-measure="http://purl.org/linked-data/sdmx/2009/measure#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -66,7 +67,7 @@
 
                 <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
 
-                <qb:obsValue><xsl:value-of select="wb:value/text()"/></qb:obsValue>
+                <sdmx-measure:obsValue><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
 
                 <property:decimal><xsl:value-of select="wb:decimal/text()"/></property:decimal>
             </rdf:Description>
