@@ -19,13 +19,6 @@
    xmlns:wbld-dataset="http://worldbank.270a.info/dataset/"
    xmlns:wbld="http://worldbank.270a.info/"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/projects-and-operations">
-    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
-    <dcterms:source rdf:resource="http://search.worldbank.org/api/projects/all.xml"/>
-    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-projects-and-operations/structure"/>
-    <rdfs:label xml:lang="en">World Bank Projects and Operations dataset</rdfs:label>
-  </qb:DataSet>
   <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
     <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
     <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
@@ -238,6 +231,12 @@
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure"/>
     <rdfs:label xml:lang="en">IBRD Statement of Cash Flows</rdfs:label>
   </qb:DataSet>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-projects-and-operations">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
+    <dcterms:source rdf:resource="http://search.worldbank.org/api/projects/all.xml"/>
+    <rdfs:label xml:lang="en">World Bank Projects and Operations dataset</rdfs:label>
+  </rdf:Description>
   <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
     <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
     <dcterms:source rdf:resource="http://api.worldbank.org/indicators?format=xml"/>

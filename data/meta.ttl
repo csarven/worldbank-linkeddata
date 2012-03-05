@@ -345,9 +345,9 @@ property:finance
     .
 
 
-wbld-dataset:projects-and-operations
-    a qb:DataSet ;
-    qb:structure wbld-dataset-projects-and-operations:structure ;
+wbld-dataset:world-bank-projects-and-operations
+#    a qb:DataSet ;
+#    qb:structure wbld-dataset-projects-and-operations:structure ;
     rdfs:label "World Bank Projects and Operations dataset"@en ;
     dcterms:source <http://search.worldbank.org/api/projects/all.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
