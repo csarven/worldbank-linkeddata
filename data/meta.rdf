@@ -19,28 +19,6 @@
    xmlns:wbld-dataset="http://worldbank.270a.info/dataset/"
    xmlns:wbld="http://worldbank.270a.info/"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/indicator">
-    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
-    <dcterms:source rdf:resource="http://api.worldbank.org/indicators?format=xml"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.2"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.3"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.4"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.6"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.1"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.2"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.3"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.4"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.6"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.5"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.7"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.9"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.1"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.1"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.2"/>
-    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.3"/>
-    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-development-indicators/structure"/>
-    <rdfs:label xml:lang="en">World Development Indicators dataset</rdfs:label>
-  </qb:DataSet>
   <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/projects-and-operations">
     <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
     <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
@@ -259,6 +237,28 @@
     <dcterms:source rdf:resource="https://finances.worldbank.org/api/views/zyqx-8e4a/rows.xml"/>
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure"/>
     <rdfs:label xml:lang="en">IBRD Statement of Cash Flows</rdfs:label>
+  </qb:DataSet>
+  <qb:DataSet rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
+    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+    <dcterms:source rdf:resource="http://api.worldbank.org/indicators?format=xml"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.3"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.4"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#1.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.3"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.4"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.4.6"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.5"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.7"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.9"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.1"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.2"/>
+    <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#3.3.3"/>
+    <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-development-indicators/structure"/>
+    <rdfs:label xml:lang="en">World Development Indicators dataset</rdfs:label>
   </qb:DataSet>
   <qb:DataStructureDefinition rdf:about="http://worldbank.270a.info/dataset/world-development-indicators/structure">
     <qb:component>

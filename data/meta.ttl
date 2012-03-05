@@ -34,7 +34,7 @@ wbld:meta
 
 
 #World Development Indicators
-wbld-dataset:indicator
+wbld-dataset:world-development-indicators
     a qb:DataSet ;
     qb:structure wbld-dataset-world-development-indicators:structure ;
     rdfs:label "World Development Indicators dataset"@en ;
