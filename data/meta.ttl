@@ -348,14 +348,6 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
     dcterms:creator <http://csarven.ca/#i> .
 
 
-property:finance
-    a qb:DimensionProperty ;
-    rdfs:label "World Bank Finance dataset"@en ;
-    qb:concept concept:finance ;
-    qb:codeList concept:finance ;
-    .
-
-
 wbld-dataset:world-bank-projects-and-operations
 #    a qb:DataSet ;
 #    qb:structure wbld-dataset-projects-and-operations:structure ;
@@ -364,6 +356,8 @@ wbld-dataset:world-bank-projects-and-operations
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
 
+
+#This is compiled manually. I broke down the paragraph long definition into atomic parts.
 concept:loan-status
     a skos:CodeList ;
     skos:hasTopConcept
@@ -506,14 +500,14 @@ loan-type:sngl-crncy
 
 
 #These properties are not in wc6g-9zmq
-property:FIXME-FIXME-source-source-source-FIXME-FIXME
-    a qb:DimensionProperty ;
-    qb:concept concept:foo ;
-    qb:codeList concept:bar ;
-    rdfs:label "Source"@en ;
-    dcterms:source <http://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml> ;
-    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
-    .
+#property:FIXME-FIXME-source-source-source-FIXME-FIXME
+#    a qb:DimensionProperty ;
+#    qb:concept concept:foo ;
+#    qb:codeList concept:bar ;
+#    rdfs:label "Source"@en ;
+#    dcterms:source <http://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml> ;
+#    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+#    .
 
 
 #csrh-vv7b data for concepts and properties below are compiled manually
