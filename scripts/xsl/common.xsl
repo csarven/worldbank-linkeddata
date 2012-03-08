@@ -12,7 +12,7 @@
 
     <xsl:function name="wbldfn:safe-term">
         <xsl:param name="string"/>
-        <xsl:value-of select="replace(replace(replace(replace(lower-case(encode-for-uri(replace(normalize-space($string), ' - ', '-'))), '%20|%2f|%27', '-'), '%28|%29|%24|%2c', ''), '_', '-'), '-$', '')"/>
+        <xsl:value-of select="replace(replace(replace(replace(lower-case(encode-for-uri(replace(normalize-space($string), ' - ', '-'))), '%20|%2f|%27', '-'), '%28|%29|%24|%2c', ''), '_', '-'), '^-|-$', '')"/>
     </xsl:function>
 
     <xsl:template name="resource-refperiod">
