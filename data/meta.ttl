@@ -187,6 +187,14 @@ wbld-dataset-world-bank-finances:h4s8-nwev
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
 
+wbld-dataset-world-bank-finances:h9ga-h5eb
+    a qb:DataSet ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb/structure> ;
+    rdfs:label "Recipient-executed Grants - Commitments and Disbursements"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/h9ga-h5eb/rows.xml> ;
+    dcterms:issued "2012-03-08T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> .
+
 wbld-dataset-world-bank-finances:hcqu-nmwb
     a qb:DataSet ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb/structure> ;
@@ -225,6 +233,22 @@ wbld-dataset-world-bank-finances:kmwd-f4rk
     rdfs:label "IDA Statement of Income"@en ;
     dcterms:source <https://finances.worldbank.org/api/views/kmwd-f4rk/rows.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> .
+
+wbld-dataset-world-bank-finances:m54j-ersw
+    a qb:DataSet ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw/structure> ;
+    rdfs:label "Total Contributions to IBRD/IDA/IFC Trust Funds - Summary based on FY of Agreement"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/m54j-ersw/rows.xml> ;
+    dcterms:issued "2012-03-08T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> .
+
+wbld-dataset-world-bank-finances:nh5z-5qch
+    a qb:DataSet ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch/structure> ;
+    rdfs:label "Paid In Contributions to IBRD/IDA/IFC Trust Funds based on FY of Receipt"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/nh5z-5qch/rows.xml> ;
+    dcterms:issued "2012-03-08T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
 
 wbld-dataset-world-bank-finances:p65j-3upu
