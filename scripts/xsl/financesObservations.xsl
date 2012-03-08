@@ -82,29 +82,34 @@
 <!--                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>-->
 
                 <xsl:for-each select="node()">
-                    <xsl:variable name="financeDataset">
-                        <xsl:text>http://worldbank.270a.info/dataset/world-bank-finances/</xsl:text><xsl:value-of select="$wbldf_view"/>
-                    </xsl:variable>
+                    <xsl:variable name="nodeName" select="wbldfn:safe-term(name())"/>
+                    
+                    <xsl:if test="$nodeName != 'uuid'
+                                and $nodeName != 'project-name'">
+                        <xsl:variable name="financeDataset">
+                            <xsl:text>http://worldbank.270a.info/dataset/world-bank-finances/</xsl:text><xsl:value-of select="$wbldf_view"/>
+                        </xsl:variable>
 
-                    <xsl:variable name="datasetName">
-                        <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $financeDataset]/rdfs:label"/>
-                    </xsl:variable>
+                        <xsl:variable name="datasetName">
+                            <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $financeDataset]/rdfs:label"/>
+                        </xsl:variable>
 
-                    <xsl:variable name="datasetName">
-                        <xsl:if test="name() = 'approval_quarter'
-                                    or name() = 'calendar_year'
-                                    or name() = 'financial_product'
-                                    or name() = 'line_item'
-                                    or name() = 'organization'
-                                    or name() = 'sub_account'">
-                            <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
-                        </xsl:if>
-                    </xsl:variable>
+                        <xsl:variable name="datasetName">
+                            <xsl:if test="name() = 'approval-quarter'
+                                        or name() = 'calendar-year'
+                                        or name() = 'financial-product'
+                                        or name() = 'line-item'
+                                        or name() = 'organization'
+                                        or name() = 'sub-account'">
+                                <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
+                            </xsl:if>
+                        </xsl:variable>
 
-                    <xsl:call-template name="nodeProperty">
-                        <xsl:with-param name="nodeName" select="name()"/>
-                        <xsl:with-param name="datasetName" select="$datasetName"/>
-                    </xsl:call-template>
+                        <xsl:call-template name="nodeProperty">
+                            <xsl:with-param name="nodeName" select="$nodeName"/>
+                            <xsl:with-param name="datasetName" select="$datasetName"/>
+                        </xsl:call-template>
+                    </xsl:if>
                 </xsl:for-each>
             </rdf:Description>
         </xsl:for-each>
@@ -120,26 +125,27 @@
             <!-- TODO: I'm not sure about these duplicates. Best practice is..? 
                 Move some of them out into meta.ttl e.g., sdmx-dimension:refPeriod
             -->
-            <xsl:when test="$nodeName = 'project_id'">
-                <xsl:element name="property:project-id">
+            <xsl:when test="$nodeName = 'project-id'">
+                <xsl:element name="property:{$nodeName}">
                     <xsl:attribute name="rdf:resource">
                         <xsl:value-of select="$wbld"/><xsl:text>project/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'project_name'
-                            or $nodeName = 'project_name_'">
-                <xsl:element name="property:{$datasetName}project-name">
+            <!--
+            <xsl:when test="$nodeName = 'project-name'">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
             </xsl:when>
+            -->
 
             <!-- These match up with ISO codes -->
-            <xsl:when test="$nodeName = 'country_code'">
+            <xsl:when test="$nodeName = 'country-code'">
                 <xsl:choose>
                     <xsl:when test="./text() = ''">
-                        <xsl:element name="property:{$datasetName}country-code"/>
+                        <xsl:element name="property:{$datasetName}{$nodeName}"/>
                     </xsl:when>
 
                     <xsl:otherwise>
@@ -152,14 +158,14 @@
                 </xsl:choose>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'guarantor_country_code'">
+            <xsl:when test="$nodeName = 'guarantor-country-code'">
                 <xsl:choose>
                     <xsl:when test="./text() = ''">
-                        <xsl:element name="property:{$datasetName}guarantor-country-code"/>
+                        <xsl:element name="property:{$datasetName}{$nodeName}"/>
                     </xsl:when>
 
                     <xsl:otherwise>
-                        <xsl:element name="property:{$datasetName}guarantor-country-code">
+                        <xsl:element name="property:{$datasetName}{$nodeName}">
                             <xsl:attribute name="rdf:resource">
                                 <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
                             </xsl:attribute>
@@ -190,14 +196,14 @@
                  </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'country_beneficiary'
-                            or $nodeName = 'donor_name'
+            <xsl:when test="$nodeName = 'country-beneficiary'
+                            or $nodeName = 'donor-name'
                             or $nodeName = 'guarantor'
                             or $nodeName = 'member'
-                            or $nodeName = 'member_country'">
+                            or $nodeName = 'member-country'">
                 <xsl:variable name="countryString" select="./text()"/>
 
-                <xsl:element name="property:{$datasetName}{wbldfn:safe-term($nodeName)}">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:choose>
                         <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
                             <xsl:attribute name="rdf:resource">
@@ -215,7 +221,7 @@
             <xsl:when test="$nodeName = 'region'">
                 <xsl:variable name="regionString" select="./text()"/>
 
-                <xsl:element name="property:{$datasetName}region">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:choose>
                         <xsl:when test="document($pathToRegionsExtra)/rdf:RDF/rdf:Description[skos:altLabel/text() = $regionString]">
                             <xsl:attribute name="rdf:resource">
@@ -230,38 +236,34 @@
                  </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'category'
-                            or $nodeName = 'category_'">
-                <xsl:element name="property:{$datasetName}category">
+            <xsl:when test="$nodeName = 'category'">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:attribute name="rdf:resource">
-                        <!-- XXX -->
                         <xsl:value-of select="$classification"/><xsl:text>category/</xsl:text><xsl:value-of select="wbldfn:safe-term(./text())"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'agreement_signing_date'
-                            or $nodeName = 'as_of_date'
-                            or $nodeName = 'board_approval_date'
-                            or $nodeName = 'closed_date_most_recent_'
-                            or $nodeName = 'effective_date_most_recent_'
-                            or $nodeName = 'end_of_period'
-                            or $nodeName = 'first_repayment_date'
-                            or $nodeName = 'last_repayment_date'
-                            or $nodeName = 'last_disbursement_date'
-                            or $nodeName = 'period_end_date'">
-                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
-                <xsl:element name="property:{$datasetName}{$term}">
+            <xsl:when test="$nodeName = 'agreement-signing-date'
+                            or $nodeName = 'as-of-date'
+                            or $nodeName = 'board-approval-date'
+                            or $nodeName = 'closed-date-most-recent'
+                            or $nodeName = 'effective-date-most-recent'
+                            or $nodeName = 'end-of-period'
+                            or $nodeName = 'first-repayment-date'
+                            or $nodeName = 'last-repaymentdate'
+                            or $nodeName = 'last-disbursement-date'
+                            or $nodeName = 'period-end-date'">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-date"/>
                     <xsl:value-of select="normalize-space(./text())"/>
                 </xsl:element>
             </xsl:when>
 
             <!-- XXX: Perhaps the next two conditions should use sdmx:refPeriod -->
-            <xsl:when test="$nodeName = 'fiscal_year'
-                            or $nodeName = 'calendar_year'">
-                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
-                <xsl:element name="property:{$datasetName}{$term}">
+            <xsl:when test="$nodeName = 'fiscal-year'
+                            or $nodeName = 'calendar-year'">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="resource-refperiod">
                         <xsl:with-param name="date" select="normalize-space(./text())"/>
                     </xsl:call-template>
@@ -269,10 +271,9 @@
             </xsl:when>
 
             <!-- TODO: Approval Quarter, Receipt Quarter, Transfer Quarter-->
-            <xsl:when test="$nodeName = 'approval_quarter'
-                            or $nodeName = 'receipt_quarter'
-                            or $nodeName = 'transfer_quarter'">
-                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
+            <xsl:when test="$nodeName = 'approval-quarter'
+                            or $nodeName = 'receipt-quarter'
+                            or $nodeName = 'transfer-quarter'">
 
                 <xsl:variable name="quarter">
                     <xsl:choose>
@@ -294,7 +295,7 @@
                     </xsl:choose>
                 </xsl:variable>
 
-                <xsl:element name="property:{$datasetName}{$term}">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="resource-refperiod">
                         <xsl:with-param name="date">
                             <xsl:value-of select="normalize-space(../calendar_year)"/><xsl:value-of select="$quarter"/>
@@ -305,8 +306,8 @@
 
             <!-- TODO: $nodeName date, end_date are UNIX timestamps, convert them -->
 
-            <xsl:when test="$nodeName = 'line_item'">
-                <xsl:element name="property:{$datasetName}line-item">
+            <xsl:when test="$nodeName = 'line-item'">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:attribute name="rdf:resource">
                         <xsl:value-of select="$classification"/><xsl:text>line-item/</xsl:text><xsl:value-of select="wbldfn:safe-term(./text())"/>
                     </xsl:attribute>
@@ -315,59 +316,56 @@
 
             <!-- XXX: A bit unsure about this. Reconsider property and find a different datatype? -->
             <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
-            <xsl:when test="$nodeName = 'amount_in_usd'
-                        or $nodeName = 'amounts_paid_in'
-                        or $nodeName = 'amounts_subject_to_call'
-                        or $nodeName = 'amount_us_millions'
-                        or $nodeName = 'borrower_s_obligation'
-                        or $nodeName = 'cancelled_amount'
-                        or $nodeName = 'commitments_total_us_millions'
-                        or $nodeName = '_contributions_paid_in_usd_'
-                        or $nodeName = 'contributions_paid_in_usd_'
-                        or $nodeName = 'credits_outstanding_us_millions_'
-                        or $nodeName = 'development_grant_expenses_us_millions'
-                        or $nodeName = 'disbursed_amount'
-                        or $nodeName = 'due_3rd_party'
-                        or $nodeName = 'due_to_ibrd'
-                        or $nodeName = 'due to_ida'
-                        or $nodeName = 'exchange_adjustment'
+            <xsl:when test="$nodeName = 'amount-in-usd'
+                        or $nodeName = 'amounts-paid-in'
+                        or $nodeName = 'amounts-subject-to-call'
+                        or $nodeName = 'amount-us-millions'
+                        or $nodeName = 'borrower-s-obligation'
+                        or $nodeName = 'cancelled-amount'
+                        or $nodeName = 'commitments-total-us-millions'
+                        or $nodeName = 'contributions-paid-in-usd'
+                        or $nodeName = 'credits-outstanding-us-millions'
+                        or $nodeName = 'development-grant-expenses-us-millions'
+                        or $nodeName = 'disbursed-amount'
+                        or $nodeName = 'due-3rd-party'
+                        or $nodeName = 'due-to-ibrd'
+                        or $nodeName = 'due to-ida'
+                        or $nodeName = 'exchange-adjustment'
                         or $nodeName = 'gross-disbursements-development-policy-lending-us-millions'
-                        or $nodeName = 'gross_disbursements_total_us_millions'
-                        or $nodeName = 'loans_held'
-                        or $nodeName = 'loans_outstanding'
-                        or $nodeName = 'net_disbursements_us_millions'
-                        or $nodeName = 'operating_income_us_millions'
-                        or $nodeName = 'original_principal_amount'
-                        or $nodeName = 'principal_repayments_including_prepayments_us_millions'
-                        or $nodeName = 'receipt_amount'
-                        or $nodeName = 'repaid_3rd_party'
-                        or $nodeName = 'repaid_to_ibrd'
-                        or $nodeName = 'repaid_to_ida'
-                        or $nodeName = 'sold_3rd_party'
-                        or $nodeName = 'subscriptions_and_contributions_commited_us_millions'
-                        or $nodeName = 'total_amounts'
-                        or $nodeName = 'undisbursed_amount'
-                        or $nodeName = 'undisbursed_credits_us_millions_'
-                        or $nodeName = 'undisbursed_grants_us_millions_'
-                        or $nodeName = 'undisbursed_loans_us_millions_'
-                        or $nodeName = 'usable_capital_and_reserves_us_millions'
+                        or $nodeName = 'gross-disbursements-total-us-millions'
+                        or $nodeName = 'loans-held'
+                        or $nodeName = 'loans-outstanding'
+                        or $nodeName = 'net-disbursements-us-millions'
+                        or $nodeName = 'operating-income-us-millions'
+                        or $nodeName = 'original-principal-amount'
+                        or $nodeName = 'principal-repayments-including-prepayments-us-millions'
+                        or $nodeName = 'receipt-amount'
+                        or $nodeName = 'repaid-3rd-party'
+                        or $nodeName = 'repaid-to-ibrd'
+                        or $nodeName = 'repaid-to-ida'
+                        or $nodeName = 'sold-3rd-party'
+                        or $nodeName = 'subscriptions-and-contributions-commited-us-millions'
+                        or $nodeName = 'total-amounts'
+                        or $nodeName = 'undisbursed-amount'
+                        or $nodeName = 'undisbursed-credits-us-millions'
+                        or $nodeName = 'undisbursed-grants-us-millions'
+                        or $nodeName = 'undisbursed-loans-us-millions'
+                        or $nodeName = 'usable-capital-and-reserves-us-millions'
                         ">
-                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
-                <xsl:element name="property:{$datasetName}{$term}">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-dbo-usd"/>
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'currency_of_commitment'
-                            or $nodeName = 'receipt_currency'">
+            <xsl:when test="$nodeName = 'currency-of-commitment'
+                            or $nodeName = 'receipt-currency'">
                 <xsl:variable name="currency" select="normalize-space(./text())"/>
-                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
 
                 <xsl:choose>
                     <xsl:when test="document($pathToCurrencies)/rdf:RDF/rdf:Description[skos:notation/text() = $currency]/@rdf:about">
                         <!-- XXX: I prefer to use 'currency' instead of 'currency-of-commitment' but that would mean that I have to change the property name in the dictionary wc6g-9zmq -->
-                        <xsl:element name="property:{$term}">
+                        <xsl:element name="property:{$nodeName}">
                             <xsl:attribute name="rdf:resource">
                                <xsl:value-of select="$classification"/><xsl:text>currency/</xsl:text><xsl:value-of select="$currency"/>
                             </xsl:attribute>
@@ -375,7 +373,7 @@
                     </xsl:when>
 
                     <xsl:otherwise>
-                        <xsl:element name="property:{$term}">
+                        <xsl:element name="property:{$nodeName}">
                             <xsl:value-of select="./text()"/>
                         </xsl:element>
                     </xsl:otherwise>
@@ -383,18 +381,18 @@
             </xsl:when>
 
             <xsl:when test="$nodeName = 'description'">
-                <xsl:element name="property:{$datasetName}desription">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'loan_number'
-                            or $nodeName = 'credit_number'">
+            <xsl:when test="$nodeName = 'loan-number'
+                            or $nodeName = 'credit-number'">
                 <!-- XXX: This is a bit dirty i.e., check for substring in lendingTypes file instead -->
                 <xsl:variable name="lendingTypeString" select="replace(./text(), '(IBRD|Blend|IDA|Not classified).*', '$1')"/>
                 <xsl:choose>
                     <xsl:when test="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]">
-                        <xsl:element name="property:loan-number">
+                        <xsl:element name="property:{$nodeName}">
                             <xsl:attribute name="rdf:resource">
                                <xsl:value-of select="$wbld"/><xsl:text>loan-number/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
                             </xsl:attribute>
@@ -402,26 +400,26 @@
                     </xsl:when>
 
                     <xsl:otherwise>
-                        <xsl:element name="property:loan-number">
+                        <xsl:element name="property:{$nodeName}">
                             <xsl:value-of select="./text()"/>
                         </xsl:element>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'loan_status'
-                            or $nodeName = 'credit_status'">
+            <xsl:when test="$nodeName = 'loan-status'
+                            or $nodeName = 'credit-status'">
                 <xsl:variable name="loanStatus" select="lower-case(normalize-space(./text()))"/>
-                <property:loan-status rdf:resource="{$classification}loan-status/{$loanStatus}"/>
+                <property:loan-status rdf:resource="{$classification}{$nodeName}/{$loanStatus}"/>
             </xsl:when>
 
-            <xsl:when test="$nodeName = 'loan_type'">
+            <xsl:when test="$nodeName = 'loan-type'">
                 <xsl:variable name="loanType" select="replace(lower-case(normalize-space(./text())), '\s+', '-')"/>
-                <property:loan-type rdf:resource="{$classification}loan-type/{$loanType}"/>
+                <property:loan-type rdf:resource="{$classification}{$nodeName}/{$loanType}"/>
             </xsl:when>
 
             <xsl:otherwise>
-                <xsl:element name="property:{$datasetName}{wbldfn:safe-term($nodeName)}">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
             </xsl:otherwise>
