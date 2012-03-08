@@ -17,21 +17,16 @@
 @prefix wbld-dataset-world-bank-finances: <http://worldbank.270a.info/dataset/world-bank-finances/> .
 @prefix wbld-dataset-projects-and-operations: <http://worldbank.270a.info/dataset/world-bank-projects-and-operations/> .
 
-#Classifications
 @prefix concept: <http://worldbank.270a.info/classification/> .
-
-#Concepts
-#See countries.rdf, incomelevels.rdf, indicators.rdf lendingtypes.rdf, regions.rdf, sources.rdf, topics.rdf
-
 @prefix property: <http://worldbank.270a.info/property/> .
+
+@prefix loan-status: <http://worldbank.270a.info/classification/loan-status/> .
+@prefix loan-type: <http://worldbank.270a.info/classification/loan-type/> .
 
 wbld:meta
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     .
-
-
-
 
 #World Development Indicators
 wbld-dataset:world-development-indicators
@@ -131,7 +126,7 @@ wbld-dataset:world-bank-finances
 wbld-dataset-world-bank-finances:ax5s-vav5
     a qb:DataSet ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5/structure> ;
-    rdfs:label "Financial intermediary Funds Funding Decisions"@en ;
+    rdfs:label "Financial Intermediary Funds Funding Decisions"@en ;
     dcterms:source <https://finances.worldbank.org/api/views/ax5s-vav5/rows.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
@@ -173,14 +168,6 @@ wbld-dataset-world-bank-finances:fie8-6fxn
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn/structure> ;
     rdfs:label "Financial Intermediary Funds Commitments"@en ;
     dcterms:source <https://finances.worldbank.org/api/views/fie8-6fxn/rows.xml> ;
-    dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
-    dcterms:creator <http://csarven.ca/#i> .
-
-wbld-dataset-world-bank-finances:g4sx-dwxc
-    a qb:DataSet ;
-    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/g4sx-dwxc/structure> ;
-    rdfs:label "Global Open Data Calendar"@en ;
-    dcterms:source <https://finances.worldbank.org/api/views/g4sx-dwxc/rows.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
 
@@ -352,4 +339,311 @@ wbld-dataset:world-bank-projects-and-operations
     dcterms:source <http://search.worldbank.org/api/projects/all.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> .
+
+concept:loan-status
+    a skos:CodeList ;
+    skos:hasTopConcept
+        loan-status:approved,
+        loan-status:cancelled,
+        loan-status:disbursed,
+        loan-status:disbursing,
+        loan-status:effective,
+        loan-status:repaid,
+        loan-status:signed,
+        loan-status:terminated ;
+    skos:prefLabel "Codelist for loan status"@en .
+
+loan-status:approved
+    a skos:Concept ;
+    skos:definition "Loan has been approved by the Bank."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Approved"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:cancelled
+    a skos:Concept ;
+    skos:definition "Entire loan principal has been cancelled."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Cancelled"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:disbursed
+    a skos:Concept ;
+    skos:definition "Loan has no undisbursed balance."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Disbursed"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:disbursing
+    a skos:Concept ;
+    skos:definition "Loan is disbursing."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Disbursing"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:effective
+    a skos:Concept ;
+    skos:definition "Loan has been made effective in accordance with the terms of the legal agreement."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Effective"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:repaid
+    a skos:Concept ;
+    skos:definition "Loan has been fully repaid."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Repaid"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:signed
+    a skos:Concept ;
+    skos:definition "Loan has been signed by both parties."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Signed"@en ;
+    skos:topConceptOf concept:loan-status .
+
+loan-status:terminated
+    a skos:Concept ;
+    skos:definition "Unsigned loan that has been cancelled in full."@en ;
+    skos:inScheme concept:loan-status ;
+    skos:prefLabel "Terminated"@en ;
+    skos:topConceptOf concept:loan-status .
+
+concept:loan-type
+    a skos:CodeList ;
+    skos:definition "A type of loan/loan instrument for which distinctive accounting and/or other actions need to be performed."@en ;
+    skos:hasTopConcept loan-type:b-loan, loan-type:fsl, loan-type:ifc-loan, loan-type:non-pool, loan-type:pool-loan, loan-type:scp-dem, loan-type:scp-jpy, loan-type:scp-usd, loan-type:sngl-crncy ;
+    skos:prefLabel "Code list for loan types"@en .
+
+loan-type:b-loan
+    a skos:Concept ;
+    skos:definition "Co-financing lending product that includes Contingency and Regular loans and guarantees."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "B LOAN"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:fsl
+    a skos:Concept ;
+    skos:definition "Fixed Spread Loans (includes both fixed spread loans and IBRD flexible loans that have either fixed spread or variable spread terms)."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "FSL"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:ifc-loan
+    a skos:Concept ;
+    skos:definition "Single Currency loans to the IFC."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "IFC LOAN"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:non-pool
+    a skos:Concept ;
+    skos:definition "Original IBRD lending product, prior to currency pooled loans."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "IFC LOAN"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:pool-loan
+    a skos:Concept ;
+    skos:definition "Currency Pooled Loans."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "POOL LOAN"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:scp-dem
+    a skos:Concept ;
+    skos:definition "Single Currency Pooled Loans - EUR."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "SCP DEM"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:scp-jpy
+    a skos:Concept ;
+    skos:definition "Single Currency Pooled Loans - JPY."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "SCP JPY"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:scp-usd
+    a skos:Concept ;
+    skos:definition "Single Currency Pooled Loans - USD."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "SCP USD"@en ;
+    skos:topConceptOf concept:loan-type .
+
+loan-type:sngl-crncy
+    a skos:Concept ;
+    skos:definition "Single Currency Loans."@en ;
+    skos:inScheme concept:loan-type ;
+    skos:prefLabel "SNGL CRNCY"@en ;
+    skos:topConceptOf concept:loan-type .
+
+
+
+
+#These properties are not in wc6g-9zmq
+property:FIXME-FIXME-source-source-source-FIXME-FIXME
+    a qb:DimensionProperty ;
+    qb:concept concept:foo ;
+    qb:codeList concept:bar ;
+    rdfs:label "Source"@en ;
+    dcterms:source <http://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+
+
+#csrh-vv7b data for concepts and properties below are compiled manually
+wbld-dataset-world-bank-finances:csrh-vv7b
+    skos:notation "csrh-vv7b" ;
+    skos:prefLabel "The World Bank Components Of VPU Budget"@en ;
+    skos:definition "The World Bank Components of VPU Budget data set compares resource allocations to Vice Presidential Units (VPUs) in FY11 and FY12 across all fund types. Data for Bank (BB) funds and Reimbursable funds are based on budget allocations. Data for Bank-Executed Trust Fund (BETF) funds are based on expenditure projections. Data are for all \"above-the-line\" VPUs for which Bank management is responsible for work program delivery and are included in the Net Administrative Budget of the Bank. Data for centrally-managed accounts and \"below-the-line\" components for which management is not solely responsible. BB funds are authorized by the Bank's Board of Directors for general purpose Bank operations. Reimbursable funds are received from external sources as reimbursements for special purpose program outputs or other services provided by the Bank. BETF funds are multi-year contributions from external sources for special purpose programs outputs or other services provided by the Bank. All data are presented in FY11 $ millions."@en ;
+    skos:scopeNote "Loan and Credit Administration"@en ;
+    skos:hasTopConcept
+        concept:bb-mlns-of-usd ,
+        concept:betf-mlns-of-usd ,
+        concept:reimbursable-mlns-of-usd ,
+        concept:vpu ,
+        concept:vpu-code ,
+        concept:vpu-group ,
+        concept:vpu-group-code ,
+        concept:vpu-type
+    .
+
+concept:bb-mlns-of-usd
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "BB (US$ millions)"@en ;
+    skos:definition "Funds authorized by the Bank's Board of Directors for general purpose Bank operations raised from IBRD income and IDA charges to borrowers.  Data are based on budgets."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:betf-mlns-of-usd
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "BETF (US$ millions)"@en ;
+    skos:definition "Funds received from external sources for use in accordance with specific trust fund terms and conditions of agreement.  Data are based on projected expenditures, not budgets."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:reimbursable-mlns-of-usd
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "Reimbursable (US$ millions)"@en ;
+    skos:definition "Funds received from external sources as reimbursements for special purpose program outputs or other services provided by the Bank.  Data are based on budgets."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:vpu
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "VPU"@en ;
+    skos:definition "VPU identifies the Vice Presidential Units (VPUs) that administer the work program of the Bank."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:vpu-code
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "VPU Code"@en ;
+    skos:definition "Refer to description for Vice Presidential Units (VPU)."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:vpu-group
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "VPU Group"@en ;
+    skos:definition "VPU Group organizes Vice Presidential Units (VPUs) and centrally-managed activities into functional groups -- e.g., Regions, Network Anchors, Other Operations, Finance, Administration, Corporate and Governance."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:vpu-group-code
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "VPU Group Code"@en ;
+    skos:definition "Refer to description for Vice Presidential Units Group."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+concept:vpu-type
+    a skos:Concept ;
+    skos:inScheme concept:finance ;
+    skos:topConceptOf concept:finance ;
+    skos:prefLabel "VPU Type"@en ;
+    skos:definition "VPU Type organizes Vice Presidential Units (VPUs) and centrally-managed activities into functional types -- e.g., \"Above-the-Line\" Operational Units and Support Units and \"Below-the-Line\" Governance Units."@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+
+property:bb-mlns-of-usd
+    a qb:MeasureProperty ;
+    qb:concept concept:bb-mlns-of-usd ;
+    qb:codeList concept:bb-mlns-of-usd ;
+    rdfs:label "BB (US$ millions)"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:betf-mlns-of-usd
+    a qb:MeasureProperty ;
+    qb:concept concept:betf-mlns-of-usd ;
+    qb:codeList concept:betf-mlns-of-usd ;
+    rdfs:label "BETF (US$ millions)"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:reimbursable-mlns-of-usd
+    a qb:MeasureProperty ;
+    qb:concept concept:reimbursable-mlns-of-usd ;
+    qb:codeList concept:reimbursable-mlns-of-usd ;
+    rdfs:label "Reimbursable (US$ millions)"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:vpu
+    a qb:DimensionProperty ;
+    qb:concept concept:vpu ;
+    qb:codeList concept:vpu ;
+    rdfs:label "VPU"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:vpu-code
+    a qb:DimensionProperty ;
+    qb:concept concept:vpu-code ;
+    qb:codeList concept:vpu-code ;
+    rdfs:label "VPU Code"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:vpu-group
+    a qb:DimensionProperty ;
+    qb:concept concept:vpu-group ;
+    qb:codeList concept:vpu-group ;
+    rdfs:label "VPU Group"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:vpu-group-code
+    a qb:DimensionProperty ;
+    qb:concept concept:vpu-group-code ;
+    qb:codeList concept:vpu-group-code ;
+    rdfs:label "VPU Group Code"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
+property:vpu-type
+    a qb:DimensionProperty ;
+    qb:concept concept:vpu-type ;
+    qb:codeList concept:vpu-type ;
+    rdfs:label "VPU Type"@en ;
+    dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.json> ;
+    dcterms:issued "2012-02-29T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    .
 

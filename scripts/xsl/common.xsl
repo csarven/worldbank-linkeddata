@@ -5,9 +5,15 @@
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dcterms="http://purl.org/dc/terms/">
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/">
 
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
+
+    <xsl:function name="wbldfn:safe-term">
+        <xsl:param name="string"/>
+        <xsl:value-of select="replace(replace(replace(replace(lower-case(encode-for-uri(replace(normalize-space($string), ' - ', '-'))), '%20|%2f|%27', '-'), '%28|%29|%24|%2c', ''), '_', '-'), '-$', '')"/>
+    </xsl:function>
 
     <xsl:template name="resource-refperiod">
         <xsl:param name="date"/>

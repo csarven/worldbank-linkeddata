@@ -40,7 +40,7 @@
                 <xsl:text>http://worldbank.270a.info/dataset/world-bank-finances/</xsl:text><xsl:value-of select="@id"/>
             </xsl:variable>
             <xsl:variable name="datasetName">
-                <xsl:value-of select="document($pathToMeta)/rdf:RDF/qb:DataSet[@rdf:about = $financeDataset]"/>
+                <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $financeDataset]"/>
             </xsl:variable>
 
             <xsl:if test="$datasetName != '' or @id = 'wc6g-9zmq'">
@@ -76,11 +76,11 @@
                     </xsl:if>
 
                     <xsl:if test="@category != ''">
-                    <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="@category"/></skos:definition>
+                    <skos:scopeNote xml:lang="{$wbapi_lang}"><xsl:value-of select="@category"/></skos:scopeNote>
                     </xsl:if>
 
                     <xsl:if test="@publicationStage != ''">
-                    <property:publicationstage xml:lang="{$wbapi_lang}"><xsl:value-of select="@publicationStage"/></property:publicationstage>
+                    <property:publication-stage xml:lang="{$wbapi_lang}"><xsl:value-of select="@publicationStage"/></property:publication-stage>
                     </xsl:if>
 
                     <!-- TODO: Convert from UNIX to ISO timestamps -->

@@ -10,9 +10,12 @@
       <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
       <skos:prefLabel xml:lang="en">Code list for currencies</skos:prefLabel>
       <skos:exactMatch rdf:resource="http://dbpedia.org/ontology/Currency"/>
-      <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-28T17:08:22Z</dcterms:issued>
-      <dcterms:source rdf:resource="http://www.currency-iso.org/dl_iso_table_a1.xml"/>
-      <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+      <dcterms:issued xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
+                      rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-03-08T00:23:05Z</dcterms:issued>
+      <dcterms:source xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
+                      rdf:resource="http://www.currency-iso.org/dl_iso_table_a1.xml"/>
+      <dcterms:creator xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
+                       rdf:resource="http://csarven.ca/#i"/>
    </rdf:Description>
    <rdf:Description rdf:about="http://worldbank.270a.info/classification/currency">
       <skos:hasTopConcept rdf:resource="http://worldbank.270a.info/classification/currency/AFN"/>

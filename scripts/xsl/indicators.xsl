@@ -78,7 +78,7 @@
                 </xsl:if>
 
                 <xsl:if test="wb:sourceOrganization != ''">
-                <property:sourceorganization xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceOrganization/text()"/></property:sourceorganization>
+                <property:source-organization xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceOrganization/text()"/></property:source-organization>
                 </xsl:if>
 
                 <xsl:for-each select="wb:topics/wb:topic">

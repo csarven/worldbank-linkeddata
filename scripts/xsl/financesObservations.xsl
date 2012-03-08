@@ -8,6 +8,7 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
     xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -78,7 +79,7 @@
                 <property:uuid><xsl:value-of select="@_uuid"/></property:uuid>
 
                 <!-- XXX: Not critical as this is just a row number in the table -->
-                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>
+<!--                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>-->
 
                 <xsl:for-each select="node()">
                     <xsl:variable name="financeDataset">
@@ -90,8 +91,13 @@
                     </xsl:variable>
 
                     <xsl:variable name="datasetName">
-                        <xsl:if test="$datasetName != ''">
-                            <xsl:value-of select="replace(replace(lower-case(encode-for-uri(replace(normalize-space($datasetName), ' - ', '-'))), '%20|%2f', '-'), '%27|%28|%29|%24|%2c', '')"/><xsl:text>-</xsl:text>
+                        <xsl:if test="name() = 'approval_quarter'
+                                    or name() = 'calendar_year'
+                                    or name() = 'financial_product'
+                                    or name() = 'line_item'
+                                    or name() = 'organization'
+                                    or name() = 'sub_account'">
+                            <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
                         </xsl:if>
                     </xsl:variable>
 
@@ -191,11 +197,10 @@
                             or $nodeName = 'member_country'">
                 <xsl:variable name="countryString" select="./text()"/>
 
-                <xsl:element name="property:{$datasetName}{replace($nodeName, '_', '-')}">
+                <xsl:element name="property:{$datasetName}{wbldfn:safe-term($nodeName)}">
                     <xsl:choose>
                         <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
                             <xsl:attribute name="rdf:resource">
-
                                 <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]/wb:iso2Code/normalize-space(text())"/>
                             </xsl:attribute>
                         </xsl:when>
@@ -230,7 +235,7 @@
                 <xsl:element name="property:{$datasetName}category">
                     <xsl:attribute name="rdf:resource">
                         <!-- XXX -->
-                        <xsl:value-of select="$classification"/><xsl:text>category/</xsl:text><xsl:value-of select="replace(replace(lower-case(encode-for-uri(replace(normalize-space(./text()), ' - ', '-'))), '%20|%2f', '-'), '%27|%28|%29|%24|%2c', '')"/>
+                        <xsl:value-of select="$classification"/><xsl:text>category/</xsl:text><xsl:value-of select="wbldfn:safe-term(./text())"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
@@ -245,7 +250,7 @@
                             or $nodeName = 'last_repayment_date'
                             or $nodeName = 'last_disbursement_date'
                             or $nodeName = 'period_end_date'">
-                <xsl:variable name="term" select="replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')"/>
+                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
                 <xsl:element name="property:{$datasetName}{$term}">
                     <xsl:call-template name="datatype-date"/>
                     <xsl:value-of select="normalize-space(./text())"/>
@@ -255,7 +260,7 @@
             <!-- XXX: Perhaps the next two conditions should use sdmx:refPeriod -->
             <xsl:when test="$nodeName = 'fiscal_year'
                             or $nodeName = 'calendar_year'">
-                <xsl:variable name="term" select="replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')"/>
+                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
                 <xsl:element name="property:{$datasetName}{$term}">
                     <xsl:call-template name="resource-refperiod">
                         <xsl:with-param name="date" select="normalize-space(./text())"/>
@@ -267,7 +272,7 @@
             <xsl:when test="$nodeName = 'approval_quarter'
                             or $nodeName = 'receipt_quarter'
                             or $nodeName = 'transfer_quarter'">
-                <xsl:variable name="term" select="replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')"/>
+                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
 
                 <xsl:variable name="quarter">
                     <xsl:choose>
@@ -303,7 +308,7 @@
             <xsl:when test="$nodeName = 'line_item'">
                 <xsl:element name="property:{$datasetName}line-item">
                     <xsl:attribute name="rdf:resource">
-                        <xsl:value-of select="$classification"/><xsl:text>linte-item/</xsl:text><xsl:value-of select="replace(replace(lower-case(encode-for-uri(replace(normalize-space(./text()), ' - ', '-'))), '%20|%2f', '-'), '%27|%28|%29|%24|%2c', '')"/>
+                        <xsl:value-of select="$classification"/><xsl:text>line-item/</xsl:text><xsl:value-of select="wbldfn:safe-term(./text())"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
@@ -311,6 +316,8 @@
             <!-- XXX: A bit unsure about this. Reconsider property and find a different datatype? -->
             <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
             <xsl:when test="$nodeName = 'amount_in_usd'
+                        or $nodeName = 'amounts_paid_in'
+                        or $nodeName = 'amounts_subject_to_call'
                         or $nodeName = 'amount_us_millions'
                         or $nodeName = 'borrower_s_obligation'
                         or $nodeName = 'cancelled_amount'
@@ -343,7 +350,7 @@
                         or $nodeName = 'undisbursed_loans_us_millions_'
                         or $nodeName = 'usable_capital_and_reserves_us_millions'
                         ">
-                <xsl:variable name="term" select="replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')"/>
+                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
                 <xsl:element name="property:{$datasetName}{$term}">
                     <xsl:call-template name="datatype-dbo-usd"/>
                     <xsl:value-of select="./text()"/>
@@ -353,7 +360,7 @@
             <xsl:when test="$nodeName = 'currency_of_commitment'
                             or $nodeName = 'receipt_currency'">
                 <xsl:variable name="currency" select="normalize-space(./text())"/>
-                <xsl:variable name="term" select="replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')"/>
+                <xsl:variable name="term" select="wbldfn:safe-term($nodeName)"/>
 
                 <xsl:choose>
                     <xsl:when test="document($pathToCurrencies)/rdf:RDF/rdf:Description[skos:notation/text() = $currency]/@rdf:about">
@@ -412,7 +419,7 @@
             </xsl:when>
 
             <xsl:otherwise>
-                <xsl:element name="property:{$datasetName}{replace(replace(normalize-space($nodeName), '_', '-'), '-$', '')}">
+                <xsl:element name="property:{$datasetName}{wbldfn:safe-term($nodeName)}">
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
             </xsl:otherwise>

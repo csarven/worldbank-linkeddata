@@ -58,7 +58,7 @@ public class WorldBank extends DefaultHandler {
     String pathToLendingTypes = "/var/www/worldbank.270a.info/data/indicators/en/lendingTypes.xml";
     String pathToCurrencies = "/var/www/worldbank.270a.info/data/currencies.rdf";
     String pathToRegionsExtra = "/var/www/worldbank.270a.info/data/regions-extra.rdf";
-    String pathToFinancesExtra = "/var/www/worldbank.270a.info/data/finances-views-extra.rdf";
+    String pathToMeta = "/var/www/worldbank.270a.info/data/meta.rdf";
 
     String inXML;
     String inXSL;
@@ -210,7 +210,6 @@ public class WorldBank extends DefaultHandler {
 //            transformer.setParameter("pathToLendingTypes", this.pathToLendingTypes);
 //            transformer.setParameter("pathToCurrencies", this.pathToLendingTypes);
 //            transformer.setParameter("pathToRegionsExtra", this.pathToRegionsExtra);
-//            transformer.setParameter("pathToFinancesExtra", this.pathToRegionsExtra);
 //            transformer.transform(in, out);
         } catch (MalformedURLException e) {
             e.printStackTrace();
