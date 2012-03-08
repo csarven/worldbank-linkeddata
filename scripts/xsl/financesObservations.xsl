@@ -322,6 +322,8 @@
                         or $nodeName = 'borrower_s_obligation'
                         or $nodeName = 'cancelled_amount'
                         or $nodeName = 'commitments_total_us_millions'
+                        or $nodeName = '_contributions_paid_in_usd_'
+                        or $nodeName = 'contributions_paid_in_usd_'
                         or $nodeName = 'credits_outstanding_us_millions_'
                         or $nodeName = 'development_grant_expenses_us_millions'
                         or $nodeName = 'disbursed_amount'

@@ -180,6 +180,7 @@
                                             or $data_element = 'borrower-s-obligation'
                                             or $data_element = 'cancelled-amount'
                                             or $data_element = 'commitments-total-us-millions'
+                                            or $data_element = 'contributions-paid-in-usd'
                                             or $data_element = 'credits-held'
                                             or $data_element = 'counterparty-rating'
                                             or $data_element = 'credits-outstanding-us-millions'
