@@ -2,7 +2,16 @@
     Author: Sarven Capadisli <info@csarven.ca>
     Author URL: http://csarven.ca/#i
 
-    Note: WorldBank API XML + XSL to RDF
+    Notes: WorldBank API XML + XSL to RDF
+
+        I now think that the Java approach here is overkill.
+        There is better performance from command-line saxonb.
+        Hence, I commented out the XSLT, but you might want to use it yourself.
+        At this point, the purpose of this file is to GET the data
+          by grabbing certain node values in XML.
+        Going forward, this approach here will be deprecated and succeeded with
+          command-line tools e.g., rapper, xmllint, saxonb, shell scripts for
+          better performance.
   */
 
 import java.net.*;
