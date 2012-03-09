@@ -15,6 +15,89 @@
         <xsl:value-of select="replace(replace(replace(replace(lower-case(encode-for-uri(replace(normalize-space($string), ' - ', '-'))), '%20|%2f|%27', '-'), '%28|%29|%24|%2c', ''), '_', '-'), '^-|-$', '')"/>
     </xsl:function>
 
+    <xsl:function name="wbldfn:prepend-dataset">
+        <xsl:param name="string"/>
+
+        <xsl:if test="$string = 'approval-quarter'
+                    or $string = 'calendar-year'
+                    or $string = 'financial-product'
+                    or $string = 'line-item'
+                    or $string = 'organization'
+                    or $string = 'status'
+                    or $string = 'sub-account'
+                    or $string = 'trustee-fund'
+                    or $string = 'trustee-fund-name'
+                    ">
+            <xsl:value-of select="true()"/>
+        </xsl:if>
+    </xsl:function>
+
+    <xsl:function name="wbldfn:canonical-term">
+        <xsl:param name="string"/>
+        <xsl:choose>
+            <xsl:when test="$string = 'credit-status'">
+                <xsl:text>loan-status</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'credit-number'">
+                <xsl:text>loan-number</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'bb-us-millions'">
+                <xsl:text>bb-mlns-of-usd</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'reimbursable-us-millions'">
+                <xsl:text>reimbursable-mlns-of-usd</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'betf-us-millions'">
+                <xsl:text>betf-mlns-of-usd</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'commitments-total'">
+                <xsl:text>commitments-total-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'trustee-fund-number'">
+                <xsl:text>trustee-fund</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'disbursements-us-billions'">
+                <xsl:text>disbursements-usd</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'grant-fund-name'">
+                <xsl:text>grant-name</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'commitments-development-policy-lending'">
+                <xsl:text>commitments-development-policy-lending-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'gross-disbursements-total'">
+                <xsl:text>gross-disbursements-total-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'gross-disbursements-development-policy-lending'">
+                <xsl:text>gross-disbursements-development-policy-lending-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'principal-repayments-including-prepayments'">
+                <xsl:text>principal-repayments-including-prepayments-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'net-disbursements'">
+                <xsl:text>net-disbursements-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'loans-outstanding'">
+                <xsl:text>loans-outstanding-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'undisbursed-loans'">
+                <xsl:text>undisbursed-loans-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'operating-income'">
+                <xsl:text>operating-income-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'usable-capital-and-reserves'">
+                <xsl:text>usable-capital-and-reserves-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'subscriptions-and-contributions-commited-us-millions'">
+                <xsl:text>subscriptions-and-contributions-committed-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$string"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:template name="resource-refperiod">
         <xsl:param name="date"/>
         <xsl:attribute name="rdf:resource">

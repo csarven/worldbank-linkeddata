@@ -52,33 +52,14 @@
             <xsl:when test="$financeDatasetID = 'wc6g-9zmq'">
                 <xsl:for-each select="response/row/row">
 
-                    <xsl:variable name="data_element" select="wbldfn:safe-term(data_element)"/>
+                    <xsl:variable name="data_element" select="wbldfn:canonical-term(wbldfn:safe-term(data_element))"/>
 
                     <xsl:if test="$data_element != 'uuid'
                                 and $data_element != 'project-name'">
                         <xsl:variable name="dataset_name">
-                            <xsl:if test="$data_element = 'approval-quarter'
-                                        or $data_element = 'calendar-year'
-                                        or $data_element = 'financial-product'
-                                        or $data_element = 'line-item'
-                                        or $data_element = 'organization'
-                                        or $data_element = 'sub-account'">
+                            <xsl:if test="wbldfn:prepend-dataset($data_element)">
                                 <xsl:value-of select="wbldfn:safe-term(dataset_name)"/><xsl:text>-</xsl:text>
                             </xsl:if>
-                        </xsl:variable>
-
-                        <xsl:variable name="data_element">
-                            <xsl:choose>
-                                <xsl:when test="$data_element = 'credit-status'">
-                                    <xsl:text>loan-status</xsl:text>
-                                </xsl:when>
-                                <xsl:when test="$data_element = 'credit-number'">
-                                    <xsl:text>loan-number</xsl:text>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:value-of select="$data_element"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
                         </xsl:variable>
 
                         <xsl:variable name="resourceDescriptionProperty">
@@ -121,6 +102,8 @@
                                                 or $data_element = 'guarantor-country-code'
                                                 or $data_element = 'country'
                                                 or $data_element = 'country-beneficiary'
+                                                or $data_element = 'donor-agency'
+                                                or $data_element = 'donor-code'
                                                 or $data_element = 'donor-name'
                                                 or $data_element = 'guarantor'
                                                 or $data_element = 'member'
@@ -159,7 +142,9 @@
                                                 or $data_element = 'contribution-type'
                                                 or $data_element = 'financial-product'
 
+                                                or $data_element = 'fund'
                                                 or $data_element = 'fund-name'
+                                                or $data_element = 'fund-type'
                                                 or $data_element = 'source'
                                                 or $data_element = 'use-code'
                                                 or $data_element = 'recipient'
@@ -171,34 +156,67 @@
                                                 or $data_element = 'membership'
 
                                                 or $data_element = 'sector-theme'
+
+                                                or $data_element = 'vpu'
+                                                or $data_element = 'vpu-code'
+                                                or $data_element = 'vpu-type'
+                                                or $data_element = 'vpu-group'
+                                                or $data_element = 'vpu-group-code'
+
+                                                or $data_element = 'admin-budget-type'
+                                                or $data_element = 'fiscal-year-of-receipt'
+                                                or $data_element = 'status'
+
+                                                or $data_element = 'trustee-fund'
+                                                or $data_element = 'trustee-fund-name'
+
+                                                or $data_element = 'fiscal-year-of-agreement'
+                                                or $data_element = 'beneficiary-name'
+
+                                                or $data_element = 'grant-fund-number'
+                                                or $data_element = 'grant-name'
+                                                or $data_element = 'program-code'
+                                                or $data_element = 'program-name'
+
+                                                or $data_element = 'grant-agreement-date'
+                                                or $data_element = 'fy09-budget-plan'
                                                 ">
                                     <rdf:type rdf:resource="{$qb}DimensionProperty"/>
                                 </xsl:when>
 
                                 <xsl:when test="$data_element = 'amount-in-usd'
                                                 or $data_element = 'amounts-paid-in'
-                                                or $data_element = 'amount-us-millions'
                                                 or $data_element = 'amounts-subject-to-call'
+                                                or $data_element = 'amount-us-millions'
+                                                or $data_element = 'bb-mlns-of-usd'
+                                                or $data_element = 'betf-mlns-of-usd'
                                                 or $data_element = 'borrower-s-obligation'
                                                 or $data_element = 'cancelled-amount'
+                                                or $data_element = 'cash-contributions-us-billions'
+                                                or $data_element = 'commitments-development-policy-lending-us-millions'
                                                 or $data_element = 'commitments-total-us-millions'
+                                                or $data_element = 'contributions-outstanding-usd'
                                                 or $data_element = 'contributions-paid-in-usd'
-                                                or $data_element = 'credits-held'
                                                 or $data_element = 'counterparty-rating'
+                                                or $data_element = 'credits-held'
                                                 or $data_element = 'credits-outstanding-us-millions'
                                                 or $data_element = 'development-grant-expenses-us-millions'
                                                 or $data_element = 'disbursed-amount'
+                                                or $data_element = 'disbursements-usd'
                                                 or $data_element = 'due-3rd-party'
                                                 or $data_element = 'due-to-ibrd'
                                                 or $data_element = 'due-to-ida'
                                                 or $data_element = 'equity-to-loans-ratio'
                                                 or $data_element = 'exchange-adjustment'
-                                                or $data_element = 'gross-disbursements-total-us-millions'
+                                                or $data_element = 'fy05-amount-us-millions'
+                                                or $data_element = 'grant-commitments-usd'
                                                 or $data_element = 'gross-disbursements-development-policy-lending-us-millions'
+                                                or $data_element = 'gross-disbursements-total-us-millions'
                                                 or $data_element = 'interest-rate'
-                                                or $data_element = 'loan-status'
                                                 or $data_element = 'loans-held'
                                                 or $data_element = 'loans-outstanding'
+                                                or $data_element = 'loans-outstanding-us-millions'
+                                                or $data_element = 'loan-status'
                                                 or $data_element = 'net-disbursements-us-millions'
                                                 or $data_element = 'number-of-votes'
                                                 or $data_element = 'operating-income-us-millions'
@@ -207,16 +225,17 @@
                                                 or $data_element = 'percentage-of-total-votes'
                                                 or $data_element = 'principal-repayments-including-prepayments-us-millions'
                                                 or $data_element = 'receipt-amount'
+                                                or $data_element = 'reimbursable-mlns-of-usd'
                                                 or $data_element = 'repaid-3rd-party'
                                                 or $data_element = 'repaid-to-ibrd'
                                                 or $data_element = 'repaid-to-ida'
-                                                or $data_element = 'shares'
                                                 or $data_element = 'service-charge-rate'
+                                                or $data_element = 'shares'
                                                 or $data_element = 'sold-3rd-party'
                                                 or $data_element = 'subscriptions-and-contributions-committed-us-millions'
                                                 or $data_element = 'total-amounts'
+                                                or $data_element = 'total-contribution-usd'
                                                 or $data_element = 'undisbursed-amount'
-                                                or $data_element = 'undisbursed-credits-us-millions'
                                                 or $data_element = 'undisbursed-grants-us-millions'
                                                 or $data_element = 'undisbursed-loans-us-millions'
                                                 or $data_element = 'usable-capital-and-reserves-us-millions'
@@ -264,20 +283,7 @@
 
             <xsl:otherwise>
                 <xsl:for-each select="//response/row/row[1]/*">
-                    <xsl:variable name="dataElement" select="wbldfn:safe-term(name())"/>
-                    <xsl:variable name="dataElement">
-                        <xsl:choose>
-                            <xsl:when test="$dataElement = 'credit-status'">
-                                <xsl:text>loan-status</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="$dataElement = 'credit-number'">
-                                <xsl:text>loan-number</xsl:text>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:value-of select="$dataElement"/>
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </xsl:variable>
+                    <xsl:variable name="dataElement" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
 
                     <xsl:if test="$dataElement != 'uuid'
                                 and $dataElement != 'project-name'">
@@ -290,12 +296,7 @@
                         </xsl:variable>
 
                         <xsl:variable name="datasetName">
-                            <xsl:if test="name() = 'approval_quarter'
-                                        or name() = 'calendar_year'
-                                        or name() = 'financial_product'
-                                        or name() = 'line_item'
-                                        or name() = 'organization'
-                                        or name() = 'sub_account'">
+                            <xsl:if test="wbldfn:prepend-dataset($dataElement)">
                                 <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
                             </xsl:if>
                         </xsl:variable>
@@ -303,7 +304,7 @@
                         <xsl:variable name="resourceDescriptionProperty">
                             <xsl:value-of select="$wbld"/><xsl:text>property/</xsl:text><xsl:value-of select="$datasetName"/><xsl:value-of select="$dataElement"/>
                         </xsl:variable>
-<xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message>
+<!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message> -->
                         <qb:DataStructureDefinition rdf:about="{$wbld}property/world-bank-finances/{$financeDatasetID}/structure">
                             <qb:component>
                                 <qb:ComponentSpecification>
@@ -323,7 +324,7 @@
                                         </xsl:choose>
                                     </xsl:variable>
 
-<xsl:message><xsl:text>componentPropertyURI: </xsl:text><xsl:value-of select="$componentPropertyURI"/></xsl:message>
+<!-- <xsl:message><xsl:text>componentPropertyURI: </xsl:text><xsl:value-of select="$componentPropertyURI"/></xsl:message> -->
                                     <xsl:variable name="componentProperty">
                                         <xsl:choose>
                                             <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#DimensionProperty'">

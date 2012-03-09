@@ -76,7 +76,7 @@
                           However, the it is not obvious what the literal is without datatype.
                           Either find a datatype for uuid, or find an uuid property out there.
                 -->
-                <property:uuid><xsl:value-of select="@_uuid"/></property:uuid>
+                <!-- <property:uuid><xsl:value-of select="@_uuid"/></property:uuid> -->
 
                 <!-- XXX: Not critical as this is just a row number in the table -->
 <!--                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>-->
@@ -95,12 +95,7 @@
                         </xsl:variable>
 
                         <xsl:variable name="datasetName">
-                            <xsl:if test="name() = 'approval-quarter'
-                                        or name() = 'calendar-year'
-                                        or name() = 'financial-product'
-                                        or name() = 'line-item'
-                                        or name() = 'organization'
-                                        or name() = 'sub-account'">
+                            <xsl:if test="wbldfn:prepend-dataset($nodeName)">
                                 <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
                             </xsl:if>
                         </xsl:variable>
@@ -317,41 +312,46 @@
             <!-- XXX: A bit unsure about this. Reconsider property and find a different datatype? -->
             <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
             <xsl:when test="$nodeName = 'amount-in-usd'
-                        or $nodeName = 'amounts-paid-in'
-                        or $nodeName = 'amounts-subject-to-call'
-                        or $nodeName = 'amount-us-millions'
-                        or $nodeName = 'borrower-s-obligation'
-                        or $nodeName = 'cancelled-amount'
-                        or $nodeName = 'commitments-total-us-millions'
-                        or $nodeName = 'contributions-paid-in-usd'
-                        or $nodeName = 'credits-outstanding-us-millions'
-                        or $nodeName = 'development-grant-expenses-us-millions'
-                        or $nodeName = 'disbursed-amount'
-                        or $nodeName = 'due-3rd-party'
-                        or $nodeName = 'due-to-ibrd'
-                        or $nodeName = 'due to-ida'
-                        or $nodeName = 'exchange-adjustment'
-                        or $nodeName = 'gross-disbursements-development-policy-lending-us-millions'
-                        or $nodeName = 'gross-disbursements-total-us-millions'
-                        or $nodeName = 'loans-held'
-                        or $nodeName = 'loans-outstanding'
-                        or $nodeName = 'net-disbursements-us-millions'
-                        or $nodeName = 'operating-income-us-millions'
-                        or $nodeName = 'original-principal-amount'
-                        or $nodeName = 'principal-repayments-including-prepayments-us-millions'
-                        or $nodeName = 'receipt-amount'
-                        or $nodeName = 'repaid-3rd-party'
-                        or $nodeName = 'repaid-to-ibrd'
-                        or $nodeName = 'repaid-to-ida'
-                        or $nodeName = 'sold-3rd-party'
-                        or $nodeName = 'subscriptions-and-contributions-commited-us-millions'
-                        or $nodeName = 'total-amounts'
-                        or $nodeName = 'undisbursed-amount'
-                        or $nodeName = 'undisbursed-credits-us-millions'
-                        or $nodeName = 'undisbursed-grants-us-millions'
-                        or $nodeName = 'undisbursed-loans-us-millions'
-                        or $nodeName = 'usable-capital-and-reserves-us-millions'
-                        ">
+                            or $nodeName = 'amounts-paid-in'
+                            or $nodeName = 'amount-us-millions'
+                            or $nodeName = 'amounts-subject-to-call'
+                            or $nodeName = 'borrower-s-obligation'
+                            or $nodeName = 'cancelled-amount'
+                            or $nodeName = 'commitments-total-us-millions'
+                            or $nodeName = 'contributions-outstanding-usd'
+                            or $nodeName = 'contributions-paid-in-usd'
+                            or $nodeName = 'credits-held'
+                            or $nodeName = 'counterparty-rating'
+                            or $nodeName = 'credits-outstanding-us-millions'
+                            or $nodeName = 'development-grant-expenses-us-millions'
+                            or $nodeName = 'disbursed-amount'
+                            or $nodeName = 'due-3rd-party'
+                            or $nodeName = 'due-to-ibrd'
+                            or $nodeName = 'due-to-ida'
+                            or $nodeName = 'exchange-adjustment'
+                            or $nodeName = 'gross-disbursements-total-us-millions'
+                            or $nodeName = 'gross-disbursements-development-policy-lending-us-millions'
+                            or $nodeName = 'loans-held'
+                            or $nodeName = 'loans-outstanding'
+                            or $nodeName = 'net-disbursements-us-millions'
+                            or $nodeName = 'operating-income-us-millions'
+                            or $nodeName = 'original-principal-amount'
+                            or $nodeName = 'principal-repayments-including-prepayments-us-millions'
+                            or $nodeName = 'receipt-amount'
+                            or $nodeName = 'repaid-3rd-party'
+                            or $nodeName = 'repaid-to-ibrd'
+                            or $nodeName = 'repaid-to-ida'
+                            or $nodeName = 'service-charge-rate'
+                            or $nodeName = 'sold-3rd-party'
+                            or $nodeName = 'subscriptions-and-contributions-commited-us-millions'
+                            or $nodeName = 'total-amounts'
+                            or $nodeName = 'total-contribution-usd'
+                            or $nodeName = 'undisbursed-amount'
+                            or $nodeName = 'undisbursed-credits-us-millions'
+                            or $nodeName = 'undisbursed-grants-us-millions'
+                            or $nodeName = 'undisbursed-loans-us-millions'
+                            or $nodeName = 'usable-capital-and-reserves-us-millions'
+                            ">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-dbo-usd"/>
                     <xsl:value-of select="./text()"/>
