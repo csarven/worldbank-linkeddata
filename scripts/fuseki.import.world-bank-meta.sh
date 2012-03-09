@@ -1,6 +1,6 @@
 #!/bin/bash
 
-java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/meta /var/www/lib/worldbank-linkeddata/data/meta.rdf
+java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/meta /var/www/lib/worldbank-linkeddata/data/meta/meta.rdf
 
 java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/regions /var/www/lib/worldbank-linkeddata/data/regions-extra.rdf
 
