@@ -135,23 +135,10 @@
             -->
 
             <!-- These match up with ISO codes -->
-            <xsl:when test="$nodeName = 'country-code'">
-                <xsl:choose>
-                    <xsl:when test="./text() = ''">
-                        <xsl:element name="property:{$datasetName}{$nodeName}"/>
-                    </xsl:when>
-
-                    <xsl:otherwise>
-                        <xsl:element name="sdmx-dimension:refArea">
-                            <xsl:attribute name="rdf:resource">
-                                <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
-                            </xsl:attribute>
-                        </xsl:element>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:when>
-
-            <xsl:when test="$nodeName = 'guarantor-country-code'">
+            <xsl:when test="$nodeName = 'beneficiary-code'
+                        or $nodeName = 'country-code'
+                        or $nodeName = 'donor-code'
+                        or $nodeName = 'guarantor-country-code'">
                 <xsl:choose>
                     <xsl:when test="./text() = ''">
                         <xsl:element name="property:{$datasetName}{$nodeName}"/>
@@ -174,7 +161,7 @@
             <xsl:when test="$nodeName = 'country'">
                 <xsl:variable name="countryString" select="./text()"/>
 
-                <xsl:element name="sdmx-dimension:refArea">
+                <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:choose>
                         <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
                             <xsl:attribute name="rdf:resource">
@@ -194,7 +181,7 @@
                             or $nodeName = 'guarantor'
                             or $nodeName = 'member'
                             or $nodeName = 'member-country'">
-                <xsl:variable name="countryString" select="./text()"/>
+                <xsl:variable name="countryString" select="normalize-space(./text())"/>
 
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:choose>
@@ -255,7 +242,8 @@
 
             <!-- XXX: Perhaps the next two conditions should use sdmx:refPeriod -->
             <xsl:when test="$nodeName = 'fiscal-year'
-                            or $nodeName = 'calendar-year'">
+                            or $nodeName = 'calendar-year'
+                            or $nodeName = 'fiscal-year-of-receipt'">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="resource-refperiod">
                         <xsl:with-param name="date" select="normalize-space(./text())"/>
