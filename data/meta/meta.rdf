@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:concept="http://worldbank.270a.info/classification/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:loan-status="http://worldbank.270a.info/classification/loan-status/" xmlns:loan-type="http://worldbank.270a.info/classification/loan-type/" xmlns:property="http://worldbank.270a.info/property/" xmlns:qb="http://purl.org/linked-data/cube#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#" xmlns:sdmx-code="http://purl.org/linked-data/sdmx/2009/code#" xmlns:sdmx-concept="http://purl.org/linked-data/sdmx/2009/concept#" xmlns:sdmx-dimension="http://purl.org/linked-data/sdmx/2009/dimension#" xmlns:sdmx-metadata="http://purl.org/linked-data/sdmx/2009/metadata#" xmlns:sdmx="http://purl.org/linked-data/sdmx#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:wbld-dataset-projects-and-operations="http://worldbank.270a.info/dataset/world-bank-projects-and-operations/" xmlns:wbld-dataset-world-bank-finances="http://worldbank.270a.info/dataset/world-bank-finances/" xmlns:wbld-dataset-world-development-indicators="http://worldbank.270a.info/dataset/world-development-indicators/" xmlns:wbld-dataset="http://worldbank.270a.info/dataset/" xmlns:wbld="http://worldbank.270a.info/" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <rdf:Description rdf:about="http://worldbank.270a.info/meta">
-    <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/meta">
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
-  </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
@@ -14,6 +8,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
     <rdfs:label xml:lang="en">World Development Indicators dataset</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-development-indicators">
     <dcterms:source rdf:resource="http://api.worldbank.org/indicators?format=xml"/>
@@ -120,18 +117,6 @@
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-development-indicators/structure">
     <qb:component rdf:nodeID="genid4"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/indicator">
-    <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/indicator">
-    <rdfs:label xml:lang="en">World Development Indicator</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/indicator">
-    <qb:concept rdf:resource="http://worldbank.270a.info/classification/indicator"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/indicator">
-    <qb:codeList rdf:resource="http://worldbank.270a.info/classification/indicator"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
@@ -156,11 +141,107 @@
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
     <dcterms:subject rdf:resource="http://purl.org/linked-data/sdmx/2009/subject#2.7"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances">
+    <dcterms:hasPart rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/structure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta">
     <rdfs:label xml:lang="en">IBRD Balance Sheet</rdfs:label>
@@ -176,6 +257,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/structure"/>
@@ -196,6 +280,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm">
@@ -212,6 +299,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5/structure"/>
@@ -232,6 +322,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b">
@@ -248,6 +341,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6/structure"/>
@@ -268,6 +364,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj">
@@ -284,6 +383,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35/structure"/>
@@ -304,6 +406,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn">
@@ -320,6 +425,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz/structure"/>
@@ -340,6 +448,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev">
@@ -356,6 +467,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb/structure"/>
@@ -376,6 +490,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb">
@@ -392,6 +509,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5/structure"/>
@@ -412,6 +532,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst">
@@ -428,6 +551,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn/structure"/>
@@ -448,6 +574,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk">
@@ -464,6 +593,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw/structure"/>
@@ -484,6 +616,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch">
@@ -500,6 +635,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu/structure"/>
@@ -520,6 +658,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg">
@@ -536,6 +677,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj/structure"/>
@@ -556,6 +700,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e">
@@ -572,6 +719,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3/structure"/>
@@ -592,6 +742,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p">
@@ -608,6 +761,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx/structure"/>
@@ -628,6 +784,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44">
@@ -644,6 +803,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx/structure"/>
@@ -664,6 +826,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5">
@@ -680,6 +845,9 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3">
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3/structure"/>
@@ -700,6 +868,9 @@
     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a">
+    <dcterms:isPartOf rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a">
     <qb:structure rdf:resource="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a">
@@ -713,18 +884,6 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a">
     <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/finance">
-    <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/finance">
-    <rdfs:label xml:lang="en">World Bank Finance dataset</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/finance">
-    <qb:concept rdf:resource="http://worldbank.270a.info/classification/finance"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/finance">
-    <qb:codeList rdf:resource="http://worldbank.270a.info/classification/finance"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-projects-and-operations">
     <rdfs:label xml:lang="en">World Bank Projects and Operations dataset</rdfs:label>
@@ -1058,24 +1217,6 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/classification/loan-type/sngl-crncy">
     <skos:topConceptOf rdf:resource="http://worldbank.270a.info/classification/loan-type"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <qb:concept rdf:resource="http://worldbank.270a.info/classification/foo"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <qb:codeList rdf:resource="http://worldbank.270a.info/classification/bar"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <rdfs:label xml:lang="en">Source</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <dcterms:source rdf:resource="http://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://worldbank.270a.info/property/FIXME-FIXME-source-source-source-FIXME-FIXME">
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:issued>
   </rdf:Description>
   <rdf:Description rdf:about="http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b">
     <skos:notation>csrh-vv7b</skos:notation>

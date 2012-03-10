@@ -45,14 +45,12 @@
     <xsl:template name="financesObservations">
         <xsl:variable name="currentDateTime" select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
 
-        <!-- TODO Add provenance data -->
-
         <xsl:for-each select="response/row/row">
             <xsl:variable name="wbldf_view">
                 <xsl:value-of select="replace(@_address, 'http://finances.worldbank.org/views/(_)?([^/]*).*', '$2')"/>
             </xsl:variable>
 
-            <!-- FIXME -->
+<!-- XXX: Either I have to add this date to the observeration URI or not. Some observations don't have a date. Also, what about other the other dimensions? Perhaps it can do without because there is a unique id per observation any way.
             <xsl:variable name="observationYear">
                 <xsl:choose>
                     <xsl:when test="child::calendar_year">
@@ -61,11 +59,14 @@
                     <xsl:when test="child::fiscal_year">
                         <xsl:text>;</xsl:text><xsl:value-of select="replace(normalize-space(child::fiscal_year/text()), 'FY([0-9]{2})', '20$1')"/>
                     </xsl:when>
+                    <xsl:when test="child::end_of_period">
+                        <xsl:text>;</xsl:text><xsl:value-of select="replace(normalize-space(child::end_of_period/text()))"/>
+                    </xsl:when>
                 </xsl:choose>
             </xsl:variable>
+-->
 
-            <!-- TODO: Find more dimension values for the observation URI -->
-            <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}{$observationYear}">
+            <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}">
                 <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
                 <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
 
@@ -82,7 +83,7 @@
 <!--                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>-->
 
                 <xsl:for-each select="node()">
-                    <xsl:variable name="nodeName" select="wbldfn:safe-term(name())"/>
+                    <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
                     
                     <xsl:if test="$nodeName != 'uuid'
                                 and $nodeName != 'project-name'">
@@ -117,9 +118,6 @@
         <xsl:param name="datasetName"/>
 
         <xsl:choose>
-            <!-- TODO: I'm not sure about these duplicates. Best practice is..? 
-                Move some of them out into meta.ttl e.g., sdmx-dimension:refPeriod
-            -->
             <xsl:when test="$nodeName = 'project-id'">
                 <xsl:element name="property:{$nodeName}">
                     <xsl:attribute name="rdf:resource">
@@ -311,47 +309,7 @@
 
             <!-- XXX: A bit unsure about this. Reconsider property and find a different datatype? -->
             <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
-            <xsl:when test="$nodeName = 'amount-in-usd'
-                            or $nodeName = 'amounts-paid-in'
-                            or $nodeName = 'amount-us-millions'
-                            or $nodeName = 'amounts-subject-to-call'
-                            or $nodeName = 'borrower-s-obligation'
-                            or $nodeName = 'cancelled-amount'
-                            or $nodeName = 'commitments-total-us-millions'
-                            or $nodeName = 'contributions-outstanding-usd'
-                            or $nodeName = 'contributions-paid-in-usd'
-                            or $nodeName = 'credits-held'
-                            or $nodeName = 'counterparty-rating'
-                            or $nodeName = 'credits-outstanding-us-millions'
-                            or $nodeName = 'development-grant-expenses-us-millions'
-                            or $nodeName = 'disbursed-amount'
-                            or $nodeName = 'due-3rd-party'
-                            or $nodeName = 'due-to-ibrd'
-                            or $nodeName = 'due-to-ida'
-                            or $nodeName = 'exchange-adjustment'
-                            or $nodeName = 'gross-disbursements-total-us-millions'
-                            or $nodeName = 'gross-disbursements-development-policy-lending-us-millions'
-                            or $nodeName = 'loans-held'
-                            or $nodeName = 'loans-outstanding'
-                            or $nodeName = 'net-disbursements-us-millions'
-                            or $nodeName = 'operating-income-us-millions'
-                            or $nodeName = 'original-principal-amount'
-                            or $nodeName = 'principal-repayments-including-prepayments-us-millions'
-                            or $nodeName = 'receipt-amount'
-                            or $nodeName = 'repaid-3rd-party'
-                            or $nodeName = 'repaid-to-ibrd'
-                            or $nodeName = 'repaid-to-ida'
-                            or $nodeName = 'service-charge-rate'
-                            or $nodeName = 'sold-3rd-party'
-                            or $nodeName = 'subscriptions-and-contributions-commited-us-millions'
-                            or $nodeName = 'total-amounts'
-                            or $nodeName = 'total-contribution-usd'
-                            or $nodeName = 'undisbursed-amount'
-                            or $nodeName = 'undisbursed-credits-us-millions'
-                            or $nodeName = 'undisbursed-grants-us-millions'
-                            or $nodeName = 'undisbursed-loans-us-millions'
-                            or $nodeName = 'usable-capital-and-reserves-us-millions'
-                            ">
+            <xsl:when test="wbldfn:money-amount($nodeName)">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-dbo-usd"/>
                     <xsl:value-of select="./text()"/>

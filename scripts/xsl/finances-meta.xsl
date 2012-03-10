@@ -67,23 +67,6 @@
                         </xsl:variable>
 
                         <rdf:Description rdf:about="{$resourceDescriptionProperty}">
-                            <!-- XXX: I'm not sure about this -->
-                            <xsl:if test="$data_element = 'project-id'">
-                                <rdfs:subPropertyOf rdf:resource="{$wbld}property/project-id"/>
-                            </xsl:if>
-
-                            <xsl:if test="$data_element = 'loan-number' or $data_element = 'credit-number'">
-                                <rdfs:subPropertyOf rdf:resource="{$wbld}property/loan-number"/>
-                            </xsl:if>
-
-                            <xsl:if test="$data_element = 'loan-status' or $data_element = 'credit-status'">
-                                <rdfs:subPropertyOf rdf:resource="{$wbld}property/loan-status"/>
-                            </xsl:if>
-
-                            <xsl:if test="$data_element = 'loan-type'">
-                                <rdfs:subPropertyOf rdf:resource="{$wbld}property/loan-type"/>
-                            </xsl:if>
-
                             <!-- TODO: I'm not sure about these qb concept/codeList for ibrd/ida project-ids-->
                             <qb:concept rdf:resource="{$classification}{$data_element}"/>
                             <qb:codeList rdf:resource="{$classification}{$data_element}"/>
@@ -98,163 +81,106 @@
                             </dcterms:issued>
 
                             <xsl:choose>
-                                <xsl:when test="$data_element = 'country-code'
-                                                or $data_element = 'guarantor-country-code'
+                                <xsl:when test="$data_element = 'admin-budget-type'
+                                                or $data_element = 'agreement-signing-date'
+                                                or $data_element = 'approval-quarter'
+                                                or $data_element = 'as-of-date'
+                                                or $data_element = 'beneficiary-code'
+                                                or $data_element = 'beneficiary-name'
+                                                or $data_element = 'board-approval-date'
+                                                or $data_element = 'borrower'
+                                                or $data_element = 'calendar-year'
+                                                or $data_element = 'category'
+                                                or $data_element = 'closed-date-most-recent'
+                                                or $data_element = 'contribution-type'
+                                                or $data_element = 'counterparty-rating'
                                                 or $data_element = 'country'
+                                                or $data_element = 'country-code'
                                                 or $data_element = 'country-beneficiary'
+                                                or $data_element = 'credit-status'
+                                                or $data_element = 'currency-of-commitment'
                                                 or $data_element = 'donor-agency'
                                                 or $data_element = 'donor-code'
                                                 or $data_element = 'donor-name'
-                                                or $data_element = 'guarantor'
-                                                or $data_element = 'member'
-                                                or $data_element = 'member-country'
-
-                                                or $data_element = 'region'
-
-                                                or $data_element = 'agreement-signing-date'
-                                                or $data_element = 'as-of-date'
-                                                or $data_element = 'board-approval-date'
-                                                or $data_element = 'closed-date-most-recent'
                                                 or $data_element = 'effective-date-most-recent'
                                                 or $data_element = 'end-of-period'
-                                                or $data_element = 'first-repayment-date'
-                                                or $data_element = 'last-repayment-date'
-                                                or $data_element = 'last-disbursement-date'
-                                                or $data_element = 'period-end-date'
-
-                                                or $data_element = 'fiscal-year'
-                                                or $data_element = 'calendar-year'
-
-                                                or $data_element = 'approval-quarter'
-                                                or $data_element = 'receipt-quarter'
-                                                or $data_element = 'transfer-quarter'
-
-                                                or $data_element = 'loan-type'
-                                                or $data_element = 'loan-number'
-
-                                                or $data_element = 'category'
-                                                or $data_element = 'line-item'
-
-                                                or $data_element = 'project-id'
-                                                or $data_element = 'project-name'
-
-                                                or $data_element = 'receipt-type'
-                                                or $data_element = 'contribution-type'
                                                 or $data_element = 'financial-product'
-
+                                                or $data_element = 'first-repayment-date'
+                                                or $data_element = 'fiscal-year'
+                                                or $data_element = 'fiscal-year-of-agreement'
+                                                or $data_element = 'fiscal-year-of-receipt'
                                                 or $data_element = 'fund'
                                                 or $data_element = 'fund-name'
                                                 or $data_element = 'fund-type'
-                                                or $data_element = 'source'
-                                                or $data_element = 'use-code'
-                                                or $data_element = 'recipient'
-
-                                                or $data_element = 'organization'
-                                                or $data_element = 'principal-recipient'
-
-                                                or $data_element = 'borrower'
-                                                or $data_element = 'membership'
-
-                                                or $data_element = 'sector-theme'
-
-                                                or $data_element = 'vpu'
-                                                or $data_element = 'vpu-code'
-                                                or $data_element = 'vpu-type'
-                                                or $data_element = 'vpu-group'
-                                                or $data_element = 'vpu-group-code'
-
-                                                or $data_element = 'admin-budget-type'
-                                                or $data_element = 'fiscal-year-of-receipt'
-                                                or $data_element = 'status'
-
-                                                or $data_element = 'trustee-fund'
-                                                or $data_element = 'trustee-fund-name'
-
-                                                or $data_element = 'fiscal-year-of-agreement'
-                                                or $data_element = 'beneficiary-name'
-
+                                                or $data_element = 'grant-agreement-date'
                                                 or $data_element = 'grant-fund-number'
                                                 or $data_element = 'grant-name'
+                                                or $data_element = 'guarantor'
+                                                or $data_element = 'guarantor-country-code'
+                                                or $data_element = 'last-disbursement-date'
+                                                or $data_element = 'last-repayment-date'
+                                                or $data_element = 'line-item'
+                                                or $data_element = 'loan-number'
+                                                or $data_element = 'loan-status'
+                                                or $data_element = 'loan-type'
+                                                or $data_element = 'member'
+                                                or $data_element = 'member-country'
+                                                or $data_element = 'membership'
+                                                or $data_element = 'notes'
+                                                or $data_element = 'organization'
+                                                or $data_element = 'period-end-date'
+                                                or $data_element = 'principal-recipient'
                                                 or $data_element = 'program-code'
                                                 or $data_element = 'program-name'
+                                                or $data_element = 'project-id'
+                                                or $data_element = 'receipt-currency'
+                                                or $data_element = 'receipt-quarter'
+                                                or $data_element = 'receipt-type'
+                                                or $data_element = 'recipient'
+                                                or $data_element = 'region'
+                                                or $data_element = 'sector-theme'
+                                                or $data_element = 'source'
+                                                or $data_element = 'status'
+                                                or $data_element = 'sub-account'
+                                                or $data_element = 'transfer-quarter'
+                                                or $data_element = 'trustee-fund'
+                                                or $data_element = 'trustee-fund-name'
+                                                or $data_element = 'use-code'
+                                                or $data_element = 'vpu'
+                                                or $data_element = 'vpu-code'
+                                                or $data_element = 'vpu-group'
+                                                or $data_element = 'vpu-group-code'
+                                                or $data_element = 'vpu-type'
 
-                                                or $data_element = 'grant-agreement-date'
-                                                or $data_element = 'fy09-budget-plan'
                                                 ">
                                     <rdf:type rdf:resource="{$qb}DimensionProperty"/>
                                 </xsl:when>
 
-                                <xsl:when test="$data_element = 'amount-in-usd'
-                                                or $data_element = 'amounts-paid-in'
-                                                or $data_element = 'amounts-subject-to-call'
-                                                or $data_element = 'amount-us-millions'
-                                                or $data_element = 'bb-mlns-of-usd'
-                                                or $data_element = 'betf-mlns-of-usd'
-                                                or $data_element = 'borrower-s-obligation'
-                                                or $data_element = 'cancelled-amount'
-                                                or $data_element = 'cash-contributions-us-billions'
-                                                or $data_element = 'commitments-development-policy-lending-us-millions'
-                                                or $data_element = 'commitments-total-us-millions'
-                                                or $data_element = 'contributions-outstanding-usd'
-                                                or $data_element = 'contributions-paid-in-usd'
-                                                or $data_element = 'counterparty-rating'
-                                                or $data_element = 'credits-held'
-                                                or $data_element = 'credits-outstanding-us-millions'
-                                                or $data_element = 'development-grant-expenses-us-millions'
-                                                or $data_element = 'disbursed-amount'
-                                                or $data_element = 'disbursements-usd'
-                                                or $data_element = 'due-3rd-party'
-                                                or $data_element = 'due-to-ibrd'
-                                                or $data_element = 'due-to-ida'
-                                                or $data_element = 'equity-to-loans-ratio'
-                                                or $data_element = 'exchange-adjustment'
-                                                or $data_element = 'fy05-amount-us-millions'
-                                                or $data_element = 'grant-commitments-usd'
-                                                or $data_element = 'gross-disbursements-development-policy-lending-us-millions'
-                                                or $data_element = 'gross-disbursements-total-us-millions'
+                                <xsl:when test="wbldfn:money-amount($data_element)">
+                                    <rdf:type rdf:resource="{$qb}MeasureProperty"/>
+                                </xsl:when>
+
+                                <xsl:when test="$data_element = 'equity-to-loans-ratio'
                                                 or $data_element = 'interest-rate'
-                                                or $data_element = 'loans-held'
-                                                or $data_element = 'loans-outstanding'
-                                                or $data_element = 'loans-outstanding-us-millions'
-                                                or $data_element = 'loan-status'
-                                                or $data_element = 'net-disbursements-us-millions'
                                                 or $data_element = 'number-of-votes'
-                                                or $data_element = 'operating-income-us-millions'
-                                                or $data_element = 'original-principal-amount'
                                                 or $data_element = 'percentage-of-total-shares'
                                                 or $data_element = 'percentage-of-total-votes'
-                                                or $data_element = 'principal-repayments-including-prepayments-us-millions'
-                                                or $data_element = 'receipt-amount'
-                                                or $data_element = 'reimbursable-mlns-of-usd'
-                                                or $data_element = 'repaid-3rd-party'
-                                                or $data_element = 'repaid-to-ibrd'
-                                                or $data_element = 'repaid-to-ida'
                                                 or $data_element = 'service-charge-rate'
                                                 or $data_element = 'shares'
-                                                or $data_element = 'sold-3rd-party'
-                                                or $data_element = 'subscriptions-and-contributions-committed-us-millions'
-                                                or $data_element = 'total-amounts'
-                                                or $data_element = 'total-contribution-usd'
-                                                or $data_element = 'undisbursed-amount'
-                                                or $data_element = 'undisbursed-grants-us-millions'
-                                                or $data_element = 'undisbursed-loans-us-millions'
-                                                or $data_element = 'usable-capital-and-reserves-us-millions'
                                                 ">
                                     <rdf:type rdf:resource="{$qb}MeasureProperty"/>
                                 </xsl:when>
 
-                                <xsl:when test="$data_element = 'currency-of-commitment'
-                                                or $data_element = 'receipt-currency'">
+                                <!-- XXX: Temporarily not used because there are observations that has a measures with different applicable attributes 
+                                <xsl:when test="">
                                     <rdf:type rdf:resource="{$qb}AttributeProperty"/>
                                 </xsl:when>
+                                 -->
 
-                                <xsl:when test="$data_element = 'credit-status'">
-                                    <rdf:type rdf:resource="{$qb}AttributeProperty"/>
-                                </xsl:when>
-
-                                <!-- FIXME: Make sure to catch all properties. This is here temporarily. -->
+                                <!-- XXX: This is mostly here for development. The final output shouldn't have this property, object -->
                                 <xsl:otherwise>
-                                    <xsl:text>FIXME----PLEASE----CONTACT----MAINTAINER----http://csarven.ca/#i</xsl:text>
+<xsl:message>FIXME-i--------<xsl:value-of select="$data_element"/></xsl:message>
+                                    <rdf:type rdf:resource="{$qb}FIXME-i--------"/>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </rdf:Description>
@@ -337,7 +263,8 @@
                                                 <xsl:text>qb:attribute</xsl:text>
                                             </xsl:when>
                                             <xsl:otherwise>
-                                                <xsl:text>qb:FIXME----PLEASE----CONTACT----MAINTAINER----</xsl:text>
+<xsl:message>FIXME-ii--------<xsl:value-of select="$dataElement"/></xsl:message>
+                                                <xsl:text>qb:FIXME-ii--------</xsl:text>
                                             </xsl:otherwise>
                                         </xsl:choose>
                                     </xsl:variable>

@@ -12,6 +12,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -34,6 +35,7 @@
         <rdf:Description rdf:about="{$wbld}classification/topic">
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for topics</skos:prefLabel>
+            <skos:definition xml:lang="en">Topics are high level categories that all indicators are mapped to.</skos:definition>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/topics?format=xml</xsl:text>
@@ -66,5 +68,12 @@
                 </xsl:if>
             </rdf:Description>
         </xsl:for-each>
+
+        <rdf:Description rdf:about="{$wbld}property/topic">
+            <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
+            <rdfs:label xml:lang="en">Indicator topic</rdfs:label>
+            <qb:concept rdf:resource="{$wbld}classification/topic"/>
+            <qb:codeList rdf:resource="{$wbld}classification/topic"/>
+        </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>

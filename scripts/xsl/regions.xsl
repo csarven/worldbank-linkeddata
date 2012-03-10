@@ -12,6 +12,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -68,5 +69,12 @@
                 </xsl:if>
             </rdf:Description>
         </xsl:for-each>
+
+        <rdf:Description rdf:about="{$wbld}property/region">
+            <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
+            <rdfs:label xml:lang="en">Region</rdfs:label>
+            <qb:concept rdf:resource="{$wbld}classification/region"/>
+            <qb:codeList rdf:resource="{$wbld}classification/region"/>
+        </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>

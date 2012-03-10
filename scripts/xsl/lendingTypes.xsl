@@ -12,6 +12,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -31,11 +32,12 @@
     <xsl:template name="lendingtypes">
         <xsl:variable name="currentDateTime" select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
 
-        <rdf:Description rdf:about="{$wbld}classification/lendingtype">
+        <rdf:Description rdf:about="{$wbld}classification/lending-type">
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for lending types</skos:prefLabel>
+            <skos:definition xml:lang="en">The World Bank classified countries according to the type of lending they are eligible for through the World Bank.</skos:definition>
 
-            <skos:exactMatch rdf:resource="http://dbpedia.org/resource/Loan"/>
+            <skos:closeMatch rdf:resource="http://dbpedia.org/resource/Loan"/>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/lendingTypes?format=xml</xsl:text>
@@ -47,15 +49,15 @@
         </rdf:Description>
 
         <xsl:for-each select="wb:lendingTypes/wb:lendingType">
-            <rdf:Description rdf:about="{$wbld}classification/lendingtype">
-                <skos:hasTopConcept rdf:resource="{$wbld}classification/lendingtype/{@id}"/>
+            <rdf:Description rdf:about="{$wbld}classification/lending-type">
+                <skos:hasTopConcept rdf:resource="{$wbld}classification/lending-type/{@id}"/>
             </rdf:Description>
 
-            <rdf:Description rdf:about="{$wbld}classification/lendingtype/{@id}">
+            <rdf:Description rdf:about="{$wbld}classification/lending-type/{@id}">
                 <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 
-                <skos:inScheme rdf:resource="{$wbld}classification/lendingtype"/>
-                <skos:topConceptOf rdf:resource="{$wbld}classification/lendingtype"/>
+                <skos:inScheme rdf:resource="{$wbld}classification/lending-type"/>
+                <skos:topConceptOf rdf:resource="{$wbld}classification/lending-type"/>
 
                 <skos:notation><xsl:value-of select="@id"/></skos:notation>
 
@@ -64,5 +66,12 @@
                 </xsl:if>
             </rdf:Description>
         </xsl:for-each>
+
+        <rdf:Description rdf:about="{$wbld}property/income-level">
+            <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
+            <rdfs:label xml:lang="en">Lending type</rdfs:label>
+            <qb:concept rdf:resource="{$wbld}classification/income-level"/>
+            <qb:codeList rdf:resource="{$wbld}classification/income-level"/>
+        </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>

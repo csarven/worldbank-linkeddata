@@ -12,6 +12,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -38,6 +39,8 @@
             <skos:prefLabel xml:lang="fr">Liste des codes pour les indicateurs de développement dans le monde</skos:prefLabel>
             <skos:prefLabel xml:lang="es">Lista de códigos para el mundo de los indicadores de desarrollo</skos:prefLabel>
             <skos:prefLabel xml:lang="ar">قائمة رمز لمؤشرات التنمية العالمية</skos:prefLabel>
+
+            <skos:definition xml:lang="en">Indicators represent data like total population, gross national income, energy use, and many more.</skos:definition>
 
             <skos:closeMatch rdf:resource="http://dbpedia.org/resource/Economic_indicator"/>
 
@@ -70,7 +73,7 @@
                 <foaf:page rdf:resource="http://data.worldbank.org/indicator/{@id}"/>
 
                 <xsl:if test="wb:source/@id">
-                <dcterms:isPartOf rdf:resource="{$wbld}classification/source/{wb:source/@id}"/>
+                <property:source rdf:resource="{$wbld}classification/source/{wb:source/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:sourceNote != ''">
@@ -86,5 +89,12 @@
                 </xsl:for-each>
             </rdf:Description>
         </xsl:for-each>
+
+        <rdf:Description rdf:about="{$wbld}property/indicator">
+            <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
+            <rdfs:label xml:lang="en">World development indicator</rdfs:label>
+            <qb:concept rdf:resource="{$wbld}classification/indicator"/>
+            <qb:codeList rdf:resource="{$wbld}classification/indicator"/>
+        </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>

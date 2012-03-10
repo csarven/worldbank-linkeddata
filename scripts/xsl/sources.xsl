@@ -12,6 +12,7 @@
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
     xmlns:property="http://worldbank.270a.info/property/">
@@ -34,6 +35,7 @@
         <rdf:Description rdf:about="{$wbld}classification/source">
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for sources</skos:prefLabel>
+            <skos:altLabel xml:lang="en">Catalog Sources</skos:altLabel>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/sources?format=xml</xsl:text>
@@ -70,5 +72,16 @@
                 </xsl:if>
             </rdf:Description>
         </xsl:for-each>
+
+        <rdf:Description rdf:about="{$wbld}property/source">
+            <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
+            <rdfs:label xml:lang="en">Source</rdfs:label>
+            <qb:concept rdf:resource="{$wbld}classification/source"/>
+            <qb:codeList rdf:resource="{$wbld}classification/source"/>
+        </rdf:Description>
+
+        <rdf:Description rdf:about="{$wbld}property/source-organization">
+            <rdfs:label xml:lang="en">Source organization</rdfs:label>
+        </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>

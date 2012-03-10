@@ -40,6 +40,13 @@
             <skos:prefLabel xml:lang="fr">Liste des codes pour les pays</skos:prefLabel>
             <skos:prefLabel xml:lang="es">Lista de códigos de países</skos:prefLabel>
             <skos:prefLabel xml:lang="ar">قائمة رمز للبلدان</skos:prefLabel>
+            <skos:note xml:lang="en">The World Bank follows the ISO 3 letter and 2 letter codes to represent most of the countries, with the following exceptions:
+
+3 letter Code differences: Andorra, Congo, Dem. Rep., Isle of Man, Romania, Timor-Leste, West Bank and Gaza
+
+2 letter Code differences: Congo, Dem. Rep., Serbia, Timor-Leste, Yemen, Rep., West Bank and Gaza
+
+Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:note>
 
             <skos:closeMatch rdf:resource="http://dbpedia.org/ontology/Country"/>
 
@@ -86,15 +93,15 @@
                 </xsl:if>
 
                 <xsl:if test="wb:adminregion/@id != ''">
-                <property:adminregion rdf:resource="{$wbld}classification/region/{wb:adminregion/@id}"/>
+                <property:admin-region rdf:resource="{$wbld}classification/region/{wb:adminregion/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:incomeLevel/@id != ''">
-                <property:incomelevel rdf:resource="{$wbld}classification/incomelevel/{wb:incomeLevel/@id}"/>
+                <property:income-level rdf:resource="{$wbld}classification/income-level/{wb:incomeLevel/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:lendingType/@id != ''">
-                <property:lendingtype rdf:resource="{$wbld}classification/lendingtype/{wb:lendingType/@id}"/>
+                <property:lending-type rdf:resource="{$wbld}classification/lending-type/{wb:lendingType/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:capitalCity != ''">
