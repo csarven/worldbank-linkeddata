@@ -95,7 +95,10 @@
 
                     <!-- XXX: This is probably more 'useful' than @viewLastModified -->
                     <xsl:if test="./metadata/custom_fields/Data-As-Of/@Data-As-Of != ''">
-                    <dcterms:modified><xsl:value-of select="./metadata/custom_fields/Data-As-Of/@Data-As-Of"/></dcterms:modified>
+                        <xsl:element name="dcterms:modified">
+                            <xsl:call-template name="datatype-date"/>
+                            <xsl:value-of select="wbldfn:get-date(./metadata/custom_fields/Data-As-Of/@Data-As-Of)"/>
+                        </xsl:element>
                     </xsl:if>
 
                     <!-- XXX: I had to dig out the proper URL to the definition because the @filename URL doesn't resolve. The actual file is sent by content-disposition (an attachment) by the API via https://finances.worldbank.org/api/views/XXXX-XXXX/rows.pdf?accessType=DOWNLOAD -->

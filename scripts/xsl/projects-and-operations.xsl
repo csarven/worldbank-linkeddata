@@ -70,6 +70,7 @@ The World Bank also strives to tackle global challenges from international trade
                         TODO: Revisit. Not sure how to catch the 'useful' linkable stuff better instead of cherry picking most common ones. Perhaps that's not too bad. There are some duplicates also where they could go out to meta.ttl
                     -->
                     <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
+                    <xsl:variable name="text" select="normalize-space(./text())"/>
 
                     <xsl:if test="wbldfn:usable-term($nodeName) or $nodeName = 'project-name'">
                         <xsl:choose>
@@ -79,12 +80,12 @@ The World Bank also strives to tackle global challenges from international trade
 
                             <xsl:when test="$nodeName = 'project-name'">
     <!--                            <property:project-name><xsl:value-of select="./text()"/></property:project-name> -->
-                                <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="./text()"/></skos:prefLabel>
+                                <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="$text"/></skos:prefLabel>
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'financier'">
     <!--                            <property:financier><xsl:value-of select="./text()"/></property:financier> -->
-                                <property:loan-number rdf:resource="{$wbld}loan-number/{normalize-space(./text())}"/>
+                                <property:loan-number rdf:resource="{$wbld}loan-number/{$text}"/>
                             </xsl:when>
 
                             <!-- These match up with strings -->
@@ -93,7 +94,7 @@ The World Bank also strives to tackle global challenges from international trade
                                 XXX: Currently using sdmx-dimension:refArea "Yemen, Republic of". Could use property:country_beneficiary "Yemen, Republic of". Not sure about it right now.
                             -->
                             <xsl:when test="$nodeName = 'country'">
-                                <xsl:variable name="countryString" select="./text()"/>
+                                <xsl:variable name="countryString" select="$text"/>
 
                                 <xsl:element name="property:country">
                                     <xsl:choose>
@@ -111,7 +112,7 @@ The World Bank also strives to tackle global challenges from international trade
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'region'">
-                                <xsl:variable name="regionString" select="./text()"/>
+                                <xsl:variable name="regionString" select="$text"/>
 
                                 <xsl:element name="property:region">
                                     <xsl:choose>
@@ -129,17 +130,17 @@ The World Bank also strives to tackle global challenges from international trade
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'url'">
-                                <foaf:page rdf:resource="{./text()}"/>
+                                <foaf:page rdf:resource="{$text}"/>
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'listing-url'">
-                                <foaf:page rdf:resource="http://www.worldbank.org/projects/{$projectId}{./text()}?lang=en"/>
+                                <foaf:page rdf:resource="http://www.worldbank.org/projects/{$projectId}{$text}?lang=en"/>
                             </xsl:when>
 
                             <xsl:when test="wbldfn:money-amount($nodeName)">
                                 <xsl:element name="property:{$nodeName}">
                                     <xsl:call-template name="datatype-dbo-usd"/>
-                                    <xsl:value-of select="replace(./text(), ',', '')"/>
+                                    <xsl:value-of select="replace($text, ',', '')"/>
                                 </xsl:element>
                             </xsl:when>
 
@@ -149,14 +150,14 @@ The World Bank also strives to tackle global challenges from international trade
                                             ">
                                 <xsl:element name="property:{$nodeName}">
                                     <xsl:call-template name="datatype-date"/>
-                                    <xsl:value-of select="normalize-space(./text())"/>
+                                    <xsl:value-of select="$text"/>
                                 </xsl:element>
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'board-approval-year'">
                                 <xsl:element name="property:{$nodeName}">
                                     <xsl:call-template name="resource-refperiod">
-                                        <xsl:with-param name="date" select="normalize-space(./text())"/>
+                                        <xsl:with-param name="date" select="$text"/>
                                     </xsl:call-template>
                                 </xsl:element>
                             </xsl:when>
@@ -188,9 +189,9 @@ The World Bank also strives to tackle global challenges from international trade
 <!-- <property:XXX><xsl:value-of select="name()"/> <xsl:value-of select="./text()"/></property:XXX> -->
 
 <!--                                                <xsl:if test="$nodeName != ''"> -->
-                                                    <xsl:element name="property:{$nodeName}">
-                                                        <xsl:value-of select="./text()"/>
-                                                    </xsl:element>
+                                                <xsl:element name="property:{$nodeName}">
+                                                    <xsl:value-of select="$text"/>
+                                                </xsl:element>
 <!--                                                </xsl:if> -->
                                             </xsl:otherwise>
                                         </xsl:choose>
@@ -204,11 +205,13 @@ The World Bank also strives to tackle global challenges from international trade
         </xsl:for-each>
 
         <xsl:for-each select="projects/project/wb:projects.financier">
+            <xsl:variable name="text" select="normalize-space(./text())"/>
+
             <!-- XXX: This is a bit dirty i.e., check for substring in lendingTypes file instead -->
-            <xsl:variable name="lendingTypeString" select="replace(./text(), '(IBRD|Blend|IDA|Not classified).*', '$1')"/>
+            <xsl:variable name="lendingTypeString" select="replace($text, '(IBRD|Blend|IDA|Not classified).*', '$1')"/>
                 <xsl:choose>
                     <xsl:when test="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]">
-                        <rdf:Description rdf:about="{$wbld}loan-number/{normalize-space(./text())}">
+                        <rdf:Description rdf:about="{$wbld}loan-number/{$text}">
                             <rdf:type>
                                 <xsl:attribute name="rdf:resource">
                                     <xsl:value-of select="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]/@rdf:about"/>
@@ -239,31 +242,32 @@ bnode_projectid+Node#ofProperty
                         <xsl:for-each select="child::*">
     <!-- <xsl:message><xsl:value-of select="name()"/></xsl:message> -->
                             <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
+                            <xsl:variable name="text" select="normalize-space(./text())"/>
 
                             <xsl:if test="wbldfn:usable-term($nodeName)">
                                 <xsl:choose>
                                     <xsl:when test="$nodeName = 'date'">
                                         <xsl:element name="dcterms:date">
                                             <xsl:call-template name="datatype-date"/>
-                                            <xsl:value-of select="wbldfn:get-date(./text())"/>
+                                            <xsl:value-of select="wbldfn:get-date($text)"/>
                                         </xsl:element>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'description'">
-                                        <dcterms:description xml:lang="en"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+                                        <dcterms:description xml:lang="en"><xsl:value-of select="$text"/></dcterms:description>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'url'">
-                                        <foaf:page rdf:resource="{normalize-space(./text())}"/>
+                                        <foaf:page rdf:resource="{$text}"/>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'id'">
-                                        <dcterms:identifier><xsl:value-of select="normalize-space(./text())"/></dcterms:identifier>
+                                        <dcterms:identifier><xsl:value-of select="$text"/></dcterms:identifier>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'type'">
-                                        <rdf:type rdf:resource="{$wbld}classification/document/{wbldfn:safe-term(./text())}"/>
+                                        <rdf:type rdf:resource="{$wbld}classification/document/{wbldfn:safe-term($text)}"/>
                                     </xsl:when>
 
                                     <xsl:otherwise>
                                         <xsl:element name="property:{$nodeName}">
-                                            <xsl:value-of select="normalize-space(text())"/>
+                                            <xsl:value-of select="$text"/>
                                         </xsl:element>
                                     </xsl:otherwise>
                                 </xsl:choose>

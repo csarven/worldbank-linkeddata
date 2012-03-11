@@ -4,9 +4,16 @@
 -->
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:dcterms="http://purl.org/dc/terms/"
-    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/">
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
+    xmlns:func="http://exslt.org/functions"
+                xmlns:is-date="http://www.intelligentstreaming.com/xsl/date-time"
+                extension-element-prefixes="func"
+    exclude-result-prefixes="func is-date"
+    >
 
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
 
@@ -289,7 +296,6 @@
         <xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
     </xsl:function>
 
-
     <xsl:function name="wbldfn:get-quarter">
         <xsl:param name="string"/>
 
@@ -316,7 +322,9 @@
     <xsl:function name="wbldfn:get-date">
         <xsl:param name="date"/>
 
-        <xsl:analyze-string select="lower-case(normalize-space($date))" regex="([0-9]{{2}})-([a-z]{{3}})-([0-9]{{4}})">
+        <xsl:variable name="date" select="lower-case(normalize-space($date))"/>
+
+        <xsl:analyze-string select="$date" regex="([0-9]{{2}})-([a-z]{{3}})-([0-9]{{4}})">
             <xsl:matching-substring>
                 <xsl:variable name="monthName" select="regex-group(2)"/>
 
@@ -340,9 +348,37 @@
 
                 <xsl:value-of select="regex-group(3)"/><xsl:text>-</xsl:text><xsl:value-of select="$month"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(1)"/>
             </xsl:matching-substring>
+
             <xsl:non-matching-substring>
-<!--                    <xsl:value-of select="format-date(current-dateTime(), '[Y0001]-[M01]-[D01]')"> -->
-                <xsl:value-of select="$date"/>
+                <xsl:analyze-string select="$date" regex="([0-9]{{2}})[^0-9]{{1}}([0-9]{{2}})[^0-9]{{1}}([0-9]{{4}})">
+                    <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(3)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(2)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(1)"/>
+                    </xsl:matching-substring>
+
+                    <xsl:non-matching-substring>
+<!--
+                        <xsl:analyze-string select="$date" regex="([0-9]+)">
+                            <xsl:matching-substring>
+
+XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
+<xsl:value-of select="format-date(current-dateTime(), '[Y0001]-[M01]-[D01]')">
+<xsl:value-of select='xsd:dateTime("1970-01-01T00:00:00") + $date * xsd:dayTimeDuration("PT0.001S")'/>
+<xsl:value-of select="date:add('1970-01-01T00:00:00Z', date:duration($date div 1000))"/>
+
+<xsl:value-of select="is-date:iso-from-unix($date)"/>
+<xsl:variable name="date" select="$date" as="xsd:integer"/>
+                            </xsl:matching-substring>
+
+                            <xsl:non-matching-substring>
+                                <xsl:value-of select="$date"/>
+                            </xsl:non-matching-substring>
+                        </xsl:analyze-string>
+
+-->
+                                <xsl:value-of select="$date"/>
+
+                    </xsl:non-matching-substring>
+                </xsl:analyze-string>
             </xsl:non-matching-substring>
         </xsl:analyze-string>
     </xsl:function>
