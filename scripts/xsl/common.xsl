@@ -41,8 +41,9 @@
                     and $string != 'countrynameshortname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk-exact'
                     and $string != 'countryshortname-and-mdk'
+                    and $string != 'countryshortname-and-mdk-exact'
                     and $string != 'project-name'
-                    and $string != 'projectname-and-mdk'
+                    and $string != 'project-name-and-mdk'
                     and $string != 'regionname-and-mdk'
                     and $string != 'regionname-and-mdk-exact'
                     and $string != 'uuid'
@@ -64,7 +65,7 @@
             <xsl:when test="$string = 'boardapprovaldate'">
                 <xsl:text>board-approval-date</xsl:text>
             </xsl:when>
-            <xsl:when test="$string = 'closing-date'">
+            <xsl:when test="$string = 'closingdate'">
                 <xsl:text>closing-date</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'commitments-development-policy-lending'">
@@ -91,6 +92,12 @@
             <xsl:when test="$string = 'disbursements-usd'">
                 <xsl:text>disbursements-us-billions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'envassesmentcategorycode'">
+                <xsl:text>environmental-assessment-category-code</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'grantamt'">
+                <xsl:text>grant-amount-us-millions</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'grant-fund-name'">
                 <xsl:text>grant-name</xsl:text>
             </xsl:when>
@@ -99,6 +106,30 @@
             </xsl:when>
             <xsl:when test="$string = 'gross-disbursements-total'">
                 <xsl:text>gross-disbursements-total-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'ibrdcommamt'">
+                <xsl:text>ibrd-commitment-amount</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'idacommamt'">
+                <xsl:text>ida-commitment-amount</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'impagency'">
+                <xsl:text>implementing-agency</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'indextype'">
+                <xsl:text>index-type</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'lendinginstr'">
+                <xsl:text>lending-instrument</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'lendinginstrtype'">
+                <xsl:text>lending-instrument-type</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'lendprojectcost'">
+                <xsl:text>lend-project-cost</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'listing-relative-url'">
+                <xsl:text>listing-url</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'loans-outstanding'">
                 <xsl:text>loans-outstanding-us-millions</xsl:text>
@@ -112,13 +143,19 @@
             <xsl:when test="$string = 'principal-repayments-including-prepayments'">
                 <xsl:text>principal-repayments-including-prepayments-us-millions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'prodline'">
+                <xsl:text>product-line</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'project-id'">
                 <xsl:text>project</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'productlinetype'">
+                <xsl:text>product-line-type</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdoc.docdate'">
                 <xsl:text>date</xsl:text>
             </xsl:when>
-            <xsl:when test="$string = 'projectdoc.docentityid'">
+            <xsl:when test="$string = 'projectdoc.entityid'">
                 <xsl:text>id</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdoc.doctype'">
@@ -130,6 +167,9 @@
             <xsl:when test="$string = 'projectdoc.docurl'">
                 <xsl:text>url</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'projectstatusdisplay'">
+                <xsl:text>project-status-display</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'reimbursable-mlns-of-usd'">
                 <xsl:text>reimbursable-us-millions</xsl:text>
             </xsl:when>
@@ -138,6 +178,15 @@
             </xsl:when>
             <xsl:when test="$string = 'subscriptions-and-contributions-commited-us-millions'">
                 <xsl:text>subscriptions-and-contributions-committed-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'supplementprojectflg'">
+                <xsl:text>supplement-project-flag</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'totalamt'">
+                <xsl:text>total-amounts</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'totalcommamt'">
+                <xsl:text>total-commitment-amount</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'trustee-fund-number'">
                 <xsl:text>trustee-fund</xsl:text>
@@ -162,6 +211,7 @@
 
     <xsl:function name="wbldfn:money-amount">
         <xsl:param name="string"/>
+
         <xsl:if test="$string = 'amount-in-usd'
                     or $string = 'amounts-paid-in'
                     or $string = 'amounts-subject-to-call'
@@ -198,9 +248,13 @@
                     or $string = 'fy12-budget-plan-fy11'
                     or $string = 'fy13-indicative-plan-fy12'
                     or $string = 'fy14-indicative-plan-fy12'
+                    or $string = 'grant-amount-us-millions'
                     or $string = 'grant-commitments-usd'
                     or $string = 'gross-disbursements-development-policy-lending-us-millions'
                     or $string = 'gross-disbursements-total-us-millions'
+                    or $string = 'ibrd-commitment-amount'
+                    or $string = 'ida-commitment-amount'
+                    or $string = 'lend-project-cost'
                     or $string = 'loans-held'
                     or $string = 'loans-outstanding-us-millions'
                     or $string = 'net-disbursements-us-millions'
@@ -215,6 +269,7 @@
                     or $string = 'sold-3rd-party'
                     or $string = 'subscriptions-and-contributions-committed-us-millions'
                     or $string = 'total-amounts'
+                    or $string = 'total-commitment-amount'
                     or $string = 'total-contribution-usd'
                     or $string = 'undisbursed-amount'
                     or $string = 'undisbursed-credits-us-millions'

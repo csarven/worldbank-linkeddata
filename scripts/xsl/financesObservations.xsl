@@ -230,10 +230,11 @@
                             or $nodeName = 'effective-date-most-recent'
                             or $nodeName = 'end-of-period'
                             or $nodeName = 'first-repayment-date'
-                            o4 $nodeName = 'grant-agreement-date'
+                            or $nodeName = 'grant-agreement-date'
                             or $nodeName = 'last-repaymentdate'
                             or $nodeName = 'last-disbursement-date'
-                            or $nodeName = 'period-end-date'">
+                            or $nodeName = 'period-end-date'
+                            ">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-date"/>
                     <xsl:value-of select="normalize-space(./text())"/>
@@ -255,7 +256,6 @@
             <xsl:when test="$nodeName = 'approval-quarter'
                             or $nodeName = 'receipt-quarter'
                             or $nodeName = 'transfer-quarter'">
-
                 <xsl:variable name="quarter" select="wbldfn:get-quarter(./text())"/>
 
                 <xsl:element name="property:{$datasetName}{$nodeName}">

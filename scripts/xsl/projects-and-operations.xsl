@@ -46,6 +46,9 @@
           <!-- <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/> -->
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for World Bank Projects and Operations</skos:prefLabel>
+            <skos:definition xml:lang="en">The World Bank’s projects and operations are designed to support low-income and middle-income countries’ poverty reduction strategies. Countries develop strategies around a range of reforms and investments likely to improve people’s lives from universal education to passable roads, from quality health care to improved governance and inclusive economic growth. In parallel, the Bank strives to align its assistance with the country’s priorities and harmonize its aid program with other agencies to boost aid effectiveness.
+
+The World Bank also strives to tackle global challenges from international trade to climate change and debt relief. It does so within each country’s specific socio-economic context, adapting programs to country capacity and needs.</skos:definition>
         </rdf:Description>
 
         <xsl:for-each select="projects/project">
@@ -129,17 +132,11 @@
                                 <foaf:page rdf:resource="{./text()}"/>
                             </xsl:when>
 
-                            <xsl:when test="$nodeName = 'listing-relative-url'">
-                                <property:listing-relative-url rdf:resource="http://www.worldbank.org/projects/{$projectId}{./text()}??lang=en"/>
+                            <xsl:when test="$nodeName = 'listing-url'">
+                                <foaf:page rdf:resource="http://www.worldbank.org/projects/{$projectId}{./text()}?lang=en"/>
                             </xsl:when>
 
-                            <xsl:when test="$nodeName = 'lendprojectcost'
-                                            or $nodeName = 'grantamt'
-                                            or $nodeName = 'ibrdcommamt'
-                                            or $nodeName = 'idacommamt'
-                                            or $nodeName = 'totalamt'
-                                            or $nodeName = 'totalcommamt'
-                                            ">
+                            <xsl:when test="wbldfn:money-amount($nodeName)">
                                 <xsl:element name="property:{$nodeName}">
                                     <xsl:call-template name="datatype-dbo-usd"/>
                                     <xsl:value-of select="replace(./text(), ',', '')"/>
