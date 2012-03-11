@@ -231,8 +231,8 @@
                             or $nodeName = 'end-of-period'
                             or $nodeName = 'first-repayment-date'
                             or $nodeName = 'grant-agreement-date'
-                            or $nodeName = 'last-repaymentdate'
                             or $nodeName = 'last-disbursement-date'
+                            or $nodeName = 'last-repayment-date'
                             or $nodeName = 'period-end-date'
                             ">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
