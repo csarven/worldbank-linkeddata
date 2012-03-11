@@ -33,6 +33,24 @@
         </xsl:if>
     </xsl:function>
 
+    <xsl:function name="wbldfn:usable-term">
+        <xsl:param name="string"/>
+
+        <xsl:if test="$string != 'countryname'
+                    and $string != 'countryname-and-mdk'
+                    and $string != 'countrynameshortname-and-mdk'
+                    and $string != 'countrynameshortname-and-mdk-exact'
+                    and $string != 'countryshortname-and-mdk'
+                    and $string != 'project-name'
+                    and $string != 'projectname-and-mdk'
+                    and $string != 'regionname-and-mdk'
+                    and $string != 'regionname-and-mdk-exact'
+                    and $string != 'uuid'
+                    ">
+            <xsl:value-of select="true()"/>
+        </xsl:if>
+    </xsl:function>
+
     <xsl:function name="wbldfn:canonical-term">
         <xsl:param name="string"/>
 
@@ -43,11 +61,20 @@
             <xsl:when test="$string = 'betf-mlns-of-usd'">
                 <xsl:text>betf-us-millions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'boardapprovaldate'">
+                <xsl:text>board-approval-date</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'closing-date'">
+                <xsl:text>closing-date</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'commitments-development-policy-lending'">
                 <xsl:text>commitments-development-policy-lending-us-millions</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'commitments-total'">
                 <xsl:text>commitments-total-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'countryshortname-exact'">
+                <xsl:text>country</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'credit-number'">
                 <xsl:text>loan-number</xsl:text>
@@ -85,8 +112,29 @@
             <xsl:when test="$string = 'principal-repayments-including-prepayments'">
                 <xsl:text>principal-repayments-including-prepayments-us-millions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'project-id'">
+                <xsl:text>project</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdoc.docdate'">
+                <xsl:text>date</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdoc.docentityid'">
+                <xsl:text>id</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdoc.doctype'">
+                <xsl:text>type</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdoc.doctypedesc'">
+                <xsl:text>description</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdoc.docurl'">
+                <xsl:text>url</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'reimbursable-mlns-of-usd'">
                 <xsl:text>reimbursable-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'regionname'">
+                <xsl:text>region</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'subscriptions-and-contributions-commited-us-millions'">
                 <xsl:text>subscriptions-and-contributions-committed-us-millions</xsl:text>
@@ -178,8 +226,71 @@
         </xsl:if>
     </xsl:function>
 
+    <xsl:function name="wbldfn:now">
+        <xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
+    </xsl:function>
+
+
+    <xsl:function name="wbldfn:get-quarter">
+        <xsl:param name="string"/>
+
+        <xsl:choose>
+            <xsl:when test="lower-case(normalize-space($string)) = 'jan-mar'">
+                <xsl:text>Q1</xsl:text>
+            </xsl:when>
+            <xsl:when test="lower-case(normalize-space($string)) = 'apr-jun'">
+                <xsl:text>Q2</xsl:text>
+            </xsl:when>
+            <xsl:when test="lower-case(normalize-space($string)) = 'jul-sep'">
+                <xsl:text>Q3</xsl:text>
+            </xsl:when>
+            <xsl:when test="lower-case(normalize-space($string)) = 'oct-dec'">
+                <xsl:text>Q4</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text></xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
+
+    <xsl:function name="wbldfn:get-date">
+        <xsl:param name="date"/>
+
+        <xsl:analyze-string select="lower-case(normalize-space($date))" regex="([0-9]{{2}})-([a-z]{{3}})-([0-9]{{4}})">
+            <xsl:matching-substring>
+                <xsl:variable name="monthName" select="regex-group(2)"/>
+
+                <xsl:variable name="month">
+                    <xsl:choose>
+                        <xsl:when test="$monthName = 'jan'"><xsl:text>01</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'feb'"><xsl:text>02</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'mar'"><xsl:text>03</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'apr'"><xsl:text>04</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'may'"><xsl:text>05</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'jun'"><xsl:text>06</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'jul'"><xsl:text>07</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'aug'"><xsl:text>08</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'sep'"><xsl:text>09</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'oct'"><xsl:text>10</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'nov'"><xsl:text>11</xsl:text></xsl:when>
+                        <xsl:when test="$monthName = 'dec'"><xsl:text>12</xsl:text></xsl:when>
+                        <xsl:otherwise><xsl:text>00</xsl:text></xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+
+                <xsl:value-of select="regex-group(3)"/><xsl:text>-</xsl:text><xsl:value-of select="$month"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(1)"/>
+            </xsl:matching-substring>
+            <xsl:non-matching-substring>
+<!--                    <xsl:value-of select="format-date(current-dateTime(), '[Y0001]-[M01]-[D01]')"> -->
+                <xsl:value-of select="$date"/>
+            </xsl:non-matching-substring>
+        </xsl:analyze-string>
+    </xsl:function>
+
     <xsl:template name="resource-refperiod">
         <xsl:param name="date"/>
+
         <xsl:attribute name="rdf:resource">
             <xsl:analyze-string select="$date" regex="(([0-9]{{4}})|([1-9][0-9]{{3,}})+)(Q[1-4])">
                 <xsl:matching-substring>

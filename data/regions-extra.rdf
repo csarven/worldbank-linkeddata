@@ -21,4 +21,7 @@
    <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/SSF">
       <skos:altLabel xml:lang="en">AFRICA</skos:altLabel>
    </rdf:Description>
+   <rdf:Description rdf:about="http://worldbank.270a.info/classification/region/OTH">
+      <skos:altLabel xml:lang="en">OTHER</skos:altLabel>
+   </rdf:Description>
 </rdf:RDF>

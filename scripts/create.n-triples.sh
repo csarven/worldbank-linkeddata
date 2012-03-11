@@ -43,6 +43,6 @@ for file in /var/www/lib/worldbank-linkeddata/data/finances/finance/*.rdf
 
 #for file in /var/www/lib/worldbank-linkeddata/data/indicators/en/indicator/*.rdf ; do rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-development-indicators.nt ; done ;
 
-#rapper -g /var/www/lib/worldbank-linkeddata/data/projects/projects-and-operations.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.projects-and-operations.nt ;
+rapper -g /var/www/lib/worldbank-linkeddata/data/projects/projects-and-operations.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-projects-and-operations.nt ;
 
 

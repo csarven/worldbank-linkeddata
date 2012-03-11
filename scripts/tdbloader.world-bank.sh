@@ -12,5 +12,5 @@ java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worl
 #TODO
 #java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/world-development-indicators /var/www/lib/worldbank-linkeddata/data/import/graph.world-development-indicators.nt
 
-#java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/world-bank-projects-and-operations /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-projects-and-operations.nt
+java tdb.tdbloader --desc=/usr/lib/fuseki/tdb2.worldbank.ttl --graph=http://worldbank.270a.info/graph/world-bank-projects-and-operations /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-projects-and-operations.nt
 

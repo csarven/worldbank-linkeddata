@@ -11,7 +11,7 @@
       <skos:prefLabel xml:lang="en">Code list for currencies</skos:prefLabel>
       <skos:exactMatch rdf:resource="http://dbpedia.org/ontology/Currency"/>
       <dcterms:issued xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
-                      rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-03-10T00:48:32Z</dcterms:issued>
+                      rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-03-10T14:05:17Z</dcterms:issued>
       <dcterms:source xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
                       rdf:resource="http://www.currency-iso.org/dl_iso_table_a1.xml"/>
       <dcterms:creator xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"

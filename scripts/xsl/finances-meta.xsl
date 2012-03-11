@@ -54,8 +54,7 @@
 
                     <xsl:variable name="data_element" select="wbldfn:canonical-term(wbldfn:safe-term(data_element))"/>
 
-                    <xsl:if test="$data_element != 'uuid'
-                                and $data_element != 'project-name'">
+                    <xsl:if test="wbldfn:usable-term($data_element)">
                         <xsl:variable name="dataset_name">
                             <xsl:if test="wbldfn:prepend-dataset($data_element)">
                                 <xsl:value-of select="wbldfn:safe-term(dataset_name)"/><xsl:text>-</xsl:text>
@@ -132,7 +131,7 @@
                                                 or $data_element = 'principal-recipient'
                                                 or $data_element = 'program-code'
                                                 or $data_element = 'program-name'
-                                                or $data_element = 'project-id'
+                                                or $data_element = 'project'
                                                 or $data_element = 'receipt-currency'
                                                 or $data_element = 'receipt-quarter'
                                                 or $data_element = 'receipt-type'
@@ -211,8 +210,7 @@
                 <xsl:for-each select="//response/row/row[1]/*">
                     <xsl:variable name="dataElement" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
 
-                    <xsl:if test="$dataElement != 'uuid'
-                                and $dataElement != 'project-name'">
+                    <xsl:if test="wbldfn:usable-term($dataElement)">
                         <xsl:variable name="financeDataset">
                             <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-finances/</xsl:text><xsl:value-of select="$financeDatasetID"/>
                         </xsl:variable>

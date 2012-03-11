@@ -43,7 +43,7 @@
     </xsl:template>
 
     <xsl:template name="financesObservations">
-        <xsl:variable name="currentDateTime" select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
+        <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="response/row/row">
             <xsl:variable name="wbldf_view">
@@ -85,8 +85,7 @@
                 <xsl:for-each select="node()">
                     <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
                     
-                    <xsl:if test="$nodeName != 'uuid'
-                                and $nodeName != 'project-name'">
+                    <xsl:if test="wbldfn:usable-term($nodeName)">
                         <xsl:variable name="financeDataset">
                             <xsl:text>http://worldbank.270a.info/dataset/world-bank-finances/</xsl:text><xsl:value-of select="$wbldf_view"/>
                         </xsl:variable>
@@ -118,7 +117,7 @@
         <xsl:param name="datasetName"/>
 
         <xsl:choose>
-            <xsl:when test="$nodeName = 'project-id'">
+            <xsl:when test="$nodeName = 'project'">
                 <xsl:element name="property:{$nodeName}">
                     <xsl:attribute name="rdf:resource">
                         <xsl:value-of select="$wbld"/><xsl:text>project/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
@@ -231,6 +230,7 @@
                             or $nodeName = 'effective-date-most-recent'
                             or $nodeName = 'end-of-period'
                             or $nodeName = 'first-repayment-date'
+                            o4 $nodeName = 'grant-agreement-date'
                             or $nodeName = 'last-repaymentdate'
                             or $nodeName = 'last-disbursement-date'
                             or $nodeName = 'period-end-date'">
@@ -256,25 +256,7 @@
                             or $nodeName = 'receipt-quarter'
                             or $nodeName = 'transfer-quarter'">
 
-                <xsl:variable name="quarter">
-                    <xsl:choose>
-                        <xsl:when test="lower-case(normalize-space(./text())) = 'jan-mar'">
-                            <xsl:text>Q1</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="lower-case(normalize-space(./text())) = 'apr-jun'">
-                            <xsl:text>Q2</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="lower-case(normalize-space(./text())) = 'jul-sep'">
-                            <xsl:text>Q3</xsl:text>
-                        </xsl:when>
-                        <xsl:when test="lower-case(normalize-space(./text())) = 'oct-dec'">
-                            <xsl:text>Q4</xsl:text>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:text></xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
+                <xsl:variable name="quarter" select="wbldfn:get-quarter(./text())"/>
 
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="resource-refperiod">
