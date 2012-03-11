@@ -36,7 +36,8 @@
     <xsl:function name="wbldfn:usable-term">
         <xsl:param name="string"/>
 
-        <xsl:if test="$string != 'countryname'
+        <xsl:if test="$string != ''
+                    and $string != 'countryname'
                     and $string != 'countryname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk-exact'
@@ -151,6 +152,9 @@
             </xsl:when>
             <xsl:when test="$string = 'productlinetype'">
                 <xsl:text>product-line-type</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'projectdocs'">
+                <xsl:text>project-document</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdoc.docdate'">
                 <xsl:text>date</xsl:text>

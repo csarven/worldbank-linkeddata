@@ -71,7 +71,7 @@ The World Bank also strives to tackle global challenges from international trade
                     -->
                     <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
 
-                    <xsl:if test="wbldfn:usable-term($nodeName)">
+                    <xsl:if test="wbldfn:usable-term($nodeName) or $nodeName = 'project-name'">
                         <xsl:choose>
                             <xsl:when test="$nodeName = 'id'">
                                 <skos:notation><xsl:value-of select="./text()"/></skos:notation>
@@ -164,13 +164,15 @@ The World Bank also strives to tackle global challenges from international trade
                             <xsl:otherwise>
                                 <xsl:choose>
                                     <xsl:when test="$nodeName = ''">
+<!-- XXX:
                                         <xsl:element name="property:external">
                                             <xsl:value-of select="./text()"/>
                                         </xsl:element>
+-->
                                     </xsl:when>
 
                                     <xsl:otherwise>
-                                        <!-- TODO: Crazy bnode stuff or URIs per child node -->
+                                        <!-- Crazy bnode stuff or URIs per child node -->
                                         <xsl:choose>
                                             <xsl:when test="count(child::*) > 0">
                                                 <xsl:element name="property:{$nodeName}">
@@ -182,21 +184,14 @@ The World Bank also strives to tackle global challenges from international trade
                                                 </xsl:element>
                                             </xsl:when>
 
-                                            <!-- TODO:
-                                                This catches wb:projects.countryname:
-                                                It should be moved out to its own post-processing XSLT where it creates triples like:
-                                                http://worldbank.270a.info/classification/country/CD
-                                                    dbp:conventionalLongName wb:projects.countryname
-                                            -->
                                             <xsl:otherwise>
+<!-- <property:XXX><xsl:value-of select="name()"/> <xsl:value-of select="./text()"/></property:XXX> -->
 
-    <!-- <property:XXX><xsl:value-of select="name()"/> <xsl:value-of select="./text()"/></property:XXX> -->
-
-                                                <xsl:if test="$nodeName != ''">
+<!--                                                <xsl:if test="$nodeName != ''"> -->
                                                     <xsl:element name="property:{$nodeName}">
                                                         <xsl:value-of select="./text()"/>
                                                     </xsl:element>
-                                                </xsl:if>
+<!--                                                </xsl:if> -->
                                             </xsl:otherwise>
                                         </xsl:choose>
                                     </xsl:otherwise>

@@ -229,7 +229,7 @@
                             <xsl:value-of select="$wbld"/><xsl:text>property/</xsl:text><xsl:value-of select="$datasetName"/><xsl:value-of select="$dataElement"/>
                         </xsl:variable>
 <!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message> -->
-                        <qb:DataStructureDefinition rdf:about="{$wbld}property/world-bank-finances/{$financeDatasetID}/structure">
+                        <qb:DataStructureDefinition rdf:about="{$wbld}dataset/world-bank-finances/{$financeDatasetID}/structure">
                             <qb:component>
                                 <qb:ComponentSpecification>
                                     <xsl:variable name="componentPropertyURI">
