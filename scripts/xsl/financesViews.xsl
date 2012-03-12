@@ -58,31 +58,32 @@
 
                 <rdf:Description rdf:about="{$viewResource}">
                     <xsl:if test="@id = 'wc6g-9zmq'">
-                            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+                        <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
                     </xsl:if>
 
-                    <skos:notation><xsl:value-of select="@id"/></skos:notation>
+                    <dcterms:identifier><xsl:value-of select="@id"/></dcterms:identifier>
 
-                    <!-- XXX: Probably need to grab everyting in a better way instead of cherry picking -->
+                    <!-- XXX: Probably need to grab everyting instead of cherry picking -->
 
                     <!-- XXX: JSON format for this data has attribution and attribution link but the XML doesn't -->
 
-                    <!-- TODO: Use URIs for these values instead -->
                     <xsl:if test="@name != ''">
-                    <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="@name"/></skos:prefLabel>
+                    <rdfs:label xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(@name)"/></rdfs:label>
                     </xsl:if>
 
                     <xsl:if test="@description != ''">
-                    <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="@description"/></skos:definition>
+                    <dcterms:description xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(@description)"/></dcterms:description>
                     </xsl:if>
 
                     <xsl:if test="@category != ''">
-                    <skos:scopeNote xml:lang="{$wbapi_lang}"><xsl:value-of select="@category"/></skos:scopeNote>
+                    <skos:scopeNote xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(@category)"/></skos:scopeNote>
                     </xsl:if>
 
+<!--
                     <xsl:if test="@publicationStage != ''">
                     <property:publication-stage xml:lang="{$wbapi_lang}"><xsl:value-of select="@publicationStage"/></property:publication-stage>
                     </xsl:if>
+-->
 
                     <!-- TODO: Convert from UNIX to ISO timestamps -->
                     <xsl:if test="@createdAt != ''">
