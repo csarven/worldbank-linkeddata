@@ -127,7 +127,8 @@ wbld-dataset:world-bank-finances
     a qb:DataSet ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/structure> ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
-    rdfs:label "IBRD Balance Sheet FY2011"@en ;
+    rdfs:label "IBRD Balance Sheet"@en ;
+    dcterms:title "IBRD Balance Sheet FY2011"@en ;
     dcterms:description "Provides data from the IBRD Balance Sheet for the fiscal years ended June 30, 2011 and June 30, 2010. The values are expressed in millions of U.S. Dollars. Where applicable, changes have been made to certain line items on the June 30, 2010 balance sheet to conform with the current year's presentation, but the comparable prior years' data sets have not been adjusted to reflect the reclassification impact of those changes."@en ;
     dcterms:identifier "4i57-byta" ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Balance-Sheet-FY2011/4i57-byta> ;
@@ -142,6 +143,7 @@ wbld-dataset:world-bank-finances
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/structure> ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     rdfs:label "Contributions to Financial Intermediary Funds"@en ;
+    dcterms:title "Contributions to Financial Intermediary Funds"@en ;
     dcterms:identifier "536v-dxib" ;
     rdfs:seeAlso <https://finances.worldbank.org/Financial-Intermediary-Funds/Contributions-to-Financial-Intermediary-Funds/536v-dxib> ;
     dcterms:source <https://finances.worldbank.org/api/views/536v-dxib/rows.xml> ;
@@ -154,7 +156,8 @@ wbld-dataset:world-bank-finances
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm/structure> ;
-    rdfs:label "IDA Statement of Cash Flows, FY2010"@en ;
+    rdfs:label "IDA Statement of Cash Flows"@en ;
+    dcterms:title "IDA Statement of Cash Flows, FY2010"@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Statement-of-Cash-Flows-FY2010/9pv4-rtrm> ;
     dcterms:identifier "9pv4-rtrm" ;
     dcterms:source <https://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml> ;
@@ -168,6 +171,7 @@ wbld-dataset-world-bank-finances:ax5s-vav5
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/ax5s-vav5/structure> ;
     rdfs:label "Financial Intermediary Funds Funding Decisions"@en ;
+    dcterms:title "Financial Intermediary Funds Funding Decisions"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Funding-Decisions/ax5s-vav5> ;
     dcterms:identifier "ax5s-vav5" ;
     dcterms:source <https://finances.worldbank.org/api/views/ax5s-vav5/rows.xml> ;
@@ -181,6 +185,7 @@ wbld-dataset-world-bank-finances:csrh-vv7b
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/csrh-vv7b/structure> ;
     rdfs:label "The World Bank Components Of VPU Budget"@en ;
+    dcterms:title "The World Bank Components Of VPU Budget"@en ;
     dcterms:description "The World Bank Components of VPU Budget data set compares resource allocations to Vice Presidential Units (VPUs) in FY11 and FY12 across all fund types. Data for Bank (BB) funds and Reimbursable funds are based on budget allocations. Data for Bank-Executed Trust Fund (BETF) funds are based on expenditure projections. Data are for all \"above-the-line\" VPUs for which Bank management is responsible for work program delivery and are included in the Net Administrative Budget of the Bank. Data for centrally-managed accounts and \"below-the-line\" components for which management is not solely responsible. BB funds are authorized by the Bank's Board of Directors for general purpose Bank operations. Reimbursable funds are received from external sources as reimbursements for special purpose program outputs or other services provided by the Bank. BETF funds are multi-year contributions from external sources for special purpose programs outputs or other services provided by the Bank. All data are presented in FY11 $ millions."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Budget/The-World-Bank-Components-Of-VPU-Budget/csrh-vv7b> ;
     #TODO This category data is from JSON
@@ -196,7 +201,8 @@ wbld-dataset-world-bank-finances:e8yz-96c6
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/e8yz-96c6/structure> ;
-    rdfs:label "IBRD Balance Sheet, FY2010"@en ;
+    rdfs:label "IBRD Balance Sheet"@en ;
+    dcterms:title "IBRD Balance Sheet, FY2010"@en ;
     dcterms:description "Provides data from the IBRD Balance Sheet for the fiscal years ended June 30, 2010 and June 30, 2009. The values are expressed in millions of U.S. Dollars"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IBRD-Balance-Sheet-FY2010/e8yz-96c6> ;
     dcterms:identifier "e8yz-96c6" ;
@@ -211,6 +217,7 @@ wbld-dataset-world-bank-finances:ebmi-69yj
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/ebmi-69yj/structure> ;
     rdfs:label "IDA Statement of Credits and Grants - Latest Available Snapshot"@en ;
+    dcterms:title "IDA Statement of Credits and Grants - Latest Available Snapshot"@en ;
     dcterms:description "The International Development Association (IDA) credits are public and publicly guaranteed debt extended by the World Bank Group. IDA provides development credits, grants and guarantees to its recipient member countries to help meet their development needs. Credits from IDA are at concessional rates. Data are in U.S. dollars calculated using historical rates. This dataset contains the latest available snapshot of the IDA Statement of Credits and Grants."@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IDA-Statement-of-Credits-and-Grants-Latest-Availab/ebmi-69yj> ;
     dcterms:identifier "ebmi-69yj" ;
@@ -224,7 +231,8 @@ wbld-dataset-world-bank-finances:eycy-ub35
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/eycy-ub35/structure> ;
-    rdfs:label "IBRD Statement Of Income, FY2011"@en ;
+    rdfs:label "IBRD Statement Of Income"@en ;
+    dcterms:title "IBRD Statement Of Income, FY2011"@en ;
     dcterms:description "Provides data from the IBRD Statement of Income for the fiscal years ended June 30, 2011, June 30, 2010 and June 30, 2009. The values are expressed in millions of U.S. Dollars. Where applicable, changes have been made to certain line items on FY 2010 income statement to conform with the current year's presentation, but the comparable prior years' data sets have not been adjusted to reflect the reclassification impact of those changes."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-Of-Income-FY2011/eycy-ub35> ;
     dcterms:identifier "eycy-ub35" ;
@@ -239,6 +247,7 @@ wbld-dataset-world-bank-finances:fie8-6fxn
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/fie8-6fxn/structure> ;
     rdfs:label "Financial Intermediary Funds Commitments"@en ;
+    dcterms:title "Financial Intermediary Funds Commitments"@en ;
     dcterms:description "Financial Intermediary Funds (FIFs) are multilateral financing arrangements for which the World Bank provides Trustee services that include committing and transferring funds to project implementers (generally international organizations such as multilateral development banks or UN agencies). In all cases the World Bank as Trustee is required to act in accordance with instructions of independent governing bodies. In fulfilling its responsibilities, the World Bank as Trustee complies with all sanctions applicable to World Bank transactions. This dataset provides data on legal obligations to pay recipients of FIFs."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Commitments/fie8-6fxn> ;
     dcterms:identifier "fie8-6fxn" ;
@@ -253,6 +262,7 @@ wbld-dataset-world-bank-finances:gprm-cvxz
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/gprm-cvxz/structure> ;
     rdfs:label "World Bank Program Budget"@en ;
+    dcterms:title "World Bank Program Budget"@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Budget/World-Bank-Program-Budget/gprm-cvxz> ;
     dcterms:identifier "gprm-cvxz" ;
     dcterms:source <https://finances.worldbank.org/api/views/gprm-cvxz/rows.xml> ;
@@ -266,6 +276,7 @@ wbld-dataset-world-bank-finances:h4s8-nwev
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/h4s8-nwev/structure> ;
     rdfs:label "Financial Intermediary Funds Cash Transfers"@en ;
+    dcterms:title "Financial Intermediary Funds Cash Transfers"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Cash-Transfers/h4s8-nwev> ;
     dcterms:identifier "h4s8-nwev" ;
     dcterms:source <https://finances.worldbank.org/api/views/h4s8-nwev/rows.xml> ;
@@ -279,6 +290,7 @@ wbld-dataset-world-bank-finances:h9ga-h5eb
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/h9ga-h5eb/structure> ;
     rdfs:label "Recipient-executed Grants - Commitments and Disbursements"@en ;
+    dcterms:title "Recipient-executed Grants - Commitments and Disbursements"@en ;
     dcterms:description "A Recipient-executed Grant is a Trust Fund Grant that is provided to a third party under a grant agreement, and for which the Bank plays an operational role - i.e., the Bank normally appraises and supervises activities financed by these funds. This dataset provides data on the amount of grant funds committed in the course of a fiscal year and payments made out of a Trust Fund account to eligible recipients, in accordance with the legal agreements. In fulfilling its responsibilities, the World Bank as Trustee complies with all sanctions applicable to World Bank transactions. Data is provided at the individual Trust Fund level. All definitions should be regarded at present as provisional and not final, and are subject to revision at any time."@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Trust-Funds/Recipient-executed-Grants-Commitments-and-Disburse/h9ga-h5eb> ;
     dcterms:identifier "h9ga-h5eb" ;
@@ -293,6 +305,7 @@ wbld-dataset-world-bank-finances:hcqu-nmwb
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/hcqu-nmwb/structure> ;
     rdfs:label "World Bank Expenditures By Program"@en ;
+    dcterms:title "World Bank Expenditures By Program"@en ;
     dcterms:description "The World Bank Expenditure by Program data give the administrative expenditure for Bank (BB) funds and Reimbursable funds from FY06 to FY11. These data are based on the World Bank Expenditure by Program - FY06-11 table from the Annual Report 2011 http://go.worldbank.org/D74CFKTQ80 . BB funds are authorized by the Bank's Board of Directors for general purpose Bank operations. Reimbursable funds are received from external sources as reimbursements for special purpose program outputs or other services provided by the Bank. All data are presented in nominal amounts."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Budget/World-Bank-Expenditures-By-Program/hcqu-nmwb> ;
     dcterms:identifier "hcqu-nmwb" ;
@@ -306,7 +319,8 @@ wbld-dataset-world-bank-finances:i7za-uwi5
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/i7za-uwi5/structure> ;
-    rdfs:label "IDA Statement Of Cash Flows FY2011"@en ;
+    rdfs:label "IDA Statement Of Cash Flows"@en ;
+    dcterms:title "IDA Statement Of Cash Flows FY2011"@en ;
     dcterms:description "Provides data from the IDA Statement of Cash Flows for the fiscal years ended June 30, 2011, June 30, 2010 and June 30, 2009. Sum of all cash flows represent the net changes in unrestricted cash.The values are expressed in millions of U.S. Dollars. Amount in millions of US Dollars, rounded."@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IDA-Statement-Of-Cash-Flows-FY2011/i7za-uwi5> ;
     dcterms:identifier "i7za-uwi5" ;
@@ -321,6 +335,7 @@ wbld-dataset-world-bank-finances:iww5-3sst
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/iww5-3sst/structure> ;
     rdfs:label "IBRD/IDA/IFC Trust Funds - Annual Cash Contributions and Disbursements"@en ;
+    dcterms:title "IBRD/IDA/IFC Trust Funds - Annual Cash Contributions and Disbursements"@en ;
     dcterms:description "For IBRD/IDA and IFC Trust Funds, the World Bank Group is normally responsible for all financial and programmatic functions, including oversight of the operational use of the funding. In fulfilling its responsibilities, the World Bank as Trustee complies with all sanctions applicable to World Bank transactions. The use of IBRD/IDA TFs is split between Bank-executed trust funds (BETFs), which are used in support of the Bank's work program, and Recipient-executed trust funds (RETFs), under which funds are provided to a third party, normally in the form of project financing, and supervised by the Bank. IFC manages the funds in support of IFC advisory services and donor-funded investments."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/IBRD-IDA-IFC-Trust-Funds-Annual-Cash-Contributions/iww5-3sst> ;
     dcterms:identifier "iww5-3sst" ;
@@ -335,6 +350,7 @@ wbld-dataset-world-bank-finances:jeqz-f7mn
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/jeqz-f7mn/structure> ;
     rdfs:label "IBRD and IDA Operational Summary"@en ;
+    dcterms:title "IBRD and IDA Operational Summary"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/dataset/IBRD-and-IDA-Operational-Summary/jeqz-f7mn> ;
     dcterms:identifier "jeqz-f7mn" ;
     dcterms:source <https://finances.worldbank.org/api/views/jeqz-f7mn/rows.xml> ;
@@ -347,7 +363,8 @@ wbld-dataset-world-bank-finances:kmwd-f4rk
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/kmwd-f4rk/structure> ;
-    rdfs:label "IDA Statement of Income, FY2010"@en ;
+    rdfs:label "IDA Statement of Income"@en ;
+    dcterms:title "IDA Statement of Income, FY2010"@en ;
     dcterms:description "Provides data from the IDA Statement of Income for the fiscal years ended June 30, 2010, June 30, 2009 and June 30, 2008. The values are expressed in millions of U.S. Dollars."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Statement-of-Income-FY2010/kmwd-f4rk> ;
     dcterms:identifier "kmwd-f4rk" ;
@@ -362,6 +379,7 @@ wbld-dataset-world-bank-finances:m54j-ersw
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/m54j-ersw/structure> ;
     rdfs:label "Total Contributions to IBRD/IDA/IFC Trust Funds - Summary based on FY of Agreement"@en ;
+    dcterms:title "Total Contributions to IBRD/IDA/IFC Trust Funds - Summary based on FY of Agreement"@en ;
     dcterms:description "A Trust Fund is a financing arrangement set up with contributions from one or more donor(s), and in some cases from the World Bank Group. A Trust Fund can be country-specific, regional, or global in its geographic scope, and it can be free-standing or programmatic. In fulfilling its responsibilities, the World Bank as Trustee complies with all sanctions applicable to World Bank transactions. This dataset provides a summary of the contributions per fiscal year at the individual Trust Fund level. All definitions should be regarded at present as provisional and not final, and are subject to revision at any time."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/Total-Contributions-to-IBRD-IDA-IFC-Trust-Funds-Su/m54j-ersw> ;
     dcterms:identifier "m54j-ersw" ;
@@ -376,6 +394,7 @@ wbld-dataset-world-bank-finances:nh5z-5qch
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/nh5z-5qch/structure> ;
     rdfs:label "Paid In Contributions to IBRD/IDA/IFC Trust Funds based on FY of Receipt"@en ;
+    dcterms:title "Paid In Contributions to IBRD/IDA/IFC Trust Funds based on FY of Receipt"@en ;
     dcterms:description "This dataset provides a summary of the total funds received from donors for Trust Funds on the form of cash, promissory notes or other instruments acceptable to the World Bank Group entity administering the Trust Fund. The summary is based on the fiscal year of receipt. Data is provided at the individual Trust Fund level. All definitions should be regarded at present as provisional and not final, and are subject to revision at any time. In fulfilling its responsibilities, the World Bank as Trustee complies with all sanctions applicable to World Bank transactions."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/Paid-In-Contributions-to-IBRD-IDA-IFC-Trust-Funds-/nh5z-5qch> ;
     dcterms:identifier "nh5z-5qch" ;
@@ -390,6 +409,7 @@ wbld-dataset-world-bank-finances:p65j-3upu
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/p65j-3upu/structure> ;
     rdfs:label "Commercial Credit Exposure by Counterparty Rating"@en ;
+    dcterms:title "Commercial Credit Exposure by Counterparty Rating"@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Liquid-Assets-Management/Commercial-Credit-Exposure-by-Counterparty-Rating/p65j-3upu> ;
     dcterms:identifier "p65j-3upu" ;
     dcterms:source <https://finances.worldbank.org/api/views/p65j-3upu/rows.xml> ;
@@ -402,7 +422,8 @@ wbld-dataset-world-bank-finances:pyda-ktbg
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/pyda-ktbg/structure> ;
-    rdfs:label "IBRD Statement of Income, FY2010"@en ;
+    rdfs:label "IBRD Statement of Income"@en ;
+    dcterms:title "IBRD Statement of Income, FY2010"@en ;
     dcterms:description "Provides data from the IBRD Statement of Income for the fiscal years ended June 30, 2010, June 30, 2009 and June 30, 2008. The values are expressed in millions of U.S. Dollars."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-of-Income-FY2010/pyda-ktbg> ;
     dcterms:identifier "pyda-ktbg" ;
@@ -417,6 +438,7 @@ wbld-dataset-world-bank-finances:rcx4-r7xj
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/rcx4-r7xj/structure> ;
     rdfs:label "IBRD Statement of Subscriptions to Capital Stock and Voting Power as of June 30, 2011"@en ;
+    dcterms:title "IBRD Statement of Subscriptions to Capital Stock and Voting Power as of June 30, 2011"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Shareholder-Equity/IBRD-Statement-of-Subscriptions-to-Capital-Stock-a/rcx4-r7xj> ;
     dcterms:identifier "rcx4-r7xj" ;
     dcterms:source <https://finances.worldbank.org/api/views/rcx4-r7xj/rows.xml> ;
@@ -429,7 +451,8 @@ wbld-dataset-world-bank-finances:ri54-wt6e
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/ri54-wt6e/structure> ;
-    rdfs:label "IDA Balance Sheet, FY2011"@en ;
+    rdfs:label "IDA Balance Sheet"@en ;
+    dcterms:title "IDA Balance Sheet, FY2011"@en ;
     dcterms:description "Provides data from the IDA Balance Sheet for the fiscal years ended June 30, 2011 and June 30, 2010. The values are expressed in millions of U.S. Dollars. Where applicable, changes have been made to certain line items on the June 30, 2010 balance sheet to conform with the current year's presentation, but the comparable prior years' data sets have not been adjusted to reflect the reclassification impact of those changes."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Balance-Sheet-FY2011/ri54-wt6e> ;
     dcterms:identifier "ri54-wt6e" ;
@@ -443,7 +466,8 @@ wbld-dataset-world-bank-finances:s3ey-mkx3
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/s3ey-mkx3/structure> ;
-    rdfs:label "IDA Balance Sheet, FY2010"@en ;
+    rdfs:label "IDA Balance Sheet"@en ;
+    dcterms:title "IDA Balance Sheet, FY2010"@en ;
     dcterms:description "Provides data from the IDA Balance Sheetfor the fiscal years ended June 30, 2010 and June 30, 2009. The values are expressed in millions of U.S. Dollars."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Balance-Sheet-FY2010/s3ey-mkx3> ;
     dcterms:identifier "s3ey-mkx3" ;
@@ -458,6 +482,7 @@ wbld-dataset-world-bank-finances:sfv5-tf7p
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/sfv5-tf7p/structure> ;
     rdfs:label "IBRD Statement of Loans - Latest Available Snapshot"@en ;
+    dcterms:title "IBRD Statement of Loans - Latest Available Snapshot"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IBRD-Statement-of-Loans-Latest-Available-Snapshot/sfv5-tf7p> ;
     dcterms:source <https://finances.worldbank.org/api/views/sfv5-tf7p/rows.xml> ;
     dcterms:identifier "sfv5-tf7p" ;
@@ -471,6 +496,7 @@ wbld-dataset-world-bank-finances:tdwh-3krx
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/tdwh-3krx/structure> ;
     rdfs:label "IDA Statement Of Credits and Grants - Historical Data"@en ;
+    dcterms:title "IDA Statement Of Credits and Grants - Historical Data"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IDA-Statement-Of-Credits-and-Grants-Historical-Dat/tdwh-3krx> ;
     dcterms:identifier "tdwh-3krx" ;
     dcterms:source <https://finances.worldbank.org/api/views/tdwh-3krx/rows.xml> ;
@@ -484,6 +510,7 @@ wbld-dataset-world-bank-finances:v84d-dq44
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/v84d-dq44/structure> ;
     rdfs:label "IDA Statement of Voting Power and Subscriptions and Contributions as of June 30, 2011"@en ;
+    dcterms:title "IDA Statement of Voting Power and Subscriptions and Contributions as of June 30, 2011"@en ;
     dcterms:description "Provides data on Members' Subscriptions and Contributions as of June 30, 2011. Prior to effectiveness, only a portion of the value Instruments of Commitment (IoCs) received as specified in the replenishment resolution is recorded as Subscriptions and Contributions committed. Upon effectiveness, the received is subsequently recorded as subscriptions and contributions committed remainder of the value of IoCs."@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Shareholder-Equity/IDA-Statement-of-Voting-Power-and-Subscriptions-an/v84d-dq44> ;
     dcterms:identifier "v84d-dq44" ;
@@ -497,7 +524,8 @@ wbld-dataset-world-bank-finances:wphw-pasx
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/wphw-pasx/structure> ;
-    rdfs:label "IDA Statement Of Income FY2011"@en ;
+    rdfs:label "IDA Statement Of Income"@en ;
+    dcterms:title "IDA Statement Of Income FY2011"@en ;
     dcterms:description "Provides data from the IDA Statement of Income for the fiscal years ended June 30, 2011, June 30, 2010 and June 30, 2009. The values are expressed in millions of U.S. Dollars. Where applicable, changes have been made to certain line items on FY 2010 income statement to conform with the current year's presentation, but the comparable prior years' data sets have not been adjusted to reflect the reclassification impact of those changes."@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IDA-Statement-Of-Income-FY2011/wphw-pasx> ;
     dcterms:identifier "wphw-pasx" ;
@@ -511,7 +539,8 @@ wbld-dataset-world-bank-finances:xs8h-cwh5
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/xs8h-cwh5/structure> ;
-    rdfs:label "IBRD Statement of Cash Flows, FY2010"@en ;
+    rdfs:label "IBRD Statement of Cash Flows"@en ;
+    dcterms:title "IBRD Statement of Cash Flows, FY2010"@en ;
     dcterms:description "Provides data from the IBRD Statement of Cash Flows for the fiscal years ended June 30, 2010, June 30, 2009 and June 30, 2008. Sum of all cash flows represent the net changes in unrestricted cash. The values are expressed in millions of U.S. Dollars."@en;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-of-Cash-Flows-FY2010/xs8h-cwh5> ;
     dcterms:identifier "xs8h-cwh5" ;
@@ -526,6 +555,7 @@ wbld-dataset-world-bank-finances:zucq-nrc3
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/zucq-nrc3/structure> ;
     rdfs:label "IBRD Statement Of Loans - Historical Data"@en ;
+    dcterms:title "IBRD Statement Of Loans - Historical Data"@en ;
     rdfs:seeAlso <https://finances.worldbank.org/Loan-and-Credit-Administration/IBRD-Statement-Of-Loans-Historical-Data/zucq-nrc3> ;
     dcterms:identifier "zucq-nrc3" ;
     dcterms:source <https://finances.worldbank.org/api/views/zucq-nrc3/rows.xml> ;
@@ -538,22 +568,12 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure> ;
+    rdfs:label "IBRD Statement Of Cash Flows"@en ;
     dcterms:description "IBRD Statement Of Cash Flows, FY2011"@en;
+    dcterms:title "IBRD Statement of Cash Flows"@en ;
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-Of-Cash-Flows-FY2011/zyqx-8e4a> ;
-    rdfs:label "IBRD Statement of Cash Flows"@en ;
     dcterms:identifier "zyqx-8e4a" ;
     dcterms:source <https://finances.worldbank.org/api/views/zyqx-8e4a/rows.xml> ;
-    dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
-    dcterms:creator <http://csarven.ca/#i> ;
-    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
-    .
-
-
-wbld-dataset:world-bank-projects-and-operations
-#    a qb:DataSet ;
-#    qb:structure wbld-dataset-projects-and-operations:structure ;
-    rdfs:label "World Bank Projects and Operations dataset"@en ;
-    dcterms:source <http://search.worldbank.org/api/projects/all.xml> ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
