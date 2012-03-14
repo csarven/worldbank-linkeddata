@@ -175,13 +175,25 @@ The World Bank also strives to tackle global challenges from international trade
                                         <!-- Crazy bnode stuff or URIs per child node -->
                                         <xsl:choose>
                                             <xsl:when test="count(child::*) > 0">
-                                                <xsl:element name="property:{$nodeName}">
-                                                    <xsl:variable name="position" select="position()"/>
-    <!-- <xsl:message><xsl:text>2: </xsl:text><xsl:value-of select="$projectId"/><xsl:text> </xsl:text><xsl:value-of select="$position"/><xsl:text> </xsl:text><xsl:value-of select="name()"/></xsl:message> -->
-                                                    <xsl:attribute name="rdf:nodeID">
-                                                        <xsl:value-of select="$projectId"/><xsl:value-of select="$nodeName"/><xsl:value-of select="$position"/>
-                                                    </xsl:attribute>
-                                                </xsl:element>
+<!-- XXX: This is temporary -->
+                                                <xsl:choose>
+                                                    <xsl:when test="$nodeName = 'major-sector'">
+                                                        <xsl:element name="property:{$nodeName}">
+<xsl:message><xsl:value-of select="*"/></xsl:message>
+                                                             <xsl:attribute name="rdf:resource" select="normalize-space(./text())"/>
+                                                        </xsl:element>
+                                                    </xsl:when>
+
+                                                    <xsl:otherwise>
+                                                        <xsl:element name="property:{$nodeName}">
+                                                            <xsl:variable name="position" select="position()"/>
+            <!-- <xsl:message><xsl:text>2: </xsl:text><xsl:value-of select="$projectId"/><xsl:text> </xsl:text><xsl:value-of select="$position"/><xsl:text> </xsl:text><xsl:value-of select="name()"/></xsl:message> -->
+                                                            <xsl:attribute name="rdf:nodeID">
+                                                                <xsl:value-of select="$projectId"/><xsl:value-of select="$nodeName"/><xsl:value-of select="$position"/>
+                                                            </xsl:attribute>
+                                                        </xsl:element>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
                                             </xsl:when>
 
                                             <xsl:otherwise>
@@ -235,13 +247,12 @@ bnode_projectid+Node#ofProperty
         <xsl:for-each select="projects/project">
             <xsl:variable name="projectId" select="normalize-space(@id)"/>
             <xsl:for-each select="node()">
-                <xsl:if test="count(child::*) > 0">
+                <xsl:if test="wbldfn:usable-term(wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))) and count(child::*) > 0">
                     <xsl:variable name="position" select="position()"/>
                     <rdf:Description rdf:nodeID="{$projectId}{replace(name(), 'wb:projects.', '')}{$position}">
                         <xsl:for-each select="child::*">
     <!-- <xsl:message><xsl:value-of select="name()"/></xsl:message> -->
                             <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
-                            <xsl:variable name="text" select="normalize-space(./text())"/>
 
                             <xsl:if test="wbldfn:usable-term($nodeName)">
                                 <xsl:choose>
@@ -251,17 +262,14 @@ bnode_projectid+Node#ofProperty
                                             <xsl:value-of select="wbldfn:get-date(normalize-space(./text()))"/>
                                         </xsl:element>
                                     </xsl:when>
-                                    <xsl:when test="$nodeName = 'description'">
-                                        <dcterms:description xml:lang="en"><xsl:value-of select="normalize-space(./text())"/></dcterms:description>
+                                    <xsl:when test="$nodeName = 'title'">
+                                        <dcterms:title xml:lang="en"><xsl:value-of select="normalize-space(./text())"/></dcterms:title>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'url'">
                                         <foaf:page rdf:resource="{normalize-space(./text())}"/>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'id'">
                                         <dcterms:identifier><xsl:value-of select="normalize-space(./text())"/></dcterms:identifier>
-                                    </xsl:when>
-                                    <xsl:when test="$nodeName = 'type'">
-                                        <rdf:type rdf:resource="{$wbld}classification/document/{wbldfn:safe-term(normalize-space(./text()))}"/>
                                     </xsl:when>
 
                                     <xsl:otherwise>

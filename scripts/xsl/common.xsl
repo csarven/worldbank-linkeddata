@@ -43,22 +43,68 @@
     <xsl:function name="wbldfn:usable-term">
         <xsl:param name="string"/>
 <!--
-XXX: *mdk* no longer exists in the data from the projects API. Thus, those restrictions here will be removed when I change from the static file to the API. The API is not quite ready yet and the static file appears to be more stable.
+XXX: Temporary stuff:
+
+*mdk* no longer exists in the data from the projects API. Thus, those restrictions here will be removed when I change from the static file to the API. The API is not quite ready yet and the static file appears to be more stable.
 
 The 'location' data is broken in the XML version. The JSON version contains the proper keys for its children. I will wait until the projects API's XML output is better, and then output the location data.
+
+Excluding projectdoc.doctype for the time being as well because the XML data is not clean enough. Rather introduce these triples later on.
+
+Ignoring mjsector[1-5].name for now. When there is classification/major-section codelist, each concept will include the name, notation (from mjsector[1-5].code.
+
+Ignoring sector[1-5].
+..
+
+XXX: Review every single term here. Mostly projects-and-operations related. Only uuid and partially the project-name is from finances
 -->
         <xsl:if test="$string != ''
+                    and $string != 'board-approval-month'
+                    and $string != 'board-approval-year'
                     and $string != 'countryname'
                     and $string != 'countryname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk-exact'
                     and $string != 'countryshortname-and-mdk'
                     and $string != 'countryshortname-and-mdk-exact'
+                    and $string != 'docty'
                     and $string != 'location'
+                    and $string != 'isrr-doc'
+                    and $string != 'majorsector-percent'
+                    and $string != 'mjsector'
+                    and $string != 'mjsector-and-mdk'
+                    and $string != 'mjsector-and-mdk-exact'
+                    and $string != 'mjsector1'
+                    and $string != 'mjsector2'
+                    and $string != 'mjsector3'
+                    and $string != 'mjsector4'
+                    and $string != 'mjsector5'
+                    and $string != 'mjtheme1name'
+                    and $string != 'mjtheme2name'
+                    and $string != 'mjtheme3name'
+                    and $string != 'mjtheme4name'
+                    and $string != 'mjtheme5name'
                     and $string != 'project-name'
                     and $string != 'project-name-and-mdk'
+                    and $string != 'projectdoc.doctype'
                     and $string != 'regionname-and-mdk'
                     and $string != 'regionname-and-mdk-exact'
+                    and $string != 'sector-and-mdk'
+                    and $string != 'sector-and-mdk-exact'
+                    and $string != 'sector1'
+                    and $string != 'sector2'
+                    and $string != 'sector3'
+                    and $string != 'sector4'
+                    and $string != 'sector5'
+                    and $string != 'timestamp'
+                    and $string != 'theme-and-mdk'
+                    and $string != 'theme-and-mdk-exact'
+                    and $string != 'theme1'
+                    and $string != 'theme2'
+                    and $string != 'theme3'
+                    and $string != 'theme4'
+                    and $string != 'theme5'
+
                     and $string != 'uuid'
                     ">
             <xsl:value-of select="true()"/>
@@ -147,6 +193,10 @@ The 'location' data is broken in the XML version. The JSON version contains the 
             <xsl:when test="$string = 'loans-outstanding'">
                 <xsl:text>loans-outstanding-us-millions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'mjsectorcode'
+                            ">
+                <xsl:text>major-sector</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'net-disbursements'">
                 <xsl:text>net-disbursements-us-millions</xsl:text>
             </xsl:when>
@@ -174,11 +224,13 @@ The 'location' data is broken in the XML version. The JSON version contains the 
             <xsl:when test="$string = 'projectdoc.entityid'">
                 <xsl:text>id</xsl:text>
             </xsl:when>
+<!--
             <xsl:when test="$string = 'projectdoc.doctype'">
                 <xsl:text>type</xsl:text>
             </xsl:when>
+-->
             <xsl:when test="$string = 'projectdoc.doctypedesc'">
-                <xsl:text>description</xsl:text>
+                <xsl:text>title</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdoc.docurl'">
                 <xsl:text>url</xsl:text>
