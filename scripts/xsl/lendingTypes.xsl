@@ -68,7 +68,7 @@
             </rdf:Description>
         </xsl:for-each>
 
-        <rdf:Description rdf:about="{$wbld}property/income-level">
+        <rdf:Description rdf:about="{$wbld}property/lending-type">
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
             <rdfs:label xml:lang="en">Lending type</rdfs:label>
             <qb:concept rdf:resource="{$wbld}classification/income-level"/>
