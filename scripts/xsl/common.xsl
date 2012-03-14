@@ -42,7 +42,11 @@
 
     <xsl:function name="wbldfn:usable-term">
         <xsl:param name="string"/>
+<!--
+XXX: *mdk* no longer exists in the data from the projects API. Thus, those restrictions here will be removed when I change from the static file to the API. The API is not quite ready yet and the static file appears to be more stable.
 
+The 'location' data is broken in the XML version. The JSON version contains the proper keys for its children. I will wait until the projects API's XML output is better, and then output the location data.
+-->
         <xsl:if test="$string != ''
                     and $string != 'countryname'
                     and $string != 'countryname-and-mdk'
@@ -50,6 +54,7 @@
                     and $string != 'countrynameshortname-and-mdk-exact'
                     and $string != 'countryshortname-and-mdk'
                     and $string != 'countryshortname-and-mdk-exact'
+                    and $string != 'location'
                     and $string != 'project-name'
                     and $string != 'project-name-and-mdk'
                     and $string != 'regionname-and-mdk'
