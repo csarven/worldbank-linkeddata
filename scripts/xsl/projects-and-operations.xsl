@@ -255,6 +255,7 @@ bnode_projectid+Node#ofProperty
                             <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
 
                             <xsl:if test="wbldfn:usable-term($nodeName)">
+<!-- TODO: This should separate between projects.doctype stuff from other nested nodes -->
                                 <xsl:choose>
                                     <xsl:when test="$nodeName = 'date'">
                                         <xsl:element name="dcterms:date">
@@ -266,6 +267,10 @@ bnode_projectid+Node#ofProperty
                                         <dcterms:title xml:lang="en"><xsl:value-of select="normalize-space(./text())"/></dcterms:title>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'url'">
+<!-- TODO:
+Add <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/> to doctype
+-->
+
                                         <foaf:page rdf:resource="{normalize-space(./text())}"/>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'id'">
