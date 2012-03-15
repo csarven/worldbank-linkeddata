@@ -21,7 +21,7 @@ rapper -g /var/www/lib/worldbank-linkeddata/data/currencies.rdf >> /var/www/lib/
 
 rapper -g /var/www/lib/worldbank-linkeddata/data/worldbank-sameAs-dbpedia_countries.nt >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ;
 
-rapper -g /var/www/lib/worldbank-linkeddata/data/worldbank-exactMatch-dbpedia_currencies.nt >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ;
+rapper -g /var/www/lib/worldbank-linkeddata/data/worldbank-sameAs-dbpedia_currencies.nt >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ;
 
 
 
