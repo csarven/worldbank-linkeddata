@@ -23,7 +23,6 @@
                     or $string = 'line-item'
                     or $string = 'organization'
                     or $string = 'source'
-                    or $string = 'status'
                     or $string = 'sub-account'
                     or $string = 'trustee-fund'
                     or $string = 'trustee-fund-name'
@@ -247,7 +246,7 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                 <xsl:text>url</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectstatusdisplay'">
-                <xsl:text>project-status-display</xsl:text>
+                <xsl:text>status</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'reimbursable-mlns-of-usd'">
                 <xsl:text>reimbursable-us-millions</xsl:text>
