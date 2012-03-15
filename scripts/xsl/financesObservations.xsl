@@ -134,67 +134,52 @@
             -->
 
             <!-- These match up with ISO codes -->
-            <xsl:when test="$nodeName = 'beneficiary-code'
-                        or $nodeName = 'country-code'
-                        or $nodeName = 'donor-code'
-                        or $nodeName = 'guarantor-country-code'">
+            <xsl:when test="$nodeName = 'beneficiary'
+                        or $nodeName = 'country'
+                        or $nodeName = 'donor'
+                        or $nodeName = 'guarantor'
+                        or $nodeName = 'member'
+                        ">
+                <xsl:variable name="countryString" select="normalize-space(./text())"/>
+
                 <xsl:choose>
-                    <xsl:when test="./text() = ''">
+                    <xsl:when test="$countryString = ''">
                         <xsl:element name="property:{$datasetName}{$nodeName}"/>
                     </xsl:when>
 
                     <xsl:otherwise>
-                        <xsl:element name="property:{$datasetName}{$nodeName}">
-                            <xsl:attribute name="rdf:resource">
-                                <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
-                            </xsl:attribute>
-                        </xsl:element>
+                        <xsl:choose>
+                            <xsl:when test="string-length($countryString) = 2">
+                                <xsl:element name="property:{$datasetName}{$nodeName}">
+                                    <xsl:attribute name="rdf:resource">
+                                        <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="$countryString"/>
+                                    </xsl:attribute>
+                                </xsl:element>
+                            </xsl:when>
+
+                            <xsl:otherwise>
+                                <xsl:choose>
+                                    <!--
+                                        TODO: Some of the countries don't match e.g., "Yemen, Rep." in countries.xml and "Yemen, People's Democratic Republic of" or "Yemen, Republic of" in ax5s-vav5.xml.
+                                    -->
+                                    <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
+                                        <xsl:element name="property:{$datasetName}{$nodeName}">
+                                            <xsl:attribute name="rdf:resource">
+                                                <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]/wb:iso2Code/normalize-space(text())"/>
+                                            </xsl:attribute>
+                                        </xsl:element>
+                                    </xsl:when>
+
+                                    <xsl:otherwise>
+                                        <xsl:element name="property:{$datasetName}{$nodeName}">
+                                            <xsl:value-of select="$countryString"/>
+                                        </xsl:element>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:otherwise>
                 </xsl:choose>
-            </xsl:when>
-
-            <!--
-                TODO: Some of the countries don't match e.g., "Yemen, Rep." in countries.xml and "Yemen, People's Democratic Republic of" or "Yemen, Republic of" in ax5s-vav5.xml.
-                XXX: Currently using sdmx-dimension:refArea "Yemen, Republic of". Could use property:country_beneficiary "Yemen, Republic of". Not sure about it right now.
-            -->
-            <xsl:when test="$nodeName = 'country'">
-                <xsl:variable name="countryString" select="./text()"/>
-
-                <xsl:element name="property:{$datasetName}{$nodeName}">
-                    <xsl:choose>
-                        <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
-                            <xsl:attribute name="rdf:resource">
-                                <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]/wb:iso2Code/normalize-space(text())"/>
-                            </xsl:attribute>
-                        </xsl:when>
-
-                        <xsl:otherwise>
-                            <xsl:value-of select="./text()"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                 </xsl:element>
-            </xsl:when>
-
-            <xsl:when test="$nodeName = 'country-beneficiary'
-                            or $nodeName = 'donor-name'
-                            or $nodeName = 'guarantor'
-                            or $nodeName = 'member'
-                            or $nodeName = 'member-country'">
-                <xsl:variable name="countryString" select="normalize-space(./text())"/>
-
-                <xsl:element name="property:{$datasetName}{$nodeName}">
-                    <xsl:choose>
-                        <xsl:when test="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]">
-                            <xsl:attribute name="rdf:resource">
-                                <xsl:value-of select="$classification"/><xsl:text>country/</xsl:text><xsl:value-of select="document($pathToCountries)/wb:countries/wb:country[wb:name/text() = $countryString]/wb:iso2Code/normalize-space(text())"/>
-                            </xsl:attribute>
-                        </xsl:when>
-
-                        <xsl:otherwise>
-                            <xsl:value-of select="./text()"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                 </xsl:element>
             </xsl:when>
 
             <xsl:when test="$nodeName = 'region'">

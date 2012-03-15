@@ -5,15 +5,9 @@
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:dcterms="http://purl.org/dc/terms/"
-    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
-    xmlns:func="http://exslt.org/functions"
-                xmlns:is-date="http://www.intelligentstreaming.com/xsl/date-time"
-                extension-element-prefixes="func"
-    exclude-result-prefixes="func is-date"
-    >
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/">
 
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
 
@@ -25,9 +19,7 @@
     <xsl:function name="wbldfn:prepend-dataset">
         <xsl:param name="string"/>
 
-        <xsl:if test="$string = 'approval-quarter'
-                    or $string = 'calendar-year'
-                    or $string = 'financial-product'
+        <xsl:if test="$string = 'financial-product'
                     or $string = 'line-item'
                     or $string = 'organization'
                     or $string = 'source'
@@ -56,7 +48,7 @@ Ignoring mjsector[1-5].name for now. When there is classification/major-section 
 Ignoring sector[1-5].
 ..
 
-XXX: Review every single term here. Mostly projects-and-operations related. Only uuid and partially the project-name is from finances
+XXX: Review every single term here. Mostly projects-and-operations related. Only uuid, country-name, donor-name and partially the project-name is from finances.
 -->
         <xsl:if test="$string != ''
                     and $string != 'board-approval-month'
@@ -68,7 +60,9 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                     and $string != 'countryshortname-and-mdk'
                     and $string != 'countryshortname-and-mdk-exact'
                     and $string != 'docty'
+                    and $string != 'donor-name'
                     and $string != 'location'
+                    and $string != 'beneficiary-name'
                     and $string != 'isrr-doc'
                     and $string != 'majorsector-percent'
                     and $string != 'mjsector'
@@ -118,6 +112,9 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'bb-mlns-of-usd'">
                 <xsl:text>bb-us-millions</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'beneficiary-code'">
+                <xsl:text>beneficiary</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'betf-mlns-of-usd'">
                 <xsl:text>betf-us-millions</xsl:text>
             </xsl:when>
@@ -145,11 +142,20 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'credit-status'">
                 <xsl:text>loan-status</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'country-beneficiary'">
+                <xsl:text>beneficiary</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'country-code'">
+                <xsl:text>country</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'development-grant-expenses'">
                 <xsl:text>development-grant-expenses-us-millions</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'disbursements-usd'">
                 <xsl:text>disbursements-us-billions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'donor-code'">
+                <xsl:text>donor</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'envassesmentcategorycode'">
                 <xsl:text>environmental-assessment-category-code</xsl:text>
@@ -165,6 +171,9 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             </xsl:when>
             <xsl:when test="$string = 'gross-disbursements-total'">
                 <xsl:text>gross-disbursements-total-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'guarantor-country-code'">
+                <xsl:text>guarantor</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'ibrdcommamt'">
                 <xsl:text>ibrd-commitment-amount</xsl:text>
@@ -193,8 +202,10 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'loans-outstanding'">
                 <xsl:text>loans-outstanding-us-millions</xsl:text>
             </xsl:when>
-            <xsl:when test="$string = 'mjsectorcode'
-                            ">
+            <xsl:when test="$string = 'member-country'">
+                <xsl:text>member</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'mjsectorcode'">
                 <xsl:text>major-sector</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'net-disbursements'">
@@ -414,6 +425,11 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
 
                     <xsl:non-matching-substring>
 <!--
+    xmlns:func="http://exslt.org/functions"
+                xmlns:is-date="http://www.intelligentstreaming.com/xsl/date-time"
+                extension-element-prefixes="func"
+    exclude-result-prefixes="func is-date"
+
                         <xsl:analyze-string select="$date" regex="([0-9]+)">
                             <xsl:matching-substring>
 
@@ -430,7 +446,6 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
                                 <xsl:value-of select="$date"/>
                             </xsl:non-matching-substring>
                         </xsl:analyze-string>
-
 -->
                                 <xsl:value-of select="$date"/>
 
