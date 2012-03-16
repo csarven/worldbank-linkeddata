@@ -226,7 +226,7 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                 <xsl:text>product-line-type</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdocs'">
-                <xsl:text>project-document</xsl:text>
+                <xsl:text>references</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'projectdoc.docdate'">
                 <xsl:text>date</xsl:text>

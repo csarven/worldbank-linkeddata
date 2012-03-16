@@ -249,11 +249,10 @@ bnode_projectid+Node#ofProperty
             <xsl:for-each select="node()">
                 <xsl:if test="wbldfn:usable-term(wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))) and count(child::*) > 0">
                     <xsl:variable name="position" select="position()"/>
-                    <rdf:Description rdf:nodeID="{$projectId}{replace(name(), 'wb:projects.', '')}{$position}">
+                    <rdf:Description rdf:nodeID="{$projectId}{wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))}{$position}">
                         <xsl:for-each select="child::*">
     <!-- <xsl:message><xsl:value-of select="name()"/></xsl:message> -->
                             <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
-
                             <xsl:if test="wbldfn:usable-term($nodeName)">
 <!-- TODO: This should separate between projects.doctype stuff from other nested nodes -->
                                 <xsl:choose>
@@ -270,7 +269,6 @@ bnode_projectid+Node#ofProperty
 <!-- TODO:
 Add <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/> to doctype
 -->
-
                                         <foaf:page rdf:resource="{normalize-space(./text())}"/>
                                     </xsl:when>
                                     <xsl:when test="$nodeName = 'id'">
