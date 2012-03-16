@@ -570,8 +570,8 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/zyqx-8e4a/structure> ;
     rdfs:label "IBRD Statement Of Cash Flows"@en ;
-    dcterms:description "IBRD Statement Of Cash Flows, FY2011"@en;
-    dcterms:title "IBRD Statement of Cash Flows"@en ;
+    dcterms:title "IBRD Statement Of Cash Flows, FY2011"@en ;
+    dcterms:description "Provides data from the IBRD Statement of Cash Flows for the fiscal years ended June 30, 2011, June 30, 2010 and June 30, 2009. Sum of all cash flows represent the net changes in unrestricted cash. The values are expressed in millions of U.S. Dollars. Where applicable, changes have been made to certain line items on FY 2010 statement of cash flows to conform with the current year's presentation, but the comparable prior years' data sets have not been adjusted to reflect the reclassification impact of those changes."@en;
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-Of-Cash-Flows-FY2011/zyqx-8e4a> ;
     dcterms:identifier "zyqx-8e4a" ;
     dcterms:source <https://finances.worldbank.org/api/views/zyqx-8e4a/rows.xml> ;
