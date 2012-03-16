@@ -29,6 +29,7 @@ wbld-dataset:world-development-indicators
     a qb:DataSet ;
     qb:structure wbld-dataset-world-development-indicators:structure ;
     rdfs:label "World Development Indicators dataset"@en ;
+    dcterms:title "World Development Indicators"@en ;
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:source <http://api.worldbank.org/indicators?format=xml> ;
     dcterms:creator <http://csarven.ca/#i> ;
