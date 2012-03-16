@@ -71,26 +71,27 @@ The World Bank also strives to tackle global challenges from international trade
                     -->
                     <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
 
-                    <xsl:if test="wbldfn:usable-term($nodeName) or $nodeName = 'project-name'">
+                    <xsl:if test="$nodeName = 'project-name' or wbldfn:usable-term($nodeName)">
                         <xsl:choose>
                             <xsl:when test="$nodeName = 'id'">
                                 <skos:notation><xsl:value-of select="./text()"/></skos:notation>
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'project-name'">
-    <!--                            <property:project-name><xsl:value-of select="./text()"/></property:project-name> -->
                                 <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
                             </xsl:when>
 
+                            <xsl:when test="$nodeName = 'project-name'">
+                                <skos:prefLabel xml:lang="zh"><xsl:value-of select="normalize-space(./text())"/></skos:prefLabel>
+                            </xsl:when>
+
                             <xsl:when test="$nodeName = 'financier'">
-    <!--                            <property:financier><xsl:value-of select="./text()"/></property:financier> -->
                                 <property:loan-number rdf:resource="{$wbld}loan-number/{normalize-space(./text())}"/>
                             </xsl:when>
 
                             <!-- These match up with strings -->
                             <!--
                                 TODO: Some of the countries don't match e.g., "Yemen, Rep." in countries.xml and "Yemen, People's Democratic Republic of" or "Yemen, Republic of" in ax5s-vav5.xml.
-                                XXX: Currently using sdmx-dimension:refArea "Yemen, Republic of". Could use property:country_beneficiary "Yemen, Republic of". Not sure about it right now.
                             -->
                             <xsl:when test="$nodeName = 'country'">
                                 <xsl:variable name="countryString" select="normalize-space(./text())"/>
