@@ -126,7 +126,7 @@ wbld-dataset:world-bank-finances
 
 <http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta>
     a qb:DataSet ;
-    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/structure> ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/4i57-byta/structure> ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     rdfs:label "IBRD Balance Sheet"@en ;
     dcterms:title "IBRD Balance Sheet FY2011"@en ;
