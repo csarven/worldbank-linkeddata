@@ -48,7 +48,7 @@
         </rdf:Description>
 
         <xsl:for-each select="wb:topics/wb:topic">
-            <rdf:Description rdf:about="{$wbld}classification/region">
+            <rdf:Description rdf:about="{$wbld}classification/topic">
                 <skos:hasTopConcept rdf:resource="{$wbld}classification/topic/{@id}"/>
             </rdf:Description>
 
