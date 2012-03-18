@@ -125,15 +125,6 @@
                 </xsl:element>
             </xsl:when>
 
-            <!--
-            <xsl:when test="$nodeName = 'project-name'">
-                <xsl:element name="property:{$datasetName}{$nodeName}">
-                    <xsl:value-of select="./text()"/>
-                </xsl:element>
-            </xsl:when>
-            -->
-
-            <!-- These match up with ISO codes -->
             <xsl:when test="$nodeName = 'beneficiary'
                         or $nodeName = 'country'
                         or $nodeName = 'donor'
@@ -226,7 +217,6 @@
                 </xsl:element>
             </xsl:when>
 
-            <!-- XXX: Perhaps the next two conditions should use sdmx:refPeriod -->
             <xsl:when test="$nodeName = 'fiscal-year'
                             or $nodeName = 'calendar-year'
                             or $nodeName = 'fiscal-year-of-receipt'">
@@ -237,7 +227,6 @@
                 </xsl:element>
             </xsl:when>
 
-            <!-- TODO: Approval Quarter, Receipt Quarter, Transfer Quarter-->
             <xsl:when test="$nodeName = 'approval-quarter'
                             or $nodeName = 'receipt-quarter'
                             or $nodeName = 'transfer-quarter'">
