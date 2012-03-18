@@ -50,6 +50,7 @@ Ignoring sector[1-5].
 XXX: Review every single term here. Mostly projects-and-operations related. Only uuid, country-name, donor-name and partially the project-name is from finances.
 -->
         <xsl:if test="$string != ''
+                    and $string != 'agencyinfo'
                     and $string != 'board-approval-month'
                     and $string != 'board-approval-year'
                     and $string != 'countryname'
@@ -60,6 +61,7 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                     and $string != 'countryshortname-and-mdk-exact'
                     and $string != 'docty'
                     and $string != 'donor-name'
+                    and $string != 'linkinfo'
                     and $string != 'location'
                     and $string != 'beneficiary-name'
                     and $string != 'isrr-doc'
@@ -77,6 +79,7 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                     and $string != 'mjtheme3name'
                     and $string != 'mjtheme4name'
                     and $string != 'mjtheme5name'
+                    and $string != 'projectinfo'
                     and $string != 'project-name'
                     and $string != 'project-name-and-mdk'
                     and $string != 'projectdoc.doctype'
