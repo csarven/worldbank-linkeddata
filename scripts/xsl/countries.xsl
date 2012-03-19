@@ -121,6 +121,7 @@ Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:not
             </rdf:Description>
 
             <rdf:Description rdf:about="{$wbld}classification/country/{@id}">
+                <skos:exactMatch rdf:resource="{$wbld}classification/country/{normalize-space(wb:iso2Code/text())}"/>
                 <skos:notation><xsl:value-of select="@id"/></skos:notation>
             </rdf:Description>
         </xsl:for-each>
