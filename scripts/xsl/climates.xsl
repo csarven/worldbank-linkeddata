@@ -309,7 +309,7 @@
                     </xsl:variable>
 
                     <rdf:Description rdf:about="{$resourceClimateObservation}">
-                        <qb:dataset rdf:resource="{$wbld}dataset/world-bank-climates/{$statstypeCode}"/>
+                        <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-climates/{$statstypeCode}"/>
 
                         <xsl:choose>
                             <xsl:when test="$countryCode != ''">
