@@ -1336,9 +1336,11 @@ concept:stats-type
     skos:hasTopConcept
         stats-type:month-average ,
         stats-type:year-average ,
-        stats-type:decade-average ,
         stats-type:month-average-anomaly ,
-        stats-type:year-average-anomaly ;
+        stats-type:year-average-anomaly ,
+        stats-type:month-average-historical ,
+        stats-type:year-average-historical ,
+        stats-type:decade-average-historical ,
     .
 
 stats-type:month-average
