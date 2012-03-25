@@ -1376,22 +1376,22 @@ stats-type:year-average-anomaly
 stats-type:month-average-historical
     a skos:Concept ;
     skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Month average"@en ;
-    skos:notation "month-average" ;
+    skos:prefLabel "Month average (historical)"@en ;
+    skos:notation "month-average-historical" ;
     .
 
 stats-type:year-average-historical
     a skos:Concept ;
     skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Year average"@en ;
-    skos:notation "year-average" ;
+    skos:prefLabel "Year average (historical)"@en ;
+    skos:notation "year-average-historical" ;
     .
 
 stats-type:decade-average-historical
     a skos:Concept ;
     skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Decade average"@en ;
-    skos:notation "decade-average" ;
+    skos:prefLabel "Decade average (historical)"@en ;
+    skos:notation "decade-average-historical" ;
     .
 
 
