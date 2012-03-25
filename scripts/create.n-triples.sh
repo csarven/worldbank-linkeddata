@@ -40,9 +40,10 @@ for file in /var/www/lib/worldbank-linkeddata/data/finances/finance/*.rdf
         fi
     done ;
 
-
-#for file in /var/www/lib/worldbank-linkeddata/data/indicators/en/indicator/*.rdf ; do rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-development-indicators.nt ; done ;
-
 rapper -g /var/www/lib/worldbank-linkeddata/data/projects/projects-and-operations.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-projects-and-operations.nt ;
 
+#The following two imports take a while i.e., 6-12 hours each. They are commented out in order to execute them manually when really needed.
+#for file in /var/www/lib/worldbank-linkeddata/data/indicators/en/indicator/*.rdf ; do rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-development-indicators.nt ; done ;
+
+#for file in /var/www/lib/worldbank-linkeddata/data/climates/*/*/*.rdf ; do rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-climates.nt ; done ;
 

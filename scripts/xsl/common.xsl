@@ -7,6 +7,7 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:wb="http://www.worldbank.org"
     xmlns:wbldfn="http://worldbank.270a.info/xpath-function/">
 
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
@@ -360,6 +361,20 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                     ">
             <xsl:value-of select="true()"/>
         </xsl:if>
+    </xsl:function>
+
+    <xsl:function name="wbldfn:ISO-3166_3-to-ISO-3166_2">
+        <xsl:param name="countryCode"/>
+
+        <xsl:choose>
+            <xsl:when test="document($pathToCountries)/wb:countries/wb:country[@id = $countryCode]">
+                <xsl:value-of select="document($pathToCountries)/wb:countries/wb:country[@id = $countryCode]/wb:iso2Code/normalize-space(text())"/>
+            </xsl:when>
+
+            <xsl:otherwise>
+                <xsl:value-of select="$countryCode"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xsl:function name="wbldfn:now">

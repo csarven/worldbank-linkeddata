@@ -71,7 +71,10 @@ Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:not
 
             <rdf:Description rdf:about="{$wbld}classification/country/{normalize-space(wb:iso2Code/text())}">
                 <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-                <rdf:type rdf:resource="http://dbpedia.org/ontology/Country"/>
+                <xsl:if test="wb:incomeLevel/@id != 'NA'">
+                    <rdf:type rdf:resource="http://dbpedia.org/ontology/Country"/>
+                </xsl:if>
+
                 <!-- XXX: Only one is necessary since both have the same value-->
                 <skos:inScheme rdf:resource="{$wbld}classification/country"/>
                 <skos:topConceptOf rdf:resource="{$wbld}classification/country"/>

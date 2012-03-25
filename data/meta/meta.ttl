@@ -3,19 +3,21 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix sdmx: <http://purl.org/linked-data/sdmx#> .
 @prefix sdmx-attribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
 @prefix sdmx-code: <http://purl.org/linked-data/sdmx/2009/code#> .
 @prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
 @prefix sdmx-metadata: <http://purl.org/linked-data/sdmx/2009/metadata#> .
 
 @prefix wbld: <http://worldbank.270a.info/> .
 @prefix wbld-dataset: <http://worldbank.270a.info/dataset/> .
 @prefix wbld-dataset-world-development-indicators: <http://worldbank.270a.info/dataset/world-development-indicators/> .
 @prefix wbld-dataset-world-bank-finances: <http://worldbank.270a.info/dataset/world-bank-finances/> .
-@prefix wbld-dataset-projects-and-operations: <http://worldbank.270a.info/dataset/world-bank-projects-and-operations/> .
+@prefix wbld-dataset-world-bank-climates: <http://worldbank.270a.info/dataset/world-bank-climates/> .
 
 @prefix concept: <http://worldbank.270a.info/classification/> .
 @prefix property: <http://worldbank.270a.info/property/> .
@@ -23,6 +25,10 @@
 @prefix loan-status: <http://worldbank.270a.info/classification/loan-status/> .
 @prefix loan-type: <http://worldbank.270a.info/classification/loan-type/> .
 
+@prefix scenario: <http://worldbank.270a.info/classification/scenario/> .
+@prefix global-circulation-model: <http://worldbank.270a.info/classification/global-circulation-model/> .
+@prefix variable: <http://worldbank.270a.info/classification/variable/> .
+@prefix stats-type: <http://worldbank.270a.info/classification/stats-type/> .
 
 #World Development Indicators
 wbld-dataset:world-development-indicators
@@ -80,7 +86,6 @@ wbld-dataset-world-development-indicators:structure
 wbld-dataset:world-bank-finances
     a qb:DataSet ;
     rdfs:label "World Bank Finances dataset"@en ;
-
     dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -582,7 +587,7 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
 
 #This is compiled manually. I broke down the paragraph long definition into atomic parts.
 concept:loan-status
-    a skos:CodeList ;
+    a sdmx:CodeList ;
     skos:hasTopConcept
         loan-status:approved,
         loan-status:cancelled,
@@ -651,7 +656,7 @@ loan-status:terminated
     skos:topConceptOf concept:loan-status .
 
 concept:loan-type
-    a skos:CodeList ;
+    a sdmx:CodeList ;
     skos:definition "A type of loan/loan instrument for which distinctive accounting and/or other actions need to be performed."@en ;
     skos:hasTopConcept loan-type:b-loan, loan-type:fsl, loan-type:ifc-loan, loan-type:non-pool, loan-type:pool-loan, loan-type:scp-dem, loan-type:scp-jpy, loan-type:scp-usd, loan-type:sngl-crncy ;
     skos:prefLabel "Code list for loan types"@en .
@@ -718,4 +723,3958 @@ loan-type:sngl-crncy
     skos:inScheme concept:loan-type ;
     skos:prefLabel "SNGL CRNCY"@en ;
     skos:topConceptOf concept:loan-type .
+
+
+#World Bank Climates
+wbld-dataset:world-bank-climates
+    a qb:DataSet ;
+    qb:structure wbld-dataset-world-bank-climates:structure ;
+    rdfs:label "World Bank Climate Change dataset"@en ;
+    dcterms:title "World Bank Climate Change"@en ;
+    dcterms:description "Except as noted, all the data in the Climate Data API are derived from 15 global circulation models (GCMs), the most comprehensive physically-based models of climate change available and used by the Intergovernmental Panel on Climate Change (IPCC) 4th Assessment Reports. The models simulate the response of the global climate system to increasing greenhouse gas concentrations. Note these data are modeled estimates of temperature and precipitation changes in different time periods under different GCMs and scenarios. They include changes for future time periods and also as “backcasting” (model representations of the past) set for past time periods. The latter should not be confused with any instrumental or observed data."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:source <http://climatedataapi.worldbank.org/climateweb/rest/> ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:subject <http://purl.org/linked-data/sdmx/2009/subject#3.1> ;
+    dcterms:hasPart
+        wbld-dataset-world-bank-climates:month-average ,
+        wbld-dataset-world-bank-climates:year-average ,
+        wbld-dataset-world-bank-climates:month-average-anomaly ,
+        wbld-dataset-world-bank-climates:year-average-anomaly ,
+        wbld-dataset-world-bank-climates:month-average-historical ,
+        wbld-dataset-world-bank-climates:year-average-historical ,
+        wbld-dataset-world-bank-climates:decade-average-historical ;
+    rdfs:seeAlso <http://data.worldbank.org/developers/climate-data-api> ;
+    .
+
+wbld-dataset-world-bank-climates:month-average
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average/structure> ;
+    rdfs:label "World Bank Climate Change monthly average dataset"@en ;
+    dcterms:title "World Bank Climate Change monthly average"@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average/structure> ;
+    rdfs:label "World Bank Climate Change annual average dataset"@en ;
+    dcterms:title "World Bank Climate Change annual average"@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:month-average-anomaly
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly/structure> ;
+    rdfs:label "World Bank Climate Change average monthly change (anomaly) dataset"@en ;
+    dcterms:title "World Bank Climate Change average monthly change (anomaly) dataset"@en ;
+    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-anomaly
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly/structure> ;
+    rdfs:label "World Bank Climate Change average annual change (anomaly) dataset"@en ;
+    dcterms:title "World Bank Climate Change average annual change (anomaly)"@en ;
+    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:month-average-historical
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-historical/structure> ;
+    rdfs:label "World Bank Climate Change monthly average dataset"@en ;
+    dcterms:title "World Bank Climate Change monthly average"@en ;
+    dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-historical
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-historical/structure> ;
+    rdfs:label "World Bank Climate Change annual average dataset"@en ;
+    dcterms:title "World Bank Climate Change annual average"@en ;
+    dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:decade-average-historical
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/decade-average-historical/structure> ;
+    rdfs:label "World Bank Climate Change decadal average dataset"@en ;
+    dcterms:title "World Bank Climate Change decadal average"@en ;
+    dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentglobalcirculationmodel ,
+        _:qbcomponentscenario ,
+        _:qbcomponentjanuaryaverage ,
+        _:qbcomponentfebruaryaverage ,
+        _:qbcomponentmarchaverage ,
+        _:qbcomponentaprilaverage ,
+        _:qbcomponentmayaverage ,
+        _:qbcomponentjuneaverage ,
+        _:qbcomponentjulyaverage ,
+        _:qbcomponentaugustaverage ,
+        _:qbcomponentseptemberaverage ,
+        _:qbcomponentoctoberaverage ,
+        _:qbcomponentnovemberaverage ,
+        _:qbcomponentdecemberaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentglobalcirculationmodel ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentglobalcirculationmodel ,
+        _:qbcomponentscenario ,
+        _:qbcomponentjanuaryaverage ,
+        _:qbcomponentfebruaryaverage ,
+        _:qbcomponentmarchaverage ,
+        _:qbcomponentaprilaverage ,
+        _:qbcomponentmayaverage ,
+        _:qbcomponentjuneaverage ,
+        _:qbcomponentjulyaverage ,
+        _:qbcomponentaugustaverage ,
+        _:qbcomponentseptemberaverage ,
+        _:qbcomponentoctoberaverage ,
+        _:qbcomponentnovemberaverage ,
+        _:qbcomponentdecemberaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentglobalcirculationmodel ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-historical/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentjanuaryaverage ,
+        _:qbcomponentfebruaryaverage ,
+        _:qbcomponentmarchaverage ,
+        _:qbcomponentaprilaverage ,
+        _:qbcomponentmayaverage ,
+        _:qbcomponentjuneaverage ,
+        _:qbcomponentjulyaverage ,
+        _:qbcomponentaugustaverage ,
+        _:qbcomponentseptemberaverage ,
+        _:qbcomponentoctoberaverage ,
+        _:qbcomponentnovemberaverage ,
+        _:qbcomponentdecemberaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-historical/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/decade-average-historical/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentdecadeaverage ,
+        _:qbcomponentstatstype ;
+    .
+
+_:qbcomponentrefArea
+    a qb:ComponentSpecification ;
+    qb:dimension sdmx-dimension:refArea ;
+    .
+_:qbcomponentrefPeriod
+    a qb:ComponentSpecification ;
+    qb:dimension sdmx-dimension:refPeriod ;
+    .
+_:qbcomponentvariable
+    a qb:ComponentSpecification ;
+    qb:dimension property:variable ;
+    .
+_:qbcomponentglobalcirculationmodel
+    a qb:ComponentSpecification ;
+    qb:dimension property:global-circulation-model ;
+    .
+_:qbcomponentscenario
+    a qb:ComponentSpecification ;
+    qb:dimension property:scenario ;
+    .
+_:qbcomponentjanuaryaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:january-average ;
+    .
+_:qbcomponentfebruaryaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:february-average ;
+    .
+_:qbcomponentmarchaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:march-average ;
+    .
+_:qbcomponentaprilaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:april-average ;
+    .
+_:qbcomponentmayaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:may-average ;
+    .
+_:qbcomponentjuneaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:june-average ;
+    .
+_:qbcomponentjulyaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:july-average ;
+    .
+_:qbcomponentaugustaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:august-average ;
+    .
+_:qbcomponentseptemberaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:september-average ;
+    .
+_:qbcomponentoctoberaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:october-average ;
+    .
+_:qbcomponentnovemberaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:november-average ;
+    .
+_:qbcomponentdecemberaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:december-average ;
+    .
+_:qbcomponentstatstype
+    a qb:ComponentSpecification ;
+    qb:attribute property:stats-type ;
+    .
+_:qbcomponentyearaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:year-average ;
+    .
+_:qbcomponentdecadeaverage
+    a qb:ComponentSpecification ;
+    qb:measure property:decade-average ;
+    .
+
+
+concept:variable
+    a sdmx:CodeList ;
+    skos:prefLabel "Variable"@en ;
+    .
+
+variable:pr
+    a skos:Concept ;
+    skos:prefLabel "Precipitation (rainfall and assumed water equivalent), in millimeters"@en ;
+    skos:notation "pr" ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tas
+    a skos:Concept ;
+    skos:prefLabel "Temperature, in degrees Celsius"@en ;
+    skos:notation "tas" ;
+    skos:topConceptOf concept:variable ;
+    .
+
+
+concept:global-circulation-model
+    a sdmx:CodeList ;
+    skos:prefLabel "Codelist for Global Circulation Models"@en ;
+    skos:hasTopConcept
+        global-circulation-model:bccr-bcm2-0 ,
+        global-circulation-model:csiro-mk3-5 ,
+        global-circulation-model:ingv-echam4 ,
+        global-circulation-model:cccma-cgcm3-1 ,
+        global-circulation-model:cnrm-cm3 ,
+        global-circulation-model:gfdl-cm2-0 ,
+        global-circulation-model:gfdl-cm2-1 ,
+        global-circulation-model:ipsl-cm4 ,
+        global-circulation-model:microc3-2-medres ,
+        global-circulation-model:miub-echo-g ,
+        global-circulation-model:mpi-echam5 ,
+        global-circulation-model:mri-cgcm2-3-2a ,
+        global-circulation-model:inmcm3-0 ,
+        global-circulation-model:ukmo-hadcm3 ,
+        global-circulation-model:ukmo-hadgem1 ;
+    foaf:page <http://www.ipcc-data.org/ddc_gcm_guide.html> ;
+    .
+
+global-circulation-model:bccr-bcm2-0
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "bccr-bcm2-0" ;
+    skos:prefLabel "BCM 2.0" ;
+    foaf:page <http://www-pcmdi.llnl.gov/ipcc/model_documentation/BCCR_BCM2.0.htm> ;
+    .
+
+global-circulation-model:csiro-mk3-5
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "csiro-mk3-5" ;
+    skos:prefLabel "CSIRO Mark 3.5" ;
+    foaf:page <http://www.cawcr.gov.au/publications/technicalreports/CTR_021.pdf> ;
+    .
+
+global-circulation-model:ingv-echam4
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "ingv-echam4" ;
+    skos:prefLabel "ECHAM 4.6" ;
+    foaf:page <http://www.bo.ingv.it/> ;
+    .
+
+global-circulation-model:cccma-cgcm3-1
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "cccma-cgcm3-1" ;
+    skos:prefLabel "CGCM 3.1 (T47)" ;
+    foaf:page <http://www.ec.gc.ca/ccmac-cccma/default.asp?lang=En> ;
+    .
+
+global-circulation-model:cnrm-cm3
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "cnrm-cm3" ;
+    skos:prefLabel "CNRM CM3" ;
+    foaf:page <http://www.cnrm.meteo.fr/scenario2004/indexenglish.html> ;
+    .
+
+global-circulation-model:gfdl-cm2-0
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "gfdl-cm2-0" ;
+    skos:prefLabel "GFDL CM2.0" ;
+    foaf:page <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
+    .
+
+global-circulation-model:gfdl-cm2-1
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "gfdl-cm2-1" ;
+    skos:prefLabel "GFDL CM2.1" ;
+    foaf:page <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
+    .
+
+global-circulation-model:ipsl-cm4
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "ipsl-cm4" ;
+    skos:prefLabel "IPSL-CM4" ;
+    foaf:page <http://mc2.ipsl.jussieu.fr/simules.html> ;
+    .
+
+global-circulation-model:microc3-2-medres
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "microc3-2-medres" ;
+    skos:prefLabel "MIROC 3.2 (medres)" ;
+    foaf:page <https://esg.llnl.gov:8443/metadata/browseCatalog.do?uri=http://esgcet.llnl.gov/metadata/pcmdi/ipcc/thredds/miroc3_2_medres.sresb1/pcmdi.ipcc4.miroc3_2_medres.sresb1.thredds> ;
+    .
+
+global-circulation-model:miub-echo-g
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "miub-echo-g" ;
+    skos:prefLabel "ECHO-G" ;
+    foaf:page <http://www-pcmdi.llnl.gov/projects/modeldoc/cmip/echo-g_tbls.html> ;
+    .
+
+global-circulation-model:mpi-echam5
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "mpi-echam5" ;
+    skos:prefLabel "ECHAM5/MPI-OM" ;
+    foaf:page <http://www.mpimet.mpg.de/en/science/models/echam.html> ;
+    .
+
+global-circulation-model:mri-cgcm2-3-2a
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "mri-cgcm2-3-2a" ;
+    skos:prefLabel "MRI-CGCM2.3.2" ;
+    foaf:page <http://www.mri-jma.go.jp/Welcome.html> ;
+    .
+
+global-circulation-model:inmcm3-0
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "inmcm3-0" ;
+    skos:prefLabel "INMCM3.0" ;
+    foaf:page <http://www.ipcc-data.org/ar4/model-INM-CM3.html> ;
+    .
+
+global-circulation-model:ukmo-hadcm3
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "ukmo-hadcm3" ;
+    skos:prefLabel "UKMO HadCM3" ;
+    foaf:page <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadcm3> ;
+    .
+
+global-circulation-model:ukmo-hadgem1
+    a skos:Concept ;
+    skos:topConceptOf concept:global-circulation-model ;
+    skos:notation "ukmo-hadgem1" ;
+    skos:prefLabel "UKMO HadGEM1" ;
+    foaf:page <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadgem1> ;
+    .
+
+
+concept:scenario
+    a sdmx:CodeList ;
+    skos:prefLabel "Codelist for Emissions Scenarios"@en ;
+    skos:definition "Special Report on Emission Scenarios (SRES) describes the new scenarios and how they were developed. The SRES writing team formulated a set of emissions scenarios. These scenarios cover a wide range of the main driving forces of future emissions, from demographic to technological and economic developments. The scenarios encompass different future developments that might influence greenhouse gas (GHG) sources and sinks, such as alternative structures of energy systems and land-use changes."@en ;
+    rdfs:isDefinedBy <http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=0> ;
+    .
+
+scenario:a2
+    a skos:Concept ;
+    skos:topConceptOf concept:scenario ;
+    skos:prefLabel "A2 scenario"@en ;
+    skos:definition "The A2 storyline and scenario family describes a very heterogeneous world. The underlying theme is self-reliance and preservation of local identities. Fertility patterns across regions converge very slowly, which results in continuously increasing global population. Economic development is primarily regionally oriented and per capita economic growth and technological change are more fragmented and slower than in other storylines."@en ;
+    skos:notation "a2" ;
+    rdfs:isDefinedBy <http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=3> ;
+    .
+
+scenario:b1
+    a skos:Concept ;
+    skos:topConceptOf concept:scenario ;
+    skos:prefLabel "B1 scenario"@en ;
+    skos:definition "The B1 storyline and scenario family describes a convergent world with the same global population that peaks in mid-century and declines thereafter, as in the A1 storyline, but with rapid changes in economic structures toward a service and information economy, with reductions in material intensity, and the introduction of clean and resource-efficient technologies. The emphasis is on global solutions to economic, social, and environmental sustainability, including improved equity, but without additional climate initiatives."@en ;
+    skos:notation "b1" ;
+    rdfs:isDefinedBy <http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=3> ;
+    .
+
+property:variable
+    a qb:DimensionProperty ;
+    rdfs:label "Variable"@en ;
+    .
+
+property:scenario
+    a qb:DimensionProperty ;
+    rdfs:label "Scenario"@en ;
+    .
+
+property:global-circulation-model
+    a qb:DimensionProperty ;
+    rdfs:label "Global Circulation Model"@en ;
+    .
+
+property:january-average
+    a qb:MeasureProperty ;
+    rdfs:label "January average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:feburary-average
+    a qb:MeasureProperty ;
+    rdfs:label "Feburary average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:march-average
+    a qb:MeasureProperty ;
+    rdfs:label "March average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:april-average
+    a qb:MeasureProperty ;
+    rdfs:label "April average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:may-average
+    a qb:MeasureProperty ;
+    rdfs:label "May average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:june-average
+    a qb:MeasureProperty ;
+    rdfs:label "June average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:july-average
+    a qb:MeasureProperty ;
+    rdfs:label "July average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:august-average
+    a qb:MeasureProperty ;
+    rdfs:label "August average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:september-average
+    a qb:MeasureProperty ;
+    rdfs:label "September average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:october-average
+    a qb:MeasureProperty ;
+    rdfs:label "October average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:november-average
+    a qb:MeasureProperty ;
+    rdfs:label "November average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:december-average
+    a qb:MeasureProperty ;
+    rdfs:label "December average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:year-average
+    a qb:MeasureProperty ;
+    rdfs:label "Year average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:decade-average
+    a qb:MeasureProperty ;
+    rdfs:label "Decade average"@en ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:decimal ;
+    .
+
+property:stats-type
+    a qb:AttributeProperty ;
+    rdfs:label "Statistics type"@en ;
+    .
+
+concept:stats-type
+    a sdmx:CodeList ;
+    skos:prefLabel "Codelist for statistics types"@en ;
+    skos:hasTopConcept
+        stats-type:month-average ,
+        stats-type:year-average ,
+        stats-type:decade-average ,
+        stats-type:month-average-anomaly ,
+        stats-type:year-average-anomaly ;
+    .
+
+stats-type:month-average
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Month average"@en ;
+    skos:notation "month-average" ;
+    .
+
+stats-type:year-average
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Year average"@en ;
+    skos:notation "year-average" ;
+    .
+
+stats-type:month-average-anomaly
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Average monthly change (anomaly)"@en ;
+    skos:notation "month-average-anomaly" ;
+    skos:definition "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    .
+
+stats-type:year-average-anomaly
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Average annual change (anomaly)"@en ;
+    skos:notation "year-average-anomaly" ;
+    skos:definition "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    .
+
+stats-type:month-average-historical
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Month average"@en ;
+    skos:notation "month-average" ;
+    .
+
+stats-type:year-average-historical
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Year average"@en ;
+    skos:notation "year-average" ;
+    .
+
+stats-type:decade-average-historical
+    a skos:Concept ;
+    skos:topConceptOf concept:stats-type ;
+    skos:prefLabel "Decade average"@en ;
+    skos:notation "decade-average" ;
+    .
+
+
+concept:basin
+    a sdmx:CodeList ;
+    skos:prefLabel "Basin Codelist"@en ;
+    skos:definition "Regional river basin somewhere in the world. River basins were calculated based on definitions obtained from waterbase.org (using the level 2 boundaries)."@en ;
+    skos:exactMatch <http://dbpedia.org/resource/Drainage_Basin> ;
+    rdfs:isDefinedBy <http://www.waterbase.org/> ;
+    skos:hasTopConcept
+        <http://worldbank.270a.info/classification/basin/1> ,
+        <http://worldbank.270a.info/classification/basin/2> ,
+        <http://worldbank.270a.info/classification/basin/3> ,
+        <http://worldbank.270a.info/classification/basin/4> ,
+        <http://worldbank.270a.info/classification/basin/5> ,
+        <http://worldbank.270a.info/classification/basin/6> ,
+        <http://worldbank.270a.info/classification/basin/7> ,
+        <http://worldbank.270a.info/classification/basin/8> ,
+        <http://worldbank.270a.info/classification/basin/9> ,
+        <http://worldbank.270a.info/classification/basin/10> ,
+        <http://worldbank.270a.info/classification/basin/11> ,
+        <http://worldbank.270a.info/classification/basin/12> ,
+        <http://worldbank.270a.info/classification/basin/13> ,
+        <http://worldbank.270a.info/classification/basin/14> ,
+        <http://worldbank.270a.info/classification/basin/15> ,
+        <http://worldbank.270a.info/classification/basin/16> ,
+        <http://worldbank.270a.info/classification/basin/17> ,
+        <http://worldbank.270a.info/classification/basin/18> ,
+        <http://worldbank.270a.info/classification/basin/19> ,
+        <http://worldbank.270a.info/classification/basin/20> ,
+        <http://worldbank.270a.info/classification/basin/21> ,
+        <http://worldbank.270a.info/classification/basin/22> ,
+        <http://worldbank.270a.info/classification/basin/23> ,
+        <http://worldbank.270a.info/classification/basin/24> ,
+        <http://worldbank.270a.info/classification/basin/25> ,
+        <http://worldbank.270a.info/classification/basin/26> ,
+        <http://worldbank.270a.info/classification/basin/27> ,
+        <http://worldbank.270a.info/classification/basin/28> ,
+        <http://worldbank.270a.info/classification/basin/29> ,
+        <http://worldbank.270a.info/classification/basin/30> ,
+        <http://worldbank.270a.info/classification/basin/31> ,
+        <http://worldbank.270a.info/classification/basin/32> ,
+        <http://worldbank.270a.info/classification/basin/33> ,
+        <http://worldbank.270a.info/classification/basin/34> ,
+        <http://worldbank.270a.info/classification/basin/35> ,
+        <http://worldbank.270a.info/classification/basin/36> ,
+        <http://worldbank.270a.info/classification/basin/37> ,
+        <http://worldbank.270a.info/classification/basin/38> ,
+        <http://worldbank.270a.info/classification/basin/39> ,
+        <http://worldbank.270a.info/classification/basin/40> ,
+        <http://worldbank.270a.info/classification/basin/41> ,
+        <http://worldbank.270a.info/classification/basin/42> ,
+        <http://worldbank.270a.info/classification/basin/43> ,
+        <http://worldbank.270a.info/classification/basin/44> ,
+        <http://worldbank.270a.info/classification/basin/45> ,
+        <http://worldbank.270a.info/classification/basin/46> ,
+        <http://worldbank.270a.info/classification/basin/47> ,
+        <http://worldbank.270a.info/classification/basin/48> ,
+        <http://worldbank.270a.info/classification/basin/49> ,
+        <http://worldbank.270a.info/classification/basin/50> ,
+        <http://worldbank.270a.info/classification/basin/51> ,
+        <http://worldbank.270a.info/classification/basin/52> ,
+        <http://worldbank.270a.info/classification/basin/53> ,
+        <http://worldbank.270a.info/classification/basin/54> ,
+        <http://worldbank.270a.info/classification/basin/55> ,
+        <http://worldbank.270a.info/classification/basin/56> ,
+        <http://worldbank.270a.info/classification/basin/57> ,
+        <http://worldbank.270a.info/classification/basin/58> ,
+        <http://worldbank.270a.info/classification/basin/59> ,
+        <http://worldbank.270a.info/classification/basin/60> ,
+        <http://worldbank.270a.info/classification/basin/61> ,
+        <http://worldbank.270a.info/classification/basin/62> ,
+        <http://worldbank.270a.info/classification/basin/63> ,
+        <http://worldbank.270a.info/classification/basin/64> ,
+        <http://worldbank.270a.info/classification/basin/65> ,
+        <http://worldbank.270a.info/classification/basin/66> ,
+        <http://worldbank.270a.info/classification/basin/67> ,
+        <http://worldbank.270a.info/classification/basin/68> ,
+        <http://worldbank.270a.info/classification/basin/69> ,
+        <http://worldbank.270a.info/classification/basin/70> ,
+        <http://worldbank.270a.info/classification/basin/71> ,
+        <http://worldbank.270a.info/classification/basin/72> ,
+        <http://worldbank.270a.info/classification/basin/73> ,
+        <http://worldbank.270a.info/classification/basin/74> ,
+        <http://worldbank.270a.info/classification/basin/75> ,
+        <http://worldbank.270a.info/classification/basin/76> ,
+        <http://worldbank.270a.info/classification/basin/77> ,
+        <http://worldbank.270a.info/classification/basin/78> ,
+        <http://worldbank.270a.info/classification/basin/79> ,
+        <http://worldbank.270a.info/classification/basin/80> ,
+        <http://worldbank.270a.info/classification/basin/81> ,
+        <http://worldbank.270a.info/classification/basin/82> ,
+        <http://worldbank.270a.info/classification/basin/83> ,
+        <http://worldbank.270a.info/classification/basin/84> ,
+        <http://worldbank.270a.info/classification/basin/85> ,
+        <http://worldbank.270a.info/classification/basin/86> ,
+        <http://worldbank.270a.info/classification/basin/87> ,
+        <http://worldbank.270a.info/classification/basin/88> ,
+        <http://worldbank.270a.info/classification/basin/89> ,
+        <http://worldbank.270a.info/classification/basin/90> ,
+        <http://worldbank.270a.info/classification/basin/91> ,
+        <http://worldbank.270a.info/classification/basin/92> ,
+        <http://worldbank.270a.info/classification/basin/93> ,
+        <http://worldbank.270a.info/classification/basin/94> ,
+        <http://worldbank.270a.info/classification/basin/95> ,
+        <http://worldbank.270a.info/classification/basin/96> ,
+        <http://worldbank.270a.info/classification/basin/97> ,
+        <http://worldbank.270a.info/classification/basin/98> ,
+        <http://worldbank.270a.info/classification/basin/99> ,
+        <http://worldbank.270a.info/classification/basin/100> ,
+        <http://worldbank.270a.info/classification/basin/101> ,
+        <http://worldbank.270a.info/classification/basin/102> ,
+        <http://worldbank.270a.info/classification/basin/103> ,
+        <http://worldbank.270a.info/classification/basin/104> ,
+        <http://worldbank.270a.info/classification/basin/105> ,
+        <http://worldbank.270a.info/classification/basin/106> ,
+        <http://worldbank.270a.info/classification/basin/107> ,
+        <http://worldbank.270a.info/classification/basin/108> ,
+        <http://worldbank.270a.info/classification/basin/109> ,
+        <http://worldbank.270a.info/classification/basin/110> ,
+        <http://worldbank.270a.info/classification/basin/111> ,
+        <http://worldbank.270a.info/classification/basin/112> ,
+        <http://worldbank.270a.info/classification/basin/113> ,
+        <http://worldbank.270a.info/classification/basin/114> ,
+        <http://worldbank.270a.info/classification/basin/115> ,
+        <http://worldbank.270a.info/classification/basin/116> ,
+        <http://worldbank.270a.info/classification/basin/117> ,
+        <http://worldbank.270a.info/classification/basin/118> ,
+        <http://worldbank.270a.info/classification/basin/119> ,
+        <http://worldbank.270a.info/classification/basin/120> ,
+        <http://worldbank.270a.info/classification/basin/121> ,
+        <http://worldbank.270a.info/classification/basin/122> ,
+        <http://worldbank.270a.info/classification/basin/123> ,
+        <http://worldbank.270a.info/classification/basin/124> ,
+        <http://worldbank.270a.info/classification/basin/125> ,
+        <http://worldbank.270a.info/classification/basin/126> ,
+        <http://worldbank.270a.info/classification/basin/127> ,
+        <http://worldbank.270a.info/classification/basin/128> ,
+        <http://worldbank.270a.info/classification/basin/129> ,
+        <http://worldbank.270a.info/classification/basin/130> ,
+        <http://worldbank.270a.info/classification/basin/131> ,
+        <http://worldbank.270a.info/classification/basin/132> ,
+        <http://worldbank.270a.info/classification/basin/133> ,
+        <http://worldbank.270a.info/classification/basin/134> ,
+        <http://worldbank.270a.info/classification/basin/135> ,
+        <http://worldbank.270a.info/classification/basin/136> ,
+        <http://worldbank.270a.info/classification/basin/137> ,
+        <http://worldbank.270a.info/classification/basin/138> ,
+        <http://worldbank.270a.info/classification/basin/139> ,
+        <http://worldbank.270a.info/classification/basin/140> ,
+        <http://worldbank.270a.info/classification/basin/141> ,
+        <http://worldbank.270a.info/classification/basin/142> ,
+        <http://worldbank.270a.info/classification/basin/143> ,
+        <http://worldbank.270a.info/classification/basin/144> ,
+        <http://worldbank.270a.info/classification/basin/145> ,
+        <http://worldbank.270a.info/classification/basin/146> ,
+        <http://worldbank.270a.info/classification/basin/147> ,
+        <http://worldbank.270a.info/classification/basin/148> ,
+        <http://worldbank.270a.info/classification/basin/149> ,
+        <http://worldbank.270a.info/classification/basin/150> ,
+        <http://worldbank.270a.info/classification/basin/151> ,
+        <http://worldbank.270a.info/classification/basin/152> ,
+        <http://worldbank.270a.info/classification/basin/153> ,
+        <http://worldbank.270a.info/classification/basin/154> ,
+        <http://worldbank.270a.info/classification/basin/155> ,
+        <http://worldbank.270a.info/classification/basin/156> ,
+        <http://worldbank.270a.info/classification/basin/157> ,
+        <http://worldbank.270a.info/classification/basin/158> ,
+        <http://worldbank.270a.info/classification/basin/159> ,
+        <http://worldbank.270a.info/classification/basin/160> ,
+        <http://worldbank.270a.info/classification/basin/161> ,
+        <http://worldbank.270a.info/classification/basin/162> ,
+        <http://worldbank.270a.info/classification/basin/163> ,
+        <http://worldbank.270a.info/classification/basin/164> ,
+        <http://worldbank.270a.info/classification/basin/165> ,
+        <http://worldbank.270a.info/classification/basin/166> ,
+        <http://worldbank.270a.info/classification/basin/167> ,
+        <http://worldbank.270a.info/classification/basin/168> ,
+        <http://worldbank.270a.info/classification/basin/169> ,
+        <http://worldbank.270a.info/classification/basin/170> ,
+        <http://worldbank.270a.info/classification/basin/171> ,
+        <http://worldbank.270a.info/classification/basin/172> ,
+        <http://worldbank.270a.info/classification/basin/173> ,
+        <http://worldbank.270a.info/classification/basin/174> ,
+        <http://worldbank.270a.info/classification/basin/175> ,
+        <http://worldbank.270a.info/classification/basin/176> ,
+        <http://worldbank.270a.info/classification/basin/177> ,
+        <http://worldbank.270a.info/classification/basin/178> ,
+        <http://worldbank.270a.info/classification/basin/179> ,
+        <http://worldbank.270a.info/classification/basin/180> ,
+        <http://worldbank.270a.info/classification/basin/181> ,
+        <http://worldbank.270a.info/classification/basin/182> ,
+        <http://worldbank.270a.info/classification/basin/183> ,
+        <http://worldbank.270a.info/classification/basin/184> ,
+        <http://worldbank.270a.info/classification/basin/185> ,
+        <http://worldbank.270a.info/classification/basin/186> ,
+        <http://worldbank.270a.info/classification/basin/187> ,
+        <http://worldbank.270a.info/classification/basin/188> ,
+        <http://worldbank.270a.info/classification/basin/189> ,
+        <http://worldbank.270a.info/classification/basin/190> ,
+        <http://worldbank.270a.info/classification/basin/191> ,
+        <http://worldbank.270a.info/classification/basin/192> ,
+        <http://worldbank.270a.info/classification/basin/193> ,
+        <http://worldbank.270a.info/classification/basin/194> ,
+        <http://worldbank.270a.info/classification/basin/195> ,
+        <http://worldbank.270a.info/classification/basin/196> ,
+        <http://worldbank.270a.info/classification/basin/197> ,
+        <http://worldbank.270a.info/classification/basin/198> ,
+        <http://worldbank.270a.info/classification/basin/199> ,
+        <http://worldbank.270a.info/classification/basin/200> ,
+        <http://worldbank.270a.info/classification/basin/201> ,
+        <http://worldbank.270a.info/classification/basin/202> ,
+        <http://worldbank.270a.info/classification/basin/203> ,
+        <http://worldbank.270a.info/classification/basin/204> ,
+        <http://worldbank.270a.info/classification/basin/205> ,
+        <http://worldbank.270a.info/classification/basin/206> ,
+        <http://worldbank.270a.info/classification/basin/207> ,
+        <http://worldbank.270a.info/classification/basin/208> ,
+        <http://worldbank.270a.info/classification/basin/209> ,
+        <http://worldbank.270a.info/classification/basin/210> ,
+        <http://worldbank.270a.info/classification/basin/211> ,
+        <http://worldbank.270a.info/classification/basin/212> ,
+        <http://worldbank.270a.info/classification/basin/213> ,
+        <http://worldbank.270a.info/classification/basin/214> ,
+        <http://worldbank.270a.info/classification/basin/215> ,
+        <http://worldbank.270a.info/classification/basin/216> ,
+        <http://worldbank.270a.info/classification/basin/217> ,
+        <http://worldbank.270a.info/classification/basin/218> ,
+        <http://worldbank.270a.info/classification/basin/219> ,
+        <http://worldbank.270a.info/classification/basin/220> ,
+        <http://worldbank.270a.info/classification/basin/221> ,
+        <http://worldbank.270a.info/classification/basin/222> ,
+        <http://worldbank.270a.info/classification/basin/223> ,
+        <http://worldbank.270a.info/classification/basin/224> ,
+        <http://worldbank.270a.info/classification/basin/225> ,
+        <http://worldbank.270a.info/classification/basin/226> ,
+        <http://worldbank.270a.info/classification/basin/227> ,
+        <http://worldbank.270a.info/classification/basin/228> ,
+        <http://worldbank.270a.info/classification/basin/229> ,
+        <http://worldbank.270a.info/classification/basin/230> ,
+        <http://worldbank.270a.info/classification/basin/231> ,
+        <http://worldbank.270a.info/classification/basin/232> ,
+        <http://worldbank.270a.info/classification/basin/233> ,
+        <http://worldbank.270a.info/classification/basin/234> ,
+        <http://worldbank.270a.info/classification/basin/235> ,
+        <http://worldbank.270a.info/classification/basin/236> ,
+        <http://worldbank.270a.info/classification/basin/237> ,
+        <http://worldbank.270a.info/classification/basin/238> ,
+        <http://worldbank.270a.info/classification/basin/239> ,
+        <http://worldbank.270a.info/classification/basin/240> ,
+        <http://worldbank.270a.info/classification/basin/241> ,
+        <http://worldbank.270a.info/classification/basin/242> ,
+        <http://worldbank.270a.info/classification/basin/243> ,
+        <http://worldbank.270a.info/classification/basin/244> ,
+        <http://worldbank.270a.info/classification/basin/245> ,
+        <http://worldbank.270a.info/classification/basin/246> ,
+        <http://worldbank.270a.info/classification/basin/247> ,
+        <http://worldbank.270a.info/classification/basin/248> ,
+        <http://worldbank.270a.info/classification/basin/249> ,
+        <http://worldbank.270a.info/classification/basin/250> ,
+        <http://worldbank.270a.info/classification/basin/251> ,
+        <http://worldbank.270a.info/classification/basin/252> ,
+        <http://worldbank.270a.info/classification/basin/253> ,
+        <http://worldbank.270a.info/classification/basin/254> ,
+        <http://worldbank.270a.info/classification/basin/255> ,
+        <http://worldbank.270a.info/classification/basin/256> ,
+        <http://worldbank.270a.info/classification/basin/257> ,
+        <http://worldbank.270a.info/classification/basin/258> ,
+        <http://worldbank.270a.info/classification/basin/259> ,
+        <http://worldbank.270a.info/classification/basin/260> ,
+        <http://worldbank.270a.info/classification/basin/261> ,
+        <http://worldbank.270a.info/classification/basin/262> ,
+        <http://worldbank.270a.info/classification/basin/263> ,
+        <http://worldbank.270a.info/classification/basin/264> ,
+        <http://worldbank.270a.info/classification/basin/265> ,
+        <http://worldbank.270a.info/classification/basin/266> ,
+        <http://worldbank.270a.info/classification/basin/267> ,
+        <http://worldbank.270a.info/classification/basin/268> ,
+        <http://worldbank.270a.info/classification/basin/269> ,
+        <http://worldbank.270a.info/classification/basin/270> ,
+        <http://worldbank.270a.info/classification/basin/271> ,
+        <http://worldbank.270a.info/classification/basin/272> ,
+        <http://worldbank.270a.info/classification/basin/273> ,
+        <http://worldbank.270a.info/classification/basin/274> ,
+        <http://worldbank.270a.info/classification/basin/275> ,
+        <http://worldbank.270a.info/classification/basin/276> ,
+        <http://worldbank.270a.info/classification/basin/277> ,
+        <http://worldbank.270a.info/classification/basin/278> ,
+        <http://worldbank.270a.info/classification/basin/279> ,
+        <http://worldbank.270a.info/classification/basin/280> ,
+        <http://worldbank.270a.info/classification/basin/281> ,
+        <http://worldbank.270a.info/classification/basin/282> ,
+        <http://worldbank.270a.info/classification/basin/283> ,
+        <http://worldbank.270a.info/classification/basin/284> ,
+        <http://worldbank.270a.info/classification/basin/285> ,
+        <http://worldbank.270a.info/classification/basin/286> ,
+        <http://worldbank.270a.info/classification/basin/287> ,
+        <http://worldbank.270a.info/classification/basin/288> ,
+        <http://worldbank.270a.info/classification/basin/289> ,
+        <http://worldbank.270a.info/classification/basin/290> ,
+        <http://worldbank.270a.info/classification/basin/291> ,
+        <http://worldbank.270a.info/classification/basin/292> ,
+        <http://worldbank.270a.info/classification/basin/293> ,
+        <http://worldbank.270a.info/classification/basin/294> ,
+        <http://worldbank.270a.info/classification/basin/295> ,
+        <http://worldbank.270a.info/classification/basin/296> ,
+        <http://worldbank.270a.info/classification/basin/297> ,
+        <http://worldbank.270a.info/classification/basin/298> ,
+        <http://worldbank.270a.info/classification/basin/299> ,
+        <http://worldbank.270a.info/classification/basin/300> ,
+        <http://worldbank.270a.info/classification/basin/301> ,
+        <http://worldbank.270a.info/classification/basin/302> ,
+        <http://worldbank.270a.info/classification/basin/303> ,
+        <http://worldbank.270a.info/classification/basin/304> ,
+        <http://worldbank.270a.info/classification/basin/305> ,
+        <http://worldbank.270a.info/classification/basin/306> ,
+        <http://worldbank.270a.info/classification/basin/307> ,
+        <http://worldbank.270a.info/classification/basin/308> ,
+        <http://worldbank.270a.info/classification/basin/309> ,
+        <http://worldbank.270a.info/classification/basin/310> ,
+        <http://worldbank.270a.info/classification/basin/311> ,
+        <http://worldbank.270a.info/classification/basin/312> ,
+        <http://worldbank.270a.info/classification/basin/313> ,
+        <http://worldbank.270a.info/classification/basin/314> ,
+        <http://worldbank.270a.info/classification/basin/315> ,
+        <http://worldbank.270a.info/classification/basin/316> ,
+        <http://worldbank.270a.info/classification/basin/317> ,
+        <http://worldbank.270a.info/classification/basin/318> ,
+        <http://worldbank.270a.info/classification/basin/319> ,
+        <http://worldbank.270a.info/classification/basin/320> ,
+        <http://worldbank.270a.info/classification/basin/321> ,
+        <http://worldbank.270a.info/classification/basin/322> ,
+        <http://worldbank.270a.info/classification/basin/323> ,
+        <http://worldbank.270a.info/classification/basin/324> ,
+        <http://worldbank.270a.info/classification/basin/325> ,
+        <http://worldbank.270a.info/classification/basin/326> ,
+        <http://worldbank.270a.info/classification/basin/327> ,
+        <http://worldbank.270a.info/classification/basin/328> ,
+        <http://worldbank.270a.info/classification/basin/329> ,
+        <http://worldbank.270a.info/classification/basin/330> ,
+        <http://worldbank.270a.info/classification/basin/331> ,
+        <http://worldbank.270a.info/classification/basin/332> ,
+        <http://worldbank.270a.info/classification/basin/333> ,
+        <http://worldbank.270a.info/classification/basin/334> ,
+        <http://worldbank.270a.info/classification/basin/335> ,
+        <http://worldbank.270a.info/classification/basin/336> ,
+        <http://worldbank.270a.info/classification/basin/337> ,
+        <http://worldbank.270a.info/classification/basin/338> ,
+        <http://worldbank.270a.info/classification/basin/339> ,
+        <http://worldbank.270a.info/classification/basin/340> ,
+        <http://worldbank.270a.info/classification/basin/341> ,
+        <http://worldbank.270a.info/classification/basin/342> ,
+        <http://worldbank.270a.info/classification/basin/343> ,
+        <http://worldbank.270a.info/classification/basin/344> ,
+        <http://worldbank.270a.info/classification/basin/345> ,
+        <http://worldbank.270a.info/classification/basin/346> ,
+        <http://worldbank.270a.info/classification/basin/347> ,
+        <http://worldbank.270a.info/classification/basin/348> ,
+        <http://worldbank.270a.info/classification/basin/349> ,
+        <http://worldbank.270a.info/classification/basin/350> ,
+        <http://worldbank.270a.info/classification/basin/351> ,
+        <http://worldbank.270a.info/classification/basin/352> ,
+        <http://worldbank.270a.info/classification/basin/353> ,
+        <http://worldbank.270a.info/classification/basin/354> ,
+        <http://worldbank.270a.info/classification/basin/355> ,
+        <http://worldbank.270a.info/classification/basin/356> ,
+        <http://worldbank.270a.info/classification/basin/357> ,
+        <http://worldbank.270a.info/classification/basin/358> ,
+        <http://worldbank.270a.info/classification/basin/359> ,
+        <http://worldbank.270a.info/classification/basin/360> ,
+        <http://worldbank.270a.info/classification/basin/361> ,
+        <http://worldbank.270a.info/classification/basin/362> ,
+        <http://worldbank.270a.info/classification/basin/363> ,
+        <http://worldbank.270a.info/classification/basin/364> ,
+        <http://worldbank.270a.info/classification/basin/365> ,
+        <http://worldbank.270a.info/classification/basin/366> ,
+        <http://worldbank.270a.info/classification/basin/367> ,
+        <http://worldbank.270a.info/classification/basin/368> ,
+        <http://worldbank.270a.info/classification/basin/369> ,
+        <http://worldbank.270a.info/classification/basin/370> ,
+        <http://worldbank.270a.info/classification/basin/371> ,
+        <http://worldbank.270a.info/classification/basin/372> ,
+        <http://worldbank.270a.info/classification/basin/373> ,
+        <http://worldbank.270a.info/classification/basin/374> ,
+        <http://worldbank.270a.info/classification/basin/375> ,
+        <http://worldbank.270a.info/classification/basin/376> ,
+        <http://worldbank.270a.info/classification/basin/377> ,
+        <http://worldbank.270a.info/classification/basin/378> ,
+        <http://worldbank.270a.info/classification/basin/379> ,
+        <http://worldbank.270a.info/classification/basin/380> ,
+        <http://worldbank.270a.info/classification/basin/381> ,
+        <http://worldbank.270a.info/classification/basin/382> ,
+        <http://worldbank.270a.info/classification/basin/383> ,
+        <http://worldbank.270a.info/classification/basin/384> ,
+        <http://worldbank.270a.info/classification/basin/385> ,
+        <http://worldbank.270a.info/classification/basin/386> ,
+        <http://worldbank.270a.info/classification/basin/387> ,
+        <http://worldbank.270a.info/classification/basin/388> ,
+        <http://worldbank.270a.info/classification/basin/389> ,
+        <http://worldbank.270a.info/classification/basin/390> ,
+        <http://worldbank.270a.info/classification/basin/391> ,
+        <http://worldbank.270a.info/classification/basin/392> ,
+        <http://worldbank.270a.info/classification/basin/393> ,
+        <http://worldbank.270a.info/classification/basin/394> ,
+        <http://worldbank.270a.info/classification/basin/395> ,
+        <http://worldbank.270a.info/classification/basin/396> ,
+        <http://worldbank.270a.info/classification/basin/397> ,
+        <http://worldbank.270a.info/classification/basin/398> ,
+        <http://worldbank.270a.info/classification/basin/399> ,
+        <http://worldbank.270a.info/classification/basin/400> ,
+        <http://worldbank.270a.info/classification/basin/401> ,
+        <http://worldbank.270a.info/classification/basin/402> ,
+        <http://worldbank.270a.info/classification/basin/403> ,
+        <http://worldbank.270a.info/classification/basin/404> ,
+        <http://worldbank.270a.info/classification/basin/405> ,
+        <http://worldbank.270a.info/classification/basin/406> ,
+        <http://worldbank.270a.info/classification/basin/407> ,
+        <http://worldbank.270a.info/classification/basin/408> ,
+        <http://worldbank.270a.info/classification/basin/409> ,
+        <http://worldbank.270a.info/classification/basin/410> ,
+        <http://worldbank.270a.info/classification/basin/411> ,
+        <http://worldbank.270a.info/classification/basin/412> ,
+        <http://worldbank.270a.info/classification/basin/413> ,
+        <http://worldbank.270a.info/classification/basin/414> ,
+        <http://worldbank.270a.info/classification/basin/415> ,
+        <http://worldbank.270a.info/classification/basin/416> ,
+        <http://worldbank.270a.info/classification/basin/417> ,
+        <http://worldbank.270a.info/classification/basin/418> ,
+        <http://worldbank.270a.info/classification/basin/419> ,
+        <http://worldbank.270a.info/classification/basin/420> ,
+        <http://worldbank.270a.info/classification/basin/421> ,
+        <http://worldbank.270a.info/classification/basin/422> ,
+        <http://worldbank.270a.info/classification/basin/423> ,
+        <http://worldbank.270a.info/classification/basin/424> ,
+        <http://worldbank.270a.info/classification/basin/425> ,
+        <http://worldbank.270a.info/classification/basin/426> ,
+        <http://worldbank.270a.info/classification/basin/427> ,
+        <http://worldbank.270a.info/classification/basin/428> ,
+        <http://worldbank.270a.info/classification/basin/429> ,
+        <http://worldbank.270a.info/classification/basin/430> ,
+        <http://worldbank.270a.info/classification/basin/431> ,
+        <http://worldbank.270a.info/classification/basin/432> ,
+        <http://worldbank.270a.info/classification/basin/433> ,
+        <http://worldbank.270a.info/classification/basin/434> ,
+        <http://worldbank.270a.info/classification/basin/435> ,
+        <http://worldbank.270a.info/classification/basin/436> ,
+        <http://worldbank.270a.info/classification/basin/437> ,
+        <http://worldbank.270a.info/classification/basin/438> ,
+        <http://worldbank.270a.info/classification/basin/439> ,
+        <http://worldbank.270a.info/classification/basin/440> ,
+        <http://worldbank.270a.info/classification/basin/441> ,
+        <http://worldbank.270a.info/classification/basin/442> ,
+        <http://worldbank.270a.info/classification/basin/443> ,
+        <http://worldbank.270a.info/classification/basin/444> ,
+        <http://worldbank.270a.info/classification/basin/445> ,
+        <http://worldbank.270a.info/classification/basin/446> ,
+        <http://worldbank.270a.info/classification/basin/447> ,
+        <http://worldbank.270a.info/classification/basin/448> ,
+        <http://worldbank.270a.info/classification/basin/449> ,
+        <http://worldbank.270a.info/classification/basin/450> ,
+        <http://worldbank.270a.info/classification/basin/451> ,
+        <http://worldbank.270a.info/classification/basin/452> ,
+        <http://worldbank.270a.info/classification/basin/453> ,
+        <http://worldbank.270a.info/classification/basin/454> ,
+        <http://worldbank.270a.info/classification/basin/455> ,
+        <http://worldbank.270a.info/classification/basin/456> ,
+        <http://worldbank.270a.info/classification/basin/457> ,
+        <http://worldbank.270a.info/classification/basin/458> ,
+        <http://worldbank.270a.info/classification/basin/459> ,
+        <http://worldbank.270a.info/classification/basin/460> ,
+        <http://worldbank.270a.info/classification/basin/461> ,
+        <http://worldbank.270a.info/classification/basin/462> ,
+        <http://worldbank.270a.info/classification/basin/463> ,
+        <http://worldbank.270a.info/classification/basin/464> ,
+        <http://worldbank.270a.info/classification/basin/465> ,
+        <http://worldbank.270a.info/classification/basin/466> ,
+        <http://worldbank.270a.info/classification/basin/467> ,
+        <http://worldbank.270a.info/classification/basin/468> ;
+    .
+
+<http://worldbank.270a.info/classification/basin/1>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "1" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/2>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "2" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/3>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "3" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/4>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "4" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/5>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "5" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/6>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "6" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/7>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "7" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/8>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "8" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/9>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "9" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/10>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "10" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/11>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "11" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/12>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "12" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/13>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "13" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/14>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "14" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/15>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "15" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/16>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "16" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/17>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "17" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/18>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "18" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/19>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "19" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/20>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "20" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/21>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "21" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/22>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "22" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/23>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "23" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/24>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "24" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/25>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "25" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/26>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "26" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/27>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "27" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/28>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "28" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/29>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "29" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/30>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "30" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/31>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "31" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/32>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "32" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/33>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "33" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/34>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "34" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/35>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "35" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/36>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "36" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/37>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "37" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/38>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "38" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/39>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "39" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/40>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "40" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/41>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "41" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/42>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "42" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/43>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "43" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/44>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "44" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/45>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "45" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/46>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "46" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/47>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "47" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/48>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "48" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/49>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "49" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/50>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "50" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/51>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "51" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/52>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "52" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/53>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "53" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/54>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "54" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/55>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "55" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/56>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "56" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/57>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "57" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/58>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "58" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/59>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "59" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/60>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "60" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/61>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "61" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/62>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "62" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/63>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "63" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/64>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "64" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/65>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "65" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/66>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "66" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/67>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "67" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/68>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "68" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/69>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "69" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/70>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "70" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/71>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "71" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/72>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "72" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/73>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "73" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/74>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "74" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/75>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "75" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/76>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "76" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/77>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "77" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/78>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "78" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/79>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "79" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/80>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "80" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/81>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "81" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/82>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "82" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/83>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "83" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/84>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "84" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/85>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "85" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/86>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "86" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/87>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "87" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/88>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "88" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/89>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "89" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/90>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "90" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/91>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "91" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/92>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "92" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/93>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "93" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/94>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "94" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/95>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "95" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/96>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "96" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/97>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "97" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/98>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "98" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/99>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "99" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/100>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "100" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/101>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "101" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/102>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "102" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/103>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "103" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/104>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "104" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/105>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "105" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/106>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "106" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/107>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "107" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/108>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "108" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/109>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "109" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/110>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "110" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/111>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "111" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/112>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "112" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/113>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "113" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/114>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "114" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/115>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "115" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/116>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "116" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/117>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "117" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/118>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "118" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/119>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "119" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/120>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "120" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/121>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "121" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/122>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "122" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/123>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "123" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/124>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "124" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/125>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "125" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/126>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "126" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/127>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "127" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/128>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "128" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/129>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "129" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/130>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "130" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/131>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "131" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/132>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "132" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/133>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "133" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/134>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "134" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/135>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "135" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/136>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "136" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/137>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "137" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/138>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "138" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/139>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "139" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/140>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "140" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/141>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "141" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/142>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "142" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/143>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "143" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/144>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "144" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/145>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "145" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/146>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "146" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/147>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "147" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/148>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "148" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/149>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "149" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/150>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "150" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/151>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "151" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/152>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "152" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/153>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "153" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/154>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "154" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/155>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "155" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/156>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "156" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/157>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "157" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/158>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "158" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/159>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "159" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/160>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "160" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/161>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "161" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/162>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "162" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/163>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "163" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/164>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "164" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/165>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "165" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/166>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "166" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/167>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "167" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/168>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "168" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/169>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "169" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/170>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "170" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/171>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "171" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/172>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "172" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/173>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "173" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/174>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "174" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/175>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "175" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/176>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "176" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/177>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "177" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/178>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "178" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/179>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "179" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/180>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "180" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/181>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "181" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/182>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "182" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/183>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "183" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/184>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "184" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/185>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "185" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/186>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "186" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/187>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "187" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/188>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "188" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/189>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "189" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/190>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "190" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/191>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "191" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/192>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "192" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/193>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "193" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/194>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "194" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/195>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "195" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/196>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "196" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/197>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "197" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/198>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "198" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/199>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "199" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/200>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "200" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/201>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "201" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/202>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "202" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/203>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "203" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/204>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "204" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/205>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "205" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/206>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "206" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/207>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "207" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/208>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "208" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/209>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "209" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/210>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "210" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/211>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "211" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/212>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "212" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/213>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "213" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/214>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "214" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/215>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "215" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/216>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "216" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/217>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "217" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/218>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "218" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/219>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "219" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/220>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "220" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/221>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "221" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/222>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "222" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/223>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "223" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/224>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "224" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/225>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "225" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/226>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "226" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/227>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "227" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/228>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "228" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/229>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "229" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/230>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "230" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/231>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "231" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/232>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "232" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/233>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "233" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/234>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "234" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/235>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "235" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/236>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "236" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/237>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "237" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/238>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "238" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/239>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "239" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/240>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "240" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/241>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "241" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/242>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "242" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/243>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "243" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/244>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "244" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/245>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "245" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/246>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "246" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/247>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "247" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/248>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "248" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/249>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "249" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/250>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "250" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/251>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "251" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/252>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "252" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/253>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "253" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/254>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "254" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/255>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "255" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/256>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "256" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/257>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "257" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/258>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "258" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/259>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "259" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/260>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "260" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/261>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "261" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/262>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "262" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/263>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "263" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/264>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "264" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/265>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "265" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/266>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "266" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/267>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "267" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/268>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "268" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/269>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "269" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/270>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "270" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/271>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "271" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/272>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "272" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/273>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "273" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/274>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "274" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/275>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "275" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/276>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "276" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/277>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "277" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/278>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "278" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/279>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "279" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/280>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "280" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/281>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "281" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/282>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "282" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/283>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "283" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/284>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "284" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/285>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "285" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/286>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "286" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/287>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "287" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/288>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "288" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/289>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "289" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/290>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "290" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/291>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "291" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/292>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "292" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/293>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "293" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/294>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "294" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/295>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "295" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/296>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "296" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/297>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "297" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/298>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "298" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/299>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "299" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/300>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "300" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/301>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "301" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/302>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "302" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/303>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "303" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/304>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "304" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/305>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "305" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/306>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "306" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/307>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "307" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/308>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "308" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/309>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "309" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/310>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "310" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/311>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "311" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/312>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "312" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/313>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "313" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/314>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "314" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/315>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "315" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/316>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "316" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/317>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "317" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/318>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "318" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/319>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "319" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/320>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "320" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/321>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "321" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/322>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "322" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/323>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "323" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/324>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "324" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/325>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "325" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/326>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "326" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/327>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "327" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/328>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "328" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/329>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "329" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/330>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "330" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/331>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "331" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/332>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "332" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/333>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "333" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/334>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "334" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/335>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "335" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/336>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "336" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/337>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "337" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/338>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "338" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/339>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "339" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/340>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "340" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/341>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "341" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/342>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "342" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/343>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "343" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/344>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "344" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/345>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "345" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/346>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "346" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/347>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "347" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/348>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "348" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/349>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "349" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/350>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "350" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/351>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "351" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/352>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "352" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/353>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "353" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/354>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "354" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/355>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "355" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/356>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "356" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/357>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "357" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/358>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "358" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/359>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "359" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/360>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "360" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/361>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "361" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/362>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "362" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/363>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "363" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/364>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "364" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/365>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "365" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/366>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "366" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/367>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "367" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/368>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "368" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/369>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "369" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/370>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "370" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/371>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "371" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/372>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "372" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/373>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "373" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/374>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "374" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/375>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "375" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/376>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "376" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/377>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "377" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/378>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "378" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/379>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "379" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/380>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "380" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/381>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "381" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/382>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "382" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/383>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "383" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/384>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "384" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/385>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "385" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/386>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "386" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/387>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "387" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/388>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "388" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/389>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "389" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/390>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "390" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/391>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "391" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/392>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "392" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/393>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "393" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/394>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "394" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/395>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "395" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/396>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "396" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/397>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "397" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/398>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "398" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/399>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "399" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/400>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "400" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/401>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "401" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/402>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "402" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/403>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "403" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/404>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "404" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/405>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "405" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/406>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "406" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/407>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "407" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/408>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "408" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/409>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "409" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/410>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "410" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/411>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "411" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/412>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "412" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/413>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "413" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/414>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "414" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/415>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "415" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/416>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "416" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/417>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "417" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/418>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "418" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/419>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "419" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/420>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "420" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/421>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "421" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/422>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "422" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/423>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "423" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/424>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "424" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/425>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "425" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/426>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "426" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/427>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "427" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/428>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "428" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/429>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "429" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/430>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "430" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/431>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "431" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/432>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "432" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/433>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "433" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/434>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "434" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/435>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "435" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/436>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "436" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/437>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "437" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/438>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "438" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/439>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "439" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/440>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "440" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/441>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "441" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/442>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "442" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/443>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "443" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/444>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "444" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/445>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "445" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/446>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "446" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/447>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "447" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/448>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "448" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/449>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "449" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/450>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "450" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/451>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "451" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/452>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "452" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/453>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "453" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/454>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "454" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/455>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "455" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/456>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "456" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/457>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "457" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/458>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "458" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/459>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "459" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/460>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "460" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/461>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "461" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/462>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "462" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/463>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "463" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/464>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "464" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/465>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "465" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/466>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "466" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/467>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "467" ;
+    .
+
+<http://worldbank.270a.info/classification/basin/468>
+    a skos:Concept ;
+    skos:topConceptOf concept:basin ;
+    skos:notation "468" ;
+    .
 
