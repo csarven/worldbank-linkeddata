@@ -63,6 +63,7 @@ Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:not
         <!-- XXX: Consider what to do rdf:about non-countries e.g., 1A, 1W, 4E, 7E, 8S, B1, B2, B3, B4, B6, B7, D2, D3, D4, D5, D6, D7, D8, D9, T2, T3, T4, T6, T7, XC, XD, XE, XJ, XL, XM, XN, XO, XP, XQ, XR, XS, XT, XU, XY, Z4, Z7, ZB, ZF, ZG, ZJ, ZQ, ZT
             e.g., Skip over them;
                   Leave an rdfs:comment
+                  Note that if wb:incomeLevel/@id = 'NA', we know that it is not a country
         -->
         <xsl:for-each select="wb:countries/wb:country">
             <rdf:Description rdf:about="{$wbld}classification/country">
