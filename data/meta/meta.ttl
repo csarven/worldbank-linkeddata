@@ -1340,7 +1340,7 @@ concept:stats-type
         stats-type:year-average-anomaly ,
         stats-type:month-average-historical ,
         stats-type:year-average-historical ,
-        stats-type:decade-average-historical ,
+        stats-type:decade-average-historical ;
     .
 
 stats-type:month-average
