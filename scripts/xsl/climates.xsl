@@ -305,7 +305,7 @@
             <xsl:when test="$statstypeCode = 'year-average-historical' or $statstypeCode = 'decade-average-historical'">
                 <xsl:for-each select="list/*">
                     <xsl:variable name="resourceClimateObservation">
-                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="normalize-space(year)"/><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
+                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="normalize-space(year/text())"/><xsl:text>/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
                     </xsl:variable>
 
                     <rdf:Description rdf:about="{$resourceClimateObservation}">
