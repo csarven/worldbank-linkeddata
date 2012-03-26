@@ -59,10 +59,10 @@
         <xsl:variable name="areaCode">
             <xsl:choose>
                 <xsl:when test="$countryCode != ''">
-                    <xsl:text>country/</xsl:text><xsl:value-of select="$country"/>
+                    <xsl:value-of select="$country"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:text>basin/</xsl:text><xsl:value-of select="$basinCode"/>
+                    <xsl:value-of select="$basinCode"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -134,7 +134,7 @@
             </xsl:variable>
 
             <xsl:variable name="resourceClimateObservation">
-                <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="$fromYear"/><xsl:text>-</xsl:text><xsl:value-of select="$toYear"/><xsl:text>/</xsl:text><xsl:value-of select="$statstype"/><xsl:text>/</xsl:text><xsl:value-of select="$variable"/><xsl:text>/</xsl:text><xsl:value-of select="$gcm"/><xsl:value-of select="$scenario"/>
+                <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$statstype"/><xsl:text>/</xsl:text><xsl:value-of select="$fromYear"/><xsl:text>-</xsl:text><xsl:value-of select="$toYear"/><xsl:text>/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="$variable"/><xsl:text>/</xsl:text><xsl:value-of select="$gcm"/><xsl:value-of select="$scenario"/>
             </xsl:variable>
 
             <rdf:Description rdf:about="{$resourceClimateObservation}">
@@ -233,7 +233,7 @@
                     </xsl:variable>
 
                     <xsl:variable name="resourceClimateObservation">
-                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="$refPeriod"/><xsl:text>/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
+                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="$refPeriod"/><xsl:text>/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
                     </xsl:variable>
 
                     <rdf:Description rdf:about="{$resourceClimateObservation}">
@@ -305,7 +305,7 @@
             <xsl:when test="$statstypeCode = 'year-average-historical' or $statstypeCode = 'decade-average-historical'">
                 <xsl:for-each select="list/*">
                     <xsl:variable name="resourceClimateObservation">
-                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:value-of select="year"/><xsl:text>/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
+                        <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-climates/</xsl:text><xsl:value-of select="$statstypeCode"/><xsl:text>/</xsl:text><xsl:value-of select="normalize-space(year)"/><xsl:value-of select="$areaCode"/><xsl:text>/</xsl:text><xsl:text>/</xsl:text><xsl:value-of select="$variableCode"/>
                     </xsl:variable>
 
                     <rdf:Description rdf:about="{$resourceClimateObservation}">
