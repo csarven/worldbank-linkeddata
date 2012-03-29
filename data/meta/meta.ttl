@@ -28,7 +28,6 @@
 @prefix scenario: <http://worldbank.270a.info/classification/scenario/> .
 @prefix global-circulation-model: <http://worldbank.270a.info/classification/global-circulation-model/> .
 @prefix variable: <http://worldbank.270a.info/classification/variable/> .
-@prefix stats-type: <http://worldbank.270a.info/classification/stats-type/> .
 
 #World Development Indicators
 wbld-dataset:world-development-indicators
@@ -839,19 +838,8 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentvariable ,
         _:qbcomponentglobalcirculationmodel ,
         _:qbcomponentscenario ,
-        _:qbcomponentjanuaryaverage ,
-        _:qbcomponentfebruaryaverage ,
-        _:qbcomponentmarchaverage ,
-        _:qbcomponentaprilaverage ,
-        _:qbcomponentmayaverage ,
-        _:qbcomponentjuneaverage ,
-        _:qbcomponentjulyaverage ,
-        _:qbcomponentaugustaverage ,
-        _:qbcomponentseptemberaverage ,
-        _:qbcomponentoctoberaverage ,
-        _:qbcomponentnovemberaverage ,
-        _:qbcomponentdecemberaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/year-average/structure>
@@ -862,8 +850,7 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentvariable ,
         _:qbcomponentglobalcirculationmodel ,
         _:qbcomponentscenario ,
-        _:qbcomponentyearaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentyearaverage ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly/structure>
@@ -874,19 +861,8 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentvariable ,
         _:qbcomponentglobalcirculationmodel ,
         _:qbcomponentscenario ,
-        _:qbcomponentjanuaryaverage ,
-        _:qbcomponentfebruaryaverage ,
-        _:qbcomponentmarchaverage ,
-        _:qbcomponentaprilaverage ,
-        _:qbcomponentmayaverage ,
-        _:qbcomponentjuneaverage ,
-        _:qbcomponentjulyaverage ,
-        _:qbcomponentaugustaverage ,
-        _:qbcomponentseptemberaverage ,
-        _:qbcomponentoctoberaverage ,
-        _:qbcomponentnovemberaverage ,
-        _:qbcomponentdecemberaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly/structure>
@@ -897,8 +873,7 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentvariable ,
         _:qbcomponentglobalcirculationmodel ,
         _:qbcomponentscenario ,
-        _:qbcomponentyearaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentyearaverage ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/month-average-historical/structure>
@@ -907,19 +882,8 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentrefArea ,
         _:qbcomponentrefPeriod ,
         _:qbcomponentvariable ,
-        _:qbcomponentjanuaryaverage ,
-        _:qbcomponentfebruaryaverage ,
-        _:qbcomponentmarchaverage ,
-        _:qbcomponentaprilaverage ,
-        _:qbcomponentmayaverage ,
-        _:qbcomponentjuneaverage ,
-        _:qbcomponentjulyaverage ,
-        _:qbcomponentaugustaverage ,
-        _:qbcomponentseptemberaverage ,
-        _:qbcomponentoctoberaverage ,
-        _:qbcomponentnovemberaverage ,
-        _:qbcomponentdecemberaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/year-average-historical/structure>
@@ -928,8 +892,7 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentrefArea ,
         _:qbcomponentrefPeriod ,
         _:qbcomponentvariable ,
-        _:qbcomponentyearaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentyearaverage ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/decade-average-historical/structure>
@@ -938,8 +901,7 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentrefArea ,
         _:qbcomponentrefPeriod ,
         _:qbcomponentvariable ,
-        _:qbcomponentdecadeaverage ,
-        _:qbcomponentstatstype ;
+        _:qbcomponentdecadeaverage ;
     .
 
 _:qbcomponentrefArea
@@ -962,57 +924,13 @@ _:qbcomponentscenario
     a qb:ComponentSpecification ;
     qb:dimension property:scenario ;
     .
-_:qbcomponentjanuaryaverage
+_:qbcomponentrecurringinterval
     a qb:ComponentSpecification ;
-    qb:measure property:january-average ;
+    qb:dimension property:recurring-interval ;
     .
-_:qbcomponentfebruaryaverage
+_:qbcomponentmonthaverage
     a qb:ComponentSpecification ;
-    qb:measure property:february-average ;
-    .
-_:qbcomponentmarchaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:march-average ;
-    .
-_:qbcomponentaprilaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:april-average ;
-    .
-_:qbcomponentmayaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:may-average ;
-    .
-_:qbcomponentjuneaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:june-average ;
-    .
-_:qbcomponentjulyaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:july-average ;
-    .
-_:qbcomponentaugustaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:august-average ;
-    .
-_:qbcomponentseptemberaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:september-average ;
-    .
-_:qbcomponentoctoberaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:october-average ;
-    .
-_:qbcomponentnovemberaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:november-average ;
-    .
-_:qbcomponentdecemberaverage
-    a qb:ComponentSpecification ;
-    qb:measure property:december-average ;
-    .
-_:qbcomponentstatstype
-    a qb:ComponentSpecification ;
-    qb:attribute property:stats-type ;
+    qb:measure property:month-average ;
     .
 _:qbcomponentyearaverage
     a qb:ComponentSpecification ;
@@ -1034,12 +952,115 @@ variable:pr
     skos:prefLabel "Precipitation (rainfall and assumed water equivalent), in millimeters"@en ;
     skos:notation "pr" ;
     skos:topConceptOf concept:variable ;
+    skos:exactMatch <http://dbpedia.org/resource/Precipitation_%28meteorology%29> ;
     .
 
 variable:tas
     a skos:Concept ;
     skos:prefLabel "Temperature, in degrees Celsius"@en ;
     skos:notation "tas" ;
+    skos:topConceptOf concept:variable ;
+    skos:exactMatch <http://dbpedia.org/resource/Temperature> ;
+    .
+
+variable:tmin-means
+    a skos:Concept ;
+    skos:prefLabel "Average daily minimum temperature"@en ;
+    skos:notation "tmin-means" ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmax-means
+    a skos:Concept ;
+    skos:prefLabel "Average daily minimum temperature"@en ;
+    skos:notation "tmax-means" ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmax-days90th
+    a skos:Concept ;
+    skos:prefLabel "Hot days"@en ;
+    skos:definition "Number of days with maximum temperature above the control period’s 90th percentile."@en ;
+    skos:notation "tmax-days90th" ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmin-days90th
+    a skos:Concept ;
+    skos:prefLabel "Warm nights"@en ;
+    skos:notation "tmin-days0th" ;
+    skos:definition "Number of days with minimum temperature above the control period’s 90th percentile."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmax-days10th
+    a skos:Concept ;
+    skos:prefLabel "Cool days"@en ;
+    skos:notation "tmax-days10th" ;
+    skos:definition "Number of days with maximum temperature below the control period’s 10th percentile."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmin-days10th
+    a skos:Concept ;
+    skos:prefLabel "Cold nights"@en ;
+    skos:notation "tmin-days10th" ;
+    skos:definition "Number of days with minimum temperature below the control period’s 10th percentile."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:tmin-days0
+    a skos:Concept ;
+    skos:prefLabel "Cold days"@en ;
+    skos:notation "tmin-days0" ;
+    skos:definition "Number of days with minimum temperature below 0 degrees Celsius."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-days
+    a skos:Concept ;
+    skos:prefLabel "Days precipitation > 0.2mm"@en ;
+    skos:notation "ppt-days" ;
+    skos:definition "Number of days with precipitation greater than 0.2 mm."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-days2
+    a skos:Concept ;
+    skos:prefLabel "Days precipitation > 2mm"@en ;
+    skos:notation "ppt-days" ;
+    skos:definition "Number of days with precipitation greater than 2 mm."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-days10
+    a skos:Concept ;
+    skos:prefLabel "Days precipitation > 10mm"@en ;
+    skos:notation "ppt-days10" ;
+    skos:definition "Number of days with precipitation greater than 10 mm."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-days90th
+    a skos:Concept ;
+    skos:prefLabel "Days precipitation > 90th percentile"@en ;
+    skos:notation "ppt-days90th" ;
+    skos:definition "Number of days with precipitation greater than the control period's 90th percentile."@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-dryspell
+    a skos:Concept ;
+    skos:prefLabel "Dry spell"@en ;
+    skos:notation "ppt-dryspell" ;
+    skos:definition "Average number of days between precipitation events"@en ;
+    skos:topConceptOf concept:variable ;
+    .
+
+variable:ppt-means
+    a skos:Concept ;
+    skos:prefLabel "Average daily precipitation"@en ;
+    skos:notation "ppt-means" ;
     skos:topConceptOf concept:variable ;
     .
 
@@ -1212,9 +1233,10 @@ scenario:b1
     rdfs:isDefinedBy <http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=3> ;
     .
 
-property:variable
+
+property:recurring-interval
     a qb:DimensionProperty ;
-    rdfs:label "Variable"@en ;
+    rdfs:label "Recurring interval"@en ;
     .
 
 property:scenario
@@ -1227,86 +1249,9 @@ property:global-circulation-model
     rdfs:label "Global Circulation Model"@en ;
     .
 
-property:january-average
+property:month-average
     a qb:MeasureProperty ;
-    rdfs:label "January average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:feburary-average
-    a qb:MeasureProperty ;
-    rdfs:label "Feburary average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:march-average
-    a qb:MeasureProperty ;
-    rdfs:label "March average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:april-average
-    a qb:MeasureProperty ;
-    rdfs:label "April average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:may-average
-    a qb:MeasureProperty ;
-    rdfs:label "May average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:june-average
-    a qb:MeasureProperty ;
-    rdfs:label "June average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:july-average
-    a qb:MeasureProperty ;
-    rdfs:label "July average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:august-average
-    a qb:MeasureProperty ;
-    rdfs:label "August average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:september-average
-    a qb:MeasureProperty ;
-    rdfs:label "September average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:october-average
-    a qb:MeasureProperty ;
-    rdfs:label "October average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:november-average
-    a qb:MeasureProperty ;
-    rdfs:label "November average"@en ;
-    rdfs:subPropertyOf sdmx-measure:obsValue ;
-    rdfs:range xsd:decimal ;
-    .
-
-property:december-average
-    a qb:MeasureProperty ;
-    rdfs:label "December average"@en ;
+    rdfs:label "Month average"@en ;
     rdfs:subPropertyOf sdmx-measure:obsValue ;
     rdfs:range xsd:decimal ;
     .
@@ -1325,73 +1270,9 @@ property:decade-average
     rdfs:range xsd:decimal ;
     .
 
-property:stats-type
+property:variable
     a qb:AttributeProperty ;
-    rdfs:label "Statistics type"@en ;
-    .
-
-concept:stats-type
-    a sdmx:CodeList ;
-    skos:prefLabel "Codelist for statistics types"@en ;
-    skos:hasTopConcept
-        stats-type:month-average ,
-        stats-type:year-average ,
-        stats-type:month-average-anomaly ,
-        stats-type:year-average-anomaly ,
-        stats-type:month-average-historical ,
-        stats-type:year-average-historical ,
-        stats-type:decade-average-historical ;
-    .
-
-stats-type:month-average
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Month average"@en ;
-    skos:notation "month-average" ;
-    .
-
-stats-type:year-average
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Year average"@en ;
-    skos:notation "year-average" ;
-    .
-
-stats-type:month-average-anomaly
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Average monthly change (anomaly)"@en ;
-    skos:notation "month-average-anomaly" ;
-    skos:definition "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
-    .
-
-stats-type:year-average-anomaly
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Average annual change (anomaly)"@en ;
-    skos:notation "year-average-anomaly" ;
-    skos:definition "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
-    .
-
-stats-type:month-average-historical
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Month average (historical)"@en ;
-    skos:notation "month-average-historical" ;
-    .
-
-stats-type:year-average-historical
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Year average (historical)"@en ;
-    skos:notation "year-average-historical" ;
-    .
-
-stats-type:decade-average-historical
-    a skos:Concept ;
-    skos:topConceptOf concept:stats-type ;
-    skos:prefLabel "Decade average (historical)"@en ;
-    skos:notation "decade-average-historical" ;
+    rdfs:label "Variable"@en ;
     .
 
 
