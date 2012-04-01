@@ -163,7 +163,7 @@
 
                                 <xsl:when test="$data_element = 'currency'">
                                     <rdf:type rdf:resource="{$qb}AttributeProperty"/>
-                                    <rdf:subPropertyOf rdf:resource="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"/>
+                                    <rdfs:subPropertyOf rdf:resource="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"/>
                                 </xsl:when>
 
                                 <!-- XXX: This is mostly here for development. The final output shouldn't have this property, object -->
