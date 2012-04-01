@@ -26,7 +26,6 @@
                     or $string = 'line-item'
                     or $string = 'organization'
                     or $string = 'source'
-                    or $string = 'sub-account'
                     or $string = 'trustee-fund'
                     or $string = 'trustee-fund-name'
                     ">
@@ -153,6 +152,9 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'country-code'">
                 <xsl:text>country</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'currency-of-commitment'">
+                <xsl:text>currency</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'development-grant-expenses'">
                 <xsl:text>development-grant-expenses-us-millions</xsl:text>
             </xsl:when>
@@ -254,6 +256,9 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'projectstatusdisplay'">
                 <xsl:text>status</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'receipt-currency'">
+                <xsl:text>currency</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'reimbursable-mlns-of-usd'">
                 <xsl:text>reimbursable-us-millions</xsl:text>
             </xsl:when>
@@ -287,6 +292,54 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:when test="$string = 'usable-capital-and-reserves'">
                 <xsl:text>usable-capital-and-reserves-us-millions</xsl:text>
             </xsl:when>
+
+
+            <xsl:when test="$string = 'mavg'">
+                <xsl:text>month-average</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualavg'">
+                <xsl:text>year-average</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'manom'">
+                <xsl:text>month-average-anomaly</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualanom'">
+                <xsl:text>year-average-anomaly</xsl:text>
+            </xsl:when>
+
+            <xsl:when test="$string = 'mavg-ensemble'">
+                <xsl:text>month-average-ensemble</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualavg-ensemble'">
+                <xsl:text>year-average-ensemble</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'manom-ensemble'">
+                <xsl:text>month-average-anomaly-ensemble</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualanom-ensemble'">
+                <xsl:text>year-average-anomaly-ensemble</xsl:text>
+            </xsl:when>
+
+            <xsl:when test="$string = 'mavg-ensemble-derived'">
+                <xsl:text>month-average-ensemble-derived</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualavg-ensemble-derived'">
+                <xsl:text>year-average-ensemble-derived</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'manom-ensemble-derived'">
+                <xsl:text>month-average-anomaly-ensemble-derived</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'annualanom-ensemble-derived'">
+                <xsl:text>year-average-anomaly-ensemble-derived</xsl:text>
+            </xsl:when>
+<!--
+            <xsl:when test="$string = 'pr'">
+                <xsl:text>ppt</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'tas'">
+                <xsl:text>temp</xsl:text>
+            </xsl:when>
+-->
             <xsl:otherwise>
                 <xsl:value-of select="$string"/>
             </xsl:otherwise>
@@ -381,6 +434,43 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
 
     <xsl:function name="wbldfn:now">
         <xsl:value-of select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
+    </xsl:function>
+
+
+    <xsl:function name="wbldfn:get-month">
+        <xsl:param name="month"/>
+
+        <xsl:choose>
+            <xsl:when test="string-length(format-number($month, '#')) = 1">
+                <xsl:text>0</xsl:text><xsl:value-of select="$month"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$month"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
+    <xsl:function name="wbldfn:get-month-from-number">
+        <xsl:param name="monthNumber"/>
+
+        <xsl:choose>
+            <xsl:when test="$monthNumber = 1"><xsl:text>January</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 2"><xsl:text>February</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 3"><xsl:text>March</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 4"><xsl:text>April</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 5"><xsl:text>May</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 6"><xsl:text>June</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 7"><xsl:text>July</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 8"><xsl:text>August</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 9"><xsl:text>September</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 10"><xsl:text>October</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 11"><xsl:text>November</xsl:text></xsl:when>
+            <xsl:when test="$monthNumber = 12"><xsl:text>December</xsl:text></xsl:when>
+
+            <xsl:otherwise>
+<xsl:message><xsl:text>FIXME 1 OTHERWISE</xsl:text></xsl:message>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xsl:function name="wbldfn:get-quarter">
@@ -507,6 +597,12 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
     <xsl:template name="datatype-date">
         <xsl:attribute name="rdf:datatype">
             <xsl:text>http://www.w3.org/2001/XMLSchema#dateTime</xsl:text>
+        </xsl:attribute>
+    </xsl:template>
+
+    <xsl:template name="datatype-xsd-decimal">
+        <xsl:attribute name="rdf:datatype">
+            <xsl:text>http://www.w3.org/2001/XMLSchema#decimal</xsl:text>
         </xsl:attribute>
     </xsl:template>
 
