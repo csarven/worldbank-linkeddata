@@ -94,7 +94,6 @@
                                                 or $data_element = 'counterparty-rating'
                                                 or $data_element = 'country'
                                                 or $data_element = 'credit-status'
-                                                or $data_element = 'currency-of-commitment'
                                                 or $data_element = 'donor'
                                                 or $data_element = 'donor-agency'
                                                 or $data_element = 'effective-date-most-recent'
