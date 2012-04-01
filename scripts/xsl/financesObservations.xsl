@@ -14,6 +14,7 @@
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:qb="http://purl.org/linked-data/cube#"
+    xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#"
     xmlns:sdmx-dimension="http://purl.org/linked-data/sdmx/2009/dimension#"
     xmlns:sdmx-code="http://purl.org/linked-data/sdmx/2009/code#"
     xmlns:wb="http://www.worldbank.org"
@@ -51,6 +52,8 @@
             </xsl:variable>
 
 <!-- XXX: Either I have to add this date to the observeration URI or not. Some observations don't have a date. Also, what about other the other dimensions? Perhaps it can do without because there is a unique id per observation any way.
+
+Perhaps gather the list of dimensions for each observation and add them here .. use document()
             <xsl:variable name="observationYear">
                 <xsl:choose>
                     <xsl:when test="child::calendar_year">
@@ -66,26 +69,82 @@
             </xsl:variable>
 -->
 
-            <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}">
-                <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
-                <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
+            <xsl:choose>
+                <xsl:when test="$wbldf_view = '536v-dxib'">
+                    <xsl:variable name="datasetCase">
+                        <xsl:text>a</xsl:text>
+                    </xsl:variable>
+                    <xsl:variable name="ignoreProperty">
+                        <xsl:text>receipt-amount</xsl:text>
+                    </xsl:variable>
+                    <xsl:call-template name="createDescriptions">
+                        <xsl:with-param name="wbldf_view" select="$wbldf_view"/>
+                        <xsl:with-param name="datasetCase" select="$datasetCase"/>
+                        <xsl:with-param name="ignoreProperty" select="$ignoreProperty"/>
+                    </xsl:call-template>
 
-                <!-- XXX: _uuid available only in XML format. RDF doesn't have it 
-                          Alternative:
-                            <dcterms:identifier rdf:resource="urn:uuid:{@_uuid}"/>
-                            <dcterms:identifier><xsl:value-of select="@_uuid"/></dcterms:identifier>
-                          However, the it is not obvious what the literal is without datatype.
-                          Either find a datatype for uuid, or find an uuid property out there.
-                -->
-                <!-- <property:uuid><xsl:value-of select="@_uuid"/></property:uuid> -->
+                    <xsl:variable name="datasetCase">
+                        <xsl:text>b</xsl:text>
+                    </xsl:variable>
+                    <xsl:variable name="ignoreProperty">
+                        <xsl:text>amount-in-usd</xsl:text>
+                    </xsl:variable>
+                    <xsl:call-template name="createDescriptions">
+                        <xsl:with-param name="wbldf_view" select="$wbldf_view"/>
+                        <xsl:with-param name="datasetCase" select="$datasetCase"/>
+                        <xsl:with-param name="ignoreProperty" select="$ignoreProperty"/>
+                    </xsl:call-template>
+                </xsl:when>
 
-                <!-- XXX: Not critical as this is just a row number in the table -->
+                <xsl:otherwise>
+                    <xsl:call-template name="createDescriptions">
+                        <xsl:with-param name="wbldf_view" select="$wbldf_view"/>
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
+
+        <xsl:call-template name="loan-number"/>
+    </xsl:template>
+
+
+    <xsl:template name="createDescriptions">
+        <xsl:param name="wbldf_view"/>
+        <xsl:param name="datasetCase"/>
+        <xsl:param name="ignoreProperty"/>
+
+        <xsl:variable name="wbldf_view">
+            <xsl:choose>
+                <xsl:when test="$datasetCase = ''">
+                    <xsl:value-of select="$wbldf_view"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$wbldf_view"/><xsl:text>/</xsl:text><xsl:value-of select="$datasetCase"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}">
+            <rdf:type rdf:resource="{$qb}Observation"/>
+            <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
+
+            <!-- XXX: _uuid available only in XML format. RDF doesn't have it 
+                      Alternative:
+                        <dcterms:identifier rdf:resource="urn:uuid:{@_uuid}"/>
+                        <dcterms:identifier><xsl:value-of select="@_uuid"/></dcterms:identifier>
+                      However, the it is not obvious what the literal is without datatype.
+                      Either find a datatype for uuid, or find an uuid property out there.
+            -->
+            <!-- <property:uuid><xsl:value-of select="@_uuid"/></property:uuid> -->
+
+            <!-- XXX: Not critical as this is just a row number in the table -->
 <!--                <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id>-->
 
-                <xsl:for-each select="node()">
-                    <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
-                    
-                    <xsl:if test="wbldfn:usable-term($nodeName)">
+            <xsl:for-each select="node()">
+                <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
+
+                <xsl:if test="wbldfn:usable-term($nodeName) and $nodeName != 'currency'">
+                    <xsl:if test="$nodeName != $ignoreProperty">
                         <xsl:variable name="financeDataset">
                             <xsl:text>http://worldbank.270a.info/dataset/world-bank-finances/</xsl:text><xsl:value-of select="$wbldf_view"/>
                         </xsl:variable>
@@ -105,12 +164,11 @@
                             <xsl:with-param name="datasetName" select="$datasetName"/>
                         </xsl:call-template>
                     </xsl:if>
-                </xsl:for-each>
-            </rdf:Description>
-        </xsl:for-each>
-
-        <xsl:call-template name="loan-number"/>
+                </xsl:if>
+            </xsl:for-each>
+        </rdf:Description>
     </xsl:template>
+
 
     <xsl:template name="nodeProperty">
         <xsl:param name="nodeName"/>
@@ -255,19 +313,29 @@
             <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
             <xsl:when test="wbldfn:money-amount($nodeName)">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
-                    <xsl:call-template name="datatype-dbo-usd"/>
+                    <xsl:call-template name="datatype-xsd-decimal"/>
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
-            </xsl:when>
 
-            <xsl:when test="$nodeName = 'currency-of-commitment'
-                            or $nodeName = 'receipt-currency'">
-                <xsl:variable name="currency" select="normalize-space(./text())"/>
+                <xsl:variable name="currency">
+                    <xsl:choose>
+                        <xsl:when test="../receipt_currency/text() != '' and $nodeName != 'amount-in-usd'">
+                            <xsl:value-of select="normalize-space(../receipt_currency/text())"/>
+                        </xsl:when>
+
+                        <xsl:when test="../currency_of_commitment/text() != '' and $nodeName != 'amount-in-usd'">
+                            <xsl:value-of select="normalize-space(../currency_of_commitment/text())"/>
+                        </xsl:when>
+
+                        <xsl:otherwise>
+                            <xsl:text>USD</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
 
                 <xsl:choose>
                     <xsl:when test="document($pathToCurrencies)/rdf:RDF/rdf:Description[skos:notation/text() = $currency]/@rdf:about">
-                        <!-- XXX: I prefer to use 'currency' instead of 'currency-of-commitment' but that would mean that I have to change the property name in the dictionary wc6g-9zmq -->
-                        <xsl:element name="property:{$nodeName}">
+                        <xsl:element name="property:currency">
                             <xsl:attribute name="rdf:resource">
                                <xsl:value-of select="$classification"/><xsl:text>currency/</xsl:text><xsl:value-of select="$currency"/>
                             </xsl:attribute>
@@ -275,7 +343,7 @@
                     </xsl:when>
 
                     <xsl:otherwise>
-                        <xsl:element name="property:{$nodeName}">
+                        <xsl:element name="property:currency">
                             <xsl:value-of select="./text()"/>
                         </xsl:element>
                     </xsl:otherwise>

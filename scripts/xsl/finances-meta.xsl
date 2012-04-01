@@ -126,7 +126,6 @@
                                                 or $data_element = 'program-code'
                                                 or $data_element = 'program-name'
                                                 or $data_element = 'project'
-                                                or $data_element = 'receipt-currency'
                                                 or $data_element = 'receipt-quarter'
                                                 or $data_element = 'receipt-type'
                                                 or $data_element = 'recipient'
@@ -144,7 +143,6 @@
                                                 or $data_element = 'vpu-group'
                                                 or $data_element = 'vpu-group-code'
                                                 or $data_element = 'vpu-type'
-
                                                 ">
                                     <rdf:type rdf:resource="{$qb}DimensionProperty"/>
                                 </xsl:when>
@@ -164,11 +162,10 @@
                                     <rdf:type rdf:resource="{$qb}MeasureProperty"/>
                                 </xsl:when>
 
-                                <!-- XXX: Temporarily not used because there are observations that has a measures with different applicable attributes 
-                                <xsl:when test="">
+                                <xsl:when test="$data_element = 'currency'">
                                     <rdf:type rdf:resource="{$qb}AttributeProperty"/>
+                                    <rdf:subPropertyOf rdf:resource="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"/>
                                 </xsl:when>
-                                 -->
 
                                 <!-- XXX: This is mostly here for development. The final output shouldn't have this property, object -->
                                 <xsl:otherwise>
@@ -201,75 +198,125 @@
             </xsl:when>
 
             <xsl:otherwise>
-                <xsl:for-each select="//response/row/row[1]/*">
-                    <xsl:variable name="dataElement" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
-
-                    <xsl:if test="wbldfn:usable-term($dataElement)">
-                        <xsl:variable name="financeDataset">
-                            <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-finances/</xsl:text><xsl:value-of select="$financeDatasetID"/>
+                <xsl:choose>
+                    <xsl:when test="$financeDatasetID = '536v-dxib'">
+                        <xsl:variable name="datasetCase">
+                            <xsl:text>a</xsl:text>
                         </xsl:variable>
-
-                        <xsl:variable name="datasetName">
-                            <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $financeDataset]/rdfs:label"/>
+                        <xsl:variable name="ignoreProperty">
+                            <xsl:text>receipt-amount</xsl:text>
                         </xsl:variable>
+                        <xsl:call-template name="createDescriptions">
+                            <xsl:with-param name="datasetCase" select="$datasetCase"/>
+                            <xsl:with-param name="ignoreProperty" select="$ignoreProperty"/>
+                        </xsl:call-template>
 
-                        <xsl:variable name="datasetName">
-                            <xsl:if test="wbldfn:prepend-dataset($dataElement)">
-                                <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
-                            </xsl:if>
+                        <xsl:variable name="datasetCase">
+                            <xsl:text>b</xsl:text>
                         </xsl:variable>
-
-                        <xsl:variable name="resourceDescriptionProperty">
-                            <xsl:value-of select="$wbld"/><xsl:text>property/</xsl:text><xsl:value-of select="$datasetName"/><xsl:value-of select="$dataElement"/>
+                        <xsl:variable name="ignoreProperty">
+                            <xsl:text>amount-in-usd</xsl:text>
                         </xsl:variable>
-<!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message> -->
-                        <qb:DataStructureDefinition rdf:about="{$wbld}dataset/world-bank-finances/{$financeDatasetID}/structure">
-                            <qb:component>
-                                <qb:ComponentSpecification>
-                                    <xsl:variable name="componentPropertyURI">
-                                        <xsl:value-of select="document($pathToFinancesDictionary)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
-                                    </xsl:variable>
+                        <xsl:call-template name="createDescriptions">
+                            <xsl:with-param name="datasetCase" select="$datasetCase"/>
+                            <xsl:with-param name="ignoreProperty" select="$ignoreProperty"/>
+                        </xsl:call-template>
+                    </xsl:when>
 
-                                    <xsl:variable name="componentPropertyURI">
-                                        <xsl:choose>
-                                            <xsl:when test="$componentPropertyURI = ''">
-                                                <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
-                                            </xsl:when>
-
-                                            <xsl:otherwise>
-                                                <xsl:value-of select="$componentPropertyURI"/>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                    </xsl:variable>
-
-<!-- <xsl:message><xsl:text>componentPropertyURI: </xsl:text><xsl:value-of select="$componentPropertyURI"/></xsl:message> -->
-                                    <xsl:variable name="componentProperty">
-                                        <xsl:choose>
-                                            <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#DimensionProperty'">
-                                                <xsl:text>qb:dimension</xsl:text>
-                                            </xsl:when>
-                                            <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#MeasureProperty'">
-                                                <xsl:text>qb:measure</xsl:text>
-                                            </xsl:when>
-                                            <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#AttributeProperty'">
-                                                <xsl:text>qb:attribute</xsl:text>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-<xsl:message>FIXME-ii--------<xsl:value-of select="$dataElement"/></xsl:message>
-                                                <xsl:text>qb:FIXME-ii--------</xsl:text>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                    </xsl:variable>
-
-                                    <xsl:element name="{$componentProperty}">
-                                        <xsl:attribute name="rdf:resource" select="$resourceDescriptionProperty"/>
-                                    </xsl:element>
-                                </qb:ComponentSpecification>
-                            </qb:component>
-                        </qb:DataStructureDefinition>
-                    </xsl:if>
-                </xsl:for-each>
+                    <xsl:otherwise>
+                        <xsl:call-template name="createDescriptions"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
+
+
+    <xsl:template name="createDescriptions">
+        <xsl:param name="datasetCase"/>
+        <xsl:param name="ignoreProperty"/>
+
+        <xsl:variable name="financeDatasetID">
+            <xsl:choose>
+                <xsl:when test="$datasetCase = ''">
+                    <xsl:value-of select="$financeDatasetID"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$financeDatasetID"/><xsl:text>/</xsl:text><xsl:value-of select="$datasetCase"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+
+        <xsl:for-each select="//response/row/row[1]/*">
+            <xsl:variable name="dataElement" select="wbldfn:canonical-term(wbldfn:safe-term(name()))"/>
+
+            <xsl:if test="wbldfn:usable-term($dataElement) and $dataElement != $ignoreProperty">
+                <xsl:variable name="financeDataset">
+                    <xsl:value-of select="$wbld"/><xsl:text>dataset/world-bank-finances/</xsl:text><xsl:value-of select="$financeDatasetID"/>
+                </xsl:variable>
+
+                <xsl:variable name="datasetName">
+                    <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $financeDataset]/rdfs:label"/>
+                </xsl:variable>
+
+                <xsl:variable name="datasetName">
+                    <xsl:if test="wbldfn:prepend-dataset($dataElement)">
+                        <xsl:value-of select="wbldfn:safe-term($datasetName)"/><xsl:text>-</xsl:text>
+                    </xsl:if>
+                </xsl:variable>
+
+                <xsl:variable name="resourceDescriptionProperty">
+                    <xsl:value-of select="$wbld"/><xsl:text>property/</xsl:text><xsl:value-of select="$datasetName"/><xsl:value-of select="$dataElement"/>
+                </xsl:variable>
+<!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message>536v-dxib -->
+
+                <qb:DataStructureDefinition rdf:about="{$wbld}dataset/world-bank-finances/{$financeDatasetID}/structure">
+                    <qb:component>
+                        <qb:ComponentSpecification>
+                            <xsl:variable name="componentPropertyURI">
+                                <xsl:value-of select="document($pathToFinancesDictionary)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
+                            </xsl:variable>
+
+                            <xsl:variable name="componentPropertyURI">
+                                <xsl:choose>
+                                    <xsl:when test="$componentPropertyURI = ''">
+                                        <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
+                                    </xsl:when>
+
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="$componentPropertyURI"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:variable>
+
+<!-- <xsl:message><xsl:text>componentPropertyURI: </xsl:text><xsl:value-of select="$componentPropertyURI"/></xsl:message> -->
+                            <xsl:variable name="componentProperty">
+                                <xsl:choose>
+                                    <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#DimensionProperty'">
+                                        <xsl:text>qb:dimension</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#MeasureProperty'">
+                                        <xsl:text>qb:measure</xsl:text>
+                                    </xsl:when>
+                                    <xsl:when test="$componentPropertyURI = 'http://purl.org/linked-data/cube#AttributeProperty'">
+                                        <xsl:text>qb:attribute</xsl:text>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+<xsl:message>FIXME-ii--------<xsl:value-of select="$dataElement"/></xsl:message>
+                                        <xsl:text>qb:FIXME-ii--------</xsl:text>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:variable>
+
+                            <xsl:element name="{$componentProperty}">
+                                <xsl:attribute name="rdf:resource" select="$resourceDescriptionProperty"/>
+                            </xsl:element>
+                        </qb:ComponentSpecification>
+                    </qb:component>
+                </qb:DataStructureDefinition>
+            </xsl:if>
+        </xsl:for-each>
+    </xsl:template>
+
 </xsl:stylesheet>
