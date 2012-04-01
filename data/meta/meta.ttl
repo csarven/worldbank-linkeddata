@@ -144,17 +144,36 @@ wbld-dataset:world-bank-finances
     .
 
 <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib>
-    a qb:DataSet ;
-    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/structure> ;
     dcterms:isPartOf wbld-dataset:world-bank-finances ;
     rdfs:label "Contributions to Financial Intermediary Funds"@en ;
     dcterms:title "Contributions to Financial Intermediary Funds"@en ;
     dcterms:identifier "536v-dxib" ;
     rdfs:seeAlso <https://finances.worldbank.org/Financial-Intermediary-Funds/Contributions-to-Financial-Intermediary-Funds/536v-dxib> ;
     dcterms:source <https://finances.worldbank.org/api/views/536v-dxib/rows.xml> ;
-    dcterms:issued "2012-02-29T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-04-01T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:hasPart
+        <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/a> ,
+        <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/b> ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/a>
+    a qb:DataSet ;
+    rdfs:label "Contributions to Financial Intermediary Funds"@en ;
+    dcterms:title "Contributions to Financial Intermediary Funds"@en ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/a/structure> ;
+    dcterms:isPartOf <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib> ;
+    dcterms:source <https://finances.worldbank.org/api/views/536v-dxib/rows.xml> ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/b>
+    a qb:DataSet ;
+    rdfs:label "Contributions to Financial Intermediary Funds"@en ;
+    dcterms:title "Contributions to Financial Intermediary Funds"@en ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib/b/structure> ;
+    dcterms:isPartOf <http://worldbank.270a.info/dataset/world-bank-finances/536v-dxib> ;
+    dcterms:source <https://finances.worldbank.org/api/views/536v-dxib/rows.xml> ;
     .
 
 <http://worldbank.270a.info/dataset/world-bank-finances/9pv4-rtrm>
@@ -743,7 +762,15 @@ wbld-dataset:world-bank-climates
         wbld-dataset-world-bank-climates:year-average-anomaly ,
         wbld-dataset-world-bank-climates:month-average-historical ,
         wbld-dataset-world-bank-climates:year-average-historical ,
-        wbld-dataset-world-bank-climates:decade-average-historical ;
+        wbld-dataset-world-bank-climates:decade-average-historical ,
+        wbld-dataset-world-bank-climates:month-average-ensemble ,
+        wbld-dataset-world-bank-climates:year-average-ensemble ,
+        wbld-dataset-world-bank-climates:month-average-anomaly-ensemble ,
+        wbld-dataset-world-bank-climates:year-average-anomaly-ensemble ,
+        wbld-dataset-world-bank-climates:month-average-ensemble-derived ,
+        wbld-dataset-world-bank-climates:year-average-ensemble-derived ,
+        wbld-dataset-world-bank-climates:month-average-anomaly-ensemble-derived ,
+        wbld-dataset-world-bank-climates:annual-average-anomaly-ensemble-derived ;
     rdfs:seeAlso <http://data.worldbank.org/developers/climate-data-api> ;
     .
 
@@ -774,8 +801,8 @@ wbld-dataset-world-bank-climates:month-average-anomaly
     dcterms:isPartOf wbld-dataset:world-bank-climates ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly/structure> ;
     rdfs:label "World Bank Climate Change average monthly change (anomaly) dataset"@en ;
-    dcterms:title "World Bank Climate Change average monthly change (anomaly) dataset"@en ;
-    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    dcterms:title "World Bank Climate Change average monthly change (anomaly)"@en ;
+    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables."@en ;
     dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -787,7 +814,7 @@ wbld-dataset-world-bank-climates:year-average-anomaly
     qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly/structure> ;
     rdfs:label "World Bank Climate Change average annual change (anomaly) dataset"@en ;
     dcterms:title "World Bank Climate Change average annual change (anomaly)"@en ;
-    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables, and 1961-2000 for derived statistics."@en ;
+    dcterms:description "The control period is 1961-1999 for temperature and precipitation variables."@en ;
     dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -829,6 +856,104 @@ wbld-dataset-world-bank-climates:decade-average-historical
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
 
+
+
+wbld-dataset-world-bank-climates:month-average-ensemble
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-ensemble/structure> ;
+    rdfs:label "World Bank Climate Change monthly average ensemble dataset"@en ;
+    dcterms:title "World Bank Climate Change monthly ensemble average"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-ensemble
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-ensemble/structure> ;
+    rdfs:label "World Bank Climate Change annual average ensemble dataset"@en ;
+    dcterms:title "World Bank Climate Change annual average ensemble"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:month-average-anomaly-ensemble
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly-ensemble/structure> ;
+    rdfs:label "World Bank Climate Change average monthly change (anomaly) ensemble dataset"@en ;
+    dcterms:title "World Bank Climate Change average monthly change (anomaly) ensemble"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results. The control period is 1961-1999 for temperature and precipitation variables."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-anomaly-ensemble
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly-ensemble/structure> ;
+    rdfs:label "World Bank Climate Change average annual change (anomaly) ensemble dataset"@en ;
+    dcterms:title "World Bank Climate Change average annual change (anomaly) ensemble"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results. The control period is 1961-1999 for temperature and precipitation variables."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+
+wbld-dataset-world-bank-climates:month-average-ensemble-derived
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-ensemble-derived/structure> ;
+    rdfs:label "World Bank Climate Change monthly average ensemble derived dataset"@en ;
+    dcterms:title "World Bank Climate Change monthly average ensemble derived"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-ensemble-derived
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-ensemble-derived/structure> ;
+    rdfs:label "World Bank Climate Change annual average ensemble derived dataset"@en ;
+    dcterms:title "World Bank Climate Change annual average ensemble derived"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:month-average-anomaly-ensemble-derived
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly-ensemble-derived/structure> ;
+    rdfs:label "World Bank Climate Change average monthly change (anomaly) ensemble derived dataset"@en ;
+    dcterms:title "World Bank Climate Change average monthly change (anomaly) ensemble derived"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results. The control period is 1961-2000 for temperature and precipitation variables."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
+
+wbld-dataset-world-bank-climates:year-average-anomaly-ensemble-derived
+    a qb:DataSet ;
+    dcterms:isPartOf wbld-dataset:world-bank-climates ;
+    qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly-ensemble-derived/structure> ;
+    rdfs:label "World Bank Climate Change average annual change (anomaly) ensemble derived dataset"@en ;
+    dcterms:title "World Bank Climate Change average annual change (anomaly) ensemble derived"@en ;
+    dcterms:description "Ensemble requests return results for the 10th, 50th (median) and 90th percentile values of all models together (15 models for the A2 scenario, and 13 for the B1 scenario), instead of individual model results. The control period is 1961-2000 for temperature and precipitation variables."@en ;
+    dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
+    dcterms:creator <http://csarven.ca/#i> ;
+    dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+    .
 
 <http://worldbank.270a.info/dataset/world-bank-climates/month-average/structure>
     a qb:DataStructureDefinition ;
@@ -904,6 +1029,103 @@ wbld-dataset-world-bank-climates:decade-average-historical
         _:qbcomponentdecadeaverage ;
     .
 
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-ensemble/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-ensemble/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly-ensemble/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly-ensemble/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentpercentile ;
+    .
+
+
+
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-ensemble-derived/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-ensemble-derived/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/month-average-anomaly-ensemble-derived/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentmonthaverage ,
+        _:qbcomponentrecurringinterval ,
+        _:qbcomponentpercentile ;
+    .
+
+<http://worldbank.270a.info/dataset/world-bank-climates/year-average-anomaly-ensemble-derived/structure>
+    a qb:DataStructureDefinition ;
+    qb:component
+        _:qbcomponentrefArea ,
+        _:qbcomponentrefPeriod ,
+        _:qbcomponentvariable ,
+        _:qbcomponentscenario ,
+        _:qbcomponentyearaverage ,
+        _:qbcomponentpercentile ;
+    .
+
+
 _:qbcomponentrefArea
     a qb:ComponentSpecification ;
     qb:dimension sdmx-dimension:refArea ;
@@ -923,6 +1145,10 @@ _:qbcomponentglobalcirculationmodel
 _:qbcomponentscenario
     a qb:ComponentSpecification ;
     qb:dimension property:scenario ;
+    .
+_:qbcomponentpercentile
+    a qb:ComponentSpecification ;
+    qb:dimension property:percentile ;
     .
 _:qbcomponentrecurringinterval
     a qb:ComponentSpecification ;
@@ -944,12 +1170,29 @@ _:qbcomponentdecadeaverage
 
 concept:variable
     a sdmx:CodeList ;
-    skos:prefLabel "Variable"@en ;
+    skos:prefLabel "Climate variable"@en ;
+    skos:hasTopConcept
+        variable:pr ,
+        variable:tas ,
+        variable:tmin-means ,
+        variable:tmax-means ,
+        variable:tmax-days90th ,
+        variable:tmin-days90th ,
+        variable:tmax-days10th ,
+        variable:tmin-days10th ,
+        variable:tmin-days0 ,
+        variable:ppt-days ,
+        variable:ppt-days2 ,
+        variable:ppt-days10 ,
+        variable:ppt-days90th ,
+        variable:ppt-dryspell ,
+        variable:ppt-means ;
     .
 
 variable:pr
     a skos:Concept ;
-    skos:prefLabel "Precipitation (rainfall and assumed water equivalent), in millimeters"@en ;
+    skos:prefLabel "Precipitation"@en ;
+    skos:definition "Precipitation (rainfall and assumed water equivalent), in millimeters"@en ;
     skos:notation "pr" ;
     skos:topConceptOf concept:variable ;
     skos:exactMatch <http://dbpedia.org/resource/Precipitation_%28meteorology%29> ;
@@ -957,7 +1200,8 @@ variable:pr
 
 variable:tas
     a skos:Concept ;
-    skos:prefLabel "Temperature, in degrees Celsius"@en ;
+    skos:prefLabel "Temperature"@en ;
+    skos:definition "Temperature, in degrees Celsius"@en ;
     skos:notation "tas" ;
     skos:topConceptOf concept:variable ;
     skos:exactMatch <http://dbpedia.org/resource/Temperature> ;
