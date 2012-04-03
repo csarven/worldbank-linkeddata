@@ -770,7 +770,7 @@ wbld-dataset:world-bank-climates
         wbld-dataset-world-bank-climates:month-average-ensemble-derived ,
         wbld-dataset-world-bank-climates:year-average-ensemble-derived ,
         wbld-dataset-world-bank-climates:month-average-anomaly-ensemble-derived ,
-        wbld-dataset-world-bank-climates:annual-average-anomaly-ensemble-derived ;
+        wbld-dataset-world-bank-climates:year-average-anomaly-ensemble-derived ;
     rdfs:seeAlso <http://data.worldbank.org/developers/climate-data-api> ;
     .
 
