@@ -824,8 +824,8 @@ wbld-dataset-world-bank-climates:month-average-historical
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-climates ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/month-average-historical/structure> ;
-    rdfs:label "World Bank Climate Change monthly average dataset"@en ;
-    dcterms:title "World Bank Climate Change monthly average"@en ;
+    rdfs:label "World Bank Climate Change monthly (historical) average dataset"@en ;
+    dcterms:title "World Bank Climate Change monthly historical average"@en ;
     dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
     dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
@@ -836,7 +836,7 @@ wbld-dataset-world-bank-climates:year-average-historical
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-climates ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/year-average-historical/structure> ;
-    rdfs:label "World Bank Climate Change annual average dataset"@en ;
+    rdfs:label "World Bank Climate Change annual (historical) average dataset"@en ;
     dcterms:title "World Bank Climate Change annual average"@en ;
     dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
     dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
@@ -848,8 +848,8 @@ wbld-dataset-world-bank-climates:decade-average-historical
     a qb:DataSet ;
     dcterms:isPartOf wbld-dataset:world-bank-climates ;
     qb:structure <http://worldbank.270a.info/dataset/world-bank-climates/decade-average-historical/structure> ;
-    rdfs:label "World Bank Climate Change decadal average dataset"@en ;
-    dcterms:title "World Bank Climate Change decadal average"@en ;
+    rdfs:label "World Bank Climate Change decadal (historical) average dataset"@en ;
+    dcterms:title "World Bank Climate Change decadal (historical) average"@en ;
     dcterms:description "Data based on gridded climatologies from the Climate Research Unit. These data are proxies for temperature and precipitation, where modeling has been used to extrapolate estimates where instrumental (station) data were unavailable or unreliable, especially in the early 1900’s."@en ;
     dcterms:issued "2012-03-25T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
