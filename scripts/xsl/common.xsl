@@ -7,12 +7,17 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:wb="http://www.worldbank.org"
-    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/">
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
+    xmlns:property="http://worldbank.270a.info/property/"
+    >
 
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
 
     <xsl:param name="pathToCountries"/>
+
+    <xsl:variable name="classification">http://worldbank.270a.info/classification/</xsl:variable>
 
     <xsl:function name="wbldfn:safe-term">
         <xsl:param name="string"/>
@@ -24,8 +29,6 @@
 
         <xsl:if test="$string = 'financial-product'
                     or $string = 'line-item'
-                    or $string = 'organization'
-                    or $string = 'source'
                     or $string = 'trustee-fund'
                     or $string = 'trustee-fund-name'
                     ">
@@ -418,6 +421,26 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
         </xsl:if>
     </xsl:function>
 
+    <xsl:template name="property-currency">
+        <xsl:param name="currencyCode"/>
+
+        <xsl:choose>
+            <xsl:when test="document($pathToCurrencies)/rdf:RDF/rdf:Description[skos:notation/text() = $currencyCode]/@rdf:about">
+                <xsl:element name="property:currency">
+                    <xsl:attribute name="rdf:resource">
+                       <xsl:value-of select="$classification"/><xsl:text>currency/</xsl:text><xsl:value-of select="$currencyCode"/>
+                    </xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+
+            <xsl:otherwise>
+                <xsl:element name="property:currency">
+                    <xsl:value-of select="./text()"/>
+                </xsl:element>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
     <xsl:function name="wbldfn:ISO-3166_3-to-ISO-3166_2">
         <xsl:param name="countryCode"/>
 
@@ -621,5 +644,6 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
         </dcterms:issued>
         <dcterms:source rdf:resource="{$dataSource}"/>
         <dcterms:creator rdf:resource="http://csarven.ca/#i"/>
+        <dcterms:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/"/>
     </xsl:template>
 </xsl:stylesheet>

@@ -29,6 +29,10 @@
 @prefix global-circulation-model: <http://worldbank.270a.info/classification/global-circulation-model/> .
 @prefix variable: <http://worldbank.270a.info/classification/variable/> .
 
+<http://csarven.ca/#i>
+    rdfs:label "Sarven Capadisli"@en ;
+    .
+
 #World Development Indicators
 wbld-dataset:world-development-indicators
     a qb:DataSet ;

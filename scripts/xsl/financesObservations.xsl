@@ -32,10 +32,12 @@
     <xsl:param name="pathToRegionsExtra"/>
     <xsl:param name="pathToMeta"/>
 
+    <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
     <xsl:variable name="wbld">http://worldbank.270a.info/</xsl:variable>
     <xsl:variable name="property">http://worldbank.270a.info/property/</xsl:variable>
     <xsl:variable name="classification">http://worldbank.270a.info/classification/</xsl:variable>
     <xsl:variable name="qb">http://purl.org/linked-data/cube#</xsl:variable>
+    <xsl:variable name="currencyCodeUSD">USD</xsl:variable>
 
     <xsl:template match="/">
         <rdf:RDF>
@@ -44,8 +46,6 @@
     </xsl:template>
 
     <xsl:template name="financesObservations">
-        <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
-
         <xsl:for-each select="response/row/row">
             <xsl:variable name="wbldf_view">
                 <xsl:value-of select="replace(@_address, 'http://finances.worldbank.org/views/(_)?([^/]*).*', '$2')"/>
@@ -127,6 +127,16 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
         <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}">
             <rdf:type rdf:resource="{$qb}Observation"/>
             <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
+            <xsl:if test="@_address">
+                <xsl:variable name="dataSource">
+                    <xsl:value-of select="@_address"/><xsl:text>.xml</xsl:text>
+                </xsl:variable>
+
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
+            </xsl:if>
 
             <!-- XXX: _uuid available only in XML format. RDF doesn't have it 
                       Alternative:
@@ -162,10 +172,74 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
                         <xsl:call-template name="nodeProperty">
                             <xsl:with-param name="nodeName" select="$nodeName"/>
                             <xsl:with-param name="datasetName" select="$datasetName"/>
+                            <xsl:with-param name="wbldf_view" select="$wbldf_view"/>
                         </xsl:call-template>
                     </xsl:if>
                 </xsl:if>
             </xsl:for-each>
+
+<!--
+TODO
+536v-dxib needs a single currency code per observation (there are two types of observations and come with different values)
+
+ebmi-69yj has service-charge-rate (measure) and a bunch of amounts (measure). Need to split these observations into two, like in 536v-dxib
+
+jeqz-f7mn has equity-to-loans-ratio (measure) .. similar to ebmi-69yj
+
+rcx4-r7xj has shares, percentage-of-total-shares, number-of-votes, percentage-of-total-votes (different measures), total-amounts, amounts-paid-in, amounts-subject-to-call (measures)
+
+sfv5-tf7p has interest-rate (measure) and a bunch of amounts (measure)
+
+tdwh-3krx has service-charge-rate (measure) and a bunch of amounts (measure)
+
+v84d-dq44 has number-of-votes, percentage-of-total-votes (measure), and subscriptions-and-contributions-commited (measure)
+
+zucq-nrc3 has interest-rate (measure) and a bunch of amounts (measure)
+-->
+
+            <xsl:choose>
+                <xsl:when test="$wbldf_view = '4i57-byta'
+                            or $wbldf_view = '9pv4-rtrm'
+                            or $wbldf_view = 'ax5s-vav5'
+                            or $wbldf_view = 'csrh-vv7b'
+                            or $wbldf_view = 'e8yz-96c6'
+                            or $wbldf_view = 'eycy-ub35'
+                            or $wbldf_view = 'fie8-6fxn'
+                            or $wbldf_view = 'gprm-cvxz'
+                            or $wbldf_view = 'h4s8-nwev'
+                            or $wbldf_view = 'h9ga-h5eb'
+                            or $wbldf_view = 'hcqu-nmwb'
+                            or $wbldf_view = 'i7za-uwi5'
+                            or $wbldf_view = 'iww5-3sst'
+                            or $wbldf_view = 'kmwd-f4rk'
+                            or $wbldf_view = 'm54j-ersw'
+                            or $wbldf_view = 'nh5z-5qch'
+                            or $wbldf_view = 'p65j-3upu'
+                            or $wbldf_view = 'pyda-ktbg'
+                            or $wbldf_view = 'ri54-wt6e'
+                            or $wbldf_view = 's3ey-mkx3'
+                            or $wbldf_view = 'wphw-pasx'
+                            or $wbldf_view = 'xs8h-cwh5'
+                            or $wbldf_view = 'zyqx-8e4a'
+
+                            or $wbldf_view = 'jeqz-f7mn'
+                            or $wbldf_view = 'rcx4-r7xj'
+                            or $wbldf_view = 'sfv5-tf7p'
+                            or $wbldf_view = 'tdwh-3krx'
+                            or $wbldf_view = 'v84d-dq44'
+                            or $wbldf_view = 'zucq-nrc3'
+                            ">
+                    <xsl:call-template name="property-currency">
+                        <xsl:with-param name="currencyCode" select="$currencyCodeUSD"/>
+                    </xsl:call-template>
+                </xsl:when>
+
+                <xsl:otherwise>
+<!--
+<xsl:message><xsl:text>FIXME: </xsl:text><xsl:value-of select="$wbldf_view"/></xsl:message>
+-->
+                </xsl:otherwise>
+            </xsl:choose>
         </rdf:Description>
     </xsl:template>
 
@@ -173,12 +247,13 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
     <xsl:template name="nodeProperty">
         <xsl:param name="nodeName"/>
         <xsl:param name="datasetName"/>
+        <xsl:param name="wbldf_view"/>
 
         <xsl:choose>
             <xsl:when test="$nodeName = 'project'">
                 <xsl:element name="property:{$nodeName}">
                     <xsl:attribute name="rdf:resource">
-                        <xsl:value-of select="$wbld"/><xsl:text>project/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
+                        <xsl:value-of select="$classification"/><xsl:text>project/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
                     </xsl:attribute>
                 </xsl:element>
             </xsl:when>
@@ -309,45 +384,36 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
                 </xsl:element>
             </xsl:when>
 
-            <!-- XXX: A bit unsure about this. Reconsider property and find a different datatype? -->
-            <!-- TODO: I could maybe use the currencies.rdf here. Depending on how it is defined -->
             <xsl:when test="wbldfn:money-amount($nodeName)">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-xsd-decimal"/>
                     <xsl:value-of select="./text()"/>
                 </xsl:element>
 
-                <xsl:variable name="currency">
-                    <xsl:choose>
-                        <xsl:when test="../receipt_currency/text() != '' and $nodeName != 'amount-in-usd'">
-                            <xsl:value-of select="normalize-space(../receipt_currency/text())"/>
-                        </xsl:when>
+                <xsl:if test="$wbldf_view = '536v-dxib/a'
+                            or $wbldf_view = '536v-dxib/b'
+                            or $wbldf_view = 'ebmi-69yj'
+                            ">
+                    <xsl:variable name="currencyCode">
+                        <xsl:choose>
+                            <xsl:when test="../receipt_currency/text() != '' and $nodeName != 'amount-in-usd'">
+                                <xsl:value-of select="normalize-space(../receipt_currency/text())"/>
+                            </xsl:when>
 
-                        <xsl:when test="../currency_of_commitment/text() != '' and $nodeName != 'amount-in-usd'">
-                            <xsl:value-of select="normalize-space(../currency_of_commitment/text())"/>
-                        </xsl:when>
+                            <xsl:when test="../currency_of_commitment/text() != '' and $nodeName != 'amount-in-usd'">
+                                <xsl:value-of select="normalize-space(../currency_of_commitment/text())"/>
+                            </xsl:when>
 
-                        <xsl:otherwise>
-                            <xsl:text>USD</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
+                            <xsl:otherwise>
+                                <xsl:value-of select="$currencyCodeUSD"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:variable>
 
-                <xsl:choose>
-                    <xsl:when test="document($pathToCurrencies)/rdf:RDF/rdf:Description[skos:notation/text() = $currency]/@rdf:about">
-                        <xsl:element name="property:currency">
-                            <xsl:attribute name="rdf:resource">
-                               <xsl:value-of select="$classification"/><xsl:text>currency/</xsl:text><xsl:value-of select="$currency"/>
-                            </xsl:attribute>
-                        </xsl:element>
-                    </xsl:when>
-
-                    <xsl:otherwise>
-                        <xsl:element name="property:currency">
-                            <xsl:value-of select="./text()"/>
-                        </xsl:element>
-                    </xsl:otherwise>
-                </xsl:choose>
+                    <xsl:call-template name="property-currency">
+                        <xsl:with-param name="currencyCode" select="$currencyCode"/>
+                    </xsl:call-template>
+                </xsl:if>
             </xsl:when>
 
             <xsl:when test="$nodeName = 'description'">
