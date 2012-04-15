@@ -128,14 +128,7 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
             <rdf:type rdf:resource="{$qb}Observation"/>
             <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
             <xsl:if test="@_address">
-                <xsl:variable name="dataSource">
-                    <xsl:value-of select="@_address"/><xsl:text>.xml</xsl:text>
-                </xsl:variable>
-
-                <xsl:call-template name="provenance">
-                    <xsl:with-param name="date" select="$currentDateTime"/>
-                    <xsl:with-param name="dataSource" select="$dataSource"/>
-                </xsl:call-template>
+                <dcterms:source rdf:resource="{@_address}.xml"/>
             </xsl:if>
 
             <!-- XXX: _uuid available only in XML format. RDF doesn't have it 
