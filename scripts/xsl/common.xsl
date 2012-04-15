@@ -16,6 +16,7 @@
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
 
     <xsl:param name="pathToCountries"/>
+    <xsl:param name="pathToCurrencies"/>
 
     <xsl:variable name="classification">http://worldbank.270a.info/classification/</xsl:variable>
 
