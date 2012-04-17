@@ -553,7 +553,7 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
             <xsl:non-matching-substring>
                 <xsl:analyze-string select="$date" regex="([0-9]{{2}})[^0-9]{{1}}([0-9]{{2}})[^0-9]{{1}}([0-9]{{4}})">
                     <xsl:matching-substring>
-                    <xsl:value-of select="regex-group(3)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(2)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(1)"/>
+                    <xsl:value-of select="regex-group(3)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(1)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(2)"/>
                     </xsl:matching-substring>
 
                     <xsl:non-matching-substring>
@@ -618,9 +618,15 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
         </xsl:attribute>
     </xsl:template>
 
-    <xsl:template name="datatype-date">
+    <xsl:template name="datatype-dateTime">
         <xsl:attribute name="rdf:datatype">
             <xsl:text>http://www.w3.org/2001/XMLSchema#dateTime</xsl:text>
+        </xsl:attribute>
+    </xsl:template>
+
+    <xsl:template name="datatype-date">
+        <xsl:attribute name="rdf:datatype">
+            <xsl:text>http://www.w3.org/2001/XMLSchema#date</xsl:text>
         </xsl:attribute>
     </xsl:template>
 

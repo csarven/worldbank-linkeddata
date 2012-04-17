@@ -33,7 +33,7 @@
     </xsl:template>
 
     <xsl:template name="indicatorsObservations">
-        <xsl:variable name="currentDateTime" select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
+        <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
             <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>

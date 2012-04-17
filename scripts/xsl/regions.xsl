@@ -31,7 +31,7 @@
     </xsl:template>
 
     <xsl:template name="regions">
-        <xsl:variable name="currentDateTime" select="format-dateTime(current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')"/>
+        <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/region">
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>

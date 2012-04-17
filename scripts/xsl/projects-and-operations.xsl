@@ -149,7 +149,7 @@ The World Bank also strives to tackle global challenges from international trade
                                             or $nodeName = 'closing-date'
                                             ">
                                 <xsl:element name="property:{$nodeName}">
-                                    <xsl:call-template name="datatype-date"/>
+                                    <xsl:call-template name="datatype-dateTime"/>
                                     <xsl:value-of select="normalize-space(./text())"/>
                                 </xsl:element>
                             </xsl:when>
