@@ -43,7 +43,7 @@
 
             <skos:definition xml:lang="en">Indicators represent data like total population, gross national income, energy use, and many more.</skos:definition>
 
-            <skos:closeMatch rdf:resource="http://dbpedia.org/resource/Economic_indicator"/>
+            <skos:exactMatch rdf:resource="http://dbpedia.org/resource/World_Development_Indicators"/>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/indicators?format=xml</xsl:text>

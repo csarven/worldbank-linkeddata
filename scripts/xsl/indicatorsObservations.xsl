@@ -38,9 +38,6 @@
         <xsl:for-each select="wb:data/wb:data">
             <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
 
-            <!-- TODO See if we can use country codes here instead for non-countries in countries.xml
-                e.g., where World is 1W. What would Africa be?
-            -->
             <xsl:variable name="wbld_country">
                 <xsl:choose>
                     <xsl:when test="wb:country/@id = ''">
@@ -54,16 +51,12 @@
 
             <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
 
-            <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}#{$wbld_country};{$wbld_date}">
+            <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{$wbld_date}">
                 <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
                 <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
 
                 <property:indicator rdf:resource="{$wbld}classification/indicator/{$wbld_indicator}"/>
 
-                <!-- TODO See if we can use country codes here instead for non-countries in countries.xml
-                    e.g., where World is 1W. What would Africa be?
-                    <property:iso2Code rdf:resource="{$wbld}classification/country/{$wbld_country}"/>
-                -->
                 <sdmx-dimension:refArea rdf:resource="{$wbld}classification/country/{$wbld_country}"/>
 
                 <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
