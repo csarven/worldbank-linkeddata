@@ -124,7 +124,7 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
             </xsl:choose>
         </xsl:variable>
 
-        <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}#{@_id}">
+        <rdf:Description rdf:about="{$wbld}dataset/world-bank-finances/{$wbldf_view}/{@_id}">
             <rdf:type rdf:resource="{$qb}Observation"/>
             <qb:dataSet rdf:resource="{$wbld}dataset/world-bank-finances/{$wbldf_view}"/>
             <xsl:if test="@_address">

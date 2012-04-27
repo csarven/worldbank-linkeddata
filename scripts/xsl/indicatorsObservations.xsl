@@ -36,35 +36,37 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
-            <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
+            <xsl:if test="normalize-space(wb:value/text()) != ''">
+                <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
 
-            <xsl:variable name="wbld_country">
-                <xsl:choose>
-                    <xsl:when test="wb:country/@id = ''">
-                        <xsl:value-of select="normalize-space(wb:country/text())"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="normalize-space(wb:country/@id)"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:variable>
+                <xsl:variable name="wbld_country">
+                    <xsl:choose>
+                        <xsl:when test="wb:country/@id = ''">
+                            <xsl:value-of select="normalize-space(wb:country/text())"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="normalize-space(wb:country/@id)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
 
-            <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
+                <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
 
-            <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{$wbld_date}">
-                <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
-                <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
+                <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{$wbld_date}">
+                    <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
+                    <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
 
-                <property:indicator rdf:resource="{$wbld}classification/indicator/{$wbld_indicator}"/>
+                    <property:indicator rdf:resource="{$wbld}classification/indicator/{$wbld_indicator}"/>
 
-                <sdmx-dimension:refArea rdf:resource="{$wbld}classification/country/{$wbld_country}"/>
+                    <sdmx-dimension:refArea rdf:resource="{$wbld}classification/country/{$wbld_country}"/>
 
-                <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
+                    <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
 
-                <sdmx-measure:obsValue><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
+                    <sdmx-measure:obsValue><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
 
-                <property:decimal><xsl:value-of select="wb:decimal/text()"/></property:decimal>
-            </rdf:Description>
+                    <property:decimal><xsl:value-of select="wb:decimal/text()"/></property:decimal>
+                </rdf:Description>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>
