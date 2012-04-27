@@ -10,7 +10,7 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:sdmx-code="http://purl.org/linked-data/sdmx/2009/code#"
-    xmlns:property="http://worldbank.270a.info/property#"
+    xmlns:property="http://worldbank.270a.info/property/"
     version="2.0">
 
     <xsl:import href="common.xsl"/>
