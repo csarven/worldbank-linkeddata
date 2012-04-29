@@ -37,7 +37,7 @@
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for regions</skos:prefLabel>
 
-            <skos:exactMatch rdf:resource="http://dbpedia.org/resource/Region"/>
+            <skos:closeMatch rdf:resource="http://dbpedia.org/resource/Region"/>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/regions?format=xml</xsl:text>
