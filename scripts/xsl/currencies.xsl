@@ -2,16 +2,16 @@
     Author: Sarven Capadisli <info@csarven.ca>
     Author URL: http://csarven.ca/#i
 -->
-<xsl:stylesheet
+<xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:wbldfn="http://worldbank.270a.info/xpath-function/"
     xmlns:sdmx-code="http://purl.org/linked-data/sdmx/2009/code#"
-    xmlns:property="http://worldbank.270a.info/property/"
-    version="2.0">
+    xmlns:property="http://worldbank.270a.info/property/">
 
     <xsl:import href="common.xsl"/>
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
