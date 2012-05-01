@@ -36,7 +36,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
-            <xsl:if test="normalize-space(wb:value/text()) != ''">
+            <xsl:if test="normalize-space(wb:value/text()) != '' and lower-case(normalize-space(wb:date/text())) != 'mrv'">
                 <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
 
                 <xsl:variable name="wbld_country">
@@ -55,6 +55,10 @@
                 <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{$wbld_date}">
                     <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
                     <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
+
+<!--
+                <dcterms:source rdf:resource="http://api.worldbank.org/en/countries/all/indicators/{@wbld_indicator}?format=xml"/>
+-->
 
                     <property:indicator rdf:resource="{$wbld}classification/indicator/{$wbld_indicator}"/>
 
