@@ -64,7 +64,9 @@
 
                 <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
                 <skos:topConceptOf rdf:resource="{$wbld}classification/indicator"/>
-
+<!--
+                <dcterms:source rdf:resource="http://api.worldbank.org/indicator/{@id}?format=xml"/>
+-->
                 <skos:notation><xsl:value-of select="@id"/></skos:notation>
 
                 <xsl:if test="wb:name != ''">

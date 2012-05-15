@@ -66,7 +66,7 @@
 
                     <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
 
-                    <sdmx-measure:obsValue><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
+                    <sdmx-measure:obsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
 
                     <property:decimal><xsl:value-of select="wb:decimal/text()"/></property:decimal>
                 </rdf:Description>
