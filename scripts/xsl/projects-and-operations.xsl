@@ -70,8 +70,7 @@ The World Bank also strives to tackle global challenges from international trade
                         TODO: Revisit. Not sure how to catch the 'useful' linkable stuff better instead of cherry picking most common ones. Perhaps that's not too bad. There are some duplicates also where they could go out to meta.ttl
                     -->
                     <xsl:variable name="nodeName" select="wbldfn:canonical-term(wbldfn:safe-term(replace(name(), 'wb:projects.', '')))"/>
-
-                    <xsl:if test="$nodeName != '' and normalize-space(./text()) != 'EXTERNAL' and ($nodeName = 'project-name' or $nodeName = 'project-name-zh' or wbldfn:usable-term($nodeName))">
+                    <xsl:if test="$nodeName != '' and lower-case(normalize-space(.)) != 'external' and ($nodeName = 'project-name' or $nodeName = 'project-name-zh' or wbldfn:usable-term($nodeName))">
                         <xsl:choose>
                             <xsl:when test="$nodeName = 'id'">
                                 <skos:notation><xsl:value-of select="./text()"/></skos:notation>
