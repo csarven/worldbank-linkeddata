@@ -1464,6 +1464,9 @@ concept:scenario
     a sdmx:CodeList ;
     skos:prefLabel "Codelist for Emissions Scenarios"@en ;
     skos:definition "Special Report on Emission Scenarios (SRES) describes the new scenarios and how they were developed. The SRES writing team formulated a set of emissions scenarios. These scenarios cover a wide range of the main driving forces of future emissions, from demographic to technological and economic developments. The scenarios encompass different future developments that might influence greenhouse gas (GHG) sources and sinks, such as alternative structures of energy systems and land-use changes."@en ;
+    skos:hasTopConcept
+        scenario:a2 ,
+        scenario:b2 ;
     rdfs:isDefinedBy <http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=0> ;
     .
 
