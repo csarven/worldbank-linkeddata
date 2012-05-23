@@ -56,10 +56,10 @@
 
         <xsl:for-each select="wb:indicators/wb:indicator">
             <rdf:Description rdf:about="{$wbld}classification/indicator">
-                <skos:hasTopConcept rdf:resource="{$wbld}classification/indicator/{@id}"/>
+                <skos:hasTopConcept rdf:resource="{$wbld}classification/indicator/{normalize-space(@id)}"/>
             </rdf:Description>
 
-            <rdf:Description rdf:about="{$wbld}classification/indicator/{@id}">
+            <rdf:Description rdf:about="{$wbld}classification/indicator/{normalize-space(@id)}">
                 <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 
                 <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
@@ -67,20 +67,20 @@
 <!--
                 <dcterms:source rdf:resource="http://api.worldbank.org/indicator/{@id}?format=xml"/>
 -->
-                <skos:notation><xsl:value-of select="@id"/></skos:notation>
+                <skos:notation><xsl:value-of select="normalize-space(@id)"/></skos:notation>
 
                 <xsl:if test="wb:name != ''">
-                <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:name/text()"/></skos:prefLabel>
+                <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:name/text())"/></skos:prefLabel>
                 </xsl:if>
 
-                <foaf:page rdf:resource="http://data.worldbank.org/indicator/{@id}"/>
+                <foaf:page rdf:resource="http://data.worldbank.org/indicator/{normalize-space(@id)}"/>
 
                 <xsl:if test="wb:source/@id">
                 <property:source rdf:resource="{$wbld}classification/source/{wb:source/@id}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:sourceNote != ''">
-                <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceNote/text()"/></skos:definition>
+                <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:sourceNote/text())"/></skos:definition>
                 </xsl:if>
 
                 <xsl:if test="wb:sourceOrganization != ''">
