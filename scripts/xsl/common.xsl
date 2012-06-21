@@ -422,6 +422,28 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
         </xsl:if>
     </xsl:function>
 
+    <xsl:function name="wbldfn:classification">
+        <xsl:param name="string"/>
+
+        <xsl:if test="$string = 'basin'
+					or $string = 'country'
+					or $string = 'currency'
+					or $string = 'global-circulation-model'
+					or $string = 'income-level'
+					or $string = 'indicator'
+					or $string = 'lending-type'
+					or $string = 'loan-status'
+					or $string = 'loan-type'
+					or $string = 'region'
+					or $string = 'scenario'
+					or $string = 'source'
+					or $string = 'topic'
+					or $string = 'variable'
+                    ">
+            <xsl:value-of select="true()"/>
+        </xsl:if>
+    </xsl:function>
+
     <xsl:template name="property-currency">
         <xsl:param name="currencyCode"/>
 
