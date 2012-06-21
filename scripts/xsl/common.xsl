@@ -645,8 +645,10 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
     <xsl:template name="provenance">
         <xsl:param name="date"/>
         <xsl:param name="dataSource"/>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2012-02-29T00:00:00Z</dcterms:created>
+
         <dcterms:issued>
-            <xsl:call-template name="datatype-date"/>
+            <xsl:call-template name="datatype-dateTime"/>
             <xsl:value-of select="$date"/>
         </dcterms:issued>
         <dcterms:source rdf:resource="{$dataSource}"/>
