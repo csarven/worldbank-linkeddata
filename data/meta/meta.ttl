@@ -34,7 +34,7 @@
     .
 
 <http://creativecommons.org/publicdomain/zero/1.0/>
-    rdfs:label "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication" ;
+    rdfs:label "CC0 1.0 Universal"@en ;
     .
 
 #World Development Indicators
@@ -1336,7 +1336,7 @@ concept:global-circulation-model
         global-circulation-model:inmcm3-0 ,
         global-circulation-model:ukmo-hadcm3 ,
         global-circulation-model:ukmo-hadgem1 ;
-    foaf:page <http://www.ipcc-data.org/ddc_gcm_guide.html> ;
+    rdfs:isDefinedBy <http://www.ipcc-data.org/ddc_gcm_guide.html> ;
     .
 
 global-circulation-model:bccr-bcm2-0
@@ -1344,7 +1344,7 @@ global-circulation-model:bccr-bcm2-0
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "bccr-bcm2-0" ;
     skos:prefLabel "BCM 2.0" ;
-    foaf:page <http://www-pcmdi.llnl.gov/ipcc/model_documentation/BCCR_BCM2.0.htm> ;
+    rdfs:isDefinedBy <http://www-pcmdi.llnl.gov/ipcc/model_documentation/BCCR_BCM2.0.htm> ;
     .
 
 global-circulation-model:csiro-mk3-5
@@ -1352,7 +1352,7 @@ global-circulation-model:csiro-mk3-5
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "csiro-mk3-5" ;
     skos:prefLabel "CSIRO Mark 3.5" ;
-    foaf:page <http://www.cawcr.gov.au/publications/technicalreports/CTR_021.pdf> ;
+    rdfs:isDefinedBy <http://www.cawcr.gov.au/publications/technicalreports/CTR_021.pdf> ;
     .
 
 global-circulation-model:ingv-echam4
@@ -1360,7 +1360,7 @@ global-circulation-model:ingv-echam4
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "ingv-echam4" ;
     skos:prefLabel "ECHAM 4.6" ;
-    foaf:page <http://www.bo.ingv.it/> ;
+    rdfs:isDefinedBy <http://www.bo.ingv.it/> ;
     .
 
 global-circulation-model:cccma-cgcm3-1
@@ -1368,7 +1368,7 @@ global-circulation-model:cccma-cgcm3-1
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "cccma-cgcm3-1" ;
     skos:prefLabel "CGCM 3.1 (T47)" ;
-    foaf:page <http://www.ec.gc.ca/ccmac-cccma/default.asp?lang=En> ;
+    rdfs:isDefinedBy <http://www.ec.gc.ca/ccmac-cccma/default.asp?lang=En> ;
     .
 
 global-circulation-model:cnrm-cm3
@@ -1376,7 +1376,7 @@ global-circulation-model:cnrm-cm3
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "cnrm-cm3" ;
     skos:prefLabel "CNRM CM3" ;
-    foaf:page <http://www.cnrm.meteo.fr/scenario2004/indexenglish.html> ;
+    rdfs:isDefinedBy <http://www.cnrm.meteo.fr/scenario2004/indexenglish.html> ;
     .
 
 global-circulation-model:gfdl-cm2-0
@@ -1384,7 +1384,7 @@ global-circulation-model:gfdl-cm2-0
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "gfdl-cm2-0" ;
     skos:prefLabel "GFDL CM2.0" ;
-    foaf:page <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
+    rdfs:isDefinedBy <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
     .
 
 global-circulation-model:gfdl-cm2-1
@@ -1392,7 +1392,7 @@ global-circulation-model:gfdl-cm2-1
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "gfdl-cm2-1" ;
     skos:prefLabel "GFDL CM2.1" ;
-    foaf:page <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
+    rdfs:isDefinedBy <http://data1.gfdl.noaa.gov/nomads/forms/deccen/CM2.X> ;
     .
 
 global-circulation-model:ipsl-cm4
@@ -1400,7 +1400,7 @@ global-circulation-model:ipsl-cm4
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "ipsl-cm4" ;
     skos:prefLabel "IPSL-CM4" ;
-    foaf:page <http://mc2.ipsl.jussieu.fr/simules.html> ;
+    rdfs:isDefinedBy <http://mc2.ipsl.jussieu.fr/simules.html> ;
     .
 
 global-circulation-model:microc3-2-medres
@@ -1408,7 +1408,7 @@ global-circulation-model:microc3-2-medres
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "microc3-2-medres" ;
     skos:prefLabel "MIROC 3.2 (medres)" ;
-    foaf:page <https://esg.llnl.gov:8443/metadata/browseCatalog.do?uri=http://esgcet.llnl.gov/metadata/pcmdi/ipcc/thredds/miroc3_2_medres.sresb1/pcmdi.ipcc4.miroc3_2_medres.sresb1.thredds> ;
+    rdfs:isDefinedBy <https://esg.llnl.gov:8443/metadata/browseCatalog.do?uri=http://esgcet.llnl.gov/metadata/pcmdi/ipcc/thredds/miroc3_2_medres.sresb1/pcmdi.ipcc4.miroc3_2_medres.sresb1.thredds> ;
     .
 
 global-circulation-model:miub-echo-g
@@ -1416,7 +1416,7 @@ global-circulation-model:miub-echo-g
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "miub-echo-g" ;
     skos:prefLabel "ECHO-G" ;
-    foaf:page <http://www-pcmdi.llnl.gov/projects/modeldoc/cmip/echo-g_tbls.html> ;
+    rdfs:isDefinedBy <http://www-pcmdi.llnl.gov/projects/modeldoc/cmip/echo-g_tbls.html> ;
     .
 
 global-circulation-model:mpi-echam5
@@ -1424,7 +1424,7 @@ global-circulation-model:mpi-echam5
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "mpi-echam5" ;
     skos:prefLabel "ECHAM5/MPI-OM" ;
-    foaf:page <http://www.mpimet.mpg.de/en/science/models/echam.html> ;
+    rdfs:isDefinedBy <http://www.mpimet.mpg.de/en/science/models/echam.html> ;
     .
 
 global-circulation-model:mri-cgcm2-3-2a
@@ -1432,7 +1432,7 @@ global-circulation-model:mri-cgcm2-3-2a
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "mri-cgcm2-3-2a" ;
     skos:prefLabel "MRI-CGCM2.3.2" ;
-    foaf:page <http://www.mri-jma.go.jp/Welcome.html> ;
+    rdfs:isDefinedBy <http://www.mri-jma.go.jp/Welcome.html> ;
     .
 
 global-circulation-model:inmcm3-0
@@ -1440,7 +1440,7 @@ global-circulation-model:inmcm3-0
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "inmcm3-0" ;
     skos:prefLabel "INMCM3.0" ;
-    foaf:page <http://www.ipcc-data.org/ar4/model-INM-CM3.html> ;
+    rdfs:isDefinedBy <http://www.ipcc-data.org/ar4/model-INM-CM3.html> ;
     .
 
 global-circulation-model:ukmo-hadcm3
@@ -1448,7 +1448,7 @@ global-circulation-model:ukmo-hadcm3
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "ukmo-hadcm3" ;
     skos:prefLabel "UKMO HadCM3" ;
-    foaf:page <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadcm3> ;
+    rdfs:isDefinedBy <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadcm3> ;
     .
 
 global-circulation-model:ukmo-hadgem1
@@ -1456,7 +1456,7 @@ global-circulation-model:ukmo-hadgem1
     skos:topConceptOf concept:global-circulation-model ;
     skos:notation "ukmo-hadgem1" ;
     skos:prefLabel "UKMO HadGEM1" ;
-    foaf:page <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadgem1> ;
+    rdfs:isDefinedBy <http://www.metoffice.gov.uk/research/modelling-systems/unified-model/climate-models/hadgem1> ;
     .
 
 
