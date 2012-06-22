@@ -89,6 +89,18 @@ wbld-dataset-world-development-indicators:structure
     .
 
 
+property:numeric-code
+    a rdf:Property ;
+    rdfs:label "Numeric code"@en ;
+    rdfs:comment "ISO 3166-1 numeric codes"@en ;
+    .
+
+property:minor-unit
+    a rdf:Property ;
+    rdfs:label "Minor currency unit"@en ;
+    .
+
+
 #World Bank Finance
 wbld-dataset:world-bank-finances
     a qb:DataSet ;
@@ -613,7 +625,7 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
 
 #This is compiled manually. I broke down the paragraph long definition into atomic parts.
 concept:loan-status
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:hasTopConcept
         loan-status:approved,
         loan-status:cancelled,
@@ -682,7 +694,7 @@ loan-status:terminated
     skos:topConceptOf concept:loan-status .
 
 concept:loan-type
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:definition "A type of loan/loan instrument for which distinctive accounting and/or other actions need to be performed."@en ;
     skos:hasTopConcept loan-type:b-loan, loan-type:fsl, loan-type:ifc-loan, loan-type:non-pool, loan-type:pool-loan, loan-type:scp-dem, loan-type:scp-jpy, loan-type:scp-usd, loan-type:sngl-crncy ;
     skos:prefLabel "Code list for loan types"@en .
@@ -1177,7 +1189,7 @@ _:qbcomponentdecadeaverage
 
 
 concept:variable
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:prefLabel "Climate variable"@en ;
     skos:hasTopConcept
         variable:pr ,
@@ -1318,7 +1330,7 @@ variable:ppt-means
 
 
 concept:global-circulation-model
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:prefLabel "Codelist for Global Circulation Models"@en ;
     skos:hasTopConcept
         global-circulation-model:bccr-bcm2-0 ,
@@ -1461,7 +1473,7 @@ global-circulation-model:ukmo-hadgem1
 
 
 concept:scenario
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:prefLabel "Codelist for Emissions Scenarios"@en ;
     skos:definition "Special Report on Emission Scenarios (SRES) describes the new scenarios and how they were developed. The SRES writing team formulated a set of emissions scenarios. These scenarios cover a wide range of the main driving forces of future emissions, from demographic to technological and economic developments. The scenarios encompass different future developments that might influence greenhouse gas (GHG) sources and sinks, such as alternative structures of energy systems and land-use changes."@en ;
     skos:hasTopConcept
@@ -1490,21 +1502,25 @@ scenario:b1
 
 
 property:recurring-interval
+    a rdf:Property ;
     a qb:DimensionProperty ;
     rdfs:label "Recurring interval"@en ;
     .
 
 property:scenario
+    a rdf:Property ;
     a qb:DimensionProperty ;
     rdfs:label "Scenario"@en ;
     .
 
 property:global-circulation-model
+    a rdf:Property ;
     a qb:DimensionProperty ;
     rdfs:label "Global Circulation Model"@en ;
     .
 
 property:month-average
+    a rdf:Property ;
     a qb:MeasureProperty ;
     rdfs:label "Month average"@en ;
     rdfs:subPropertyOf sdmx-measure:obsValue ;
@@ -1512,6 +1528,7 @@ property:month-average
     .
 
 property:year-average
+    a rdf:Property ;
     a qb:MeasureProperty ;
     rdfs:label "Year average"@en ;
     rdfs:subPropertyOf sdmx-measure:obsValue ;
@@ -1519,6 +1536,7 @@ property:year-average
     .
 
 property:decade-average
+    a rdf:Property ;
     a qb:MeasureProperty ;
     rdfs:label "Decade average"@en ;
     rdfs:subPropertyOf sdmx-measure:obsValue ;
@@ -1526,13 +1544,14 @@ property:decade-average
     .
 
 property:variable
+    a rdf:Property ;
     a qb:AttributeProperty ;
     rdfs:label "Variable"@en ;
     .
 
 
 concept:basin
-    a sdmx:CodeList ;
+    a skos:ConceptScheme ;
     skos:prefLabel "Basin Codelist"@en ;
     skos:definition "Regional river basin somewhere in the world. River basins were calculated based on definitions obtained from waterbase.org (using the level 2 boundaries)."@en ;
     skos:exactMatch <http://dbpedia.org/resource/Drainage_Basin> ;
