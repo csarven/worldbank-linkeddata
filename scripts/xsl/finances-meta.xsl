@@ -37,6 +37,9 @@
     <xsl:variable name="property">http://worldbank.270a.info/property/</xsl:variable>
     <xsl:variable name="classification">http://worldbank.270a.info/classification/</xsl:variable>
     <xsl:variable name="qb">http://purl.org/linked-data/cube#</xsl:variable>
+    <xsl:variable name="rdfProperty">http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</xsl:variable>
+
+
 
     <xsl:template match="/">
         <rdf:RDF>
@@ -66,18 +69,26 @@
                         </xsl:variable>
 
                         <rdf:Description rdf:about="{$resourceDescriptionProperty}">
+                            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+
                             <!-- TODO: I'm not sure about these qb concept/codeList for ibrd/ida project-ids-->
-                            <qb:concept rdf:resource="{$classification}{$data_element}"/>
-                            <qb:codeList rdf:resource="{$classification}{$data_element}"/>
+<!--                            <qb:concept rdf:resource="{$classification}{$data_element}"/> -->
+
+                            <xsl:if test="wbldfn:classification($data_element)">
+                                <qb:codeList rdf:resource="{$classification}{$data_element}"/>
+                            </xsl:if>
+
                             <rdfs:label xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(data_element)"/></rdfs:label>
                             <!-- <property:uuid><xsl:value-of select="@_uuid"/></property:uuid> -->
                             <!-- <property:view-row-id><xsl:value-of select="@_id"/></property:view-row-id> -->
 
-                            <dcterms:source rdf:resource="http://finances.worldbank.org/api/views/wc6g-9zmq/rows.xml"/>
-                            <dcterms:issued>
-                                <xsl:call-template name="datatype-date"/>
-                                <xsl:value-of select="$currentDateTime"/>
-                            </dcterms:issued>
+                            <xsl:variable name="dataSource">
+                                <xsl:text>http://finances.worldbank.org/api/views/wc6g-9zmq/rows.xml</xsl:text>
+                            </xsl:variable>
+                            <xsl:call-template name="provenance">
+                                <xsl:with-param name="date" select="$currentDateTime"/>
+                                <xsl:with-param name="dataSource" select="$dataSource"/>
+                            </xsl:call-template>
 
                             <xsl:choose>
                                 <xsl:when test="$data_element = 'admin-budget-type'
@@ -179,18 +190,20 @@
                         </rdf:Description>
 
                         <rdf:Description rdf:about="{$classification}{$data_element}">
-                            <rdf:type rdf:resource="{$qb}Concept"/>
+<!--                                <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/> -->
                             <skos:inScheme rdf:resource="{$classification}finance"/>
                             <skos:topConceptOf rdf:resource="{$classification}finance"/>
 
                             <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(data_element)"/></skos:prefLabel>
                             <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="description"/></skos:definition>
 
-                            <dcterms:source rdf:resource="http://finances.worldbank.org/api/views/{$financeDatasetID}/rows.xml"/>
-                            <dcterms:issued>
-                                <xsl:call-template name="datatype-date"/>
-                                <xsl:value-of select="$currentDateTime"/>
-                            </dcterms:issued>
+                            <xsl:variable name="dataSource">
+                                <xsl:text>http://finances.worldbank.org/api/views/</xsl:text><xsl:value-of select="$financeDatasetID"/><xsl:text>/rows.xml</xsl:text>
+                            </xsl:variable>
+                            <xsl:call-template name="provenance">
+                                <xsl:with-param name="date" select="$currentDateTime"/>
+                                <xsl:with-param name="dataSource" select="$dataSource"/>
+                            </xsl:call-template>
                         </rdf:Description>
                     </xsl:if>
                 </xsl:for-each>
@@ -268,19 +281,19 @@
                 <xsl:variable name="resourceDescriptionProperty">
                     <xsl:value-of select="$wbld"/><xsl:text>property/</xsl:text><xsl:value-of select="$datasetName"/><xsl:value-of select="$dataElement"/>
                 </xsl:variable>
-<!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message>536v-dxib -->
+<!-- <xsl:message><xsl:text>resourceDescriptionProperty: </xsl:text><xsl:value-of select="$resourceDescriptionProperty"/></xsl:message> -->
 
                 <qb:DataStructureDefinition rdf:about="{$wbld}dataset/world-bank-finances/{$financeDatasetID}/structure">
                     <qb:component>
                         <qb:ComponentSpecification>
                             <xsl:variable name="componentPropertyURI">
-                                <xsl:value-of select="document($pathToFinancesDictionary)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
+                                <xsl:value-of select="document($pathToFinancesDictionary)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type[@rdf:resource != $rdfProperty]/@rdf:resource"/>
                             </xsl:variable>
 
                             <xsl:variable name="componentPropertyURI">
                                 <xsl:choose>
                                     <xsl:when test="$componentPropertyURI = ''">
-                                        <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type/@rdf:resource"/>
+                                        <xsl:value-of select="document($pathToMeta)/rdf:RDF/rdf:Description[@rdf:about = $resourceDescriptionProperty][1]/rdf:type[@rdf:resource != $rdfProperty]/@rdf:resource"/>
                                     </xsl:when>
 
                                     <xsl:otherwise>
@@ -317,5 +330,4 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
-
 </xsl:stylesheet>
