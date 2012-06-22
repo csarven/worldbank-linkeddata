@@ -26,7 +26,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
         <rdf:RDF>
             <rdf:Description rdf:about="{$wbld}classification/currency">
-                <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+                <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
                 <skos:prefLabel xml:lang="en">Code list for currencies</skos:prefLabel>
                 <skos:exactMatch rdf:resource="http://dbpedia.org/ontology/Currency"/>
 

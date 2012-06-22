@@ -35,17 +35,16 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/country">
-            <!-- <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/> -->
-            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+            <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
             <skos:prefLabel xml:lang="en">Code list for countries</skos:prefLabel>
             <skos:prefLabel xml:lang="fr">Liste des codes pour les pays</skos:prefLabel>
             <skos:prefLabel xml:lang="es">Lista de códigos de países</skos:prefLabel>
             <skos:prefLabel xml:lang="ar">قائمة رمز للبلدان</skos:prefLabel>
             <skos:note xml:lang="en">The World Bank follows the ISO 3 letter and 2 letter codes to represent most of the countries, with the following exceptions:
 
-3 letter Code differences: Andorra, Congo, Dem. Rep., Isle of Man, Romania, Timor-Leste, West Bank and Gaza
+3 letter Code differences: Andorra, Congo, Dem. Rep., Isle of Man, Romania, Timor-Leste, West Bank and Gaza.
 
-2 letter Code differences: Congo, Dem. Rep., Serbia, Timor-Leste, Yemen, Rep., West Bank and Gaza
+2 letter Code differences: Congo, Dem. Rep., Serbia, Timor-Leste, Yemen, Rep., West Bank and Gaza.
 
 Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:note>
 
@@ -76,7 +75,6 @@ Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:not
                     <rdf:type rdf:resource="http://dbpedia.org/ontology/Country"/>
                 </xsl:if>
 
-                <!-- XXX: Only one is necessary since both have the same value-->
                 <skos:inScheme rdf:resource="{$wbld}classification/country"/>
                 <skos:topConceptOf rdf:resource="{$wbld}classification/country"/>
 
@@ -122,6 +120,14 @@ Countries not yet represented using ISO codes: Channel Islands, Kosovo</skos:not
                 </xsl:if>
 
                 <foaf:page rdf:resource="http://data.worldbank.org/country/{normalize-space(wb:iso2Code/text())}"/>
+
+                <xsl:variable name="dataSource">
+                    <xsl:text>http://api.worldbank.org/countries/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
             </rdf:Description>
 
             <rdf:Description rdf:about="{$wbld}classification/country/{@id}">

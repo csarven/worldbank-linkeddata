@@ -34,7 +34,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/lending-type">
-            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+            <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
             <skos:prefLabel xml:lang="en">Code list for lending types</skos:prefLabel>
             <skos:definition xml:lang="en">The World Bank classified countries according to the type of lending they are eligible for through the World Bank.</skos:definition>
 
@@ -65,13 +65,21 @@
                 <xsl:if test="text() != ''">
                 <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="text()"/></skos:prefLabel>
                 </xsl:if>
+
+                <xsl:variable name="dataSource">
+                    <xsl:text>http://api.worldbank.org/lendingTypes/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
             </rdf:Description>
         </xsl:for-each>
 
         <rdf:Description rdf:about="{$wbld}property/lending-type">
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
             <rdfs:label xml:lang="en">Lending type</rdfs:label>
-            <qb:concept rdf:resource="{$wbld}classification/income-level"/>
             <qb:codeList rdf:resource="{$wbld}classification/income-level"/>
         </rdf:Description>
     </xsl:template>

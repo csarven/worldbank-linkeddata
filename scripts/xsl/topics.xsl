@@ -34,7 +34,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/topic">
-            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+            <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
             <skos:prefLabel xml:lang="en">Code list for topics</skos:prefLabel>
             <skos:definition xml:lang="en">Topics are high level categories that all indicators are mapped to.</skos:definition>
 
@@ -67,13 +67,21 @@
                 <xsl:if test="wb:sourceNote != ''">
                 <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceNote/text()"/></skos:definition>
                 </xsl:if>
+
+                <xsl:variable name="dataSource">
+                    <xsl:text>http://api.worldbank.org/topics/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
             </rdf:Description>
         </xsl:for-each>
 
         <rdf:Description rdf:about="{$wbld}property/topic">
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
-            <rdfs:label xml:lang="en">Indicator topic</rdfs:label>
-            <qb:concept rdf:resource="{$wbld}classification/topic"/>
+            <rdfs:label xml:lang="en">Topic</rdfs:label>
             <qb:codeList rdf:resource="{$wbld}classification/topic"/>
         </rdf:Description>
     </xsl:template>

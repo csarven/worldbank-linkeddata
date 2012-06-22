@@ -34,7 +34,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/source">
-            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+            <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
             <skos:prefLabel xml:lang="en">Code list for sources</skos:prefLabel>
             <skos:altLabel xml:lang="en">Catalog Sources</skos:altLabel>
 
@@ -71,13 +71,21 @@
                 <xsl:if test="wb:url != ''">
                 <foaf:page rdf:resource="{normalize-space(wb:url/text())}"/>
                 </xsl:if>
+
+                <xsl:variable name="dataSource">
+                    <xsl:text>http://api.worldbank.org/sources/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
             </rdf:Description>
         </xsl:for-each>
 
         <rdf:Description rdf:about="{$wbld}property/source">
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
             <rdfs:label xml:lang="en">Source</rdfs:label>
-            <qb:concept rdf:resource="{$wbld}classification/source"/>
             <qb:codeList rdf:resource="{$wbld}classification/source"/>
         </rdf:Description>
 

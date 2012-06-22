@@ -34,8 +34,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <rdf:Description rdf:about="{$wbld}classification/indicator">
-            <!-- <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/> -->
-            <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
+            <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
             <skos:prefLabel xml:lang="en">Code list for World Development indicators</skos:prefLabel>
             <skos:prefLabel xml:lang="fr">Liste des codes pour les indicateurs de développement dans le monde</skos:prefLabel>
             <skos:prefLabel xml:lang="es">Lista de códigos para el mundo de los indicadores de desarrollo</skos:prefLabel>
@@ -64,9 +63,7 @@
 
                 <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
                 <skos:topConceptOf rdf:resource="{$wbld}classification/indicator"/>
-<!--
-                <dcterms:source rdf:resource="http://api.worldbank.org/indicator/{@id}?format=xml"/>
--->
+
                 <skos:notation><xsl:value-of select="normalize-space(@id)"/></skos:notation>
 
                 <xsl:if test="wb:name != ''">
@@ -76,7 +73,7 @@
                 <foaf:page rdf:resource="http://data.worldbank.org/indicator/{normalize-space(@id)}"/>
 
                 <xsl:if test="wb:source/@id">
-                <property:source rdf:resource="{$wbld}classification/source/{wb:source/@id}"/>
+                <property:source rdf:resource="{$wbld}classification/source/{normalize-space(wb:source/@id)}"/>
                 </xsl:if>
 
                 <xsl:if test="wb:sourceNote != ''">
@@ -88,15 +85,23 @@
                 </xsl:if>
 
                 <xsl:for-each select="wb:topics/wb:topic">
-                <property:topic rdf:resource="{$wbld}classification/topic/{@id}"/>
+                <property:topic rdf:resource="{$wbld}classification/topic/{normalize-space(@id)}"/>
                 </xsl:for-each>
+
+                <xsl:variable name="dataSource">
+                    <xsl:text>http://api.worldbank.org/indicator/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="provenance">
+                    <xsl:with-param name="date" select="$currentDateTime"/>
+                    <xsl:with-param name="dataSource" select="$dataSource"/>
+                </xsl:call-template>
             </rdf:Description>
         </xsl:for-each>
 
         <rdf:Description rdf:about="{$wbld}property/indicator">
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
-            <rdfs:label xml:lang="en">World development indicator</rdfs:label>
-            <qb:concept rdf:resource="{$wbld}classification/indicator"/>
+            <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+            <rdfs:label xml:lang="en">Development indicator</rdfs:label>
             <qb:codeList rdf:resource="{$wbld}classification/indicator"/>
         </rdf:Description>
     </xsl:template>
