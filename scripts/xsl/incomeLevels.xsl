@@ -49,10 +49,10 @@
 
         <xsl:for-each select="wb:IncomeLevels/wb:incomeLevel">
             <rdf:Description rdf:about="{$wbld}classification/income-level">
-                <skos:hasTopConcept rdf:resource="{$wbld}classification/income-level/{@id}"/>
+                <skos:hasTopConcept rdf:resource="{$wbld}classification/income-level/{normalize-space(@id)}"/>
             </rdf:Description>
 
-            <rdf:Description rdf:about="{$wbld}classification/income-level/{@id}">
+            <rdf:Description rdf:about="{$wbld}classification/income-level/{normalize-space(@id)}">
                 <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 
                 <skos:inScheme rdf:resource="{$wbld}classification/income-level"/>
@@ -63,6 +63,8 @@
                 <xsl:if test="text() != ''">
                 <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="text()"/></skos:prefLabel>
                 </xsl:if>
+
+                <foaf:page rdf:resource="http://data.worldbank.org/income-level/{normalize-space(@id)}"/>
 
                 <xsl:variable name="dataSource">
                     <xsl:text>http://api.worldbank.org/incomeLevels/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
