@@ -602,8 +602,27 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
                             </xsl:non-matching-substring>
                         </xsl:analyze-string>
 -->
-                                <xsl:value-of select="$date"/>
 
+                        <xsl:analyze-string select="$date" regex="(([0-9]{{4}})|([1-9][0-9]{{3,}})+)-?q([1-4])">
+                            <xsl:matching-substring>
+                                <xsl:value-of select="regex-group(1)"/><xsl:text>-Q</xsl:text><xsl:value-of select="regex-group(4)"/>
+                            </xsl:matching-substring>
+                            <xsl:non-matching-substring>
+<!--
+                                <xsl:analyze-string select="$date" regex="(([0-9]{{4}})-([0-9]{{4}}))">
+                                    <xsl:matching-substring>
+                                        <xsl:value-of select="regex-group(2)"/>-<xsl:value-of select="regex-group(3)"/>
+                                    </xsl:matching-substring>
+
+                                    <xsl:non-matching-substring>
+-->
+                                        <xsl:value-of select="$date"/>
+<!--
+                                    </xsl:non-matching-substring>
+                                </xsl:analyze-string>
+-->
+                            </xsl:non-matching-substring>
+                        </xsl:analyze-string>
                     </xsl:non-matching-substring>
                 </xsl:analyze-string>
             </xsl:non-matching-substring>
@@ -614,7 +633,7 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
         <xsl:param name="date"/>
 
         <xsl:attribute name="rdf:resource">
-            <xsl:analyze-string select="$date" regex="(([0-9]{{4}})|([1-9][0-9]{{3,}})+)(Q[1-4])">
+            <xsl:analyze-string select="$date" regex="(([0-9]{{4}})|([1-9][0-9]{{3,}})+)(-?Q[1-4])">
                 <xsl:matching-substring>
                     <xsl:text>http://reference.data.gov.uk/id/quarter/</xsl:text><xsl:value-of select="regex-group(1)"/><xsl:text>-</xsl:text><xsl:value-of select="regex-group(4)"/>
                 </xsl:matching-substring>
@@ -628,9 +647,20 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
                                 <xsl:matching-substring>
                                    <xsl:text>http://reference.data.gov.uk/id/year/20</xsl:text><xsl:value-of select="regex-group(1)"/>
                                 </xsl:matching-substring>
-                                <!-- XXX: May not be ideal -->
+
                                 <xsl:non-matching-substring>
-                                   <xsl:text>http://reference.data.gov.uk/id/year/{date}"</xsl:text>
+<!--
+                                    <xsl:analyze-string select="$date" regex="([0-9]{{4}})-([0-9]{{4}})">
+                                        <xsl:matching-substring>
+                                            <xsl:value-of select="regex-group(1)"/>-<xsl:value-of select="regex-group(2)"/>
+                                        </xsl:matching-substring>
+                                        <xsl:non-matching-substring>
+-->
+                                           <xsl:text>http://reference.data.gov.uk/id/year/</xsl:text><xsl:value-of select="$date"/>
+<!--
+                                        </xsl:non-matching-substring>
+                                    </xsl:analyze-string>
+-->
                                 </xsl:non-matching-substring>
                             </xsl:analyze-string>
                         </xsl:non-matching-substring>

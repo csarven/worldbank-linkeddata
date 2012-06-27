@@ -36,7 +36,14 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
-            <xsl:if test="normalize-space(wb:value/text()) != '' and lower-case(normalize-space(wb:date/text())) != 'mrv'">
+            <xsl:variable name="wbld_date" select="lower-case(normalize-space(wb:date/text()))"/>
+
+            <xsl:if test="normalize-space(wb:value/text()) != ''
+                        and $wbld_date != ''
+                        and $wbld_date != 'mrv'
+                        and $wbld_date != 'most recent value'
+                        and $wbld_date != '2005-2010'
+                        ">
                 <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
 
                 <xsl:variable name="wbld_country">
@@ -50,13 +57,12 @@
                     </xsl:choose>
                 </xsl:variable>
 
-                <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
-
-                <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{$wbld_date}">
+                <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
                     <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
                     <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
 
 <!--
+Consider wbldfn:provenance here.
                 <dcterms:source rdf:resource="http://api.worldbank.org/en/countries/all/indicators/{@wbld_indicator}?format=xml"/>
 -->
 
@@ -64,11 +70,15 @@
 
                     <sdmx-dimension:refArea rdf:resource="{$wbld}classification/country/{$wbld_country}"/>
 
-                    <sdmx-dimension:refPeriod rdf:resource="http://reference.data.gov.uk/id/year/{$wbld_date}"/>
+                    <sdmx-dimension:refPeriod>
+                        <xsl:call-template name="resource-refperiod">
+                            <xsl:with-param name="date" select="$wbld_date"/>
+                        </xsl:call-template>
+                    </sdmx-dimension:refPeriod>
 
-                    <sdmx-measure:obsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="wb:value/text()"/></sdmx-measure:obsValue>
+                    <sdmx-measure:obsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(wb:value/text())"/></sdmx-measure:obsValue>
 
-                    <property:decimal><xsl:value-of select="wb:decimal/text()"/></property:decimal>
+                    <property:decimal rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(wb:decimal/text())"/></property:decimal>
                 </rdf:Description>
             </xsl:if>
         </xsl:for-each>
