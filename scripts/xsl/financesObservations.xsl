@@ -103,8 +103,6 @@ Perhaps gather the list of dimensions for each observation and add them here .. 
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
-
-        <xsl:call-template name="loan-number"/>
     </xsl:template>
 
 
@@ -423,7 +421,7 @@ zucq-nrc3 has interest-rate (measure) and a bunch of amounts (measure)
                     <xsl:when test="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]">
                         <xsl:element name="property:{$nodeName}">
                             <xsl:attribute name="rdf:resource">
-                               <xsl:value-of select="$wbld"/><xsl:text>loan-number/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
+                               <xsl:value-of select="$classification"/><xsl:text>loan-number/</xsl:text><xsl:value-of select="normalize-space(./text())"/>
                             </xsl:attribute>
                         </xsl:element>
                     </xsl:when>
@@ -453,23 +451,5 @@ zucq-nrc3 has interest-rate (measure) and a bunch of amounts (measure)
                 </xsl:element>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-
-    <xsl:template name="loan-number">
-        <!-- XXX: This is a bit dirty i.e., check for substring in lendingTypes file instead -->
-        <xsl:for-each select="distinct-values(/response/row/row/loan_number/text())">
-            <xsl:variable name="lendingTypeString" select="replace(., '(IBRD|Blend|IDA|Not classified).*', '$1')"/>
-            <xsl:choose>
-                <xsl:when test="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]">
-                    <rdf:Description rdf:about="{$wbld}loan-number/{normalize-space(.)}">
-                        <rdf:type>
-                            <xsl:attribute name="rdf:resource">
-                                <xsl:value-of select="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]/@rdf:about"/>
-                            </xsl:attribute>
-                        </rdf:type>
-                    </rdf:Description>
-                </xsl:when>
-            </xsl:choose>
-        </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

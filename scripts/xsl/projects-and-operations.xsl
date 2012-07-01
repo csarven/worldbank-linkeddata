@@ -32,6 +32,7 @@
     <xsl:param name="pathToRegionsExtra"/>
 
     <xsl:variable name="wbld">http://worldbank.270a.info/</xsl:variable>
+    <xsl:variable name="classification">http://worldbank.270a.info/classification/</xsl:variable>
 
     <xsl:template match="/">
         <rdf:RDF>
@@ -213,24 +214,6 @@ The World Bank also strives to tackle global challenges from international trade
                     </xsl:if>
                 </xsl:for-each>
             </rdf:Description>
-        </xsl:for-each>
-
-        <xsl:for-each select="projects/project/wb:projects.financier">
-            <xsl:variable name="text" select="normalize-space(./text())"/>
-
-            <!-- XXX: This is a bit dirty i.e., check for substring in lendingTypes file instead -->
-            <xsl:variable name="lendingTypeString" select="replace(normalize-space(./text()), '(IBRD|Blend|IDA|Not classified).*', '$1')"/>
-                <xsl:choose>
-                    <xsl:when test="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]">
-                        <rdf:Description rdf:about="{$wbld}loan-number/{normalize-space(./text())}">
-                            <rdf:type>
-                                <xsl:attribute name="rdf:resource">
-                                    <xsl:value-of select="document($pathToLendingTypes)/rdf:RDF/rdf:Description[skos:prefLabel/text() = $lendingTypeString]/@rdf:about"/>
-                                </xsl:attribute>
-                            </rdf:type>
-                        </rdf:Description>
-                    </xsl:when>
-                </xsl:choose>
         </xsl:for-each>
 
 <!--
