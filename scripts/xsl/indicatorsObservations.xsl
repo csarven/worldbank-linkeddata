@@ -23,7 +23,7 @@
     xmlns:indicator="http://worldbank.270a.info/classification/indicator/"
     xmlns:dataset="http://worldbank.270a.info/dataset/"
     xmlns:year="http://reference.data.gov.uk/id/year/"
-    xmlns:year="http://reference.data.gov.uk/id/quarter/"
+    xmlns:quarter="http://reference.data.gov.uk/id/quarter/"
     >
 
     <xsl:import href="common.xsl"/>
