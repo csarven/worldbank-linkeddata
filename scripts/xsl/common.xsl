@@ -54,6 +54,18 @@ Ignoring sector[1-5].
 ..
 
 XXX: Review every single term here. Mostly projects-and-operations related. Only uuid, country-name, donor-name and partially the project-name is from finances.
+
+
+XXX: This is from some datasets that are not clear whether they are in release-quality. Leaving them out for now until they are resolved in the emails with WB finances team:
+date-of-report
+project-status
+category-code
+allocated-amount-usd
+disbursed-amount-usd
+undisbursed-amount-usd
+special-commitments-usd
+funds-available-usd
+historical-category-disbursed-usd
 -->
         <xsl:if test="$string != ''
                     and $string != 'agencyinfo'
@@ -106,6 +118,17 @@ XXX: Review every single term here. Mostly projects-and-operations related. Only
                     and $string != 'theme3'
                     and $string != 'theme4'
                     and $string != 'theme5'
+
+
+                    and $string != 'date-of-report'
+                    and $string != 'project-status'
+                    and $string != 'category-code'
+                    and $string != 'allocated-amount-usd'
+                    and $string != 'disbursed-amount-usd'
+                    and $string != 'undisbursed-amount-usd'
+                    and $string != 'special-commitments-usd'
+                    and $string != 'funds-available-usd'
+                    and $string != 'historical-category-disbursed-usd'
 
                     and $string != 'uuid'
                     ">
