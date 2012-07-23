@@ -185,6 +185,15 @@ The World Bank also strives to tackle global challenges from international trade
                                                         </xsl:element>
                                                     </xsl:when>
 
+                                                    <xsl:when test="$nodeName = 'references'">
+                                                        <xsl:element name="dcterms:references">
+                                                            <xsl:variable name="position" select="position()"/>
+                                                            <xsl:attribute name="rdf:nodeID">
+                                                                <xsl:value-of select="$projectId"/><xsl:value-of select="$nodeName"/><xsl:value-of select="$position"/>
+                                                            </xsl:attribute>
+                                                        </xsl:element>
+                                                    </xsl:when>
+
                                                     <xsl:otherwise>
                                                         <xsl:element name="property:{$nodeName}">
                                                             <xsl:variable name="position" select="position()"/>
