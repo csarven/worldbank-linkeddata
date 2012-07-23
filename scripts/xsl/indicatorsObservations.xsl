@@ -18,7 +18,13 @@
     xmlns:sdmx-measure="http://purl.org/linked-data/sdmx/2009/measure#"
     xmlns:wb="http://www.worldbank.org"
     xmlns:wbld="http://worldbank.270a.info/"
-    xmlns:property="http://worldbank.270a.info/property/">
+    xmlns:property="http://worldbank.270a.info/property/"
+    xmlns:country="http://worldbank.270a.info/classification/country/"
+    xmlns:indicator="http://worldbank.270a.info/classification/indicator/"
+    xmlns:dataset="http://worldbank.270a.info/dataset/"
+    xmlns:year="http://reference.data.gov.uk/id/year/"
+    xmlns:year="http://reference.data.gov.uk/id/quarter/"
+    >
 
     <xsl:import href="common.xsl"/>
     <xsl:output encoding="utf-8" indent="yes" method="xml" omit-xml-declaration="no"/>
