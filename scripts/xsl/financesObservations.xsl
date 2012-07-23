@@ -337,7 +337,7 @@ zucq-nrc3 has interest-rate (measure) and a bunch of amounts (measure)
                             ">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-dateTime"/>
-                    <xsl:value-of select="normalize-space(./text())"/>
+                    <xsl:value-of select="normalize-space(./text())"/><xsl:text>Z</xsl:text>
                 </xsl:element>
             </xsl:when>
 
