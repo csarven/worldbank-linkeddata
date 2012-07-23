@@ -36,7 +36,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
-            <xsl:variable name="wbld_date" select="lower-case(normalize-space(wb:date/text()))"/>
+            <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
 
             <xsl:if test="normalize-space(wb:value/text()) != ''
                         and $wbld_date != ''
