@@ -20,9 +20,13 @@ rapper -g /var/www/lib/worldbank-linkeddata/data/finances/views.rdf >> /var/www/
 
 rapper -g /var/www/lib/worldbank-linkeddata/data/finances/finance/wc6g-9zmq.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ;
 
-for file in /var/www/lib/worldbank-linkeddata/data/finances/finance/*.rdf ; do filename=$(basename $file); extension=${filename##*.}; graph=${filename%.*}; if [ "$graph" != "wc6g-9zmq" ] ; then rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-finances.nt ; fi done ;
+cat /var/www/lib/worldbank-linkeddata/data/finances/finances.datasets.txt | while read i ; do filename=$(basename $file); extension=${filename##*.}; graph=${filename%.*}; if [ "$graph" != "wc6g-9zmq" ] ; then rapper -g /var/www/lib/worldbank-linkeddata/data/finances/finance/"$file".rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-finances.nt ; fi done ;
+
+cat /var/www/lib/worldbank-linkeddata/data/finances/finances.datasets.txt | while read i ; do filename=$(basename $file); extension=${filename##*.}; graph=${filename%.*}; if [ "$graph" != "wc6g-9zmq" ] ; then rapper -g /var/www/lib/worldbank-linkeddata/data/finances/finance/"$file".loan-numbers.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ; fi done ;
 
 rapper -g /var/www/lib/worldbank-linkeddata/data/projects/projects-and-operations.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-bank-projects-and-operations.nt ;
+
+rapper -g /var/www/lib/worldbank-linkeddata/data/projects/projects-and-operations.loan-numbers.rdf >> /var/www/lib/worldbank-linkeddata/data/import/graph.meta.nt ;
 
 for file in /var/www/lib/worldbank-linkeddata/data/indicators/en/indicator/*.rdf ; do rapper -g $file >> /var/www/lib/worldbank-linkeddata/data/import/graph.world-development-indicators.nt ; done ;
 
