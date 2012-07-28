@@ -43,7 +43,7 @@ wbld-dataset:world-development-indicators
     qb:structure wbld-dataset-world-development-indicators:structure ;
     rdfs:label "World Development Indicators dataset"@en ;
     dcterms:title "World Development Indicators"@en ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:source <http://api.worldbank.org/indicators?format=xml> ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
@@ -105,7 +105,7 @@ property:minor-unit
 wbld-dataset:world-bank-finances
     a qb:DataSet ;
     rdfs:label "World Bank Finances dataset"@en ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     dcterms:subject
@@ -158,7 +158,7 @@ wbld-dataset:world-bank-finances
     dcterms:identifier "4i57-byta" ;
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Balance-Sheet-FY2011/4i57-byta> ;
     dcterms:source <https://finances.worldbank.org/api/views/4i57-byta/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -170,7 +170,7 @@ wbld-dataset:world-bank-finances
     dcterms:identifier "536v-dxib" ;
     rdfs:seeAlso <https://finances.worldbank.org/Financial-Intermediary-Funds/Contributions-to-Financial-Intermediary-Funds/536v-dxib> ;
     dcterms:source <https://finances.worldbank.org/api/views/536v-dxib/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     dcterms:hasPart
@@ -205,7 +205,7 @@ wbld-dataset:world-bank-finances
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Statement-of-Cash-Flows-FY2010/9pv4-rtrm> ;
     dcterms:identifier "9pv4-rtrm" ;
     dcterms:source <https://finances.worldbank.org/api/views/9pv4-rtrm/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -219,7 +219,7 @@ wbld-dataset-world-bank-finances:ax5s-vav5
     rdfs:seeAlso <http://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Funding-Decisions/ax5s-vav5> ;
     dcterms:identifier "ax5s-vav5" ;
     dcterms:source <https://finances.worldbank.org/api/views/ax5s-vav5/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -236,7 +236,7 @@ wbld-dataset-world-bank-finances:csrh-vv7b
     skos:scopeNote "Loan and Credit Administration"@en ;
     dcterms:identifier "csrh-vv7b" ;
     dcterms:source <https://finances.worldbank.org/api/views/csrh-vv7b/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -251,7 +251,7 @@ wbld-dataset-world-bank-finances:e8yz-96c6
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IBRD-Balance-Sheet-FY2010/e8yz-96c6> ;
     dcterms:identifier "e8yz-96c6" ;
     dcterms:source <https://finances.worldbank.org/api/views/e8yz-96c6/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -266,7 +266,7 @@ wbld-dataset-world-bank-finances:ebmi-69yj
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IDA-Statement-of-Credits-and-Grants-Latest-Availab/ebmi-69yj> ;
     dcterms:identifier "ebmi-69yj" ;
     dcterms:source <https://finances.worldbank.org/api/views/ebmi-69yj/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -281,7 +281,7 @@ wbld-dataset-world-bank-finances:eycy-ub35
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-Of-Income-FY2011/eycy-ub35> ;
     dcterms:identifier "eycy-ub35" ;
     dcterms:source <https://finances.worldbank.org/api/views/eycy-ub35/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -296,7 +296,7 @@ wbld-dataset-world-bank-finances:fie8-6fxn
     rdfs:seeAlso <https://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Commitments/fie8-6fxn> ;
     dcterms:identifier "fie8-6fxn" ;
     dcterms:source <https://finances.worldbank.org/api/views/fie8-6fxn/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -310,7 +310,7 @@ wbld-dataset-world-bank-finances:gprm-cvxz
     rdfs:seeAlso <https://finances.worldbank.org/Budget/World-Bank-Program-Budget/gprm-cvxz> ;
     dcterms:identifier "gprm-cvxz" ;
     dcterms:source <https://finances.worldbank.org/api/views/gprm-cvxz/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -324,7 +324,7 @@ wbld-dataset-world-bank-finances:h4s8-nwev
     rdfs:seeAlso <http://finances.worldbank.org/Financial-Intermediary-Funds/Financial-Intermediary-Funds-Cash-Transfers/h4s8-nwev> ;
     dcterms:identifier "h4s8-nwev" ;
     dcterms:source <https://finances.worldbank.org/api/views/h4s8-nwev/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -339,7 +339,7 @@ wbld-dataset-world-bank-finances:h9ga-h5eb
     rdfs:seeAlso <http://finances.worldbank.org/Trust-Funds/Recipient-executed-Grants-Commitments-and-Disburse/h9ga-h5eb> ;
     dcterms:identifier "h9ga-h5eb" ;
     dcterms:source <https://finances.worldbank.org/api/views/h9ga-h5eb/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -354,7 +354,7 @@ wbld-dataset-world-bank-finances:hcqu-nmwb
     rdfs:seeAlso <https://finances.worldbank.org/Budget/World-Bank-Expenditures-By-Program/hcqu-nmwb> ;
     dcterms:identifier "hcqu-nmwb" ;
     dcterms:source <https://finances.worldbank.org/api/views/hcqu-nmwb/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -369,7 +369,7 @@ wbld-dataset-world-bank-finances:i7za-uwi5
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IDA-Statement-Of-Cash-Flows-FY2011/i7za-uwi5> ;
     dcterms:identifier "i7za-uwi5" ;
     dcterms:source <https://finances.worldbank.org/api/views/i7za-uwi5/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -384,7 +384,7 @@ wbld-dataset-world-bank-finances:iww5-3sst
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/IBRD-IDA-IFC-Trust-Funds-Annual-Cash-Contributions/iww5-3sst> ;
     dcterms:identifier "iww5-3sst" ;
     dcterms:source <https://finances.worldbank.org/api/views/iww5-3sst/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -398,7 +398,7 @@ wbld-dataset-world-bank-finances:jeqz-f7mn
     rdfs:seeAlso <http://finances.worldbank.org/dataset/IBRD-and-IDA-Operational-Summary/jeqz-f7mn> ;
     dcterms:identifier "jeqz-f7mn" ;
     dcterms:source <https://finances.worldbank.org/api/views/jeqz-f7mn/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -413,7 +413,7 @@ wbld-dataset-world-bank-finances:kmwd-f4rk
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Statement-of-Income-FY2010/kmwd-f4rk> ;
     dcterms:identifier "kmwd-f4rk" ;
     dcterms:source <https://finances.worldbank.org/api/views/kmwd-f4rk/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -428,7 +428,7 @@ wbld-dataset-world-bank-finances:m54j-ersw
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/Total-Contributions-to-IBRD-IDA-IFC-Trust-Funds-Su/m54j-ersw> ;
     dcterms:identifier "m54j-ersw" ;
     dcterms:source <https://finances.worldbank.org/api/views/m54j-ersw/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -443,7 +443,7 @@ wbld-dataset-world-bank-finances:nh5z-5qch
     rdfs:seeAlso <https://finances.worldbank.org/Trust-Funds/Paid-In-Contributions-to-IBRD-IDA-IFC-Trust-Funds-/nh5z-5qch> ;
     dcterms:identifier "nh5z-5qch" ;
     dcterms:source <https://finances.worldbank.org/api/views/nh5z-5qch/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -457,7 +457,7 @@ wbld-dataset-world-bank-finances:p65j-3upu
     rdfs:seeAlso <https://finances.worldbank.org/Liquid-Assets-Management/Commercial-Credit-Exposure-by-Counterparty-Rating/p65j-3upu> ;
     dcterms:identifier "p65j-3upu" ;
     dcterms:source <https://finances.worldbank.org/api/views/p65j-3upu/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -472,7 +472,7 @@ wbld-dataset-world-bank-finances:pyda-ktbg
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-of-Income-FY2010/pyda-ktbg> ;
     dcterms:identifier "pyda-ktbg" ;
     dcterms:source <https://finances.worldbank.org/api/views/pyda-ktbg/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -486,7 +486,7 @@ wbld-dataset-world-bank-finances:rcx4-r7xj
     rdfs:seeAlso <http://finances.worldbank.org/Shareholder-Equity/IBRD-Statement-of-Subscriptions-to-Capital-Stock-a/rcx4-r7xj> ;
     dcterms:identifier "rcx4-r7xj" ;
     dcterms:source <https://finances.worldbank.org/api/views/rcx4-r7xj/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -501,7 +501,7 @@ wbld-dataset-world-bank-finances:ri54-wt6e
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Balance-Sheet-FY2011/ri54-wt6e> ;
     dcterms:identifier "ri54-wt6e" ;
     dcterms:source <https://finances.worldbank.org/api/views/ri54-wt6e/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -516,7 +516,7 @@ wbld-dataset-world-bank-finances:s3ey-mkx3
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IDA-Balance-Sheet-FY2010/s3ey-mkx3> ;
     dcterms:identifier "s3ey-mkx3" ;
     dcterms:source <https://finances.worldbank.org/api/views/s3ey-mkx3/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -530,7 +530,7 @@ wbld-dataset-world-bank-finances:sfv5-tf7p
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IBRD-Statement-of-Loans-Latest-Available-Snapshot/sfv5-tf7p> ;
     dcterms:source <https://finances.worldbank.org/api/views/sfv5-tf7p/rows.xml> ;
     dcterms:identifier "sfv5-tf7p" ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -544,7 +544,7 @@ wbld-dataset-world-bank-finances:tdwh-3krx
     rdfs:seeAlso <http://finances.worldbank.org/Loan-and-Credit-Administration/IDA-Statement-Of-Credits-and-Grants-Historical-Dat/tdwh-3krx> ;
     dcterms:identifier "tdwh-3krx" ;
     dcterms:source <https://finances.worldbank.org/api/views/tdwh-3krx/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -559,7 +559,7 @@ wbld-dataset-world-bank-finances:v84d-dq44
     rdfs:seeAlso <https://finances.worldbank.org/Shareholder-Equity/IDA-Statement-of-Voting-Power-and-Subscriptions-an/v84d-dq44> ;
     dcterms:identifier "v84d-dq44" ;
     dcterms:source <https://finances.worldbank.org/api/views/v84d-dq44/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -574,7 +574,7 @@ wbld-dataset-world-bank-finances:wphw-pasx
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IDA-Statement-Of-Income-FY2011/wphw-pasx> ;
     dcterms:identifier "wphw-pasx" ;
     dcterms:source <https://finances.worldbank.org/api/views/wphw-pasx/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -589,7 +589,7 @@ wbld-dataset-world-bank-finances:xs8h-cwh5
     rdfs:seeAlso <https://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-of-Cash-Flows-FY2010/xs8h-cwh5> ;
     dcterms:identifier "xs8h-cwh5" ;
     dcterms:source <https://finances.worldbank.org/api/views/xs8h-cwh5/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -603,7 +603,7 @@ wbld-dataset-world-bank-finances:zucq-nrc3
     rdfs:seeAlso <https://finances.worldbank.org/Loan-and-Credit-Administration/IBRD-Statement-Of-Loans-Historical-Data/zucq-nrc3> ;
     dcterms:identifier "zucq-nrc3" ;
     dcterms:source <https://finances.worldbank.org/api/views/zucq-nrc3/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
@@ -618,7 +618,7 @@ wbld-dataset-world-bank-finances:zyqx-8e4a
     rdfs:seeAlso <http://finances.worldbank.org/Accounting-and-Control/IBRD-Statement-Of-Cash-Flows-FY2011/zyqx-8e4a> ;
     dcterms:identifier "zyqx-8e4a" ;
     dcterms:source <https://finances.worldbank.org/api/views/zyqx-8e4a/rows.xml> ;
-    dcterms:issued "2012-04-30T00:00:00Z"^^xsd:dateTime ;
+    dcterms:issued "2012-08-02T00:00:00Z"^^xsd:dateTime ;
     dcterms:creator <http://csarven.ca/#i> ;
     dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
     .
