@@ -43,7 +43,7 @@
     <xsl:template name="projectsObservations">
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
-        <rdf:Description rdf:about="{$wbld}classification/project">
+        <rdf:Description rdf:about="{$classification}/project">
           <!-- <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/> -->
             <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#CodeList"/>
             <skos:prefLabel xml:lang="en">Code list for World Bank Projects and Operations</skos:prefLabel>
@@ -55,16 +55,16 @@ The World Bank also strives to tackle global challenges from international trade
         <xsl:for-each select="projects/project">
             <xsl:variable name="projectId" select="normalize-space(@id)"/>
 
-            <rdf:Description rdf:about="{$wbld}classification/project">
-                <skos:hasTopConcept rdf:resource="{$wbld}classification/project/{$projectId}"/>
+            <rdf:Description rdf:about="{$classification}/project">
+                <skos:hasTopConcept rdf:resource="{$classification}/project/{$projectId}"/>
             </rdf:Description>
 
-            <rdf:Description rdf:about="{$wbld}classification/project/{$projectId}">
+            <rdf:Description rdf:about="{$classification}/project/{$projectId}">
                 <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
                 <rdf:type rdf:resource="http://dbpedia.org/ontology/Project"/>
 
-                <skos:inScheme rdf:resource="{$wbld}classification/project"/>
-                <skos:topConceptOf rdf:resource="{$wbld}classification/project"/>
+                <skos:inScheme rdf:resource="{$classification}/project"/>
+                <skos:topConceptOf rdf:resource="{$classification}/project"/>
 
                 <xsl:for-each select="node()">
                     <!--
@@ -86,7 +86,7 @@ The World Bank also strives to tackle global challenges from international trade
                             </xsl:when>
 
                             <xsl:when test="$nodeName = 'financier'">
-                                <property:loan-number rdf:resource="{$wbld}loan-number/{normalize-space(./text())}"/>
+                                <property:loan-number rdf:resource="{$classification}loan-number/{normalize-space(./text())}"/>
                             </xsl:when>
 
                             <!-- These match up with strings -->
