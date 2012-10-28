@@ -378,7 +378,7 @@ zucq-nrc3 has interest-rate (measure) and a bunch of amounts (measure)
             <xsl:when test="wbldfn:money-amount($nodeName)">
                 <xsl:element name="property:{$datasetName}{$nodeName}">
                     <xsl:call-template name="datatype-xsd-decimal"/>
-                    <xsl:value-of select="./text()"/>
+                    <xsl:value-of select="replace(normalize-space(./text()), '\$', '')"/>
                 </xsl:element>
 
                 <xsl:if test="$wbldf_view = '536v-dxib/a'
