@@ -28,6 +28,7 @@
 @prefix scenario: <http://worldbank.270a.info/classification/scenario/> .
 @prefix global-circulation-model: <http://worldbank.270a.info/classification/global-circulation-model/> .
 @prefix variable: <http://worldbank.270a.info/classification/variable/> .
+@prefix percentile: <http://worldbank.270a.info/classification/percentile/> .
 
 <http://csarven.ca/#i>
     rdfs:label "Sarven Capadisli"@en ;
@@ -41,8 +42,8 @@
 wbld-dataset:world-development-indicators
     a qb:DataSet ;
     qb:structure wbld-dataset-world-development-indicators:structure ;
-    rdfs:label "World Development Indicators dataset"@en ;
-    dcterms:title "World Development Indicators"@en ;
+    rdfs:label "World Bank Indicators dataset"@en ;
+    dcterms:title "World Bank Indicators"@en ;
     dcterms:issued "2012-08-09T00:00:00Z"^^xsd:dateTime ;
     dcterms:source <http://api.worldbank.org/indicators?format=xml> ;
     dcterms:creator <http://csarven.ca/#i> ;
@@ -1543,10 +1544,46 @@ property:decade-average
     rdfs:range xsd:decimal ;
     .
 
+property:percentile
+    a rdf:Property ;
+    a qb:DimensionProperty ;
+    qb:codeList concept:percentile ;
+    rdfs:range concept:percentile ;
+    rdfs:label "Percentile"@en ;
+    .
+
 property:variable
     a rdf:Property ;
     a qb:AttributeProperty ;
     rdfs:label "Variable"@en ;
+    .
+
+
+concept:percentile
+    a skos:ConceptScheme ;
+    skos:prefLabel "Percentile"@en ;
+    skos:hasTopConcept
+        <http://worldbank.270a.info/classification/percentile/10> ,
+        <http://worldbank.270a.info/classification/percentile/50> ,
+        <http://worldbank.270a.info/classification/percentile/90> ;
+    .
+
+<http://worldbank.270a.info/classification/percentile/10>
+    a skos:Concept ;
+    skos:topConceptOf concept:percentile ;
+    skos:prefLabel "10th percentile"@en ;
+    .
+
+<http://worldbank.270a.info/classification/percentile/50>
+    a skos:Concept ;
+    skos:topConceptOf concept:percentile ;
+    skos:prefLabel "50th percentile"@en ;
+    .
+
+<http://worldbank.270a.info/classification/percentile/90>
+    a skos:Concept ;
+    skos:topConceptOf concept:percentile ;
+    skos:prefLabel "90th percentile"@en ;
     .
 
 
