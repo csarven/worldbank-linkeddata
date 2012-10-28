@@ -35,14 +35,14 @@
 
         <rdf:Description rdf:about="{$wbld}classification/indicator">
             <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-            <skos:prefLabel xml:lang="en">Code list for World Development indicators</skos:prefLabel>
+            <skos:prefLabel xml:lang="en">Code list for World Bank indicators</skos:prefLabel>
             <skos:prefLabel xml:lang="fr">Liste des codes pour les indicateurs de développement dans le monde</skos:prefLabel>
             <skos:prefLabel xml:lang="es">Lista de códigos para el mundo de los indicadores de desarrollo</skos:prefLabel>
             <skos:prefLabel xml:lang="ar">قائمة رمز لمؤشرات التنمية العالمية</skos:prefLabel>
 
             <skos:definition xml:lang="en">Indicators represent data like total population, gross national income, energy use, and many more.</skos:definition>
 
-            <skos:exactMatch rdf:resource="http://dbpedia.org/resource/World_Development_Indicators"/>
+            <skos:closeMatch rdf:resource="http://dbpedia.org/resource/World_Development_Indicators"/>
 
             <xsl:variable name="dataSource">
                 <xsl:text>http://api.worldbank.org/indicators?format=xml</xsl:text>
@@ -101,7 +101,7 @@
         <rdf:Description rdf:about="{$wbld}property/indicator">
             <rdf:type rdf:resource="http://purl.org/linked-data/cube#DimensionProperty"/>
             <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-            <rdfs:label xml:lang="en">Development indicator</rdfs:label>
+            <rdfs:label xml:lang="en">Indicator</rdfs:label>
             <qb:codeList rdf:resource="{$wbld}classification/indicator"/>
         </rdf:Description>
     </xsl:template>
