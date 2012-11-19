@@ -2,7 +2,7 @@
 #    Author: Sarven Capadisli <info@csarven.ca>
 #    Author URL: http://csarven.ca/#i
 
-basePath="/var/www/lib/worldbank-linkeddata/data/climates/" ;
+basePath="../data/climates/" ;
 
 mkdir -p "$basePath"country/mavg
 mkdir -p "$basePath"country/annualavg
@@ -65,7 +65,7 @@ while read country ;
                             done ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 
 #basinID
@@ -120,7 +120,7 @@ while read country ;
                             done ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 
 #basinID
@@ -164,7 +164,7 @@ while read country ;
                         (( counter++ )) ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 
 #Historical Data - basinID
@@ -210,7 +210,7 @@ while read country ;
                             done ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 
 #Ensembles - mavg annualavg
@@ -266,7 +266,7 @@ while read country ;
                             done ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 
 #Ensemble - manom annualanom
@@ -322,7 +322,7 @@ while read country ;
                             done ;
                     done ;
             done ;
-    done < /var/www/lib/worldbank-linkeddata/data/iso-3166_alpha-3.txt
+    done < ../data/iso-3166_alpha-3.txt
 
 #Ensemble derived statistics - basinid
 for basinID in `seq 1 468`;

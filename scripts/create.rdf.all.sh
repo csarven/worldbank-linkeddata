@@ -1,11 +1,11 @@
 #!/bin/bash
 
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.indicators.en.sh
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.meta.sh
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.finances-meta.sh
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.finances.views.en.sh
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.projects.en.sh
-/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.loan-numbers.sh
+./create.rdf.indicators.en.sh
+./create.rdf.meta.sh
+./create.rdf.finances-meta.sh
+./create.rdf.finances.views.en.sh
+./create.rdf.projects.en.sh
+./create.rdf.loan-numbers.sh
 
-#/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.climates.en.sh
-#/var/www/lib/worldbank-linkeddata/scripts/./create.rdf.indicators.indicator.en.sh
+#./create.rdf.climates.en.sh
+#./create.rdf.indicators.indicator.en.sh

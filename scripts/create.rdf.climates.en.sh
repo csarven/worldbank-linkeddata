@@ -2,8 +2,8 @@
 #    Author: Sarven Capadisli <info@csarven.ca>
 #    Author URL: http://csarven.ca/#i
 
-basePath="/var/www/lib/worldbank-linkeddata/data/climates/" ;
-pathToCountries="/var/www/lib/worldbank-linkeddata/data/indicators/en/countries.xml" ;
+basePath="../data/climates/" ;
+pathToCountries="../data/indicators/en/countries.xml" ;
 
 areas=(country basin) ;
 statstypes=(mavg annualavg manom annualanom month-average-historical year-average-historical decade-average-historical mavg-ensemble annualavg-ensemble manom-ensemble annualanom-ensemble mavg-ensemble-derived annualavg-ensemble-derived manom-ensemble-derived annualanom-ensemble-derived) ;
@@ -30,7 +30,7 @@ for area in "${areas[@]}" ;
                                     code="basinCode=$areaCode" ;
                                 fi
 
-                                saxonb-xslt -s "$file" /var/www/lib/worldbank-linkeddata/scripts/xsl/climates.xsl wbapi_lang=en pathToCountries=$pathToCountries $code statstypeCode="$statstype" variableCode="$variable" > "$basePath""$area"/"$statstype"/"$graph".rdf
+                                saxonb-xslt -s "$file" ../scripts/xsl/climates.xsl wbapi_lang=en pathToCountries=$pathToCountries $code statstypeCode="$statstype" variableCode="$variable" > "$basePath""$area"/"$statstype"/"$graph".rdf
 
                                 echo "Created $basePath$area/$statstype/$graph.rdf"
                             done

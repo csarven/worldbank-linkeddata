@@ -96,11 +96,11 @@ public class WorldBank extends DefaultHandler {
         //TODO: Separate these GETs into independent 
 
         //Concepts used in World Development Indicators. See WBAPICalls for the list
-//        t.buildWorldBankMetadata();
+        t.buildWorldBankMetadata();
 
         //World Development Indicators. ~5000 indicators. Takes a while to GET them
-        WorldBankIndicatorsObservations io = new WorldBankIndicatorsObservations();
-        io.buildWorldBankIndicatorsObservations();
+//        WorldBankIndicatorsObservations io = new WorldBankIndicatorsObservations();
+//        io.buildWorldBankIndicatorsObservations();
 
         //World Bank Finances Datasets list and dictionary
 //        t.buildWorldBankFinancesMetadata();
