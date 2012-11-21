@@ -48,16 +48,17 @@
                 <xsl:value-of select="normalize-space(wb:country/@id)"/>
             </xsl:variable>
 
+            <xsl:variable name="id" select="normalize-space(@id)"/>
+            <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
+
             <xsl:if test="normalize-space(wb:value/text()) != ''
                         and $wbld_date != ''
                         and $wbld_date != 'mrv'
                         and $wbld_date != 'most recent value'
                         and $wbld_date != '2005-2010'
                         and $wbld_country != ''
+                        and not(contains($id, ' '))
                         ">
-                <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
-
-
 
                 <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
                     <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>

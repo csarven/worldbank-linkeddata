@@ -54,48 +54,52 @@
         </rdf:Description>
 
         <xsl:for-each select="wb:indicators/wb:indicator">
-            <rdf:Description rdf:about="{$wbld}classification/indicator">
-                <skos:hasTopConcept rdf:resource="{$wbld}classification/indicator/{normalize-space(@id)}"/>
-            </rdf:Description>
+            <xsl:variable name="id" select="normalize-space(@id)"/>
 
-            <rdf:Description rdf:about="{$wbld}classification/indicator/{normalize-space(@id)}">
-                <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <xsl:if test="not(contains($id, ' '))">
+                <rdf:Description rdf:about="{$wbld}classification/indicator">
+                    <skos:hasTopConcept rdf:resource="{$wbld}classification/indicator/{$id}"/>
+                </rdf:Description>
 
-                <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
-                <skos:topConceptOf rdf:resource="{$wbld}classification/indicator"/>
+                <rdf:Description rdf:about="{$wbld}classification/indicator/{$id}">
+                    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 
-                <skos:notation><xsl:value-of select="normalize-space(@id)"/></skos:notation>
+                    <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
+                    <skos:topConceptOf rdf:resource="{$wbld}classification/indicator"/>
 
-                <xsl:if test="wb:name != ''">
-                <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:name/text())"/></skos:prefLabel>
-                </xsl:if>
+                    <skos:notation><xsl:value-of select="$id"/></skos:notation>
 
-                <foaf:page rdf:resource="http://data.worldbank.org/indicator/{normalize-space(@id)}"/>
+                    <xsl:if test="wb:name != ''">
+                    <skos:prefLabel xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:name/text())"/></skos:prefLabel>
+                    </xsl:if>
 
-                <xsl:if test="wb:source/@id">
-                <property:source rdf:resource="{$wbld}classification/source/{normalize-space(wb:source/@id)}"/>
-                </xsl:if>
+                    <foaf:page rdf:resource="http://data.worldbank.org/indicator/{$id}"/>
 
-                <xsl:if test="wb:sourceNote != ''">
-                <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:sourceNote/text())"/></skos:definition>
-                </xsl:if>
+                    <xsl:if test="wb:source/@id">
+                    <property:source rdf:resource="{$wbld}classification/source/{normalize-space(wb:source/@id)}"/>
+                    </xsl:if>
 
-                <xsl:if test="wb:sourceOrganization != ''">
-                <property:source-organization xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceOrganization/text()"/></property:source-organization>
-                </xsl:if>
+                    <xsl:if test="wb:sourceNote != ''">
+                    <skos:definition xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:sourceNote/text())"/></skos:definition>
+                    </xsl:if>
 
-                <xsl:for-each select="wb:topics/wb:topic">
-                <property:topic rdf:resource="{$wbld}classification/topic/{normalize-space(@id)}"/>
-                </xsl:for-each>
+                    <xsl:if test="wb:sourceOrganization != ''">
+                    <property:source-organization xml:lang="{$wbapi_lang}"><xsl:value-of select="wb:sourceOrganization/text()"/></property:source-organization>
+                    </xsl:if>
 
-                <xsl:variable name="dataSource">
-                    <xsl:text>http://api.worldbank.org/indicator/</xsl:text><xsl:value-of select="normalize-space(@id)"/><xsl:text>?format=xml</xsl:text>
-                </xsl:variable>
-                <xsl:call-template name="provenance">
-                    <xsl:with-param name="date" select="$currentDateTime"/>
-                    <xsl:with-param name="dataSource" select="$dataSource"/>
-                </xsl:call-template>
-            </rdf:Description>
+                    <xsl:for-each select="wb:topics/wb:topic">
+                    <property:topic rdf:resource="{$wbld}classification/topic/{normalize-space(@id)}"/>
+                    </xsl:for-each>
+
+                    <xsl:variable name="dataSource">
+                        <xsl:text>http://api.worldbank.org/indicator/</xsl:text><xsl:value-of select="$id"/><xsl:text>?format=xml</xsl:text>
+                    </xsl:variable>
+                    <xsl:call-template name="provenance">
+                        <xsl:with-param name="date" select="$currentDateTime"/>
+                        <xsl:with-param name="dataSource" select="$dataSource"/>
+                    </xsl:call-template>
+                </rdf:Description>
+            </xsl:if>
         </xsl:for-each>
 
         <rdf:Description rdf:about="{$wbld}property/indicator">
