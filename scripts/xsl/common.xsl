@@ -28,11 +28,11 @@
     <xsl:function name="wbldfn:prepend-dataset">
         <xsl:param name="string"/>
 
-        <xsl:if test="$string = 'financial-product'
-                    or $string = 'line-item'
+        <xsl:if test="$string = 'line-item'
                     or $string = 'trustee-fund'
                     or $string = 'trustee-fund-name'
                     ">
+<!--                    or $string = 'financial-product'-->
             <xsl:value-of select="true()"/>
         </xsl:if>
     </xsl:function>
