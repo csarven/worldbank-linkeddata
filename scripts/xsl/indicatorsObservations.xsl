@@ -42,7 +42,7 @@
         <xsl:variable name="currentDateTime" select="wbldfn:now()"/>
 
         <xsl:for-each select="wb:data/wb:data">
-            <xsl:variable name="wbld_date" select="normalize-space(wb:date/text())"/>
+            <xsl:variable name="wbld_date" select="replace(normalize-space(wb:date/text()), ' Target', '')"/>
 
             <xsl:variable name="wbld_country">
                 <xsl:value-of select="normalize-space(wb:country/@id)"/>
