@@ -57,6 +57,17 @@
             <xsl:variable name="id" select="normalize-space(@id)"/>
 
             <xsl:if test="not(contains($id, ' '))">
+                <rdf:Description rdf:about="{$wbld}dataset/{$id}">
+                    <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+                    <dcterms:isPartOf rdf:resource="{$wbld}dataset/world-bank-indicators"/>
+
+                    <xsl:if test="wb:name != ''">
+                    <dcterms:title xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:name/text())"/></dcterms:title>
+                    </xsl:if>
+                    <dcterms:source rdf:resource="http://api.worldbank.org/{$wbapi_lang}/countries/all/indicators/{$id}?format=xml"/>
+                    <qb:structure rdf:resource="{$wbld}dataset/world-development-indicators/structure"/>
+                </rdf:Description>
+
                 <rdf:Description rdf:about="{$wbld}classification/indicator">
                     <skos:hasTopConcept rdf:resource="{$wbld}classification/indicator/{$id}"/>
                 </rdf:Description>

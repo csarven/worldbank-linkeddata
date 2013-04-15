@@ -10,6 +10,6 @@ for file in ../data/indicators/en/indicator/*.xml;
         extension=${filename##*.};
         graph=${filename%.*};
 
-        saxonb-xslt -s "$file" -xsl ../scripts/xsl/indicatorsObservations.xsl wbapi_lang=en pathToCountries=../data/indicators/en/countries.xml > ../data/indicators/en/indicator/"$graph".rdf
+        saxonb-xslt -s "$file" -xsl ../scripts/xsl/indicatorsObservations.xsl wbapi_lang=en > ../data/indicators/en/indicator/"$graph".rdf
         echo "Created ../data/indicators/en/indicator/$graph.rdf"
     done;

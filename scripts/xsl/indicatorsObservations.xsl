@@ -60,14 +60,9 @@
                         and not(contains($id, ' '))
                         ">
 
-                <rdf:Description rdf:about="{$wbld}dataset/world-development-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
+                <rdf:Description rdf:about="{$wbld}dataset/world-bank-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
                     <rdf:type rdf:resource="http://purl.org/linked-data/cube#Observation"/>
-                    <qb:dataSet rdf:resource="{$wbld}dataset/world-development-indicators"/>
-
-<!--
-Consider wbldfn:provenance here.
-                <dcterms:source rdf:resource="http://api.worldbank.org/en/countries/all/indicators/{@wbld_indicator}?format=xml"/>
--->
+                    <qb:dataSet rdf:resource="{$wbld}dataset/{$wbld_indicator}"/>
 
                     <property:indicator rdf:resource="{$wbld}classification/indicator/{$wbld_indicator}"/>
 

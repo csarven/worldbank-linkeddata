@@ -15,7 +15,7 @@
 
 @prefix wbld: <http://worldbank.270a.info/> .
 @prefix wbld-dataset: <http://worldbank.270a.info/dataset/> .
-@prefix wbld-dataset-world-development-indicators: <http://worldbank.270a.info/dataset/world-development-indicators/> .
+@prefix wbld-dataset-world-bank-indicators: <http://worldbank.270a.info/dataset/world-bank-indicators/> .
 @prefix wbld-dataset-world-bank-finances: <http://worldbank.270a.info/dataset/world-bank-finances/> .
 @prefix wbld-dataset-world-bank-climates: <http://worldbank.270a.info/dataset/world-bank-climates/> .
 
@@ -39,9 +39,9 @@
     .
 
 #World Development Indicators
-wbld-dataset:world-development-indicators
+wbld-dataset:world-bank-indicators
     a qb:DataSet ;
-    qb:structure wbld-dataset-world-development-indicators:structure ;
+    qb:structure wbld-dataset-world-bank-indicators:structure ;
     rdfs:label "World Bank Indicators dataset"@en ;
     dcterms:title "World Bank Indicators"@en ;
     dcterms:issued "2012-08-09T00:00:00Z"^^xsd:dateTime ;
@@ -67,7 +67,7 @@ wbld-dataset:world-development-indicators
         <http://purl.org/linked-data/sdmx/2009/subject#3.3.3>
     .
 
-wbld-dataset-world-development-indicators:structure
+wbld-dataset-world-bank-indicators:structure
     a qb:DataStructureDefinition ;
     qb:component
         [
