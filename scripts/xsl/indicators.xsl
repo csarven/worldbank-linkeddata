@@ -74,6 +74,7 @@
 
                 <rdf:Description rdf:about="{$wbld}classification/indicator/{$id}">
                     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                    <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#ConceptRole"/>
 
                     <skos:inScheme rdf:resource="{$wbld}classification/indicator"/>
                     <skos:topConceptOf rdf:resource="{$wbld}classification/indicator"/>
