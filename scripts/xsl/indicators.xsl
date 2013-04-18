@@ -119,6 +119,7 @@
             <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
             <rdfs:label xml:lang="en">Indicator</rdfs:label>
             <qb:codeList rdf:resource="{$wbld}classification/indicator"/>
+            <qb:concept rdf:about="{$wbld}classification/indicator"/>
         </rdf:Description>
     </xsl:template>
 </xsl:stylesheet>
