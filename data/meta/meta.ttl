@@ -84,7 +84,7 @@ wbld-dataset-world-bank-indicators:structure
             qb:order "3"^^xsd:int
         ], [
             a qb:ComponentSpecification ;
-            qb:measure qb:obsValue ;
+            qb:measure sdmx-measure:obsValue ;
             qb:order "4"^^xsd:int
         ]
     .
