@@ -65,7 +65,7 @@
                     <dcterms:title xml:lang="{$wbapi_lang}"><xsl:value-of select="normalize-space(wb:name/text())"/></dcterms:title>
                     </xsl:if>
                     <dcterms:source rdf:resource="http://api.worldbank.org/{$wbapi_lang}/countries/all/indicators/{$id}?format=xml"/>
-                    <qb:structure rdf:resource="{$wbld}dataset/world-development-indicators/structure"/>
+                    <qb:structure rdf:resource="{$wbld}dataset/world-bank-indicators/structure"/>
                 </rdf:Description>
 
                 <rdf:Description rdf:about="{$wbld}classification/indicator">
