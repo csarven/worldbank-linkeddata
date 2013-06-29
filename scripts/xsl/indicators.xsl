@@ -119,11 +119,13 @@
             <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
             <rdfs:label xml:lang="en">Indicator</rdfs:label>
             <qb:codeList rdf:resource="{$wbld}classification/indicator"/>
-            <qb:concept rdf:resource="{$wbld}concept/indicator">
-                <skos:prefLabel xml:lang="en">Indicator</skos:prefLabel>
-                <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#Concept"/>
-                <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#ConceptRole"/>
-                <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <qb:concept>
+                <rdf:Description rdf:about="{$wbld}concept/indicator">
+                    <skos:prefLabel xml:lang="en">Indicator</skos:prefLabel>
+                    <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#Concept"/>
+                    <rdf:type rdf:resource="http://purl.org/linked-data/sdmx#ConceptRole"/>
+                    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+                </rdf:Description>
             </qb:concept>
         </rdf:Description>
     </xsl:template>
