@@ -10,6 +10,11 @@ rapper -g ../data/topics-extra.ttl >> ../data/import/graph.meta.nt ;
 
 rapper -g ../data/currencies.rdf >> ../data/import/graph.meta.nt ;
 
+cat ../data/worldbank-exactMatch-transparency_countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank-exactMatch-fao_countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank-exactMatch-ecb_countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank-exactMatch-qudt_countries.nt >> ../data/import/graph.meta.nt ;
+
 cat ../data/worldbank-sameAs-dbpedia_countries.nt >> ../data/import/graph.meta.nt ;
 
 cat ../data/worldbank-sameAs-eurostat_countries.nt >> ../data/import/graph.meta.nt ;
