@@ -25,6 +25,8 @@ cat ../data/worldbank-sameAs-geonames_countries.nt >> ../data/import/graph.meta.
 
 cat ../data/worldbank-sameAs-dbpedia_currencies.nt >> ../data/import/graph.meta.nt ;
 
+cat ../data/worldbank-sameAs-iati_currencies.nt >> ../data/import/graph.meta.nt ;
+
 rapper -g ../data/finances/views.rdf >> ../data/import/graph.meta.nt ;
 
 rapper -g ../data/finances/finance/wc6g-9zmq.rdf >> ../data/import/graph.meta.nt ;
