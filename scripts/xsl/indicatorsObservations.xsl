@@ -58,6 +58,7 @@
                         and $wbld_date != '2005-2010'
                         and $wbld_country != ''
                         and not(contains($id, ' '))
+                        and not(contains($wbld_date, 'period '))
                         ">
 
                 <rdf:Description rdf:about="{$wbld}dataset/world-bank-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
