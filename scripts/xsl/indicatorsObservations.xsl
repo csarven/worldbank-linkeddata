@@ -54,11 +54,10 @@
             <xsl:if test="normalize-space(wb:value/text()) != ''
                         and $wbld_date != ''
                         and not(contains(lower-case($wbld_date), 'mrv'))
-                        and not(contains(lower-case($wbld_date), 'most recent value'))
                         and $wbld_date != '2005-2010'
                         and $wbld_country != ''
                         and not(contains($id, ' '))
-                        and not(contains(lower-case($wbld_date), 'period'))
+                        and not(contains($wbld_date, ' '))
                         ">
 
                 <rdf:Description rdf:about="{$wbld}dataset/world-bank-indicators/{$wbld_indicator}/{$wbld_country}/{wbldfn:get-date($wbld_date)}">
