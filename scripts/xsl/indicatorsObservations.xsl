@@ -48,10 +48,12 @@
                 <xsl:value-of select="normalize-space(wb:country/@id)"/>
             </xsl:variable>
 
+
+            <xsl:variable name="value" select="normalize-space(wb:value/text())"/>
             <xsl:variable name="id" select="normalize-space(@id)"/>
             <xsl:variable name="wbld_indicator" select="normalize-space(wb:indicator/@id)"/>
 
-            <xsl:if test="normalize-space(wb:value/text()) != ''
+            <xsl:if test="$value != ''
                         and $wbld_date != ''
                         and not(contains($wbld_date, ' '))
                         and not(contains($wbld_date, '-'))
@@ -74,7 +76,11 @@
                         </xsl:call-template>
                     </sdmx-dimension:refPeriod>
 
-                    <sdmx-measure:obsValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(wb:value/text())"/></sdmx-measure:obsValue>
+                    <sdmx-measure:obsValue>
+                        <xsl:call-template name="rdfDatatypeXSD">
+                            <xsl:with-param name="type" select="fn:detectDatatype($value)"/>
+                        </xsl:call-template>
+                    </sdmx-measure:obsValue>
 
                     <property:decimal rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(wb:decimal/text())"/></property:decimal>
                 </rdf:Description>
