@@ -71,6 +71,7 @@ historical-category-disbursed-usd
                     and $string != 'agencyinfo'
                     and $string != 'board-approval-month'
                     and $string != 'board-approval-year'
+                    and $string != 'borrower-country'
                     and $string != 'countryname'
                     and $string != 'countryname-and-mdk'
                     and $string != 'countrynameshortname-and-mdk'
@@ -152,6 +153,9 @@ historical-category-disbursed-usd
             <xsl:when test="$string = 'boardapprovaldate'">
                 <xsl:text>board-approval-date</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'borrower-country-code'">
+                <xsl:text>borrower</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'closingdate'">
                 <xsl:text>closing-date</xsl:text>
             </xsl:when>
@@ -179,6 +183,9 @@ historical-category-disbursed-usd
             <xsl:when test="$string = 'country-code'">
                 <xsl:text>country</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'country-id'">
+                <xsl:text>country</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'currency-of-commitment'">
                 <xsl:text>currency</xsl:text>
             </xsl:when>
@@ -194,6 +201,9 @@ historical-category-disbursed-usd
             <xsl:when test="$string = 'envassesmentcategorycode'">
                 <xsl:text>environmental-assessment-category-code</xsl:text>
             </xsl:when>
+            <xsl:when test="$string = 'equity-millions'">
+                <xsl:text>equity-us-millions</xsl:text>
+            </xsl:when>
             <xsl:when test="$string = 'grantamt'">
                 <xsl:text>grant-amount-us-millions</xsl:text>
             </xsl:when>
@@ -208,6 +218,9 @@ historical-category-disbursed-usd
             </xsl:when>
             <xsl:when test="$string = 'guarantor-country-code'">
                 <xsl:text>guarantor</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'guarantees-millions'">
+                <xsl:text>guarantees-us-millions</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'ibrdcommamt'">
                 <xsl:text>ibrd-commitment-amount</xsl:text>
@@ -235,6 +248,12 @@ historical-category-disbursed-usd
             </xsl:when>
             <xsl:when test="$string = 'loans-outstanding'">
                 <xsl:text>loans-outstanding-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'loans-millions'">
+                <xsl:text>loans-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'loan-syndications-millions'">
+                <xsl:text>loan-syndications-us-millions</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'member-country'">
                 <xsl:text>member</xsl:text>
@@ -288,6 +307,9 @@ historical-category-disbursed-usd
             </xsl:when>
             <xsl:when test="$string = 'reimbursable-mlns-of-usd'">
                 <xsl:text>reimbursable-us-millions</xsl:text>
+            </xsl:when>
+            <xsl:when test="$string = 'risk-management-products-millions'">
+                <xsl:text>risk-management-products-us-millions</xsl:text>
             </xsl:when>
             <xsl:when test="$string = 'regionname'">
                 <xsl:text>region</xsl:text>
@@ -398,6 +420,7 @@ historical-category-disbursed-usd
                     or $string = 'due-to-ibrd'
                     or $string = 'due-to-ida'
                     or $string = 'exchange-adjustment'
+                    or $string = 'equity-us-millions'
                     or $string = 'fy05-amount-us-millions'
                     or $string = 'fy06-amount-us-millions'
                     or $string = 'fy07-amount-us-millions'
@@ -416,11 +439,14 @@ historical-category-disbursed-usd
                     or $string = 'grant-commitments-usd'
                     or $string = 'gross-disbursements-development-policy-lending-us-millions'
                     or $string = 'gross-disbursements-total-us-millions'
+                    or $string = 'guarantees-us-millions'
                     or $string = 'ibrd-commitment-amount'
                     or $string = 'ida-commitment-amount'
                     or $string = 'lend-project-cost'
                     or $string = 'loans-held'
                     or $string = 'loans-outstanding-us-millions'
+                    or $string = 'loan-syndications-millions'
+                    or $string = 'loans-us-millions'
                     or $string = 'net-disbursements-us-millions'
                     or $string = 'operating-income-us-millions'
                     or $string = 'original-principal-amount'
@@ -430,6 +456,7 @@ historical-category-disbursed-usd
                     or $string = 'repaid-3rd-party'
                     or $string = 'repaid-to-ibrd'
                     or $string = 'repaid-to-ida'
+                    or $string = 'risk-management-products-millions'
                     or $string = 'sold-3rd-party'
                     or $string = 'subscriptions-and-contributions-committed-us-millions'
                     or $string = 'total-amounts'
