@@ -80,6 +80,7 @@
                         <xsl:call-template name="rdfDatatypeXSD">
                             <xsl:with-param name="type" select="wbldfn:detectDatatype($value)"/>
                         </xsl:call-template>
+                        <xsl:value-of select="$value"/>
                     </sdmx-measure:obsValue>
 
                     <property:decimal rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="normalize-space(wb:decimal/text())"/></property:decimal>
