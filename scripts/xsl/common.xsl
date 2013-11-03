@@ -5,6 +5,7 @@
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
@@ -752,7 +753,7 @@ XXX: My brain stopped here. I can't be bothered with this POS. I need to sleep.
         </xsl:if>
     </xsl:template>
 
-    <xsl:function name="fn:detectDatatype">
+    <xsl:function name="wbldfn:detectDatatype">
         <xsl:param name="value"/>
 
         <xsl:choose>

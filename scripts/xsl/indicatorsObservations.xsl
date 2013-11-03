@@ -78,7 +78,7 @@
 
                     <sdmx-measure:obsValue>
                         <xsl:call-template name="rdfDatatypeXSD">
-                            <xsl:with-param name="type" select="fn:detectDatatype($value)"/>
+                            <xsl:with-param name="type" select="wbldfn:detectDatatype($value)"/>
                         </xsl:call-template>
                     </sdmx-measure:obsValue>
 
