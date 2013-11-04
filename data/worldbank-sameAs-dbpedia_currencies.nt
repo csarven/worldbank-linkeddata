@@ -162,4 +162,3 @@
 <http://worldbank.270a.info/classification/currency/ZAR> <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/South_African_rand> .
 <http://worldbank.270a.info/classification/currency/ZMK> <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Zambian_kwacha> .
 <http://worldbank.270a.info/classification/currency/ZWL> <http://www.w3.org/2002/07/owl#sameAs> <http://dbpedia.org/resource/Zimbabwean_dollar> .
-
