@@ -15,6 +15,11 @@ cat ../data/worldbank-exactMatch-fao_countries.nt >> ../data/import/graph.meta.n
 cat ../data/worldbank-exactMatch-ecb_countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank-exactMatch-imf_countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank-exactMatch-bfs_countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.frb.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.uis.nt >> ../data/import/graph.meta.nt ;
+
+
 cat ../data/worldbank-exactMatch-qudt_currencies.nt >> ../data/import/graph.meta.nt ;
 
 cat ../data/worldbank-sameAs-dbpedia_countries.nt >> ../data/import/graph.meta.nt ;
