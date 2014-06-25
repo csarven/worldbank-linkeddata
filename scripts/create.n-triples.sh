@@ -10,17 +10,17 @@ rapper -g ../data/topics-extra.ttl >> ../data/import/graph.meta.nt ;
 
 rapper -g ../data/currencies.rdf >> ../data/import/graph.meta.nt ;
 
-cat ../data/worldbank-exactMatch-transparency_countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank-exactMatch-fao_countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank-exactMatch-ecb_countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank-exactMatch-imf_countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank-exactMatch-bfs_countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.transparency.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.fao.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.imf.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch-bfs.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.frb.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.uis.nt >> ../data/import/graph.meta.nt ;
 
 
-cat ../data/worldbank-exactMatch-qudt_currencies.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.qudt.currencies.nt >> ../data/import/graph.meta.nt ;
 
 cat ../data/worldbank-sameAs-dbpedia_countries.nt >> ../data/import/graph.meta.nt ;
 
