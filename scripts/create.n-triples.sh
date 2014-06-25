@@ -14,7 +14,7 @@ cat ../data/worldbank.exactMatch.transparency.countries.nt >> ../data/import/gra
 cat ../data/worldbank.exactMatch.fao.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.imf.countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank.exactMatch-bfs.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.bfs.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.frb.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.uis.nt >> ../data/import/graph.meta.nt ;
