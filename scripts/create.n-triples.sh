@@ -16,7 +16,7 @@ cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.n
 cat ../data/worldbank.exactMatch.imf.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.bfs.countries.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.ecb.countries.nt >> ../data/import/graph.meta.nt ;
-cat ../data/worldbank.exactMatch.frb.countries.nt >> ../data/import/graph.meta.nt ;
+cat ../data/worldbank.exactMatch.frb.currency.nt >> ../data/import/graph.meta.nt ;
 cat ../data/worldbank.exactMatch.uis.nt >> ../data/import/graph.meta.nt ;
 
 
