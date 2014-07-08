@@ -59,6 +59,8 @@
             <xsl:if test="not(contains($id, ' '))">
                 <rdf:Description rdf:about="{$wbld}dataset/{$id}">
                     <rdf:type rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+                    <dcterms:identifier><xsl:value-of select="$id"/></dcterms:identifier>
+
                     <dcterms:isPartOf rdf:resource="{$wbld}dataset/world-bank-indicators"/>
 
                     <xsl:if test="wb:name != ''">
